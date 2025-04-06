@@ -1,0 +1,204 @@
+C:\Users\roxan\source\repos\LibreriaApi\LibreriaApi\bin\LibreriaApi.dll.config
+C:\Users\roxan\source\repos\LibreriaApi\LibreriaApi\bin\LibreriaApi.dll
+C:\Users\roxan\source\repos\LibreriaApi\LibreriaApi\bin\LibreriaApi.pdb
+C:\Users\roxan\source\repos\LibreriaApi\LibreriaApi\bin\roslyn\csc.exe
+C:\Users\roxan\source\repos\LibreriaApi\LibreriaApi\bin\roslyn\csc.exe.config
+C:\Users\roxan\source\repos\LibreriaApi\LibreriaApi\bin\roslyn\csc.rsp
+C:\Users\roxan\source\repos\LibreriaApi\LibreriaApi\bin\roslyn\csi.exe
+C:\Users\roxan\source\repos\LibreriaApi\LibreriaApi\bin\roslyn\csi.exe.config
+C:\Users\roxan\source\repos\LibreriaApi\LibreriaApi\bin\roslyn\csi.rsp
+C:\Users\roxan\source\repos\LibreriaApi\LibreriaApi\bin\roslyn\Microsoft.Build.Tasks.CodeAnalysis.dll
+C:\Users\roxan\source\repos\LibreriaApi\LibreriaApi\bin\roslyn\Microsoft.CodeAnalysis.CSharp.dll
+C:\Users\roxan\source\repos\LibreriaApi\LibreriaApi\bin\roslyn\Microsoft.CodeAnalysis.CSharp.Scripting.dll
+C:\Users\roxan\source\repos\LibreriaApi\LibreriaApi\bin\roslyn\Microsoft.CodeAnalysis.dll
+C:\Users\roxan\source\repos\LibreriaApi\LibreriaApi\bin\roslyn\Microsoft.CodeAnalysis.Scripting.dll
+C:\Users\roxan\source\repos\LibreriaApi\LibreriaApi\bin\roslyn\Microsoft.CodeAnalysis.VisualBasic.dll
+C:\Users\roxan\source\repos\LibreriaApi\LibreriaApi\bin\roslyn\Microsoft.CSharp.Core.targets
+C:\Users\roxan\source\repos\LibreriaApi\LibreriaApi\bin\roslyn\Microsoft.DiaSymReader.Native.amd64.dll
+C:\Users\roxan\source\repos\LibreriaApi\LibreriaApi\bin\roslyn\Microsoft.DiaSymReader.Native.x86.dll
+C:\Users\roxan\source\repos\LibreriaApi\LibreriaApi\bin\roslyn\Microsoft.Managed.Core.targets
+C:\Users\roxan\source\repos\LibreriaApi\LibreriaApi\bin\roslyn\Microsoft.VisualBasic.Core.targets
+C:\Users\roxan\source\repos\LibreriaApi\LibreriaApi\bin\roslyn\Microsoft.Win32.Primitives.dll
+C:\Users\roxan\source\repos\LibreriaApi\LibreriaApi\bin\roslyn\System.AppContext.dll
+C:\Users\roxan\source\repos\LibreriaApi\LibreriaApi\bin\roslyn\System.Collections.Immutable.dll
+C:\Users\roxan\source\repos\LibreriaApi\LibreriaApi\bin\roslyn\System.Console.dll
+C:\Users\roxan\source\repos\LibreriaApi\LibreriaApi\bin\roslyn\System.Diagnostics.DiagnosticSource.dll
+C:\Users\roxan\source\repos\LibreriaApi\LibreriaApi\bin\roslyn\System.Diagnostics.FileVersionInfo.dll
+C:\Users\roxan\source\repos\LibreriaApi\LibreriaApi\bin\roslyn\System.Diagnostics.StackTrace.dll
+C:\Users\roxan\source\repos\LibreriaApi\LibreriaApi\bin\roslyn\System.Globalization.Calendars.dll
+C:\Users\roxan\source\repos\LibreriaApi\LibreriaApi\bin\roslyn\System.IO.Compression.dll
+C:\Users\roxan\source\repos\LibreriaApi\LibreriaApi\bin\roslyn\System.IO.Compression.ZipFile.dll
+C:\Users\roxan\source\repos\LibreriaApi\LibreriaApi\bin\roslyn\System.IO.FileSystem.dll
+C:\Users\roxan\source\repos\LibreriaApi\LibreriaApi\bin\roslyn\System.IO.FileSystem.Primitives.dll
+C:\Users\roxan\source\repos\LibreriaApi\LibreriaApi\bin\roslyn\System.Net.Http.dll
+C:\Users\roxan\source\repos\LibreriaApi\LibreriaApi\bin\roslyn\System.Net.Sockets.dll
+C:\Users\roxan\source\repos\LibreriaApi\LibreriaApi\bin\roslyn\System.Reflection.Metadata.dll
+C:\Users\roxan\source\repos\LibreriaApi\LibreriaApi\bin\roslyn\System.Runtime.InteropServices.RuntimeInformation.dll
+C:\Users\roxan\source\repos\LibreriaApi\LibreriaApi\bin\roslyn\System.Security.Cryptography.Algorithms.dll
+C:\Users\roxan\source\repos\LibreriaApi\LibreriaApi\bin\roslyn\System.Security.Cryptography.Encoding.dll
+C:\Users\roxan\source\repos\LibreriaApi\LibreriaApi\bin\roslyn\System.Security.Cryptography.Primitives.dll
+C:\Users\roxan\source\repos\LibreriaApi\LibreriaApi\bin\roslyn\System.Security.Cryptography.X509Certificates.dll
+C:\Users\roxan\source\repos\LibreriaApi\LibreriaApi\bin\roslyn\System.Text.Encoding.CodePages.dll
+C:\Users\roxan\source\repos\LibreriaApi\LibreriaApi\bin\roslyn\System.Threading.Tasks.Extensions.dll
+C:\Users\roxan\source\repos\LibreriaApi\LibreriaApi\bin\roslyn\System.ValueTuple.dll
+C:\Users\roxan\source\repos\LibreriaApi\LibreriaApi\bin\roslyn\System.Xml.ReaderWriter.dll
+C:\Users\roxan\source\repos\LibreriaApi\LibreriaApi\bin\roslyn\System.Xml.XmlDocument.dll
+C:\Users\roxan\source\repos\LibreriaApi\LibreriaApi\bin\roslyn\System.Xml.XPath.dll
+C:\Users\roxan\source\repos\LibreriaApi\LibreriaApi\bin\roslyn\System.Xml.XPath.XDocument.dll
+C:\Users\roxan\source\repos\LibreriaApi\LibreriaApi\bin\roslyn\vbc.exe
+C:\Users\roxan\source\repos\LibreriaApi\LibreriaApi\bin\roslyn\vbc.exe.config
+C:\Users\roxan\source\repos\LibreriaApi\LibreriaApi\bin\roslyn\vbc.rsp
+C:\Users\roxan\source\repos\LibreriaApi\LibreriaApi\bin\roslyn\VBCSCompiler.exe
+C:\Users\roxan\source\repos\LibreriaApi\LibreriaApi\bin\roslyn\VBCSCompiler.exe.config
+C:\Users\roxan\source\repos\LibreriaApi\LibreriaApi\bin\Antlr3.Runtime.dll
+C:\Users\roxan\source\repos\LibreriaApi\LibreriaApi\bin\EntityFramework.dll
+C:\Users\roxan\source\repos\LibreriaApi\LibreriaApi\bin\EntityFramework.SqlServer.dll
+C:\Users\roxan\source\repos\LibreriaApi\LibreriaApi\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll
+C:\Users\roxan\source\repos\LibreriaApi\LibreriaApi\bin\Microsoft.Web.Infrastructure.dll
+C:\Users\roxan\source\repos\LibreriaApi\LibreriaApi\bin\Newtonsoft.Json.dll
+C:\Users\roxan\source\repos\LibreriaApi\LibreriaApi\bin\System.Net.Http.Formatting.dll
+C:\Users\roxan\source\repos\LibreriaApi\LibreriaApi\bin\System.Web.Helpers.dll
+C:\Users\roxan\source\repos\LibreriaApi\LibreriaApi\bin\System.Web.Http.dll
+C:\Users\roxan\source\repos\LibreriaApi\LibreriaApi\bin\System.Web.Http.WebHost.dll
+C:\Users\roxan\source\repos\LibreriaApi\LibreriaApi\bin\System.Web.Mvc.dll
+C:\Users\roxan\source\repos\LibreriaApi\LibreriaApi\bin\System.Web.Optimization.dll
+C:\Users\roxan\source\repos\LibreriaApi\LibreriaApi\bin\System.Web.Razor.dll
+C:\Users\roxan\source\repos\LibreriaApi\LibreriaApi\bin\System.Web.WebPages.Deployment.dll
+C:\Users\roxan\source\repos\LibreriaApi\LibreriaApi\bin\System.Web.WebPages.dll
+C:\Users\roxan\source\repos\LibreriaApi\LibreriaApi\bin\System.Web.WebPages.Razor.dll
+C:\Users\roxan\source\repos\LibreriaApi\LibreriaApi\bin\WebGrease.dll
+C:\Users\roxan\source\repos\LibreriaApi\LibreriaApi\bin\EntityFramework.xml
+C:\Users\roxan\source\repos\LibreriaApi\LibreriaApi\bin\EntityFramework.SqlServer.xml
+C:\Users\roxan\source\repos\LibreriaApi\LibreriaApi\bin\Newtonsoft.Json.xml
+C:\Users\roxan\source\repos\LibreriaApi\LibreriaApi\bin\System.Net.Http.Formatting.xml
+C:\Users\roxan\source\repos\LibreriaApi\LibreriaApi\bin\System.Web.Helpers.xml
+C:\Users\roxan\source\repos\LibreriaApi\LibreriaApi\bin\System.Web.Http.xml
+C:\Users\roxan\source\repos\LibreriaApi\LibreriaApi\bin\System.Web.Http.WebHost.xml
+C:\Users\roxan\source\repos\LibreriaApi\LibreriaApi\bin\System.Web.Mvc.xml
+C:\Users\roxan\source\repos\LibreriaApi\LibreriaApi\bin\System.Web.Optimization.xml
+C:\Users\roxan\source\repos\LibreriaApi\LibreriaApi\bin\System.Web.Razor.xml
+C:\Users\roxan\source\repos\LibreriaApi\LibreriaApi\bin\System.Web.WebPages.xml
+C:\Users\roxan\source\repos\LibreriaApi\LibreriaApi\bin\System.Web.WebPages.Deployment.xml
+C:\Users\roxan\source\repos\LibreriaApi\LibreriaApi\bin\System.Web.WebPages.Razor.xml
+C:\Users\roxan\source\repos\LibreriaApi\LibreriaApi\bin\Antlr3.Runtime.pdb
+C:\Users\roxan\source\repos\LibreriaApi\LibreriaApi\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
+C:\Users\roxan\source\repos\LibreriaApi\LibreriaApi\bin\es\System.Net.Http.Formatting.resources.dll
+C:\Users\roxan\source\repos\LibreriaApi\LibreriaApi\bin\es\System.Web.Helpers.resources.dll
+C:\Users\roxan\source\repos\LibreriaApi\LibreriaApi\bin\es\System.Web.Http.resources.dll
+C:\Users\roxan\source\repos\LibreriaApi\LibreriaApi\bin\es\System.Web.Http.WebHost.resources.dll
+C:\Users\roxan\source\repos\LibreriaApi\LibreriaApi\bin\es\System.Web.Mvc.resources.dll
+C:\Users\roxan\source\repos\LibreriaApi\LibreriaApi\bin\es\System.Web.Optimization.resources.dll
+C:\Users\roxan\source\repos\LibreriaApi\LibreriaApi\bin\es\System.Web.Razor.resources.dll
+C:\Users\roxan\source\repos\LibreriaApi\LibreriaApi\bin\es\System.Web.WebPages.resources.dll
+C:\Users\roxan\source\repos\LibreriaApi\LibreriaApi\bin\es\System.Web.WebPages.Deployment.resources.dll
+C:\Users\roxan\source\repos\LibreriaApi\LibreriaApi\bin\es\System.Web.WebPages.Razor.resources.dll
+C:\Users\roxan\source\repos\LibreriaApi\LibreriaApi\obj\Debug\LibreriaApi.csproj.AssemblyReference.cache
+C:\Users\roxan\source\repos\LibreriaApi\LibreriaApi\obj\Debug\LibreriaApi.csproj.CoreCompileInputs.cache
+C:\Users\roxan\source\repos\LibreriaApi\LibreriaApi\obj\Debug\Libreria.A8CA22AB.Up2Date
+C:\Users\roxan\source\repos\LibreriaApi\LibreriaApi\obj\Debug\LibreriaApi.dll
+C:\Users\roxan\source\repos\LibreriaApi\LibreriaApi\obj\Debug\LibreriaApi.pdb
+C:\Users\roxan\source\repos\LibreriaApi\LibreriaApi\bin\LibreriaApi.xml
+C:\Users\roxan\source\repos\LibreriaApi\LibreriaApi\bin\Swashbuckle.Core.dll
+C:\Users\roxan\source\repos\LibreriaApi\LibreriaApi\bin\WebActivatorEx.dll
+C:\Users\Herreritas Eucedas\source\repos\LibreriaApi\LibreriaApi\LibreriaApi\bin\LibreriaApi.dll.config
+C:\Users\Herreritas Eucedas\source\repos\LibreriaApi\LibreriaApi\LibreriaApi\bin\LibreriaApi.xml
+C:\Users\Herreritas Eucedas\source\repos\LibreriaApi\LibreriaApi\LibreriaApi\bin\LibreriaApi.dll
+C:\Users\Herreritas Eucedas\source\repos\LibreriaApi\LibreriaApi\LibreriaApi\bin\LibreriaApi.pdb
+C:\Users\Herreritas Eucedas\source\repos\LibreriaApi\LibreriaApi\LibreriaApi\bin\roslyn\csc.exe
+C:\Users\Herreritas Eucedas\source\repos\LibreriaApi\LibreriaApi\LibreriaApi\bin\roslyn\csc.exe.config
+C:\Users\Herreritas Eucedas\source\repos\LibreriaApi\LibreriaApi\LibreriaApi\bin\roslyn\csc.rsp
+C:\Users\Herreritas Eucedas\source\repos\LibreriaApi\LibreriaApi\LibreriaApi\bin\roslyn\csi.exe
+C:\Users\Herreritas Eucedas\source\repos\LibreriaApi\LibreriaApi\LibreriaApi\bin\roslyn\csi.exe.config
+C:\Users\Herreritas Eucedas\source\repos\LibreriaApi\LibreriaApi\LibreriaApi\bin\roslyn\csi.rsp
+C:\Users\Herreritas Eucedas\source\repos\LibreriaApi\LibreriaApi\LibreriaApi\bin\roslyn\Microsoft.Build.Tasks.CodeAnalysis.dll
+C:\Users\Herreritas Eucedas\source\repos\LibreriaApi\LibreriaApi\LibreriaApi\bin\roslyn\Microsoft.CodeAnalysis.CSharp.dll
+C:\Users\Herreritas Eucedas\source\repos\LibreriaApi\LibreriaApi\LibreriaApi\bin\roslyn\Microsoft.CodeAnalysis.CSharp.Scripting.dll
+C:\Users\Herreritas Eucedas\source\repos\LibreriaApi\LibreriaApi\LibreriaApi\bin\roslyn\Microsoft.CodeAnalysis.dll
+C:\Users\Herreritas Eucedas\source\repos\LibreriaApi\LibreriaApi\LibreriaApi\bin\roslyn\Microsoft.CodeAnalysis.Scripting.dll
+C:\Users\Herreritas Eucedas\source\repos\LibreriaApi\LibreriaApi\LibreriaApi\bin\roslyn\Microsoft.CodeAnalysis.VisualBasic.dll
+C:\Users\Herreritas Eucedas\source\repos\LibreriaApi\LibreriaApi\LibreriaApi\bin\roslyn\Microsoft.CSharp.Core.targets
+C:\Users\Herreritas Eucedas\source\repos\LibreriaApi\LibreriaApi\LibreriaApi\bin\roslyn\Microsoft.DiaSymReader.Native.amd64.dll
+C:\Users\Herreritas Eucedas\source\repos\LibreriaApi\LibreriaApi\LibreriaApi\bin\roslyn\Microsoft.DiaSymReader.Native.x86.dll
+C:\Users\Herreritas Eucedas\source\repos\LibreriaApi\LibreriaApi\LibreriaApi\bin\roslyn\Microsoft.Managed.Core.targets
+C:\Users\Herreritas Eucedas\source\repos\LibreriaApi\LibreriaApi\LibreriaApi\bin\roslyn\Microsoft.VisualBasic.Core.targets
+C:\Users\Herreritas Eucedas\source\repos\LibreriaApi\LibreriaApi\LibreriaApi\bin\roslyn\Microsoft.Win32.Primitives.dll
+C:\Users\Herreritas Eucedas\source\repos\LibreriaApi\LibreriaApi\LibreriaApi\bin\roslyn\System.AppContext.dll
+C:\Users\Herreritas Eucedas\source\repos\LibreriaApi\LibreriaApi\LibreriaApi\bin\roslyn\System.Collections.Immutable.dll
+C:\Users\Herreritas Eucedas\source\repos\LibreriaApi\LibreriaApi\LibreriaApi\bin\roslyn\System.Console.dll
+C:\Users\Herreritas Eucedas\source\repos\LibreriaApi\LibreriaApi\LibreriaApi\bin\roslyn\System.Diagnostics.DiagnosticSource.dll
+C:\Users\Herreritas Eucedas\source\repos\LibreriaApi\LibreriaApi\LibreriaApi\bin\roslyn\System.Diagnostics.FileVersionInfo.dll
+C:\Users\Herreritas Eucedas\source\repos\LibreriaApi\LibreriaApi\LibreriaApi\bin\roslyn\System.Diagnostics.StackTrace.dll
+C:\Users\Herreritas Eucedas\source\repos\LibreriaApi\LibreriaApi\LibreriaApi\bin\roslyn\System.Globalization.Calendars.dll
+C:\Users\Herreritas Eucedas\source\repos\LibreriaApi\LibreriaApi\LibreriaApi\bin\roslyn\System.IO.Compression.dll
+C:\Users\Herreritas Eucedas\source\repos\LibreriaApi\LibreriaApi\LibreriaApi\bin\roslyn\System.IO.Compression.ZipFile.dll
+C:\Users\Herreritas Eucedas\source\repos\LibreriaApi\LibreriaApi\LibreriaApi\bin\roslyn\System.IO.FileSystem.dll
+C:\Users\Herreritas Eucedas\source\repos\LibreriaApi\LibreriaApi\LibreriaApi\bin\roslyn\System.IO.FileSystem.Primitives.dll
+C:\Users\Herreritas Eucedas\source\repos\LibreriaApi\LibreriaApi\LibreriaApi\bin\roslyn\System.Net.Http.dll
+C:\Users\Herreritas Eucedas\source\repos\LibreriaApi\LibreriaApi\LibreriaApi\bin\roslyn\System.Net.Sockets.dll
+C:\Users\Herreritas Eucedas\source\repos\LibreriaApi\LibreriaApi\LibreriaApi\bin\roslyn\System.Reflection.Metadata.dll
+C:\Users\Herreritas Eucedas\source\repos\LibreriaApi\LibreriaApi\LibreriaApi\bin\roslyn\System.Runtime.InteropServices.RuntimeInformation.dll
+C:\Users\Herreritas Eucedas\source\repos\LibreriaApi\LibreriaApi\LibreriaApi\bin\roslyn\System.Security.Cryptography.Algorithms.dll
+C:\Users\Herreritas Eucedas\source\repos\LibreriaApi\LibreriaApi\LibreriaApi\bin\roslyn\System.Security.Cryptography.Encoding.dll
+C:\Users\Herreritas Eucedas\source\repos\LibreriaApi\LibreriaApi\LibreriaApi\bin\roslyn\System.Security.Cryptography.Primitives.dll
+C:\Users\Herreritas Eucedas\source\repos\LibreriaApi\LibreriaApi\LibreriaApi\bin\roslyn\System.Security.Cryptography.X509Certificates.dll
+C:\Users\Herreritas Eucedas\source\repos\LibreriaApi\LibreriaApi\LibreriaApi\bin\roslyn\System.Text.Encoding.CodePages.dll
+C:\Users\Herreritas Eucedas\source\repos\LibreriaApi\LibreriaApi\LibreriaApi\bin\roslyn\System.Threading.Tasks.Extensions.dll
+C:\Users\Herreritas Eucedas\source\repos\LibreriaApi\LibreriaApi\LibreriaApi\bin\roslyn\System.ValueTuple.dll
+C:\Users\Herreritas Eucedas\source\repos\LibreriaApi\LibreriaApi\LibreriaApi\bin\roslyn\System.Xml.ReaderWriter.dll
+C:\Users\Herreritas Eucedas\source\repos\LibreriaApi\LibreriaApi\LibreriaApi\bin\roslyn\System.Xml.XmlDocument.dll
+C:\Users\Herreritas Eucedas\source\repos\LibreriaApi\LibreriaApi\LibreriaApi\bin\roslyn\System.Xml.XPath.dll
+C:\Users\Herreritas Eucedas\source\repos\LibreriaApi\LibreriaApi\LibreriaApi\bin\roslyn\System.Xml.XPath.XDocument.dll
+C:\Users\Herreritas Eucedas\source\repos\LibreriaApi\LibreriaApi\LibreriaApi\bin\roslyn\vbc.exe
+C:\Users\Herreritas Eucedas\source\repos\LibreriaApi\LibreriaApi\LibreriaApi\bin\roslyn\vbc.exe.config
+C:\Users\Herreritas Eucedas\source\repos\LibreriaApi\LibreriaApi\LibreriaApi\bin\roslyn\vbc.rsp
+C:\Users\Herreritas Eucedas\source\repos\LibreriaApi\LibreriaApi\LibreriaApi\bin\roslyn\VBCSCompiler.exe
+C:\Users\Herreritas Eucedas\source\repos\LibreriaApi\LibreriaApi\LibreriaApi\bin\roslyn\VBCSCompiler.exe.config
+C:\Users\Herreritas Eucedas\source\repos\LibreriaApi\LibreriaApi\LibreriaApi\bin\Antlr3.Runtime.dll
+C:\Users\Herreritas Eucedas\source\repos\LibreriaApi\LibreriaApi\LibreriaApi\bin\EntityFramework.dll
+C:\Users\Herreritas Eucedas\source\repos\LibreriaApi\LibreriaApi\LibreriaApi\bin\EntityFramework.SqlServer.dll
+C:\Users\Herreritas Eucedas\source\repos\LibreriaApi\LibreriaApi\LibreriaApi\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll
+C:\Users\Herreritas Eucedas\source\repos\LibreriaApi\LibreriaApi\LibreriaApi\bin\Microsoft.Web.Infrastructure.dll
+C:\Users\Herreritas Eucedas\source\repos\LibreriaApi\LibreriaApi\LibreriaApi\bin\Newtonsoft.Json.dll
+C:\Users\Herreritas Eucedas\source\repos\LibreriaApi\LibreriaApi\LibreriaApi\bin\Swashbuckle.Core.dll
+C:\Users\Herreritas Eucedas\source\repos\LibreriaApi\LibreriaApi\LibreriaApi\bin\System.Net.Http.Formatting.dll
+C:\Users\Herreritas Eucedas\source\repos\LibreriaApi\LibreriaApi\LibreriaApi\bin\System.Web.Helpers.dll
+C:\Users\Herreritas Eucedas\source\repos\LibreriaApi\LibreriaApi\LibreriaApi\bin\System.Web.Http.dll
+C:\Users\Herreritas Eucedas\source\repos\LibreriaApi\LibreriaApi\LibreriaApi\bin\System.Web.Http.WebHost.dll
+C:\Users\Herreritas Eucedas\source\repos\LibreriaApi\LibreriaApi\LibreriaApi\bin\System.Web.Mvc.dll
+C:\Users\Herreritas Eucedas\source\repos\LibreriaApi\LibreriaApi\LibreriaApi\bin\System.Web.Optimization.dll
+C:\Users\Herreritas Eucedas\source\repos\LibreriaApi\LibreriaApi\LibreriaApi\bin\System.Web.Razor.dll
+C:\Users\Herreritas Eucedas\source\repos\LibreriaApi\LibreriaApi\LibreriaApi\bin\System.Web.WebPages.Deployment.dll
+C:\Users\Herreritas Eucedas\source\repos\LibreriaApi\LibreriaApi\LibreriaApi\bin\System.Web.WebPages.dll
+C:\Users\Herreritas Eucedas\source\repos\LibreriaApi\LibreriaApi\LibreriaApi\bin\System.Web.WebPages.Razor.dll
+C:\Users\Herreritas Eucedas\source\repos\LibreriaApi\LibreriaApi\LibreriaApi\bin\WebActivatorEx.dll
+C:\Users\Herreritas Eucedas\source\repos\LibreriaApi\LibreriaApi\LibreriaApi\bin\WebGrease.dll
+C:\Users\Herreritas Eucedas\source\repos\LibreriaApi\LibreriaApi\LibreriaApi\bin\EntityFramework.xml
+C:\Users\Herreritas Eucedas\source\repos\LibreriaApi\LibreriaApi\LibreriaApi\bin\EntityFramework.SqlServer.xml
+C:\Users\Herreritas Eucedas\source\repos\LibreriaApi\LibreriaApi\LibreriaApi\bin\Newtonsoft.Json.xml
+C:\Users\Herreritas Eucedas\source\repos\LibreriaApi\LibreriaApi\LibreriaApi\bin\System.Net.Http.Formatting.xml
+C:\Users\Herreritas Eucedas\source\repos\LibreriaApi\LibreriaApi\LibreriaApi\bin\System.Web.Helpers.xml
+C:\Users\Herreritas Eucedas\source\repos\LibreriaApi\LibreriaApi\LibreriaApi\bin\System.Web.Http.xml
+C:\Users\Herreritas Eucedas\source\repos\LibreriaApi\LibreriaApi\LibreriaApi\bin\System.Web.Http.WebHost.xml
+C:\Users\Herreritas Eucedas\source\repos\LibreriaApi\LibreriaApi\LibreriaApi\bin\System.Web.Mvc.xml
+C:\Users\Herreritas Eucedas\source\repos\LibreriaApi\LibreriaApi\LibreriaApi\bin\System.Web.Optimization.xml
+C:\Users\Herreritas Eucedas\source\repos\LibreriaApi\LibreriaApi\LibreriaApi\bin\System.Web.Razor.xml
+C:\Users\Herreritas Eucedas\source\repos\LibreriaApi\LibreriaApi\LibreriaApi\bin\System.Web.WebPages.xml
+C:\Users\Herreritas Eucedas\source\repos\LibreriaApi\LibreriaApi\LibreriaApi\bin\System.Web.WebPages.Deployment.xml
+C:\Users\Herreritas Eucedas\source\repos\LibreriaApi\LibreriaApi\LibreriaApi\bin\System.Web.WebPages.Razor.xml
+C:\Users\Herreritas Eucedas\source\repos\LibreriaApi\LibreriaApi\LibreriaApi\bin\Antlr3.Runtime.pdb
+C:\Users\Herreritas Eucedas\source\repos\LibreriaApi\LibreriaApi\LibreriaApi\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
+C:\Users\Herreritas Eucedas\source\repos\LibreriaApi\LibreriaApi\LibreriaApi\bin\es\System.Net.Http.Formatting.resources.dll
+C:\Users\Herreritas Eucedas\source\repos\LibreriaApi\LibreriaApi\LibreriaApi\bin\es\System.Web.Helpers.resources.dll
+C:\Users\Herreritas Eucedas\source\repos\LibreriaApi\LibreriaApi\LibreriaApi\bin\es\System.Web.Http.resources.dll
+C:\Users\Herreritas Eucedas\source\repos\LibreriaApi\LibreriaApi\LibreriaApi\bin\es\System.Web.Http.WebHost.resources.dll
+C:\Users\Herreritas Eucedas\source\repos\LibreriaApi\LibreriaApi\LibreriaApi\bin\es\System.Web.Mvc.resources.dll
+C:\Users\Herreritas Eucedas\source\repos\LibreriaApi\LibreriaApi\LibreriaApi\bin\es\System.Web.Optimization.resources.dll
+C:\Users\Herreritas Eucedas\source\repos\LibreriaApi\LibreriaApi\LibreriaApi\bin\es\System.Web.Razor.resources.dll
+C:\Users\Herreritas Eucedas\source\repos\LibreriaApi\LibreriaApi\LibreriaApi\bin\es\System.Web.WebPages.resources.dll
+C:\Users\Herreritas Eucedas\source\repos\LibreriaApi\LibreriaApi\LibreriaApi\bin\es\System.Web.WebPages.Deployment.resources.dll
+C:\Users\Herreritas Eucedas\source\repos\LibreriaApi\LibreriaApi\LibreriaApi\bin\es\System.Web.WebPages.Razor.resources.dll
+C:\Users\Herreritas Eucedas\source\repos\LibreriaApi\LibreriaApi\LibreriaApi\obj\Debug\LibreriaApi.csproj.AssemblyReference.cache
+C:\Users\Herreritas Eucedas\source\repos\LibreriaApi\LibreriaApi\LibreriaApi\obj\Debug\LibreriaApi.csproj.CoreCompileInputs.cache
+C:\Users\Herreritas Eucedas\source\repos\LibreriaApi\LibreriaApi\LibreriaApi\obj\Debug\Libreria.A8CA22AB.Up2Date
+C:\Users\Herreritas Eucedas\source\repos\LibreriaApi\LibreriaApi\LibreriaApi\obj\Debug\LibreriaApi.dll
+C:\Users\Herreritas Eucedas\source\repos\LibreriaApi\LibreriaApi\LibreriaApi\obj\Debug\LibreriaApi.pdb

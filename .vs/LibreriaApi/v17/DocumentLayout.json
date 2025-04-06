@@ -1,0 +1,681 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "C:\\Users\\Herreritas Eucedas\\source\\repos\\LibreriaApi\\LibreriaApi\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{0172AD8F-8F84-4CE3-B4BE-B84DDE38F2DE}|LibreriaApi\\LibreriaApi.csproj|c:\\users\\herreritas eucedas\\source\\repos\\libreriaapi\\libreriaapi\\libreriaapi\\controllers\\sucursalcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{0172AD8F-8F84-4CE3-B4BE-B84DDE38F2DE}|LibreriaApi\\LibreriaApi.csproj|solutionrelative:libreriaapi\\controllers\\sucursalcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{00000000-0000-0000-0000-000000000000}|\u003CSolution\u003E|LibreriaApi||{04B8AB82-A572-4FEF-95CE-5222444B6B64}|"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{0172AD8F-8F84-4CE3-B4BE-B84DDE38F2DE}|LibreriaApi\\LibreriaApi.csproj|C:\\Users\\Herreritas Eucedas\\source\\repos\\LibreriaApi\\LibreriaApi\\libreriaapi\\web.config||{FA3CD31E-987B-443A-9B81-186104E8DAC1}",
+      "RelativeMoniker": "D:0:0:{0172AD8F-8F84-4CE3-B4BE-B84DDE38F2DE}|LibreriaApi\\LibreriaApi.csproj|solutionrelative:libreriaapi\\web.config||{FA3CD31E-987B-443A-9B81-186104E8DAC1}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{0172AD8F-8F84-4CE3-B4BE-B84DDE38F2DE}|LibreriaApi\\LibreriaApi.csproj|C:\\Users\\Herreritas Eucedas\\source\\repos\\LibreriaApi\\LibreriaApi\\libreriaapi\\controllers\\bonificacionescontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{0172AD8F-8F84-4CE3-B4BE-B84DDE38F2DE}|LibreriaApi\\LibreriaApi.csproj|solutionrelative:libreriaapi\\controllers\\bonificacionescontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{0172AD8F-8F84-4CE3-B4BE-B84DDE38F2DE}|LibreriaApi\\LibreriaApi.csproj|C:\\Users\\Herreritas Eucedas\\source\\repos\\LibreriaApi\\LibreriaApi\\libreriaapi\\models\\turno.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{0172AD8F-8F84-4CE3-B4BE-B84DDE38F2DE}|LibreriaApi\\LibreriaApi.csproj|solutionrelative:libreriaapi\\models\\turno.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{0172AD8F-8F84-4CE3-B4BE-B84DDE38F2DE}|LibreriaApi\\LibreriaApi.csproj|C:\\Users\\Herreritas Eucedas\\source\\repos\\LibreriaApi\\LibreriaApi\\libreriaapi\\app_start\\swaggerconfig.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{0172AD8F-8F84-4CE3-B4BE-B84DDE38F2DE}|LibreriaApi\\LibreriaApi.csproj|solutionrelative:libreriaapi\\app_start\\swaggerconfig.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{0172AD8F-8F84-4CE3-B4BE-B84DDE38F2DE}|LibreriaApi\\LibreriaApi.csproj|C:\\Users\\Herreritas Eucedas\\source\\repos\\LibreriaApi\\LibreriaApi\\libreriaapi\\controllers\\detalle_pedidocontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{0172AD8F-8F84-4CE3-B4BE-B84DDE38F2DE}|LibreriaApi\\LibreriaApi.csproj|solutionrelative:libreriaapi\\controllers\\detalle_pedidocontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{0172AD8F-8F84-4CE3-B4BE-B84DDE38F2DE}|LibreriaApi\\LibreriaApi.csproj|C:\\Users\\Herreritas Eucedas\\source\\repos\\LibreriaApi\\LibreriaApi\\libreriaapi\\controllers\\cargocontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{0172AD8F-8F84-4CE3-B4BE-B84DDE38F2DE}|LibreriaApi\\LibreriaApi.csproj|solutionrelative:libreriaapi\\controllers\\cargocontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{0172AD8F-8F84-4CE3-B4BE-B84DDE38F2DE}|LibreriaApi\\LibreriaApi.csproj|C:\\Users\\Herreritas Eucedas\\source\\repos\\LibreriaApi\\LibreriaApi\\libreriaapi\\controllers\\deduccionescontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{0172AD8F-8F84-4CE3-B4BE-B84DDE38F2DE}|LibreriaApi\\LibreriaApi.csproj|solutionrelative:libreriaapi\\controllers\\deduccionescontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{0172AD8F-8F84-4CE3-B4BE-B84DDE38F2DE}|LibreriaApi\\LibreriaApi.csproj|C:\\Users\\Herreritas Eucedas\\source\\repos\\LibreriaApi\\LibreriaApi\\libreriaapi\\controllers\\autorcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{0172AD8F-8F84-4CE3-B4BE-B84DDE38F2DE}|LibreriaApi\\LibreriaApi.csproj|solutionrelative:libreriaapi\\controllers\\autorcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{0172AD8F-8F84-4CE3-B4BE-B84DDE38F2DE}|LibreriaApi\\LibreriaApi.csproj|C:\\Users\\Herreritas Eucedas\\source\\repos\\LibreriaApi\\LibreriaApi\\libreriaapi\\controllers\\librocontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{0172AD8F-8F84-4CE3-B4BE-B84DDE38F2DE}|LibreriaApi\\LibreriaApi.csproj|solutionrelative:libreriaapi\\controllers\\librocontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{0172AD8F-8F84-4CE3-B4BE-B84DDE38F2DE}|LibreriaApi\\LibreriaApi.csproj|C:\\Users\\Herreritas Eucedas\\source\\repos\\LibreriaApi\\LibreriaApi\\libreriaapi\\models\\proveedor.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{0172AD8F-8F84-4CE3-B4BE-B84DDE38F2DE}|LibreriaApi\\LibreriaApi.csproj|solutionrelative:libreriaapi\\models\\proveedor.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{0172AD8F-8F84-4CE3-B4BE-B84DDE38F2DE}|LibreriaApi\\LibreriaApi.csproj|C:\\Users\\Herreritas Eucedas\\source\\repos\\LibreriaApi\\LibreriaApi\\libreriaapi\\models\\detalle_venta.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{0172AD8F-8F84-4CE3-B4BE-B84DDE38F2DE}|LibreriaApi\\LibreriaApi.csproj|solutionrelative:libreriaapi\\models\\detalle_venta.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{0172AD8F-8F84-4CE3-B4BE-B84DDE38F2DE}|LibreriaApi\\LibreriaApi.csproj|C:\\Users\\Herreritas Eucedas\\source\\repos\\LibreriaApi\\LibreriaApi\\libreriaapi\\models\\editorial.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{0172AD8F-8F84-4CE3-B4BE-B84DDE38F2DE}|LibreriaApi\\LibreriaApi.csproj|solutionrelative:libreriaapi\\models\\editorial.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{0172AD8F-8F84-4CE3-B4BE-B84DDE38F2DE}|LibreriaApi\\LibreriaApi.csproj|C:\\Users\\Herreritas Eucedas\\source\\repos\\LibreriaApi\\LibreriaApi\\libreriaapi\\models\\autor.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{0172AD8F-8F84-4CE3-B4BE-B84DDE38F2DE}|LibreriaApi\\LibreriaApi.csproj|solutionrelative:libreriaapi\\models\\autor.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{0172AD8F-8F84-4CE3-B4BE-B84DDE38F2DE}|LibreriaApi\\LibreriaApi.csproj|C:\\Users\\Herreritas Eucedas\\source\\repos\\LibreriaApi\\LibreriaApi\\libreriaapi\\models\\dbcontextproyect.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{0172AD8F-8F84-4CE3-B4BE-B84DDE38F2DE}|LibreriaApi\\LibreriaApi.csproj|solutionrelative:libreriaapi\\models\\dbcontextproyect.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{0172AD8F-8F84-4CE3-B4BE-B84DDE38F2DE}|LibreriaApi\\LibreriaApi.csproj|C:\\Users\\Herreritas Eucedas\\source\\repos\\LibreriaApi\\LibreriaApi\\libreriaapi\\models\\empleado.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{0172AD8F-8F84-4CE3-B4BE-B84DDE38F2DE}|LibreriaApi\\LibreriaApi.csproj|solutionrelative:libreriaapi\\models\\empleado.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{0172AD8F-8F84-4CE3-B4BE-B84DDE38F2DE}|LibreriaApi\\LibreriaApi.csproj|C:\\Users\\Herreritas Eucedas\\source\\repos\\LibreriaApi\\LibreriaApi\\libreriaapi\\models\\persona.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{0172AD8F-8F84-4CE3-B4BE-B84DDE38F2DE}|LibreriaApi\\LibreriaApi.csproj|solutionrelative:libreriaapi\\models\\persona.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{0172AD8F-8F84-4CE3-B4BE-B84DDE38F2DE}|LibreriaApi\\LibreriaApi.csproj|C:\\Users\\Herreritas Eucedas\\source\\repos\\LibreriaApi\\LibreriaApi\\libreriaapi\\controllers\\empleado_planillacontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{0172AD8F-8F84-4CE3-B4BE-B84DDE38F2DE}|LibreriaApi\\LibreriaApi.csproj|solutionrelative:libreriaapi\\controllers\\empleado_planillacontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{0172AD8F-8F84-4CE3-B4BE-B84DDE38F2DE}|LibreriaApi\\LibreriaApi.csproj|C:\\Users\\Herreritas Eucedas\\source\\repos\\LibreriaApi\\LibreriaApi\\libreriaapi\\controllers\\ventacontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{0172AD8F-8F84-4CE3-B4BE-B84DDE38F2DE}|LibreriaApi\\LibreriaApi.csproj|solutionrelative:libreriaapi\\controllers\\ventacontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{0172AD8F-8F84-4CE3-B4BE-B84DDE38F2DE}|LibreriaApi\\LibreriaApi.csproj|C:\\Users\\Herreritas Eucedas\\source\\repos\\LibreriaApi\\LibreriaApi\\libreriaapi\\controllers\\detalle_ventacontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{0172AD8F-8F84-4CE3-B4BE-B84DDE38F2DE}|LibreriaApi\\LibreriaApi.csproj|solutionrelative:libreriaapi\\controllers\\detalle_ventacontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{0172AD8F-8F84-4CE3-B4BE-B84DDE38F2DE}|LibreriaApi\\LibreriaApi.csproj|C:\\Users\\Herreritas Eucedas\\source\\repos\\LibreriaApi\\LibreriaApi\\libreriaapi\\models\\empleado_planilla.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{0172AD8F-8F84-4CE3-B4BE-B84DDE38F2DE}|LibreriaApi\\LibreriaApi.csproj|solutionrelative:libreriaapi\\models\\empleado_planilla.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{0172AD8F-8F84-4CE3-B4BE-B84DDE38F2DE}|LibreriaApi\\LibreriaApi.csproj|C:\\Users\\Herreritas Eucedas\\source\\repos\\LibreriaApi\\LibreriaApi\\libreriaapi\\models\\planilla.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{0172AD8F-8F84-4CE3-B4BE-B84DDE38F2DE}|LibreriaApi\\LibreriaApi.csproj|solutionrelative:libreriaapi\\models\\planilla.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{0172AD8F-8F84-4CE3-B4BE-B84DDE38F2DE}|LibreriaApi\\LibreriaApi.csproj|C:\\Users\\Herreritas Eucedas\\source\\repos\\LibreriaApi\\LibreriaApi\\libreriaapi\\models\\deducciones.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{0172AD8F-8F84-4CE3-B4BE-B84DDE38F2DE}|LibreriaApi\\LibreriaApi.csproj|solutionrelative:libreriaapi\\models\\deducciones.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{0172AD8F-8F84-4CE3-B4BE-B84DDE38F2DE}|LibreriaApi\\LibreriaApi.csproj|C:\\Users\\Herreritas Eucedas\\source\\repos\\LibreriaApi\\LibreriaApi\\libreriaapi\\models\\bonificaciones.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{0172AD8F-8F84-4CE3-B4BE-B84DDE38F2DE}|LibreriaApi\\LibreriaApi.csproj|solutionrelative:libreriaapi\\models\\bonificaciones.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{0172AD8F-8F84-4CE3-B4BE-B84DDE38F2DE}|LibreriaApi\\LibreriaApi.csproj|C:\\Users\\Herreritas Eucedas\\source\\repos\\LibreriaApi\\LibreriaApi\\libreriaapi\\controllers\\planillacontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{0172AD8F-8F84-4CE3-B4BE-B84DDE38F2DE}|LibreriaApi\\LibreriaApi.csproj|solutionrelative:libreriaapi\\controllers\\planillacontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{0172AD8F-8F84-4CE3-B4BE-B84DDE38F2DE}|LibreriaApi\\LibreriaApi.csproj|C:\\Users\\Herreritas Eucedas\\source\\repos\\LibreriaApi\\LibreriaApi\\libreriaapi\\controllers\\empleadocontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{0172AD8F-8F84-4CE3-B4BE-B84DDE38F2DE}|LibreriaApi\\LibreriaApi.csproj|solutionrelative:libreriaapi\\controllers\\empleadocontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{0172AD8F-8F84-4CE3-B4BE-B84DDE38F2DE}|LibreriaApi\\LibreriaApi.csproj|C:\\Users\\Herreritas Eucedas\\source\\repos\\LibreriaApi\\LibreriaApi\\libreriaapi\\controllers\\editorialcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{0172AD8F-8F84-4CE3-B4BE-B84DDE38F2DE}|LibreriaApi\\LibreriaApi.csproj|solutionrelative:libreriaapi\\controllers\\editorialcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{0172AD8F-8F84-4CE3-B4BE-B84DDE38F2DE}|LibreriaApi\\LibreriaApi.csproj|C:\\Users\\Herreritas Eucedas\\source\\repos\\LibreriaApi\\LibreriaApi\\libreriaapi\\controllers\\lectorcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{0172AD8F-8F84-4CE3-B4BE-B84DDE38F2DE}|LibreriaApi\\LibreriaApi.csproj|solutionrelative:libreriaapi\\controllers\\lectorcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{0172AD8F-8F84-4CE3-B4BE-B84DDE38F2DE}|LibreriaApi\\LibreriaApi.csproj|C:\\Users\\Herreritas Eucedas\\source\\repos\\LibreriaApi\\LibreriaApi\\libreriaapi\\models\\metodopago.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{0172AD8F-8F84-4CE3-B4BE-B84DDE38F2DE}|LibreriaApi\\LibreriaApi.csproj|solutionrelative:libreriaapi\\models\\metodopago.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{0172AD8F-8F84-4CE3-B4BE-B84DDE38F2DE}|LibreriaApi\\LibreriaApi.csproj|C:\\Users\\Herreritas Eucedas\\source\\repos\\LibreriaApi\\LibreriaApi\\libreriaapi\\models\\libro.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{0172AD8F-8F84-4CE3-B4BE-B84DDE38F2DE}|LibreriaApi\\LibreriaApi.csproj|solutionrelative:libreriaapi\\models\\libro.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{0172AD8F-8F84-4CE3-B4BE-B84DDE38F2DE}|LibreriaApi\\LibreriaApi.csproj|C:\\Users\\Herreritas Eucedas\\source\\repos\\LibreriaApi\\LibreriaApi\\libreriaapi\\controllers\\turnocontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{0172AD8F-8F84-4CE3-B4BE-B84DDE38F2DE}|LibreriaApi\\LibreriaApi.csproj|solutionrelative:libreriaapi\\controllers\\turnocontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{0172AD8F-8F84-4CE3-B4BE-B84DDE38F2DE}|LibreriaApi\\LibreriaApi.csproj|C:\\Users\\Herreritas Eucedas\\source\\repos\\LibreriaApi\\LibreriaApi\\libreriaapi\\controllers\\metodopagocontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{0172AD8F-8F84-4CE3-B4BE-B84DDE38F2DE}|LibreriaApi\\LibreriaApi.csproj|solutionrelative:libreriaapi\\controllers\\metodopagocontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{0172AD8F-8F84-4CE3-B4BE-B84DDE38F2DE}|LibreriaApi\\LibreriaApi.csproj|C:\\Users\\Herreritas Eucedas\\source\\repos\\LibreriaApi\\LibreriaApi\\libreriaapi\\controllers\\pedidocontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{0172AD8F-8F84-4CE3-B4BE-B84DDE38F2DE}|LibreriaApi\\LibreriaApi.csproj|solutionrelative:libreriaapi\\controllers\\pedidocontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{0172AD8F-8F84-4CE3-B4BE-B84DDE38F2DE}|LibreriaApi\\LibreriaApi.csproj|C:\\Users\\Herreritas Eucedas\\source\\repos\\LibreriaApi\\LibreriaApi\\libreriaapi\\controllers\\proveedorcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{0172AD8F-8F84-4CE3-B4BE-B84DDE38F2DE}|LibreriaApi\\LibreriaApi.csproj|solutionrelative:libreriaapi\\controllers\\proveedorcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{0172AD8F-8F84-4CE3-B4BE-B84DDE38F2DE}|LibreriaApi\\LibreriaApi.csproj|C:\\Users\\Herreritas Eucedas\\source\\repos\\LibreriaApi\\LibreriaApi\\libreriaapi\\models\\cargo.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{0172AD8F-8F84-4CE3-B4BE-B84DDE38F2DE}|LibreriaApi\\LibreriaApi.csproj|solutionrelative:libreriaapi\\models\\cargo.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{0172AD8F-8F84-4CE3-B4BE-B84DDE38F2DE}|LibreriaApi\\LibreriaApi.csproj|C:\\Users\\Herreritas Eucedas\\source\\repos\\LibreriaApi\\LibreriaApi\\libreriaapi\\controllers\\ubicacioncontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{0172AD8F-8F84-4CE3-B4BE-B84DDE38F2DE}|LibreriaApi\\LibreriaApi.csproj|solutionrelative:libreriaapi\\controllers\\ubicacioncontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{0172AD8F-8F84-4CE3-B4BE-B84DDE38F2DE}|LibreriaApi\\LibreriaApi.csproj|C:\\Users\\Herreritas Eucedas\\source\\repos\\LibreriaApi\\LibreriaApi\\libreriaapi\\models\\pedido.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{0172AD8F-8F84-4CE3-B4BE-B84DDE38F2DE}|LibreriaApi\\LibreriaApi.csproj|solutionrelative:libreriaapi\\models\\pedido.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{0172AD8F-8F84-4CE3-B4BE-B84DDE38F2DE}|LibreriaApi\\LibreriaApi.csproj|C:\\Users\\Herreritas Eucedas\\source\\repos\\LibreriaApi\\LibreriaApi\\libreriaapi\\models\\lector.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{0172AD8F-8F84-4CE3-B4BE-B84DDE38F2DE}|LibreriaApi\\LibreriaApi.csproj|solutionrelative:libreriaapi\\models\\lector.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{0172AD8F-8F84-4CE3-B4BE-B84DDE38F2DE}|LibreriaApi\\LibreriaApi.csproj|C:\\Users\\Herreritas Eucedas\\source\\repos\\LibreriaApi\\LibreriaApi\\libreriaapi\\models\\detalle_pedido.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{0172AD8F-8F84-4CE3-B4BE-B84DDE38F2DE}|LibreriaApi\\LibreriaApi.csproj|solutionrelative:libreriaapi\\models\\detalle_pedido.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{0172AD8F-8F84-4CE3-B4BE-B84DDE38F2DE}|LibreriaApi\\LibreriaApi.csproj|C:\\Users\\Herreritas Eucedas\\source\\repos\\LibreriaApi\\LibreriaApi\\libreriaapi\\migrations\\configuration.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{0172AD8F-8F84-4CE3-B4BE-B84DDE38F2DE}|LibreriaApi\\LibreriaApi.csproj|solutionrelative:libreriaapi\\migrations\\configuration.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 6,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "Turno.cs",
+              "DocumentMoniker": "C:\\Users\\Herreritas Eucedas\\source\\repos\\LibreriaApi\\LibreriaApi\\LibreriaApi\\Models\\Turno.cs",
+              "RelativeDocumentMoniker": "LibreriaApi\\Models\\Turno.cs",
+              "ToolTip": "C:\\Users\\Herreritas Eucedas\\source\\repos\\LibreriaApi\\LibreriaApi\\LibreriaApi\\Models\\Turno.cs",
+              "RelativeToolTip": "LibreriaApi\\Models\\Turno.cs",
+              "ViewState": "AgIAAAMAAAAAAAAAAAAAAA8AAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-03-15T14:52:12.873Z",
+              "IsPinned": true
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{74946827-37a0-11d2-a273-00c04f8ef4ff}"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "Detalle_pedidoController.cs",
+              "DocumentMoniker": "C:\\Users\\Herreritas Eucedas\\source\\repos\\LibreriaApi\\LibreriaApi\\LibreriaApi\\Controllers\\Detalle_pedidoController.cs",
+              "RelativeDocumentMoniker": "LibreriaApi\\Controllers\\Detalle_pedidoController.cs",
+              "ToolTip": "C:\\Users\\Herreritas Eucedas\\source\\repos\\LibreriaApi\\LibreriaApi\\LibreriaApi\\Controllers\\Detalle_pedidoController.cs",
+              "RelativeToolTip": "LibreriaApi\\Controllers\\Detalle_pedidoController.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAgAAAAWAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-03-17T00:29:00.545Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "SwaggerConfig.cs",
+              "DocumentMoniker": "C:\\Users\\Herreritas Eucedas\\source\\repos\\LibreriaApi\\LibreriaApi\\LibreriaApi\\App_Start\\SwaggerConfig.cs",
+              "RelativeDocumentMoniker": "LibreriaApi\\App_Start\\SwaggerConfig.cs",
+              "ToolTip": "C:\\Users\\Herreritas Eucedas\\source\\repos\\LibreriaApi\\LibreriaApi\\LibreriaApi\\App_Start\\SwaggerConfig.cs",
+              "RelativeToolTip": "LibreriaApi\\App_Start\\SwaggerConfig.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABMAAAB7AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-03-15T15:39:01.828Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "Web.config",
+              "DocumentMoniker": "C:\\Users\\Herreritas Eucedas\\source\\repos\\LibreriaApi\\LibreriaApi\\LibreriaApi\\Web.config",
+              "RelativeDocumentMoniker": "LibreriaApi\\Web.config",
+              "ToolTip": "C:\\Users\\Herreritas Eucedas\\source\\repos\\LibreriaApi\\LibreriaApi\\LibreriaApi\\Web.config",
+              "RelativeToolTip": "LibreriaApi\\Web.config",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAwAAAAWAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000601|",
+              "WhenOpened": "2025-03-15T14:07:49.037Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "LibreriaApi",
+              "DocumentMoniker": "C:\\Users\\Herreritas Eucedas\\source\\repos\\LibreriaApi\\LibreriaApi\\LibreriaApi\\LibreriaApi.csproj",
+              "RelativeDocumentMoniker": "LibreriaApi\\LibreriaApi.csproj",
+              "ToolTip": "C:\\Users\\Herreritas Eucedas\\source\\repos\\LibreriaApi\\LibreriaApi\\LibreriaApi\\LibreriaApi.csproj",
+              "RelativeToolTip": "LibreriaApi\\LibreriaApi.csproj",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001001|",
+              "WhenOpened": "2025-04-05T23:25:52.377Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "SucursalController.cs",
+              "DocumentMoniker": "C:\\Users\\Herreritas Eucedas\\source\\repos\\LibreriaApi\\LibreriaApi\\LibreriaApi\\Controllers\\SucursalController.cs",
+              "RelativeDocumentMoniker": "LibreriaApi\\Controllers\\SucursalController.cs",
+              "ToolTip": "C:\\Users\\Herreritas Eucedas\\source\\repos\\LibreriaApi\\LibreriaApi\\LibreriaApi\\Controllers\\SucursalController.cs",
+              "RelativeToolTip": "LibreriaApi\\Controllers\\SucursalController.cs",
+              "ViewState": "AgIAAFMAAAAAAAAAAAAAAGMAAAAaAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-03-16T17:46:29.181Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 8,
+              "Title": "DeduccionesController.cs",
+              "DocumentMoniker": "C:\\Users\\Herreritas Eucedas\\source\\repos\\LibreriaApi\\LibreriaApi\\LibreriaApi\\Controllers\\DeduccionesController.cs",
+              "RelativeDocumentMoniker": "LibreriaApi\\Controllers\\DeduccionesController.cs",
+              "ToolTip": "C:\\Users\\Herreritas Eucedas\\source\\repos\\LibreriaApi\\LibreriaApi\\LibreriaApi\\Controllers\\DeduccionesController.cs",
+              "RelativeToolTip": "LibreriaApi\\Controllers\\DeduccionesController.cs",
+              "ViewState": "AgIAAFkAAAAAAAAAAAAwwG4AAAANAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-03-17T00:16:15.765Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "BonificacionesController.cs",
+              "DocumentMoniker": "C:\\Users\\Herreritas Eucedas\\source\\repos\\LibreriaApi\\LibreriaApi\\LibreriaApi\\Controllers\\BonificacionesController.cs",
+              "RelativeDocumentMoniker": "LibreriaApi\\Controllers\\BonificacionesController.cs",
+              "ToolTip": "C:\\Users\\Herreritas Eucedas\\source\\repos\\LibreriaApi\\LibreriaApi\\LibreriaApi\\Controllers\\BonificacionesController.cs",
+              "RelativeToolTip": "LibreriaApi\\Controllers\\BonificacionesController.cs",
+              "ViewState": "AgIAABQAAAAAAAAAAAD4vygAAAAJAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-03-16T18:38:41.332Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "CargoController.cs",
+              "DocumentMoniker": "C:\\Users\\Herreritas Eucedas\\source\\repos\\LibreriaApi\\LibreriaApi\\LibreriaApi\\Controllers\\CargoController.cs",
+              "RelativeDocumentMoniker": "LibreriaApi\\Controllers\\CargoController.cs",
+              "ToolTip": "C:\\Users\\Herreritas Eucedas\\source\\repos\\LibreriaApi\\LibreriaApi\\LibreriaApi\\Controllers\\CargoController.cs",
+              "RelativeToolTip": "LibreriaApi\\Controllers\\CargoController.cs",
+              "ViewState": "AgIAADMAAAAAAAAAAAAowGAAAABMAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-03-16T16:28:26.38Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 9,
+              "Title": "AutorController.cs",
+              "DocumentMoniker": "C:\\Users\\Herreritas Eucedas\\source\\repos\\LibreriaApi\\LibreriaApi\\LibreriaApi\\Controllers\\AutorController.cs",
+              "RelativeDocumentMoniker": "LibreriaApi\\Controllers\\AutorController.cs",
+              "ToolTip": "C:\\Users\\Herreritas Eucedas\\source\\repos\\LibreriaApi\\LibreriaApi\\LibreriaApi\\Controllers\\AutorController.cs",
+              "RelativeToolTip": "LibreriaApi\\Controllers\\AutorController.cs",
+              "ViewState": "AgIAADkAAAAAAAAAAAAAAEgAAAAVAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-03-16T13:40:24.167Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 10,
+              "Title": "LibroController.cs",
+              "DocumentMoniker": "C:\\Users\\Herreritas Eucedas\\source\\repos\\LibreriaApi\\LibreriaApi\\LibreriaApi\\Controllers\\LibroController.cs",
+              "RelativeDocumentMoniker": "LibreriaApi\\Controllers\\LibroController.cs",
+              "ToolTip": "C:\\Users\\Herreritas Eucedas\\source\\repos\\LibreriaApi\\LibreriaApi\\LibreriaApi\\Controllers\\LibroController.cs",
+              "RelativeToolTip": "LibreriaApi\\Controllers\\LibroController.cs",
+              "ViewState": "AgIAAFwAAAAAAAAAAAAUwGQAAAANAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-03-17T12:39:55.516Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 11,
+              "Title": "Proveedor.cs",
+              "DocumentMoniker": "C:\\Users\\Herreritas Eucedas\\source\\repos\\LibreriaApi\\LibreriaApi\\LibreriaApi\\Models\\Proveedor.cs",
+              "RelativeDocumentMoniker": "LibreriaApi\\Models\\Proveedor.cs",
+              "ToolTip": "C:\\Users\\Herreritas Eucedas\\source\\repos\\LibreriaApi\\LibreriaApi\\LibreriaApi\\Models\\Proveedor.cs",
+              "RelativeToolTip": "LibreriaApi\\Models\\Proveedor.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABEAAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-03-15T14:51:20.331Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 13,
+              "Title": "Editorial.cs",
+              "DocumentMoniker": "C:\\Users\\Herreritas Eucedas\\source\\repos\\LibreriaApi\\LibreriaApi\\LibreriaApi\\Models\\Editorial.cs",
+              "RelativeDocumentMoniker": "LibreriaApi\\Models\\Editorial.cs",
+              "ToolTip": "C:\\Users\\Herreritas Eucedas\\source\\repos\\LibreriaApi\\LibreriaApi\\LibreriaApi\\Models\\Editorial.cs",
+              "RelativeToolTip": "LibreriaApi\\Models\\Editorial.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA4AAAAeAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-03-15T14:46:32.537Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 12,
+              "Title": "Detalle_Venta.cs",
+              "DocumentMoniker": "C:\\Users\\Herreritas Eucedas\\source\\repos\\LibreriaApi\\LibreriaApi\\LibreriaApi\\Models\\Detalle_Venta.cs",
+              "RelativeDocumentMoniker": "LibreriaApi\\Models\\Detalle_Venta.cs",
+              "ToolTip": "C:\\Users\\Herreritas Eucedas\\source\\repos\\LibreriaApi\\LibreriaApi\\LibreriaApi\\Models\\Detalle_Venta.cs",
+              "RelativeToolTip": "LibreriaApi\\Models\\Detalle_Venta.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABIAAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-03-15T14:45:55.922Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 14,
+              "Title": "Autor.cs",
+              "DocumentMoniker": "C:\\Users\\Herreritas Eucedas\\source\\repos\\LibreriaApi\\LibreriaApi\\LibreriaApi\\Models\\Autor.cs",
+              "RelativeDocumentMoniker": "LibreriaApi\\Models\\Autor.cs",
+              "ToolTip": "C:\\Users\\Herreritas Eucedas\\source\\repos\\LibreriaApi\\LibreriaApi\\LibreriaApi\\Models\\Autor.cs",
+              "RelativeToolTip": "LibreriaApi\\Models\\Autor.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAkAAAAYAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-03-15T14:42:27.954Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 15,
+              "Title": "DBContextProyect.cs",
+              "DocumentMoniker": "C:\\Users\\Herreritas Eucedas\\source\\repos\\LibreriaApi\\LibreriaApi\\LibreriaApi\\Models\\DBContextProyect.cs",
+              "RelativeDocumentMoniker": "LibreriaApi\\Models\\DBContextProyect.cs",
+              "ToolTip": "C:\\Users\\Herreritas Eucedas\\source\\repos\\LibreriaApi\\LibreriaApi\\LibreriaApi\\Models\\DBContextProyect.cs",
+              "RelativeToolTip": "LibreriaApi\\Models\\DBContextProyect.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAoAAAAIAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-03-15T14:06:12.746Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 16,
+              "Title": "Empleado.cs",
+              "DocumentMoniker": "C:\\Users\\Herreritas Eucedas\\source\\repos\\LibreriaApi\\LibreriaApi\\LibreriaApi\\Models\\Empleado.cs",
+              "RelativeDocumentMoniker": "LibreriaApi\\Models\\Empleado.cs",
+              "ToolTip": "C:\\Users\\Herreritas Eucedas\\source\\repos\\LibreriaApi\\LibreriaApi\\LibreriaApi\\Models\\Empleado.cs",
+              "RelativeToolTip": "LibreriaApi\\Models\\Empleado.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABAAAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-03-15T14:46:55.639Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 17,
+              "Title": "Persona.cs",
+              "DocumentMoniker": "C:\\Users\\Herreritas Eucedas\\source\\repos\\LibreriaApi\\LibreriaApi\\LibreriaApi\\Models\\Persona.cs",
+              "RelativeDocumentMoniker": "LibreriaApi\\Models\\Persona.cs",
+              "ToolTip": "C:\\Users\\Herreritas Eucedas\\source\\repos\\LibreriaApi\\LibreriaApi\\LibreriaApi\\Models\\Persona.cs",
+              "RelativeToolTip": "LibreriaApi\\Models\\Persona.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA8AAAAFAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-03-15T14:49:50.991Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 18,
+              "Title": "Empleado_planillaController.cs",
+              "DocumentMoniker": "C:\\Users\\Herreritas Eucedas\\source\\repos\\LibreriaApi\\LibreriaApi\\LibreriaApi\\Controllers\\Empleado_planillaController.cs",
+              "RelativeDocumentMoniker": "LibreriaApi\\Controllers\\Empleado_planillaController.cs",
+              "ToolTip": "C:\\Users\\Herreritas Eucedas\\source\\repos\\LibreriaApi\\LibreriaApi\\LibreriaApi\\Controllers\\Empleado_planillaController.cs",
+              "RelativeToolTip": "LibreriaApi\\Controllers\\Empleado_planillaController.cs",
+              "ViewState": "AgIAAKEAAAAAAAAAAAAAAJwAAAAjAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-03-17T03:37:37.415Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 19,
+              "Title": "VentaController.cs",
+              "DocumentMoniker": "C:\\Users\\Herreritas Eucedas\\source\\repos\\LibreriaApi\\LibreriaApi\\LibreriaApi\\Controllers\\VentaController.cs",
+              "RelativeDocumentMoniker": "LibreriaApi\\Controllers\\VentaController.cs",
+              "ToolTip": "C:\\Users\\Herreritas Eucedas\\source\\repos\\LibreriaApi\\LibreriaApi\\LibreriaApi\\Controllers\\VentaController.cs",
+              "RelativeToolTip": "LibreriaApi\\Controllers\\VentaController.cs",
+              "ViewState": "AgIAAH0AAAAAAAAAAAAAAM4AAAAdAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-03-18T00:31:50.507Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 25,
+              "Title": "PlanillaController.cs",
+              "DocumentMoniker": "C:\\Users\\Herreritas Eucedas\\source\\repos\\LibreriaApi\\LibreriaApi\\LibreriaApi\\Controllers\\PlanillaController.cs",
+              "RelativeDocumentMoniker": "LibreriaApi\\Controllers\\PlanillaController.cs",
+              "ToolTip": "C:\\Users\\Herreritas Eucedas\\source\\repos\\LibreriaApi\\LibreriaApi\\LibreriaApi\\Controllers\\PlanillaController.cs",
+              "RelativeToolTip": "LibreriaApi\\Controllers\\PlanillaController.cs",
+              "ViewState": "AgIAABMAAAAAAAAAAAAAAD8AAAAYAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-03-16T17:23:55.362Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 20,
+              "Title": "Detalle_VentaController.cs",
+              "DocumentMoniker": "C:\\Users\\Herreritas Eucedas\\source\\repos\\LibreriaApi\\LibreriaApi\\LibreriaApi\\Controllers\\Detalle_VentaController.cs",
+              "RelativeDocumentMoniker": "LibreriaApi\\Controllers\\Detalle_VentaController.cs",
+              "ToolTip": "C:\\Users\\Herreritas Eucedas\\source\\repos\\LibreriaApi\\LibreriaApi\\LibreriaApi\\Controllers\\Detalle_VentaController.cs",
+              "RelativeToolTip": "LibreriaApi\\Controllers\\Detalle_VentaController.cs",
+              "ViewState": "AgIAAHoAAAAAAAAAAAAAAIIAAAAtAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-03-17T05:19:00.063Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 21,
+              "Title": "Empleado_planilla.cs",
+              "DocumentMoniker": "C:\\Users\\Herreritas Eucedas\\source\\repos\\LibreriaApi\\LibreriaApi\\LibreriaApi\\Models\\Empleado_planilla.cs",
+              "RelativeDocumentMoniker": "LibreriaApi\\Models\\Empleado_planilla.cs",
+              "ToolTip": "C:\\Users\\Herreritas Eucedas\\source\\repos\\LibreriaApi\\LibreriaApi\\LibreriaApi\\Models\\Empleado_planilla.cs",
+              "RelativeToolTip": "LibreriaApi\\Models\\Empleado_planilla.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABEAAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-03-15T14:47:26.95Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 22,
+              "Title": "Planilla.cs",
+              "DocumentMoniker": "C:\\Users\\Herreritas Eucedas\\source\\repos\\LibreriaApi\\LibreriaApi\\LibreriaApi\\Models\\Planilla.cs",
+              "RelativeDocumentMoniker": "LibreriaApi\\Models\\Planilla.cs",
+              "ToolTip": "C:\\Users\\Herreritas Eucedas\\source\\repos\\LibreriaApi\\LibreriaApi\\LibreriaApi\\Models\\Planilla.cs",
+              "RelativeToolTip": "LibreriaApi\\Models\\Planilla.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAwAAAAdAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-03-15T14:50:50.547Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 23,
+              "Title": "Deducciones.cs",
+              "DocumentMoniker": "C:\\Users\\Herreritas Eucedas\\source\\repos\\LibreriaApi\\LibreriaApi\\LibreriaApi\\Models\\Deducciones.cs",
+              "RelativeDocumentMoniker": "LibreriaApi\\Models\\Deducciones.cs",
+              "ToolTip": "C:\\Users\\Herreritas Eucedas\\source\\repos\\LibreriaApi\\LibreriaApi\\LibreriaApi\\Models\\Deducciones.cs",
+              "RelativeToolTip": "LibreriaApi\\Models\\Deducciones.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA8AAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-03-15T14:44:51.039Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 24,
+              "Title": "Bonificaciones.cs",
+              "DocumentMoniker": "C:\\Users\\Herreritas Eucedas\\source\\repos\\LibreriaApi\\LibreriaApi\\LibreriaApi\\Models\\Bonificaciones.cs",
+              "RelativeDocumentMoniker": "LibreriaApi\\Models\\Bonificaciones.cs",
+              "ToolTip": "C:\\Users\\Herreritas Eucedas\\source\\repos\\LibreriaApi\\LibreriaApi\\LibreriaApi\\Models\\Bonificaciones.cs",
+              "RelativeToolTip": "LibreriaApi\\Models\\Bonificaciones.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA0AAAAjAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-03-15T14:43:07.61Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 26,
+              "Title": "EmpleadoController.cs",
+              "DocumentMoniker": "C:\\Users\\Herreritas Eucedas\\source\\repos\\LibreriaApi\\LibreriaApi\\LibreriaApi\\Controllers\\EmpleadoController.cs",
+              "RelativeDocumentMoniker": "LibreriaApi\\Controllers\\EmpleadoController.cs",
+              "ToolTip": "C:\\Users\\Herreritas Eucedas\\source\\repos\\LibreriaApi\\LibreriaApi\\LibreriaApi\\Controllers\\EmpleadoController.cs",
+              "RelativeToolTip": "LibreriaApi\\Controllers\\EmpleadoController.cs",
+              "ViewState": "AgIAAD0AAAAAAAAAAAAAAKEAAAAeAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-03-16T16:29:03.102Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 27,
+              "Title": "EditorialController.cs",
+              "DocumentMoniker": "C:\\Users\\Herreritas Eucedas\\source\\repos\\LibreriaApi\\LibreriaApi\\LibreriaApi\\Controllers\\EditorialController.cs",
+              "RelativeDocumentMoniker": "LibreriaApi\\Controllers\\EditorialController.cs",
+              "ToolTip": "C:\\Users\\Herreritas Eucedas\\source\\repos\\LibreriaApi\\LibreriaApi\\LibreriaApi\\Controllers\\EditorialController.cs",
+              "RelativeToolTip": "LibreriaApi\\Controllers\\EditorialController.cs",
+              "ViewState": "AgIAABIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-03-16T15:44:08.59Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 28,
+              "Title": "LectorController.cs",
+              "DocumentMoniker": "C:\\Users\\Herreritas Eucedas\\source\\repos\\LibreriaApi\\LibreriaApi\\LibreriaApi\\Controllers\\LectorController.cs",
+              "RelativeDocumentMoniker": "LibreriaApi\\Controllers\\LectorController.cs",
+              "ToolTip": "C:\\Users\\Herreritas Eucedas\\source\\repos\\LibreriaApi\\LibreriaApi\\LibreriaApi\\Controllers\\LectorController.cs",
+              "RelativeToolTip": "LibreriaApi\\Controllers\\LectorController.cs",
+              "ViewState": "AgIAABAAAAAAAAAAAAAAAA4AAAAHAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-03-16T16:52:03.406Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 29,
+              "Title": "MetodoPago.cs",
+              "DocumentMoniker": "C:\\Users\\Herreritas Eucedas\\source\\repos\\LibreriaApi\\LibreriaApi\\LibreriaApi\\Models\\MetodoPago.cs",
+              "RelativeDocumentMoniker": "LibreriaApi\\Models\\MetodoPago.cs",
+              "ToolTip": "C:\\Users\\Herreritas Eucedas\\source\\repos\\LibreriaApi\\LibreriaApi\\LibreriaApi\\Models\\MetodoPago.cs",
+              "RelativeToolTip": "LibreriaApi\\Models\\MetodoPago.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAwAAAAfAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-03-15T14:48:58.177Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 30,
+              "Title": "Libro.cs",
+              "DocumentMoniker": "C:\\Users\\Herreritas Eucedas\\source\\repos\\LibreriaApi\\LibreriaApi\\LibreriaApi\\Models\\Libro.cs",
+              "RelativeDocumentMoniker": "LibreriaApi\\Models\\Libro.cs",
+              "ToolTip": "C:\\Users\\Herreritas Eucedas\\source\\repos\\LibreriaApi\\LibreriaApi\\LibreriaApi\\Models\\Libro.cs",
+              "RelativeToolTip": "LibreriaApi\\Models\\Libro.cs",
+              "ViewState": "AgIAAAsAAAAAAAAAAAAAABkAAAAUAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-03-15T14:04:52.521Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 31,
+              "Title": "TurnoController.cs",
+              "DocumentMoniker": "C:\\Users\\Herreritas Eucedas\\source\\repos\\LibreriaApi\\LibreriaApi\\LibreriaApi\\Controllers\\TurnoController.cs",
+              "RelativeDocumentMoniker": "LibreriaApi\\Controllers\\TurnoController.cs",
+              "ToolTip": "C:\\Users\\Herreritas Eucedas\\source\\repos\\LibreriaApi\\LibreriaApi\\LibreriaApi\\Controllers\\TurnoController.cs",
+              "RelativeToolTip": "LibreriaApi\\Controllers\\TurnoController.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-03-17T23:33:07.272Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 32,
+              "Title": "MetodoPagoController.cs",
+              "DocumentMoniker": "C:\\Users\\Herreritas Eucedas\\source\\repos\\LibreriaApi\\LibreriaApi\\LibreriaApi\\Controllers\\MetodoPagoController.cs",
+              "RelativeDocumentMoniker": "LibreriaApi\\Controllers\\MetodoPagoController.cs",
+              "ToolTip": "C:\\Users\\Herreritas Eucedas\\source\\repos\\LibreriaApi\\LibreriaApi\\LibreriaApi\\Controllers\\MetodoPagoController.cs",
+              "RelativeToolTip": "LibreriaApi\\Controllers\\MetodoPagoController.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-03-16T17:00:43.115Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 33,
+              "Title": "PedidoController.cs",
+              "DocumentMoniker": "C:\\Users\\Herreritas Eucedas\\source\\repos\\LibreriaApi\\LibreriaApi\\LibreriaApi\\Controllers\\PedidoController.cs",
+              "RelativeDocumentMoniker": "LibreriaApi\\Controllers\\PedidoController.cs",
+              "ToolTip": "C:\\Users\\Herreritas Eucedas\\source\\repos\\LibreriaApi\\LibreriaApi\\LibreriaApi\\Controllers\\PedidoController.cs",
+              "RelativeToolTip": "LibreriaApi\\Controllers\\PedidoController.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA4AAAAIAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-03-17T18:57:03.235Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 34,
+              "Title": "ProveedorController.cs",
+              "DocumentMoniker": "C:\\Users\\Herreritas Eucedas\\source\\repos\\LibreriaApi\\LibreriaApi\\LibreriaApi\\Controllers\\ProveedorController.cs",
+              "RelativeDocumentMoniker": "LibreriaApi\\Controllers\\ProveedorController.cs",
+              "ToolTip": "C:\\Users\\Herreritas Eucedas\\source\\repos\\LibreriaApi\\LibreriaApi\\LibreriaApi\\Controllers\\ProveedorController.cs",
+              "RelativeToolTip": "LibreriaApi\\Controllers\\ProveedorController.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-03-16T17:34:51.285Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 35,
+              "Title": "Cargo.cs",
+              "DocumentMoniker": "C:\\Users\\Herreritas Eucedas\\source\\repos\\LibreriaApi\\LibreriaApi\\LibreriaApi\\Models\\Cargo.cs",
+              "RelativeDocumentMoniker": "LibreriaApi\\Models\\Cargo.cs",
+              "ToolTip": "C:\\Users\\Herreritas Eucedas\\source\\repos\\LibreriaApi\\LibreriaApi\\LibreriaApi\\Models\\Cargo.cs",
+              "RelativeToolTip": "LibreriaApi\\Models\\Cargo.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAkAAAAaAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-03-15T14:44:22.737Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 36,
+              "Title": "UbicacionController.cs",
+              "DocumentMoniker": "C:\\Users\\Herreritas Eucedas\\source\\repos\\LibreriaApi\\LibreriaApi\\LibreriaApi\\Controllers\\UbicacionController.cs",
+              "RelativeDocumentMoniker": "LibreriaApi\\Controllers\\UbicacionController.cs",
+              "ToolTip": "C:\\Users\\Herreritas Eucedas\\source\\repos\\LibreriaApi\\LibreriaApi\\LibreriaApi\\Controllers\\UbicacionController.cs",
+              "RelativeToolTip": "LibreriaApi\\Controllers\\UbicacionController.cs",
+              "ViewState": "AgIAAEAAAAAAAAAAAAAAAGMAAAAfAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-03-16T17:47:10.717Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 37,
+              "Title": "Pedido.cs",
+              "DocumentMoniker": "C:\\Users\\Herreritas Eucedas\\source\\repos\\LibreriaApi\\LibreriaApi\\LibreriaApi\\Models\\Pedido.cs",
+              "RelativeDocumentMoniker": "LibreriaApi\\Models\\Pedido.cs",
+              "ToolTip": "C:\\Users\\Herreritas Eucedas\\source\\repos\\LibreriaApi\\LibreriaApi\\LibreriaApi\\Models\\Pedido.cs",
+              "RelativeToolTip": "LibreriaApi\\Models\\Pedido.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABAAAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-03-15T14:49:26.33Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 38,
+              "Title": "Lector.cs",
+              "DocumentMoniker": "C:\\Users\\Herreritas Eucedas\\source\\repos\\LibreriaApi\\LibreriaApi\\LibreriaApi\\Models\\Lector.cs",
+              "RelativeDocumentMoniker": "LibreriaApi\\Models\\Lector.cs",
+              "ToolTip": "C:\\Users\\Herreritas Eucedas\\source\\repos\\LibreriaApi\\LibreriaApi\\LibreriaApi\\Models\\Lector.cs",
+              "RelativeToolTip": "LibreriaApi\\Models\\Lector.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAoAAAAIAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-03-15T14:48:10.642Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 39,
+              "Title": "Detalle_pedido.cs",
+              "DocumentMoniker": "C:\\Users\\Herreritas Eucedas\\source\\repos\\LibreriaApi\\LibreriaApi\\LibreriaApi\\Models\\Detalle_pedido.cs",
+              "RelativeDocumentMoniker": "LibreriaApi\\Models\\Detalle_pedido.cs",
+              "ToolTip": "C:\\Users\\Herreritas Eucedas\\source\\repos\\LibreriaApi\\LibreriaApi\\LibreriaApi\\Models\\Detalle_pedido.cs",
+              "RelativeToolTip": "LibreriaApi\\Models\\Detalle_pedido.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABIAAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-03-15T14:45:26.69Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 40,
+              "Title": "Configuration.cs",
+              "DocumentMoniker": "C:\\Users\\Herreritas Eucedas\\source\\repos\\LibreriaApi\\LibreriaApi\\LibreriaApi\\Migrations\\Configuration.cs",
+              "RelativeDocumentMoniker": "LibreriaApi\\Migrations\\Configuration.cs",
+              "ToolTip": "C:\\Users\\Herreritas Eucedas\\source\\repos\\LibreriaApi\\LibreriaApi\\LibreriaApi\\Migrations\\Configuration.cs",
+              "RelativeToolTip": "LibreriaApi\\Migrations\\Configuration.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA0AAAA1AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-03-15T14:11:50.221Z"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

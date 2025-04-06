@@ -1,0 +1,39 @@
+﻿@model IEnumerable<LibreriaApi.Models.Ubicacion>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Numerodeestante)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Numerodepasillo)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Numerodeestante)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Numerodepasillo)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.UbicacionId }) |
+            @Html.ActionLink("Details", "Details", new { id=item.UbicacionId }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.UbicacionId })
+        </td>
+    </tr>
+}
+
+</table>
