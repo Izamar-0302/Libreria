@@ -77,6 +77,9 @@ namespace LibreriaApi.Controllers
         /// <returns>JSON Planilla</returns>
         /// <responde code="200">Devuelve cuando se ha modificado el valor</responde>
         /// <response code="404">Devuelve si no se ha modificado</response>
+        [HttpPut]
+        [SwaggerOperation("PutPlanilla")]
+        [Route("api/PutPlanilla")]
         public IHttpActionResult Put(Planilla planillamodificado)
         {
             int id = planillamodificado.Id;
@@ -93,6 +96,9 @@ namespace LibreriaApi.Controllers
         /// <returns>JSON Planilla</returns>
         /// <response code="200">Devuelve al eliminar valor</response>
         /// <response code="404">Devuelve al no eliminarlo</response>
+        [HttpPut]
+        [SwaggerOperation("PutPlanilla")]
+        [Route("api/PutPlanilla")]
         public IHttpActionResult Delete(int id)
         {
             Planilla planilla = db.Planillas.Find(id);

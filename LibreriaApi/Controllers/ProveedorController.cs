@@ -76,6 +76,9 @@ namespace LibreriaApi.Controllers
         /// <returns>JSON Proveedor</returns>
         /// <responde code="200">Devuelve cuando se ha modificado el valor</responde>
         /// <response code="404">Devuelve si no se ha modificado</response>
+        [HttpPut]
+        [SwaggerOperation("PutProveedor")]
+        [Route("api/PutProveedor")]
         public IHttpActionResult Put(Proveedor proveedormodificado)
         {
             int id = proveedormodificado.Id;
@@ -92,6 +95,9 @@ namespace LibreriaApi.Controllers
         /// <returns>JSON Proveedor</returns>
         /// <response code="200">Devuelve al eliminar valor</response>
         /// <response code="404">Devuelve al no eliminarlo</response>
+        [HttpDelete]
+        [SwaggerOperation("DeleteProveedor")]
+        [Route("api/DeleteProveedor")]
         public IHttpActionResult Delete(int id)
         {
             Proveedor proveedor = db.Proveedores.Find(id);
