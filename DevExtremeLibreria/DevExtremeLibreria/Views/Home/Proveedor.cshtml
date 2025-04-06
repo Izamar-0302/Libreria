@@ -1,0 +1,34 @@
+﻿@{
+    ViewData["Title"] = "Proveedor";
+}
+
+<h2>Proveedor</h2>
+
+@(Html.DevExtreme().DataGrid<DevExtremeLibreria.Models.Proveedor>()
+    .DataSource(ds => ds.WebApi()
+        .Controller("Proveedor")
+        .LoadAction("Get")
+        .InsertAction("Post")
+        .UpdateAction("Put")
+        .DeleteAction("Delete")
+        .Key("Id")
+    )
+    .RemoteOperations(true)
+    .Columns(columns => {
+
+        columns.AddFor(m => m.Id);
+
+        columns.AddFor(m => m.Nombreproveedor);
+
+        columns.AddFor(m => m.Direccion);
+
+        columns.AddFor(m => m.Correo);
+
+        columns.AddFor(m => m.Telefono);
+    })
+    .Editing(e => e
+        .AllowAdding(true)
+        .AllowUpdating(true)
+        .AllowDeleting(true)
+    )
+)

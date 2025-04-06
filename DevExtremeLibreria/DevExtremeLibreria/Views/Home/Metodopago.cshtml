@@ -1,28 +1,26 @@
 ﻿@{
-    ViewData["Title"] = "Cargo";
+    ViewData["Title"] = "Metodopago";
 }
 
-<h2>Cargo</h2>
+<h2>Metodopago</h2>
 
-@(Html.DevExtreme().DataGrid<DevExtremeLibreria.Models.Cargo>()
+@(Html.DevExtreme().DataGrid<DevExtremeLibreria.Models.MetodoPago>()
     .DataSource(ds => ds.WebApi()
-        .Controller("Cargo")
+        .Controller("Metodopago")
         .LoadAction("Get")
         .InsertAction("Post")
         .UpdateAction("Put")
         .DeleteAction("Delete")
-        .Key("CargoId")
+        .Key("Id")
     )
     .RemoteOperations(true)
     .Columns(columns => {
 
-        columns.AddFor(m => m.CargoId);
+        columns.AddFor(m => m.Id);
 
-        columns.AddFor(m => m.Titulo);
+        columns.AddFor(m => m.Metodo);
 
-        columns.AddFor(m => m.Descripcion);
-
-        columns.AddFor(m => m.Departamento);
+        columns.AddFor(m => m.Fechapago);
     })
     .Editing(e => e
         .AllowAdding(true)

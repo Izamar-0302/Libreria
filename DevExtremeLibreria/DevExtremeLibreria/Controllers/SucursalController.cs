@@ -12,7 +12,7 @@ using System.Net.Http.Formatting;
 using System.Threading.Tasks;
 using System.Web.Http;
 
-namespace pus.Controllers
+namespace DevExtremeLibreria.Controllers
 {
     public class SucursalController : ApiController
     {
@@ -55,8 +55,8 @@ namespace pus.Controllers
             var key = Convert.ToInt32(form.Get("key")); //llave que estoy modificando
             var values = form.Get("values"); //Los valores que yo modifiqué en formato JSON
 
-            var apiUrlGetSucursal = "https://localhost:44370/api/PutSucursal" + key;
-            var respuestaSucursal = await GetAsync(apiUrlGetSucursal = "https://localhost:44370/api/PutBonificacion" + key);
+            var apiUrlGetSucursal = "https://localhost:44370/api/GetSucursal" + key;
+            var respuestaSucursal = await GetAsync(apiUrlGetSucursal = "https://localhost:44370/api/GetSucursal" + key);
             Sucursal sucursal = JsonConvert.DeserializeObject<Sucursal>(respuestaSucursal);
 
             JsonConvert.PopulateObject(values, sucursal);

@@ -133,6 +133,9 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Views\Lector\" />
+    <Folder Include="Views\Metodopago\" />
+    <Folder Include="Views\Planilla\" />
+    <Folder Include="Views\Proveedor\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\bootstrap.css" />
@@ -356,10 +359,10 @@
     <Content Include="Web.config" />
     <Content Include="Views\Home\Cargo.cshtml" />
     <Content Include="Views\Home\Sucursal.cshtml" />
-    <Content Include="Views\Home\home\Autor.cshtml" />
-    <Content Include="Views\Home\home\Cargo.cshtml" />
-    <Content Include="Views\Home\home\Index.cshtml" />
-    <Content Include="Views\Home\home\Sucursal.cshtml" />
+    <Content Include="Views\Home\Lector.cshtml" />
+    <Content Include="Views\Home\Metodopago.cshtml" />
+    <Content Include="Views\Home\Planilla.cshtml" />
+    <Content Include="Views\Home\Proveedor.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -378,6 +381,9 @@
     <Compile Include="Controllers\EditorialController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\LectorController.cs" />
+    <Compile Include="Controllers\MetodopagoController.cs" />
+    <Compile Include="Controllers\PlanillaController.cs" />
+    <Compile Include="Controllers\ProveedorController.cs" />
     <Compile Include="Controllers\SampleDataController.cs" />
     <Compile Include="Controllers\SucursalController.cs" />
     <Compile Include="Global.asax.cs">

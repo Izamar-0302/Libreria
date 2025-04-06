@@ -60,7 +60,7 @@ namespace LibreriaApi.Controllers
         /// <respone code= "404">Devueleve cuando no se agrega</respone>
         [HttpPost]
         [SwaggerOperation("PostMetodoPago")]
-        [Route("api/MetodoPago")]
+        [Route("api/PostMetodoPago")]
         public IHttpActionResult Post(MetodoPago metodoPago)
         {
             db.MetodosPagos.Add(metodoPago);

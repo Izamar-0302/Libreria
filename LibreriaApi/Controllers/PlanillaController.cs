@@ -96,9 +96,9 @@ namespace LibreriaApi.Controllers
         /// <returns>JSON Planilla</returns>
         /// <response code="200">Devuelve al eliminar valor</response>
         /// <response code="404">Devuelve al no eliminarlo</response>
-        [HttpPut]
-        [SwaggerOperation("PutPlanilla")]
-        [Route("api/PutPlanilla")]
+        [HttpDelete]
+        [SwaggerOperation("DeletePlanilla")]
+        [Route("api/DeletePlanilla")]
         public IHttpActionResult Delete(int id)
         {
             Planilla planilla = db.Planillas.Find(id);

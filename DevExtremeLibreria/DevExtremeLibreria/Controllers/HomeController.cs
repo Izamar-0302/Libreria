@@ -31,5 +31,19 @@ namespace DevExtremeLibreria.Controllers {
         {
             return View();
         }
+        public ActionResult MetodoPago()
+        {
+            return View();
+        }
+
+        public ActionResult Planilla()
+        {
+            return View();
+        }
+
+        public ActionResult Proveedor()
+        {
+            return View();
+        }
     }
 }

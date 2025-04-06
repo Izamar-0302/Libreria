@@ -1,0 +1,28 @@
+﻿@{
+    ViewData["Title"] = "Planilla";
+}
+
+<h2>Planilla</h2>
+
+@(Html.DevExtreme().DataGrid<DevExtremeLibreria.Models.Planilla>()
+    .DataSource(ds => ds.WebApi()
+        .Controller("Planilla")
+        .LoadAction("Get")
+        .InsertAction("Post")
+        .UpdateAction("Put")
+        .DeleteAction("Delete")
+        .Key("Id")
+    )
+    .RemoteOperations(true)
+    .Columns(columns => {
+
+        columns.AddFor(m => m.Id);
+
+        columns.AddFor(m => m.Fechapago);
+    })
+    .Editing(e => e
+        .AllowAdding(true)
+        .AllowUpdating(true)
+        .AllowDeleting(true)
+    )
+)
