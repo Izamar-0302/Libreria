@@ -18,5 +18,14 @@ namespace DevExtremeLibreria.Controllers {
         {
             return View();
         }
+        public ActionResult Cargo()
+        {
+            return View();
+        }
+
+        public ActionResult Sucursal()
+        {
+            return View();
+        }
     }
 }

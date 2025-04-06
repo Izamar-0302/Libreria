@@ -1,0 +1,38 @@
+﻿@{
+    ViewData["Title"] = "Sucursal";
+}
+
+<h2>Sucursal</h2>
+
+@(Html.DevExtreme().DataGrid<DevExtremeLibreria.Models.Sucursal>()
+    .DataSource(ds => ds.WebApi()
+        .Controller("Sucursal")
+        .LoadAction("Get")
+        .InsertAction("Post")
+        .UpdateAction("Put")
+        .DeleteAction("Delete")
+        .Key("SucursalId")
+    )
+    .RemoteOperations(true)
+    .Columns(columns => {
+
+        columns.AddFor(m => m.SucursalId);
+
+        columns.AddFor(m => m.Nombresucursal);
+
+        columns.AddFor(m => m.Direccion);
+
+        columns.AddFor(m => m.Telefono);
+
+        columns.AddFor(m => m.Gerente);
+
+        columns.AddFor(m => m.Horaentrada);
+
+        columns.AddFor(m => m.Horasalida);
+    })
+    .Editing(e => e
+        .AllowAdding(true)
+        .AllowUpdating(true)
+        .AllowDeleting(true)
+    )
+)

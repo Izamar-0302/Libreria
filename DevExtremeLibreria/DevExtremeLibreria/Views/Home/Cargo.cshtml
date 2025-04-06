@@ -1,0 +1,32 @@
+﻿@{
+    ViewData["Title"] = "Cargo";
+}
+
+<h2>Cargo</h2>
+
+@(Html.DevExtreme().DataGrid<DevExtremeLibreria.Models.Cargo>()
+    .DataSource(ds => ds.WebApi()
+        .Controller("Cargo")
+        .LoadAction("Get")
+        .InsertAction("Post")
+        .UpdateAction("Put")
+        .DeleteAction("Delete")
+        .Key("CargoId")
+    )
+    .RemoteOperations(true)
+    .Columns(columns => {
+
+        columns.AddFor(m => m.CargoId);
+
+        columns.AddFor(m => m.Titulo);
+
+        columns.AddFor(m => m.Descripcion);
+
+        columns.AddFor(m => m.Departamento);
+    })
+    .Editing(e => e
+        .AllowAdding(true)
+        .AllowUpdating(true)
+        .AllowDeleting(true)
+    )
+)
