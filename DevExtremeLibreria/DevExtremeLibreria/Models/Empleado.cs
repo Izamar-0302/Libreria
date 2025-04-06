@@ -9,7 +9,9 @@ namespace DevExtremeLibreria.Models
     {
         public int Id { get; set; }
         public Cargo Cargo { get; set; }
+        public int cargoId { get; set; }
         public Sucursal Sucursal { get; set; }
+        public int sucursalId { get; set; }
 
         public double Salario { get; set; }
         public Empleado() { }

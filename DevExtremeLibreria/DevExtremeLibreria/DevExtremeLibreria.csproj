@@ -363,6 +363,7 @@
     <Content Include="Views\Home\Metodopago.cshtml" />
     <Content Include="Views\Home\Planilla.cshtml" />
     <Content Include="Views\Home\Proveedor.cshtml" />
+    <Content Include="Views\Home\Empleado.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -379,6 +380,7 @@
     <Compile Include="Controllers\AutorController.cs" />
     <Compile Include="Controllers\CargoController.cs" />
     <Compile Include="Controllers\EditorialController.cs" />
+    <Compile Include="Controllers\EmpleadoController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\LectorController.cs" />
     <Compile Include="Controllers\MetodopagoController.cs" />

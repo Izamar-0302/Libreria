@@ -1,13 +1,13 @@
 ﻿@{
-    ViewData["Title"] = "Lector";
+    ViewData["Title"] = "Empleado";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>Lector</h2>
+<h2>Empleado</h2>
 
-@(Html.DevExtreme().DataGrid<DevExtremeLibreria.Models.Lector>()
+@(Html.DevExtreme().DataGrid<DevExtremeLibreria.Models.Empleado>()
     .DataSource(ds => ds.WebApi()
-        .Controller("Lector")
+        .Controller("Empleado")
         .LoadAction("Get")
         .InsertAction("Post")
         .UpdateAction("Put")
@@ -22,6 +22,20 @@
     .Columns(columns => {
 
         columns.AddFor(m => m.Id);
+
+        columns.AddFor(m => m.cargoId).Lookup(lookup => lookup
+            .DataSource(ds => ds.WebApi().Controller("Cargo").LoadAction("Get").Key("cargoId"))
+            .ValueExpr("cargoId")
+            .DisplayExpr("Titulo")
+        );
+
+        columns.AddFor(m => m.sucursalId).Lookup(lookup => lookup
+            .DataSource(ds => ds.WebApi().Controller("Sucursal").LoadAction("Get").Key("sucursalId"))
+            .ValueExpr("sucursalId")
+            .DisplayExpr("Nombresucursal")
+        );
+
+        columns.AddFor(m => m.Salario);
 
         columns.AddFor(m => m.Nombre);
 
