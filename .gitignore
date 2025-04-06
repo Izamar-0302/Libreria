@@ -1,0 +1,9 @@
+# Ignora SOLO el Web.config en la raíz del proyecto principal
+/LibreriaApi/Web.config
+
+# Ignorar archivos generados (opcional, pero recomendado)
+bin/
+obj/
+.vs/
+*.user
+*.suo
