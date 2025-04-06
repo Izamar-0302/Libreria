@@ -27,5 +27,9 @@ namespace DevExtremeLibreria.Controllers {
         {
             return View();
         }
+        public ActionResult Lector()
+        {
+            return View();
+        }
     }
 }

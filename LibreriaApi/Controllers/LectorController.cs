@@ -76,6 +76,9 @@ namespace LibreriaApi.Controllers
         /// <returns>JSON Editorial</returns>
         /// <responde code="200">Devuelve cuando se ha modificado el valor</responde>
         /// <response code="404">Devuelve si no se ha modificado</response>
+        [HttpPut]
+        [SwaggerOperation("PutLector")]
+        [Route("api/PutLector")]
         public IHttpActionResult Put(Editorial lectormodificado)
         {
             int id = lectormodificado.Id;
@@ -92,6 +95,9 @@ namespace LibreriaApi.Controllers
         /// <returns>JSON Lector</returns>
         /// <response code="200">Devuelve al eliminar valor</response>
         /// <response code="404">Devuelve al no eliminarlo</response>
+        [HttpDelete]
+        [SwaggerOperation("DeleteLector")]
+        [Route("api/DeleteLector")]
         public IHttpActionResult Delete(int id)
         {
             Lector lector = db.Lectores.Find(id);

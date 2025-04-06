@@ -131,7 +131,9 @@
       <HintPath>..\packages\WebGrease.1.6.0\lib\WebGrease.dll</HintPath>
     </Reference>
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Folder Include="Views\Lector\" />
+  </ItemGroup>
   <ItemGroup>
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
@@ -354,6 +356,10 @@
     <Content Include="Web.config" />
     <Content Include="Views\Home\Cargo.cshtml" />
     <Content Include="Views\Home\Sucursal.cshtml" />
+    <Content Include="Views\Home\home\Autor.cshtml" />
+    <Content Include="Views\Home\home\Cargo.cshtml" />
+    <Content Include="Views\Home\home\Index.cshtml" />
+    <Content Include="Views\Home\home\Sucursal.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -371,6 +377,7 @@
     <Compile Include="Controllers\CargoController.cs" />
     <Compile Include="Controllers\EditorialController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\LectorController.cs" />
     <Compile Include="Controllers\SampleDataController.cs" />
     <Compile Include="Controllers\SucursalController.cs" />
     <Compile Include="Global.asax.cs">
