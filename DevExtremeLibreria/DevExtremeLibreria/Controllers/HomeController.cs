@@ -45,5 +45,10 @@ namespace DevExtremeLibreria.Controllers {
         {
             return View();
         }
+
+        public ActionResult Empleado()
+        {
+            return View();
+        }
     }
 }

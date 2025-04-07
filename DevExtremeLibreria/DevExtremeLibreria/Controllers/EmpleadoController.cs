@@ -54,8 +54,8 @@ namespace DevExtremeLibreria.Controllers
             var key = Convert.ToInt32(form.Get("key")); //llave que estoy modificando
             var values = form.Get("values"); //Los valores que yo modifiqué en formato JSON
 
-            var apiUrlGetEmpleado = "https://localhost:44370/api/PutEmpleado" + key;
-            var respuestaEmpleado = await GetAsync(apiUrlGetEmpleado = "https://localhost:44370/api/PutEmpleado" + key);
+            var apiUrlGetEmpleado = "https://localhost:44370/api/GetEmpleado" + key;
+            var respuestaEmpleado = await GetAsync(apiUrlGetEmpleado = "https://localhost:44370/api/GetEmpleado" + key);
             Empleado empleado = JsonConvert.DeserializeObject<Empleado>(respuestaEmpleado);
 
             JsonConvert.PopulateObject(values, empleado);
