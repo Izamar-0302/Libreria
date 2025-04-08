@@ -71,8 +71,9 @@ namespace LibreriaApi.Controllers
 
         // PUT: api/Planilla/5
         /// <summary>
-        /// Modificar valor
+        /// 
         /// </summary>
+        /// <param name="id"></param>
         /// <param name="planillamodificado"></param>
         /// <returns>JSON Planilla</returns>
         /// <responde code="200">Devuelve cuando se ha modificado el valor</responde>
@@ -80,12 +81,20 @@ namespace LibreriaApi.Controllers
         [HttpPut]
         [SwaggerOperation("PutPlanilla")]
         [Route("api/PutPlanilla")]
-        public IHttpActionResult Put(Planilla planillamodificado)
+        public IHttpActionResult Put(int id,Planilla planillamodificado)
         {
-            int id = planillamodificado.Id;
-            db.Entry(planillamodificado).State = EntityState.Modified;
+            id = planillamodificado.Id;
+            Planilla mp = db.Planillas.Find(id);
+            if (mp == null)
+            {
+                return NotFound();
+            }
+
+            mp.Fechapago = planillamodificado.Fechapago;
+            
+
             db.SaveChanges();
-            return Ok(planillamodificado);
+            return Ok(mp);
         }
 
         // DELETE: api/Planilla/5

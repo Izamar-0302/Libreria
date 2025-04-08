@@ -23,15 +23,15 @@
 
         columns.AddFor(m => m.Id);
 
-        columns.AddFor(m => m.cargoId).Lookup(lookup => lookup
-            .DataSource(ds => ds.WebApi().Controller("Cargo").LoadAction("Get").Key("cargoId"))
-            .ValueExpr("cargoId")
+        columns.AddFor(m => m.CargoId).Lookup(lookup => lookup
+            .DataSource(ds => ds.WebApi().Controller("Cargo").LoadAction("Get").Key("CargoId"))
+            .ValueExpr("CargoId")
             .DisplayExpr("Titulo")
         );
 
-        columns.AddFor(m => m.sucursalId).Lookup(lookup => lookup
-            .DataSource(ds => ds.WebApi().Controller("Sucursal").LoadAction("Get").Key("sucursalId"))
-            .ValueExpr("sucursalId")
+        columns.AddFor(m => m.SucursalId).Lookup(lookup => lookup
+            .DataSource(ds => ds.WebApi().Controller("Sucursal").LoadAction("Get").Key("SucursalId"))
+            .ValueExpr("SucursalId")
             .DisplayExpr("Nombresucursal")
         );
 

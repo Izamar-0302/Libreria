@@ -9,7 +9,9 @@ namespace LibreriaApi.Models
     {
         public int Id { get; set; }
         public Cargo Cargo { get; set; }
+        public int CargoId { get; set; }
         public Sucursal Sucursal { get; set; }
+        public int SucursalId { get; set; }
 
         public double Salario { get; set; }
         public Empleado() { }

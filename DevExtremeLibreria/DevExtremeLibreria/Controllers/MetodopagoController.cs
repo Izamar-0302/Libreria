@@ -51,32 +51,45 @@ namespace DevExtremeLibreria.Controllers
         }
         [HttpPut]
         public async Task<HttpResponseMessage> Put(FormDataCollection form)
-        {
-            //Parámetros del form
-            var key = Convert.ToInt32(form.Get("key")); //llave que estoy modificando
-            var values = form.Get("values"); //Los valores que yo modifiqué en formato JSON
+        { 
+            // Obtener los parámetros del formulario
+            var key = Convert.ToInt32(form.Get("key")); // llave que estoy modificando
+            var values = form.Get("values"); // Los valores modificados en formato JSON
 
-            var apiUrlGetmetodopago = "https://localhost:44370/api/GetMetodoPago" + key;
-            var respuestamp = await GetAsync(apiUrlGetmetodopago = "https://localhost:44370/api/GetMetodoPago" + key);
-            MetodoPago mp = JsonConvert.DeserializeObject<MetodoPago>(respuestamp);
+            
+            var apiUrlGetMetodopago = $"https://localhost:44370/api/GetMetodoPago?id={key}";
+            var respuestaMetodopago = await GetAsync(apiUrlGetMetodopago);
+            if (string.IsNullOrEmpty(respuestaMetodopago))
+            {
+                return Request.CreateErrorResponse(HttpStatusCode.NotFound, "El MetodoPago no fue encontrado.");
+            }
 
-            JsonConvert.PopulateObject(values, mp);
+            MetodoPago Metodopago = JsonConvert.DeserializeObject< MetodoPago>(respuestaMetodopago);
 
-            string jsonString = JsonConvert.SerializeObject(mp);
+            // Asignar los valores del formulario al objeto autor
+            JsonConvert.PopulateObject(values, Metodopago);
+
+            // Serializar el objeto actualizado
+            string jsonString = JsonConvert.SerializeObject(Metodopago);
             var httpContent = new StringContent(jsonString, System.Text.Encoding.UTF8, "application/json");
 
+            // Realizar la solicitud PUT a la API
             var handler = new HttpClientHandler();
             handler.ServerCertificateCustomValidationCallback = (message, cert, chain, errors) => true;
             using (var client = new HttpClient(handler))
             {
-                var url = "https://localhost:44370/api/PutMetodoPago" + key;
+                var url = $"https://localhost:44370/api/PutMetodoPago?id={key}";
                 var response = await client.PutAsync(url, httpContent);
 
-                var result = response.Content.ReadAsStringAsync().Result;
+                if (!response.IsSuccessStatusCode)
+                {
+                    var error = await response.Content.ReadAsStringAsync();
+                    return Request.CreateErrorResponse(response.StatusCode, error);
+                }
+
+                var result = await response.Content.ReadAsStringAsync();
+                return Request.CreateResponse(HttpStatusCode.OK, result);
             }
-
-
-            return Request.CreateResponse(HttpStatusCode.OK);
         }
 
 

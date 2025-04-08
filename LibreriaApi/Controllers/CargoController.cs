@@ -68,23 +68,32 @@ namespace LibreriaApi.Controllers
             return Ok(cargo);
         }
 
-        // PUT: api/Cargo/5
         /// <summary>
-        /// Modificar valor
+        /// Modificar
         /// </summary>
+        /// <param name="id"></param>
         /// <param name="cargomodificado"></param>
         /// <returns>JSON Cargo</returns>
         /// <response code="200">Devuelve al modificar valor</response>
         /// <response code="404">Devuelve si no se modifico valor</response>
+
         [HttpPut]
         [SwaggerOperation("PutCargo")]
         [Route("api/PutCargo")]
-        public IHttpActionResult Put(Cargo cargomodificado)
+        public IHttpActionResult Put(int id,Cargo cargomodificado)
         {
-            int id = cargomodificado.CargoId;
-            db.Entry(cargomodificado).State = EntityState.Modified;
+           Cargo cargo = db.Cargo.Find(id);
+            if (cargo == null)
+            {
+                return NotFound();
+            }
+
+            cargo.Titulo = cargomodificado.Titulo;
+            cargo.Descripcion= cargomodificado.Descripcion;
+            cargo.Departamento = cargomodificado.Departamento;
+            cargo.CargoId= id;
             db.SaveChanges();
-            return Ok(cargomodificado);
+            return Ok(cargo);
         }
 
         // DELETE: api/Cargo/5

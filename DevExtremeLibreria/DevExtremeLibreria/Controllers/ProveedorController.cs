@@ -69,7 +69,7 @@ namespace DevExtremeLibreria.Controllers
             handler.ServerCertificateCustomValidationCallback = (message, cert, chain, errors) => true;
             using (var client = new HttpClient(handler))
             {
-                var url = "https://localhost:44370/api/PutProveedor" + key;
+                var url = "https://localhost:44370/api/PutProveedor/" + key;
                 var response = await client.PutAsync(url, httpContent);
 
                 var result = response.Content.ReadAsStringAsync().Result;

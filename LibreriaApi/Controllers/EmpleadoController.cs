@@ -25,26 +25,10 @@ namespace LibreriaApi.Controllers
         [HttpGet]
         [SwaggerOperation("GetEmpleados")]
         [Route("api/GetEmpleados")]
-        public IHttpActionResult Get()
+        
+        public IEnumerable<Empleado> Get()
         {
-            var query = from cargo1 in db.Cargo
-                        join empleado in db.Empleados on cargo1.CargoId equals empleado.Cargo.CargoId
-                        join sucursal1 in db.Sucursales on empleado.Sucursal.SucursalId equals sucursal1.SucursalId
-                        select new
-                        {
-                            IdEmpleados = empleado.Id,
-                            TipoBonificacion = empleado.Nombre,
-                            MontonBonificacion = empleado.Apellidos,
-                            IdEmpleado = empleado.Direccion,
-                            empleado.Correo,
-                            empleado.Cargo,
-                            empleado.Sucursal,
-                            empleado.Telefono,
-                            empleado.Salario
-                            
-                        };
-
-            return Ok(query);
+            return db.Empleados;
         }
 
 

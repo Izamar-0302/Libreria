@@ -70,21 +70,36 @@ namespace LibreriaApi.Controllers
 
         // PUT: api/Sucursal/5
         /// <summary>
-        /// Modificar valor
+        /// Modificar
         /// </summary>
+        /// <param name="id"></param>
         /// <param name="sucursalmodificado"></param>
         /// <returns>JSON Sucursal</returns>
         /// <responde code="200">Devuelve cuando se ha modificado el valor</responde>
         /// <response code="404">Devuelve si no se ha modificado</response>
+
         [HttpPut]
         [SwaggerOperation("PutSucursal")]
         [Route("api/PutSucursal")]
-        public IHttpActionResult Put(Sucursal sucursalmodificado)
+        public IHttpActionResult Put(int id,Sucursal sucursalmodificado)
         {
-            int id = sucursalmodificado.SucursalId;
-            db.Entry(sucursalmodificado).State = EntityState.Modified;
+            id = sucursalmodificado.SucursalId;
+            Sucursal mp = db.Sucursales.Find(id);
+            if (mp == null)
+            {
+                return NotFound();
+            }
+
+            mp.Nombresucursal = sucursalmodificado.Nombresucursal;
+            mp.Gerente = sucursalmodificado.Gerente;
+            mp.Direccion = sucursalmodificado.Direccion;
+            mp.Horaentrada= sucursalmodificado.Horaentrada;
+            mp.Horasalida = sucursalmodificado.Horasalida;
+            mp.Telefono = sucursalmodificado.Telefono;
+
+
             db.SaveChanges();
-            return Ok(sucursalmodificado);
+            return Ok(mp);
         }
 
         // DELETE: api/Sucursal/5

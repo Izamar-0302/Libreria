@@ -70,8 +70,9 @@ namespace LibreriaApi.Controllers
 
         // PUT: api/MetodoPago/5
         /// <summary>
-        /// Modificar valor
+        /// Modificar
         /// </summary>
+        /// <param name="id"></param>
         /// <param name="metodoPagomodificado"></param>
         /// <returns>JSON MetodoPago</returns>
         /// <responde code="200">Devuelve cuando se ha modificado el valor</responde>
@@ -79,12 +80,20 @@ namespace LibreriaApi.Controllers
         [HttpPut]
         [SwaggerOperation("PutMetodoPago")]
         [Route("api/PutMetodoPago")]
-        public IHttpActionResult Put(MetodoPago metodoPagomodificado)
+        public IHttpActionResult Put(int id,MetodoPago metodoPagomodificado)
         {
-            int id = metodoPagomodificado.Id;
-            db.Entry(metodoPagomodificado).State = EntityState.Modified;
+            id = metodoPagomodificado.Id;
+            MetodoPago mp = db.MetodosPagos.Find(id);
+            if (mp == null)
+            {
+                return NotFound();
+            }
+
+            mp.Metodo= metodoPagomodificado.Metodo;
+            mp.Fechapago = metodoPagomodificado.Fechapago;
+           
             db.SaveChanges();
-            return Ok(metodoPagomodificado);
+            return Ok(mp);
         }
 
         // DELETE: api/MetodoPago/5

@@ -68,10 +68,10 @@ namespace LibreriaApi.Controllers
             return Ok(lector);
         }
 
-        // PUT: api/Lector/5
         /// <summary>
-        /// Modificar valor
+        /// Modificar
         /// </summary>
+        /// <param name="id"></param>
         /// <param name="lectormodificado"></param>
         /// <returns>JSON Editorial</returns>
         /// <responde code="200">Devuelve cuando se ha modificado el valor</responde>
@@ -79,12 +79,22 @@ namespace LibreriaApi.Controllers
         [HttpPut]
         [SwaggerOperation("PutLector")]
         [Route("api/PutLector")]
-        public IHttpActionResult Put(Editorial lectormodificado)
+        public IHttpActionResult Put(int id,Lector lectormodificado)
         {
-            int id = lectormodificado.Id;
-            db.Entry(lectormodificado).State = EntityState.Modified;
+            id = lectormodificado.Id;
+            Lector lector = db.Lectores.Find(id);
+            if (lector == null)
+            {
+                return NotFound();
+            }
+
+            lector.Nombre = lectormodificado.Nombre;
+            lector.Apellidos = lectormodificado.Apellidos;
+            lector.Direccion= lectormodificado.Direccion;
+            lector.Correo = lectormodificado.Correo;
+            lector.Telefono = lectormodificado.Telefono;
             db.SaveChanges();
-            return Ok(lectormodificado);
+            return Ok(lector);
         }
 
         // DELETE: api/Lector/5

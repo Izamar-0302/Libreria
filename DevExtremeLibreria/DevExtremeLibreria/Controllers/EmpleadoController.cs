@@ -67,7 +67,7 @@ namespace DevExtremeLibreria.Controllers
             handler.ServerCertificateCustomValidationCallback = (message, cert, chain, errors) => true;
             using (var client = new HttpClient(handler))
             {
-                var url = "https://localhost:44370/api/PutEmpleado " + key;
+                var url = "https://localhost:44370/api/PutEmpleado/" + key;
                 var response = await client.PutAsync(url, httpContent);
 
                 var result = response.Content.ReadAsStringAsync().Result;
@@ -86,7 +86,7 @@ namespace DevExtremeLibreria.Controllers
 
             var httpContent = new StringContent(values, System.Text.Encoding.UTF8, "application/json");
 
-            var url = "https://localhost:44370/api/PostEmpleado ";
+            var url = "https://localhost:44370/api/PostEmpleado?idcargo=2&idsucursal=1 ";
             var handler = new HttpClientHandler();
             handler.ServerCertificateCustomValidationCallback = (message, cert, chain, errors) => true;
             using (var client = new HttpClient(handler))

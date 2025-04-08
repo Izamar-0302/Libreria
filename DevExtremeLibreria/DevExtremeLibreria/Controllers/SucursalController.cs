@@ -55,8 +55,8 @@ namespace DevExtremeLibreria.Controllers
             var key = Convert.ToInt32(form.Get("key")); //llave que estoy modificando
             var values = form.Get("values"); //Los valores que yo modifiqué en formato JSON
 
-            var apiUrlGetSucursal = "https://localhost:44370/api/GetSucursal" + key;
-            var respuestaSucursal = await GetAsync(apiUrlGetSucursal = "https://localhost:44370/api/GetSucursal" + key);
+            var apiUrlGetSucursal = "https://localhost:44370/api/GetSucursal/" + key;
+            var respuestaSucursal = await GetAsync(apiUrlGetSucursal = "https://localhost:44370/api/GetSucursal/" + key);
             Sucursal sucursal = JsonConvert.DeserializeObject<Sucursal>(respuestaSucursal);
 
             JsonConvert.PopulateObject(values, sucursal);
@@ -68,7 +68,7 @@ namespace DevExtremeLibreria.Controllers
             handler.ServerCertificateCustomValidationCallback = (message, cert, chain, errors) => true;
             using (var client = new HttpClient(handler))
             {
-                var url = "https://localhost:44370/api/PutSucursal " + key;
+                var url = "https://localhost:44370/api/PutSucursal/" + key;
                 var response = await client.PutAsync(url, httpContent);
 
                 var result = response.Content.ReadAsStringAsync().Result;

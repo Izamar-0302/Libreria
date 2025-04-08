@@ -70,8 +70,9 @@ namespace LibreriaApi.Controllers
 
         // PUT: api/Proveedor/5
         /// <summary>
-        /// Modificar valor
+        /// 
         /// </summary>
+        /// <param name="id"></param>
         /// <param name="proveedormodificado"></param>
         /// <returns>JSON Proveedor</returns>
         /// <responde code="200">Devuelve cuando se ha modificado el valor</responde>
@@ -79,12 +80,23 @@ namespace LibreriaApi.Controllers
         [HttpPut]
         [SwaggerOperation("PutProveedor")]
         [Route("api/PutProveedor")]
-        public IHttpActionResult Put(Proveedor proveedormodificado)
+        public IHttpActionResult Put(int id, Proveedor proveedormodificado)
         {
-            int id = proveedormodificado.Id;
-            db.Entry(proveedormodificado).State = EntityState.Modified;
+            id = proveedormodificado.Id;
+            Proveedor mp = db.Proveedores.Find(id);
+            if (mp == null)
+            {
+                return NotFound();
+            }
+
+            mp.Nombreproveedor = proveedormodificado.Nombreproveedor;
+            mp.Direccion = proveedormodificado.Direccion;
+            mp.Correo = proveedormodificado.Correo;
+            mp.Telefono = proveedormodificado.Telefono;
+
+
             db.SaveChanges();
-            return Ok(proveedormodificado);
+            return Ok(mp);
         }
 
         // DELETE: api/Proveedor/5
