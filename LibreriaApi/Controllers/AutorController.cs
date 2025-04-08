@@ -13,7 +13,7 @@ namespace LibreriaApi.Controllers
     public class AutorController : ApiController
     {
         private DBContextProyect bd = new DBContextProyect();
-        
+
         /// GET: api/Autor
         /// <summary>
         /// Obtener todos los autores
@@ -78,15 +78,22 @@ namespace LibreriaApi.Controllers
         /// <response code="404">Devuelve si no se agregado el valor</response>
         [HttpPut]
         [SwaggerOperation("PutAutor")]
-        [Route("api/PutAutor")]
-        public IHttpActionResult Put(Autor autormodificado)
+        [Route("api/PutAutor/{id}")]
+        public IHttpActionResult Put(int id, Autor autormodificado)
         {
-            int id = autormodificado.AutorId;
-            bd.Entry(autormodificado).State = EntityState.Modified;
-            bd.SaveChanges();
-            return Ok(autormodificado);
-        }
+            Autor autor = bd.Autores.Find(id);
+            if (autor == null)
+            {
+                return NotFound();
+            }
 
+            autor.Nombre = autormodificado.Nombre;
+            autor.Nacionalidad = autormodificado.Nacionalidad;
+            autor.Fechadenacimiento = autormodificado.Fechadenacimiento;
+            autor.Biografia = autormodificado.Biografia;
+            bd.SaveChanges(); 
+            return Ok(autor); 
+        }
         /// DELETE: api/Autor/5
         /// <summary>
         /// Se elimina valor
@@ -97,14 +104,17 @@ namespace LibreriaApi.Controllers
         /// <response code="404">Devuelve si no se elimina valor </response>
         [HttpDelete]
         [SwaggerOperation("DeleteAutor")]
-        [Route("api/DeleteAutor")]
+        [Route("api/DeleteAutor/{id}")]
         public IHttpActionResult Delete(int id)
         {
             Autor autor = bd.Autores.Find(id);
+            if (autor == null)
+            {
+                return NotFound();
+            }
             bd.Autores.Remove(autor);
             bd.SaveChanges();
             return Ok(autor);
-           
         }
     }
 }

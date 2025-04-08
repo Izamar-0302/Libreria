@@ -1,0 +1,61 @@
+﻿@{
+    ViewData["Title"] = "Libro";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Libro</h2>
+
+@(Html.DevExtreme().DataGrid<DevExtremeLibreria.Models.Libro>()
+    .DataSource(ds => ds.WebApi()
+        .Controller("Libro")
+        .LoadAction("Get")
+        .InsertAction("Post")
+        .UpdateAction("Put")
+        .DeleteAction("Delete")
+        .Key("Id")
+    )
+    .RemoteOperations(true)
+    .Columns(columns => {
+
+        columns.AddFor(m => m.Id);
+
+        columns.AddFor(m => m.Titulo);
+
+        columns.AddFor(m => m.AutorId).Lookup(lookup => lookup
+            .DataSource(ds => ds.WebApi().Controller("Autor").LoadAction("GetAutores").Key("AutorId"))
+            .ValueExpr("AutorId")
+            .DisplayExpr("Nombre")
+        );
+
+        columns.AddFor(m => m.EditorialId).Lookup(lookup => lookup
+            .DataSource(ds => ds.WebApi().Controller("Editorial").LoadAction("GetEditoriales").Key("Editorialid"))
+            .ValueExpr("EditorialId")
+            .DisplayExpr("Nombre")
+        );
+
+        columns.AddFor(m => m.Aniopublicacion);
+
+        columns.AddFor(m => m.Precio);
+
+        columns.AddFor(m => m.Genero);
+
+        columns.AddFor(m => m.Cantidad);
+
+        columns.AddFor(m => m.UbicacionId).Lookup(lookup => lookup
+            .DataSource(ds => ds.WebApi().Controller("Ubicacion").LoadAction("GetUbicaciones").Key("UbicacionId"))
+            .ValueExpr("UbicacionId")
+            .DisplayExpr("Estante")
+        );
+
+        columns.AddFor(m => m.ProveedorId).Lookup(lookup => lookup
+            .DataSource(ds => ds.WebApi().Controller("Proveedor").LoadAction("GetProveedores").Key("ProveedorId"))
+            .ValueExpr("ProveedorId")
+            .DisplayExpr("Nombre")
+        );
+    })
+    .Editing(e => e
+        .AllowAdding(true)
+        .AllowUpdating(true)
+        .AllowDeleting(true)
+    )
+)

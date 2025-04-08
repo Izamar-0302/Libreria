@@ -22,8 +22,8 @@ namespace DevExtremeLibreria.Controllers
             var apiUrl = "https://localhost:44370/api/GetAutores";
             var respuestaJson = await GetAsync(apiUrl);
             //System.Diagnostics.Debug.WriteLine(respuestaJson); imprimir info
-            List<Autor> listaAutor = JsonConvert.DeserializeObject<List<Autor>>(respuestaJson);
-            return Request.CreateResponse(DataSourceLoader.Load(listaAutor, loadOptions));
+            List<Autor> listaautor = JsonConvert.DeserializeObject<List<Autor>>(respuestaJson);
+            return Request.CreateResponse(DataSourceLoader.Load(listaautor, loadOptions));
         }
 
         public static async Task<string> GetAsync(string uri)
@@ -50,31 +50,44 @@ namespace DevExtremeLibreria.Controllers
         [HttpPut]
         public async Task<HttpResponseMessage> Put(FormDataCollection form)
         {
-            //Parámetros del form
-            var key = Convert.ToInt32(form.Get("key")); //llave que estoy modificando
-            var values = form.Get("values"); //Los valores que yo modifiqué en formato JSON
+            // Obtener los parámetros del formulario
+            var key = Convert.ToInt32(form.Get("key")); // llave que estoy modificando
+            var values = form.Get("values"); // Los valores modificados en formato JSON
 
-            var apiUrlGetAutor = "https://localhost:44370/api/GetAutores" + key;
-            var respuestaAutor = await GetAsync(apiUrlGetAutor = "https://localhost:44370/api/GetAutores" + key);
+            // Obtener el autor desde la API
+            var apiUrlGetAutor = $"https://localhost:44370/api/GetAutor?id={key}";
+            var respuestaAutor = await GetAsync(apiUrlGetAutor);
+            if (string.IsNullOrEmpty(respuestaAutor))
+            {
+                return Request.CreateErrorResponse(HttpStatusCode.NotFound, "El autor no fue encontrado.");
+            }
+
             Autor autor = JsonConvert.DeserializeObject<Autor>(respuestaAutor);
 
+            // Asignar los valores del formulario al objeto autor
             JsonConvert.PopulateObject(values, autor);
 
+            // Serializar el objeto actualizado
             string jsonString = JsonConvert.SerializeObject(autor);
             var httpContent = new StringContent(jsonString, System.Text.Encoding.UTF8, "application/json");
 
+            // Realizar la solicitud PUT a la API
             var handler = new HttpClientHandler();
             handler.ServerCertificateCustomValidationCallback = (message, cert, chain, errors) => true;
             using (var client = new HttpClient(handler))
             {
-                var url = "https://localhost:44370/api/PutAutores" + key;
+                var url = $"https://localhost:44370/api/PutAutor/{key}";
                 var response = await client.PutAsync(url, httpContent);
 
-                var result = response.Content.ReadAsStringAsync().Result;
+                if (!response.IsSuccessStatusCode)
+                {
+                    var error = await response.Content.ReadAsStringAsync();
+                    return Request.CreateErrorResponse(response.StatusCode, error);
+                }
+
+                var result = await response.Content.ReadAsStringAsync();
+                return Request.CreateResponse(HttpStatusCode.OK, result);
             }
-
-
-            return Request.CreateResponse(HttpStatusCode.OK);
         }
 
 
@@ -86,7 +99,7 @@ namespace DevExtremeLibreria.Controllers
 
             var httpContent = new StringContent(values, System.Text.Encoding.UTF8, "application/json");
 
-            var url = "https://localhost:44370/api/PostAutores";
+            var url = "https://localhost:44370/api/PostAutor/";
             var handler = new HttpClientHandler();
             handler.ServerCertificateCustomValidationCallback = (message, cert, chain, errors) => true;
             using (var client = new HttpClient(handler))
@@ -104,16 +117,15 @@ namespace DevExtremeLibreria.Controllers
         {
             var key = Convert.ToInt32(form.Get("key"));
 
-            var apiUrlDelPeli = "https://localhost:44370/api/DeleteAutores" + key;
+            var apiUrlDelAutor = "https://localhost:44370/api/DeleteAutor/" + key;
             var handler = new HttpClientHandler();
             handler.ServerCertificateCustomValidationCallback = (message, cert, chain, errors) => true;
             using (var client = new HttpClient(handler))
             {
-                var respuestaPelic = await client.DeleteAsync(apiUrlDelPeli);
+                var respuestaAutor = await client.DeleteAsync(apiUrlDelAutor);
             }
             return Request.CreateResponse(HttpStatusCode.OK);
         }
-
     }
 }
 

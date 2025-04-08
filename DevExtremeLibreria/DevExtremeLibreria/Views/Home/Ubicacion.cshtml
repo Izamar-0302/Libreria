@@ -1,0 +1,36 @@
+﻿@{
+    ViewData["Title"] = "Ubicacion";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Ubicacion</h2>
+
+@(Html.DevExtreme().DataGrid<DevExtremeLibreria.Models.Ubicacion>()
+    .DataSource(ds => ds.WebApi()
+        .Controller("Ubicacion")
+        .LoadAction("Get")
+        .InsertAction("Post")
+        .UpdateAction("Put")
+        .DeleteAction("Delete")
+        .Key("UbicacionId")
+    )
+    .RemoteOperations(true)
+    .Paging(p => p.PageSize(10))
+    .FilterRow(f => f.Visible(true))
+    .HeaderFilter(f => f.Visible(true))
+    .SearchPanel(f => f.Visible(true))
+
+    .Columns(columns => {
+
+        columns.AddFor(m => m.UbicacionId);
+
+        columns.AddFor(m => m.Numerodeestante);
+
+        columns.AddFor(m => m.Numerodepasillo);
+    })
+    .Editing(e => e
+        .AllowAdding(true)
+        .AllowUpdating(true)
+        .AllowDeleting(true)
+    )
+)

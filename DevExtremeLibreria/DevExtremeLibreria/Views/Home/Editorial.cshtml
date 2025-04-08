@@ -1,0 +1,39 @@
+﻿@{
+    ViewData["Title"] = "Editorial";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Editorial</h2>
+
+@(Html.DevExtreme().DataGrid<DevExtremeLibreria.Models.Editorial>()
+    .DataSource(ds => ds.WebApi()
+        .Controller("Editorial")
+        .LoadAction("Get")
+        .InsertAction("Post")
+        .UpdateAction("Put")
+        .DeleteAction("Delete")
+        .Key("Id")
+    )
+    .RemoteOperations(true)
+    .Paging(p => p.PageSize(10))
+    .FilterRow(f => f.Visible(true))
+    .HeaderFilter(f => f.Visible(true))
+    .SearchPanel(f => f.Visible(true))
+    .Columns(columns => {
+
+        columns.AddFor(m => m.Id);
+
+        columns.AddFor(m => m.Nombre);
+
+        columns.AddFor(m => m.Pais);
+
+        columns.AddFor(m => m.Fundacion);
+
+        columns.AddFor(m => m.Catalogo);
+    })
+    .Editing(e => e
+        .AllowAdding(true)
+        .AllowUpdating(true)
+        .AllowDeleting(true)
+    )
+)

@@ -50,6 +50,7 @@ namespace LibreriaApi.Controllers
             return Ok(editorial);
         }
 
+
         // POST: api/Editorial
         /// <summary>
         /// Agregar valor
@@ -76,14 +77,27 @@ namespace LibreriaApi.Controllers
         /// <returns>JSON Editorial</returns>
         /// <responde code="200">Devuelve cuando se ha modificado el valor</responde>
         /// <response code="404">Devuelve si no se ha modificado</response>
-        public IHttpActionResult Put(Editorial editorialmodificado)
-        {
-            int id = editorialmodificado.Id;
-            db.Entry(editorialmodificado).State = EntityState.Modified;
-            db.SaveChanges();
-            return Ok(editorialmodificado);
-        }
 
+        [HttpPut]
+        [SwaggerOperation("PutEditorial")]
+        [Route("api/PutEditorial/{id}")]
+        public IHttpActionResult Put(int id, Editorial editorialmodificado)
+        {
+            Editorial editorial = db.Editoriales.Find(id);
+            if (editorial == null)
+            {
+                return NotFound();
+            }
+
+            editorial.Nombre =editorialmodificado.Nombre;
+            editorial.Pais = editorialmodificado.Nombre;
+            editorial.Fundacion = editorialmodificado.Fundacion;
+            editorial.Catalogo = editorialmodificado.Catalogo;
+
+            db.SaveChanges();
+
+            return Ok(editorial);
+        }
         // DELETE: api/Editorial/5
         /// <summary>
         /// Eliminar valor
@@ -92,9 +106,16 @@ namespace LibreriaApi.Controllers
         /// <returns>JSON Editorial</returns>
         /// <response code="200">Devuelve al eliminar valor</response>
         /// <response code="404">Devuelve al no eliminarlo</response>
+        [HttpDelete]
+        [SwaggerOperation("DeleteEditorial")]
+        [Route("api/DeleteEditorial/{id}")]
         public IHttpActionResult Delete(int id)
         {
             Editorial editorial = db.Editoriales.Find(id);
+            if (editorial == null)
+            {
+                return NotFound();
+            }
             db.Editoriales.Remove(editorial);
             db.SaveChanges();
             return Ok(editorial);

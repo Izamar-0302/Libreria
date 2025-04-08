@@ -13,17 +13,17 @@ using System.Web.Http;
 
 namespace DevExtremeLibreria.Controllers
 {
-    public class EditorialController : ApiController
+    public class UbicacionController : ApiController
     {
         private static readonly HttpClient client = new HttpClient();
         [HttpGet]
         public async Task<HttpResponseMessage> Get(DataSourceLoadOptions loadOptions)
         {
-            var apiUrl = "https://localhost:44370/api/GetEditoriales";
+            var apiUrl = "https://localhost:44370/api/GetUbicaciones";
             var respuestaJson = await GetAsync(apiUrl);
             //System.Diagnostics.Debug.WriteLine(respuestaJson); imprimir info
-            List<Editorial> listaeditorial = JsonConvert.DeserializeObject<List<Editorial>> (respuestaJson);
-            return Request.CreateResponse(DataSourceLoader.Load(listaeditorial, loadOptions));
+            List<Ubicacion> listaubicacion = JsonConvert.DeserializeObject<List<Ubicacion>>(respuestaJson);
+            return Request.CreateResponse(DataSourceLoader.Load(listaubicacion, loadOptions));
         }
 
         public static async Task<string> GetAsync(string uri)
@@ -55,20 +55,20 @@ namespace DevExtremeLibreria.Controllers
             var values = form.Get("values"); // Los valores modificados en formato JSON
 
             // Obtener el autor desde la API
-            var apiUrlGetEditorial = $"https://localhost:44370/api/GetEditorial?id={key}";
-            var respuestaEditorial = await GetAsync(apiUrlGetEditorial);
-            if (string.IsNullOrEmpty(respuestaEditorial))
+            var apiUrlGetUbicacion = $"https://localhost:44370/api/GetUbicacion?id={key}";
+            var respuestaUbicacion = await GetAsync(apiUrlGetUbicacion);
+            if (string.IsNullOrEmpty(respuestaUbicacion))
             {
                 return Request.CreateErrorResponse(HttpStatusCode.NotFound, "El autor no fue encontrado.");
             }
 
-            Editorial editorial = JsonConvert.DeserializeObject<Editorial>(respuestaEditorial);
+            Ubicacion ubicacion = JsonConvert.DeserializeObject<Ubicacion>(respuestaUbicacion);
 
             // Asignar los valores del formulario al objeto autor
-            JsonConvert.PopulateObject(values, editorial);
+            JsonConvert.PopulateObject(values, ubicacion);
 
             // Serializar el objeto actualizado
-            string jsonString = JsonConvert.SerializeObject(editorial);
+            string jsonString = JsonConvert.SerializeObject(ubicacion);
             var httpContent = new StringContent(jsonString, System.Text.Encoding.UTF8, "application/json");
 
             // Realizar la solicitud PUT a la API
@@ -76,7 +76,7 @@ namespace DevExtremeLibreria.Controllers
             handler.ServerCertificateCustomValidationCallback = (message, cert, chain, errors) => true;
             using (var client = new HttpClient(handler))
             {
-                var url = $"https://localhost:44370/api/PutEditorial/{key}";
+                var url = $"https://localhost:44370/api/Ubicacion/{key}";
                 var response = await client.PutAsync(url, httpContent);
 
                 if (!response.IsSuccessStatusCode)
@@ -99,7 +99,7 @@ namespace DevExtremeLibreria.Controllers
 
             var httpContent = new StringContent(values, System.Text.Encoding.UTF8, "application/json");
 
-            var url = "https://localhost:44370/api/PostEditorial";
+            var url = "https://localhost:44370/api/PostUbicacion";
             var handler = new HttpClientHandler();
             handler.ServerCertificateCustomValidationCallback = (message, cert, chain, errors) => true;
             using (var client = new HttpClient(handler))
@@ -117,14 +117,15 @@ namespace DevExtremeLibreria.Controllers
         {
             var key = Convert.ToInt32(form.Get("key"));
 
-            var apiUrlDelEditorial = "https://localhost:44370/api/DeleteEditorial/" + key;
+            var apiUrlDeUbicacion = "https://localhost:44370/api/Ubicacion/" + key;
             var handler = new HttpClientHandler();
             handler.ServerCertificateCustomValidationCallback = (message, cert, chain, errors) => true;
             using (var client = new HttpClient(handler))
             {
-                var respuestaEditorial = await client.DeleteAsync(apiUrlDelEditorial);
+                var respuestaAutor = await client.DeleteAsync(apiUrlDeUbicacion);
             }
             return Request.CreateResponse(HttpStatusCode.OK);
         }
     }
 }
+
