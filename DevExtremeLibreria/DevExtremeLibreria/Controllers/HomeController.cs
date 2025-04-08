@@ -50,5 +50,14 @@ namespace DevExtremeLibreria.Controllers {
         {
             return View();
         }
+        public ActionResult Ubicacion()
+        {
+            return View();
+        }
+
+        public ActionResult Editorial()
+        {
+            return View();
+        }
     }
 }
