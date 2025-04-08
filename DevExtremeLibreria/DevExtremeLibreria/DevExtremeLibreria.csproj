@@ -163,6 +163,7 @@
     <Content Include="Content\dx.fluent.saas.dark.css" />
     <Content Include="Content\dx.fluent.saas.light.compact.css" />
     <Content Include="Content\dx.fluent.saas.light.css" />
+    <Content Include="Content\dx.generic.thema.css" />
     <Content Include="Content\dx.greenmist.compact.css" />
     <Content Include="Content\dx.greenmist.css" />
     <Content Include="Content\dx.light.compact.css" />
