@@ -9,6 +9,7 @@ namespace LibreriaApi.Models
     {
         public int Id { get; set; }
         public Empleado Empleado { get; set; }
+        
         public string TipoDeduccion { get; set; }
         public double Monto { get; set; }
         public Deducciones() { }

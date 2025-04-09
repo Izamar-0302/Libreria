@@ -136,6 +136,7 @@
     <Folder Include="Views\Metodopago\" />
     <Folder Include="Views\Planilla\" />
     <Folder Include="Views\Proveedor\" />
+    <Folder Include="Views\sur\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\bootstrap.css" />
@@ -393,6 +394,7 @@
     <Compile Include="Controllers\ProveedorController.cs" />
     <Compile Include="Controllers\SampleDataController.cs" />
     <Compile Include="Controllers\SucursalController.cs" />
+    <Compile Include="Controllers\surController.cs" />
     <Compile Include="Controllers\UbicacionController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
