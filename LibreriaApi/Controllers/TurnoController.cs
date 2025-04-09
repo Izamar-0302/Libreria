@@ -27,11 +27,11 @@ namespace LibreriaApi.Controllers
         public IHttpActionResult Get()
         {
             var query = from empleado1 in db.Empleados
-                        join turno in db.Turnos on empleado1.Id equals turno.Empleado.Id
+                        join turno in db.Turnos on empleado1.EmpleadoId equals turno.Empleado.EmpleadoId
                         select new
                         {
                             Idturnoo = turno.TurnoId,
-                            idEmpleado = empleado1.Id,
+                            idEmpleado = empleado1.EmpleadoId,
                             horaInicio = turno.Horainicio,
                             horaFinal = turno.Horafinal,
                             
@@ -55,12 +55,12 @@ namespace LibreriaApi.Controllers
         public IHttpActionResult Get(int id)
         {
             var query = from empleado1 in db.Empleados
-                        join turno in db.Turnos on empleado1.Id equals turno.Empleado.Id
+                        join turno in db.Turnos on empleado1.EmpleadoId equals turno.Empleado.EmpleadoId
                         where turno.TurnoId == id
                         select new
                         {
                             Idturnoo = turno.TurnoId,
-                            idEmpleado = empleado1.Id,
+                            idEmpleado = empleado1.EmpleadoId,
                             horaInicio = turno.Horainicio,
                             horaFinal = turno.Horafinal,
 

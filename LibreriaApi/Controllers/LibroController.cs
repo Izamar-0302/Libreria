@@ -29,20 +29,20 @@ namespace LibreriaApi.Controllers
         {
             var query = from autor1 in db.Autores
                         join libro in db.Libros on autor1.AutorId equals libro.Autor.AutorId
-                        join editorial1 in db.Editoriales on libro.Editorial.Id equals editorial1.Id
+                        join editorial1 in db.Editoriales on libro.Editorial.EditorialId equals editorial1.EditorialId
                         join ubicacion1 in db.Ubicaciones on libro.Ubicacion.UbicacionId equals ubicacion1.UbicacionId
-                        join proveedor1 in db.Proveedores on libro.Proveedor.Id equals proveedor1.Id
+                        join proveedor1 in db.Proveedores on libro.Proveedor.ProveedorId equals proveedor1.ProveedorId
                         select new
                         {
-                            IdLibro = libro.Id,
+                            IdLibro = libro.LibroId,
                             TituloLibro = libro.Titulo,
                             IdAutor = autor1.AutorId,
-                            Ideditorial = editorial1.Id,
+                            Ideditorial = editorial1.EditorialId,
                             Aniodepublicacion = libro.Aniopublicacion,
                             cantidad = libro.Cantidad,
                             precio = libro.Precio,
                             ubicacion = ubicacion1.UbicacionId,
-                            proveedor = proveedor1.Id
+                            proveedor = proveedor1.ProveedorId
                         };
 
             return Ok(query);
@@ -64,21 +64,21 @@ namespace LibreriaApi.Controllers
         {
             var query = from autor1 in db.Autores
                         join libro in db.Libros on autor1.AutorId equals libro.Autor.AutorId
-                        join editorial1 in db.Editoriales on libro.Editorial.Id equals editorial1.Id
+                        join editorial1 in db.Editoriales on libro.Editorial.EditorialId equals editorial1.EditorialId
                         join ubicacion1 in db.Ubicaciones on libro.Ubicacion.UbicacionId equals ubicacion1.UbicacionId
-                        join proveedor1 in db.Proveedores on libro.Proveedor.Id equals proveedor1.Id
-                        where libro.Id == id
+                        join proveedor1 in db.Proveedores on libro.Proveedor.ProveedorId equals proveedor1.ProveedorId
+                        where libro.LibroId == id
                         select new
                         {
-                            IdLibro = libro.Id,
+                            IdLibro = libro.LibroId,
                             TituloLibro = libro.Titulo,
                             IdAutor = autor1.AutorId,
-                            Ideditorial = editorial1.Id,
+                            Ideditorial = editorial1.EditorialId,
                             Aniodepublicacion = libro.Aniopublicacion,
                             cantidad = libro.Cantidad,
                             precio = libro.Precio,
                             ubicacion = ubicacion1.UbicacionId,
-                            proveedor = proveedor1.Id
+                            proveedor = proveedor1.ProveedorId
                         };
 
             return Ok(query);
@@ -107,7 +107,7 @@ namespace LibreriaApi.Controllers
 
             if (libro.Editorial != null)
             {
-                Editorial editoexistente = db.Editoriales.Find(libro.Editorial.Id);
+                Editorial editoexistente = db.Editoriales.Find(libro.Editorial.EditorialId);
                 libro.Editorial = editoexistente;
             }
 
@@ -121,7 +121,7 @@ namespace LibreriaApi.Controllers
 
             if (libro.Proveedor != null)
             {
-                Proveedor proveedorexistente = db.Proveedores.Find(libro.Proveedor.Id);
+                Proveedor proveedorexistente = db.Proveedores.Find(libro.Proveedor.ProveedorId);
                 libro.Proveedor = proveedorexistente;
             }
             db.Libros.Add(libro);
@@ -153,7 +153,7 @@ namespace LibreriaApi.Controllers
             
             if (libromodificar.Editorial != null)
             {
-                Editorial editoexistente = db.Editoriales.Find(libromodificar.Editorial.Id);
+                Editorial editoexistente = db.Editoriales.Find(libromodificar.Editorial.EditorialId);
                 libromodificar.Editorial = editoexistente;
             }
             
@@ -167,11 +167,11 @@ namespace LibreriaApi.Controllers
             
             if (libromodificar.Proveedor!= null)
             {
-                Proveedor proveedorexistente = db.Proveedores.Find(libromodificar.Proveedor.Id);
+                Proveedor proveedorexistente = db.Proveedores.Find(libromodificar.Proveedor.ProveedorId);
                 libromodificar.Proveedor = proveedorexistente;
             }
             
-            int id = libromodificar.Id;
+            int id = libromodificar.LibroId;
             db.Entry(libromodificar).State = EntityState.Modified;
             db.SaveChanges();
             return Ok(libromodificar);

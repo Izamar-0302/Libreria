@@ -28,13 +28,13 @@ namespace LibreriaApi.Controllers
         {
             var query = from empleado1 in db.Empleados
                         join deducciones in db.Deducciones
-                                on empleado1.Id equals deducciones.Empleado.Id
+                                on empleado1.EmpleadoId equals deducciones.Empleado.EmpleadoId
                         select new
                         {
-                            Iddeducciones = deducciones.Id,
+                            Iddeducciones = deducciones.DeduccionesId,
                             Tipodeducciones = deducciones.TipoDeduccion,
                             Montondeducciones = deducciones.Monto,
-                            IdEmpleado = empleado1.Id
+                            IdEmpleado = empleado1.EmpleadoId
                         };
 
             return Ok(query);
@@ -56,14 +56,14 @@ namespace LibreriaApi.Controllers
         {
             var query = from empleado1 in db.Empleados
                         join deducciones in db.Deducciones
-                              on empleado1.Id equals deducciones.Empleado.Id
-                        where deducciones.Id == id
+                              on empleado1.EmpleadoId equals deducciones.Empleado.EmpleadoId
+                        where deducciones.DeduccionesId == id
                         select new
                         {
-                            Iddeducciones = deducciones.Id,
+                            Iddeducciones = deducciones.DeduccionesId,
                             Tipodeducciones = deducciones.TipoDeduccion,
                             Montondeducciones = deducciones.Monto,
-                            IdEmpleado = empleado1.Id
+                            IdEmpleado = empleado1.EmpleadoId
                         };
             return Ok(query);
         }
@@ -112,7 +112,7 @@ namespace LibreriaApi.Controllers
                 return NotFound();
             }
             dedumodificar.Empleado = empleadoexistente;
-            int id = dedumodificar.Id;
+            int id = dedumodificar.DeduccionesId;
             db.Entry(dedumodificar).State = EntityState.Modified;
             db.SaveChanges();
             return Ok(dedumodificar);

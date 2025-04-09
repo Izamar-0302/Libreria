@@ -27,16 +27,16 @@ namespace LibreriaApi.Controllers
         public IHttpActionResult Get()
         {
             var query = from venta1 in db.Ventas
-                        join detalleVenta in db.Detalles_ventas on venta1.Id equals detalleVenta.Venta.Id
-                        join libro1 in db.Libros on detalleVenta.Libro.Id equals libro1.Id
+                        join detalleVenta in db.Detalles_ventas on venta1.VentaId equals detalleVenta.Venta.VentaId
+                        join libro1 in db.Libros on detalleVenta.Libro.LibroId equals libro1.LibroId
                         select new
                         {
-                            IddetalleVenta = detalleVenta.ID,
-                            IdVenta = venta1.Id,
+                            IddetalleVenta = detalleVenta.Id,
+                            IdVenta = venta1.VentaId,
                             preciounitario = detalleVenta.Preciounitario,
                             cantidad = detalleVenta.Cantidad,
                             subtotal = detalleVenta.Subtotal,
-                            Idlibro = libro1.Id
+                            Idlibro = libro1.LibroId
                         };
 
             return Ok(query);
@@ -57,17 +57,17 @@ namespace LibreriaApi.Controllers
         public IHttpActionResult Get(int id)
         {
             var query = from venta1 in db.Ventas
-                        join detalleVenta in db.Detalles_ventas on venta1.Id equals detalleVenta.Venta.Id
-                        join libro1 in db.Libros on detalleVenta.Libro.Id equals libro1.Id
-                        where detalleVenta.ID == id
+                        join detalleVenta in db.Detalles_ventas on venta1.VentaId equals detalleVenta.Venta.VentaId
+                        join libro1 in db.Libros on detalleVenta.Libro.LibroId equals libro1.LibroId
+                        where detalleVenta.Id== id
                         select new
                         {
-                            IddetalleVenta = detalleVenta.ID,
-                            IdVenta = venta1.Id,
+                            IddetalleVenta = detalleVenta.Id,
+                            IdVenta = venta1.VentaId,
                             preciounitario = detalleVenta.Preciounitario,
                             cantidad = detalleVenta.Cantidad,
                             subtotal = detalleVenta.Subtotal,
-                            Idlibro = libro1.Id
+                            Idlibro = libro1.LibroId
                         };
 
             return Ok(query);
@@ -128,7 +128,7 @@ namespace LibreriaApi.Controllers
                 return NotFound();
             }
             detalleventamodificar.Venta = ventaexistente;
-            int id = detalleventamodificar.ID;
+            int id = detalleventamodificar.Id;
             db.Entry(detalleventamodificar).State = EntityState.Modified;
             db.SaveChanges();
             return Ok(detalleventamodificar);

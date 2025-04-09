@@ -30,5 +30,54 @@ namespace LibreriaApi.Models
         public DbSet<Ubicacion> Ubicaciones { get; set; }
         public DbSet<Venta> Ventas { get; set; }
         public DbSet<Cargo> Cargo { get; set; }
+
+        protected override void OnModelCreating(DbModelBuilder modelBuilder)
+        {
+            modelBuilder.Entity<Pedido>()
+                .HasRequired(v => v.Proveedor)
+                .WithMany()
+                .HasForeignKey(v => v.ProveedorId)
+                .WillCascadeOnDelete(false); // 👈 Aquí se desactiva el cascade
+
+            modelBuilder.Entity<Venta>()
+                .HasRequired(v => v.Libro)
+                .WithMany()
+                .HasForeignKey(v => v.LibroId)
+                .WillCascadeOnDelete(false);
+
+            modelBuilder.Entity<Venta>()
+                .HasRequired(v => v.Sucursal)
+                .WithMany()
+                .HasForeignKey(v => v.SucursalId)
+                .WillCascadeOnDelete(false);
+
+            modelBuilder.Entity<Empleado_planilla>()
+                .HasRequired(v => v.Deduccion)
+                .WithMany()
+                .HasForeignKey(v => v.DeduccionesId)
+                .WillCascadeOnDelete(false);
+
+            modelBuilder.Entity<Empleado_planilla>()
+                .HasRequired(v => v.Empleado)
+                .WithMany()
+                .HasForeignKey(v => v.EmpleadoId)
+                .WillCascadeOnDelete(false);
+
+            modelBuilder.Entity<Empleado>()
+                .HasRequired(v => v.Sucursal)
+                .WithMany()
+                .HasForeignKey(v => v.SucursalId)
+                .WillCascadeOnDelete(false);
+
+            modelBuilder.Entity<Empleado>()
+               .HasRequired(v => v.Cargo)
+               .WithMany()
+               .HasForeignKey(v => v.CargoId)
+               .WillCascadeOnDelete(false);
+        }
+ 
     }
+
+
+
 }

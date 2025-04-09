@@ -81,7 +81,7 @@ namespace LibreriaApi.Controllers
         [Route("api/PutLector")]
         public IHttpActionResult Put(int id,Lector lectormodificado)
         {
-            id = lectormodificado.Id;
+            id = lectormodificado.LectorId;
             Lector lector = db.Lectores.Find(id);
             if (lector == null)
             {

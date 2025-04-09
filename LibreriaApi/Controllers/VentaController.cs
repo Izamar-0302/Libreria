@@ -27,22 +27,22 @@ namespace LibreriaApi.Controllers
         public IHttpActionResult Get()
         {
             var query = from lector1 in db.Lectores
-                        join venta in db.Ventas on lector1.Id equals venta.Lector.Id
-                        join empleado1 in db.Empleados on venta.Empleado.Id equals empleado1.Id
-                        join pedido1 in db.Pedidos on venta.Pedido.Id equals pedido1.Id
-                        join libro1 in db.Libros on venta.Libro.Id equals libro1.Id
-                        join metodopago1 in db.MetodosPagos on venta.MetodoPago.Id equals metodopago1.Id
+                        join venta in db.Ventas on lector1.LectorId equals venta.Lector.LectorId
+                        join empleado1 in db.Empleados on venta.Empleado.EmpleadoId equals empleado1.EmpleadoId
+                        join pedido1 in db.Pedidos on venta.Pedido.PedidoId equals pedido1.PedidoId
+                        join libro1 in db.Libros on venta.Libro.LibroId equals libro1.LibroId
+                        join metodopago1 in db.MetodosPagos on venta.MetodoPago.MetodopagoId equals metodopago1.MetodopagoId
                         join sucursal1 in db.Sucursales on venta.Sucursal.SucursalId equals sucursal1.SucursalId
 
                         select new
                         {
-                            Idventa = venta.Id,
+                            Idventa = venta.VentaId,
                             fechadeventa = venta.Fechadeventa,
-                            IdLector = lector1.Id,
-                            IdEmpleado = empleado1.Id,
-                            IdPedido = pedido1.Id,
-                            IdLibro = libro1.Id,
-                            IdMetododepago = metodopago1.Id,
+                            IdLector = lector1.LectorId,
+                            IdEmpleado = empleado1.EmpleadoId,
+                            IdPedido = pedido1.PedidoId,
+                            IdLibro = libro1.LibroId,
+                            IdMetododepago = metodopago1.MetodopagoId,
                             IdSucursal = sucursal1.SucursalId,
                             descripcion = venta.Descripcion,
                             Cantidad = venta.Cantidadventa,
@@ -69,22 +69,22 @@ namespace LibreriaApi.Controllers
         public IHttpActionResult Get(int id)
         {
             var query = from lector1 in db.Lectores
-                        join venta in db.Ventas on lector1.Id equals venta.Lector.Id
-                        join empleado1 in db.Empleados on venta.Empleado.Id equals empleado1.Id
-                        join pedido1 in db.Pedidos on venta.Pedido.Id equals pedido1.Id
-                        join libro1 in db.Libros on venta.Libro.Id equals libro1.Id
-                        join metodopago1 in db.MetodosPagos on venta.MetodoPago.Id equals metodopago1.Id
+                        join venta in db.Ventas on lector1.LectorId equals venta.Lector.LectorId
+                        join empleado1 in db.Empleados on venta.Empleado.EmpleadoId equals empleado1.EmpleadoId
+                        join pedido1 in db.Pedidos on venta.Pedido.PedidoId equals pedido1.PedidoId
+                        join libro1 in db.Libros on venta.Libro.LibroId equals libro1.LibroId
+                        join metodopago1 in db.MetodosPagos on venta.MetodoPago.MetodopagoId equals metodopago1.MetodopagoId
                         join sucursal1 in db.Sucursales on venta.Sucursal.SucursalId equals sucursal1.SucursalId
-                        where venta.Id == id
+                        where venta.VentaId == id
                         select new
                         {
-                            Idventa = venta.Id,
+                            Idventa = venta.VentaId,
                             fechadeventa = venta.Fechadeventa,
-                            IdLector = lector1.Id,
-                            IdEmpleado = empleado1.Id,
-                            IdPedido = pedido1.Id,
-                            IdLibro = libro1.Id,
-                            IdMetododepago = metodopago1.Id,
+                            IdLector = lector1.LectorId,
+                            IdEmpleado = empleado1.EmpleadoId,
+                            IdPedido = pedido1.PedidoId,
+                            IdLibro = libro1.LibroId,
+                            IdMetododepago = metodopago1.MetodopagoId,
                             IdSucursal = sucursal1.SucursalId,
                             descripcion = venta.Descripcion,
                             Cantidad = venta.Cantidadventa,
@@ -194,7 +194,7 @@ namespace LibreriaApi.Controllers
             ventamodificar.MetodoPago = mdpexistente;
             
             ventamodificar.Montototal = ((libroexistente.Precio * ventamodificar.Cantidadventa) - ventamodificar.Descuento + ventamodificar.Impuesto);
-            int id = ventamodificar.Id;
+            int id = ventamodificar.VentaId;
             db.Entry(ventamodificar).State = EntityState.Modified;
             db.SaveChanges();
             return Ok(ventamodificar);

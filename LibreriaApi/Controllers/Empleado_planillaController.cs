@@ -27,9 +27,9 @@ namespace LibreriaApi.Controllers
         public IHttpActionResult Get()
         {
             var query = from empleado1 in db.Empleados
-                        join empleado_planilla in db.Empleados_Planillas on empleado1.Id equals empleado_planilla.Empleado.Id
-                        join bonificaciones1 in db.Bonificaciones on empleado_planilla.Bono.Id equals bonificaciones1.Id
-                        join deducciones1 in db.Deducciones on empleado_planilla.Deduccion.Id equals deducciones1.Id
+                        join empleado_planilla in db.Empleados_Planillas on empleado1.EmpleadoId equals empleado_planilla.Empleado.EmpleadoId
+                        join bonificaciones1 in db.Bonificaciones on empleado_planilla.Bono.BonificacionesId equals bonificaciones1.BonificacionesId
+                        join deducciones1 in db.Deducciones on empleado_planilla.Deduccion.DeduccionesId equals deducciones1.DeduccionesId
                         
                         select new
                         {
@@ -61,9 +61,9 @@ namespace LibreriaApi.Controllers
         public IHttpActionResult Get(int id)
         {
             var query = from empleado1 in db.Empleados
-                        join empleado_planilla in db.Empleados_Planillas on empleado1.Id equals empleado_planilla.Empleado.Id
-                        join bonificaciones1 in db.Bonificaciones on empleado_planilla.Bono.Id equals bonificaciones1.Id
-                        join deducciones1 in db.Deducciones on empleado_planilla.Deduccion.Id equals deducciones1.Id
+                        join empleado_planilla in db.Empleados_Planillas on empleado1.EmpleadoId equals empleado_planilla.Empleado.EmpleadoId
+                        join bonificaciones1 in db.Bonificaciones on empleado_planilla.Bono.BonificacionesId equals bonificaciones1.BonificacionesId
+                        join deducciones1 in db.Deducciones on empleado_planilla.Deduccion.DeduccionesId equals deducciones1.DeduccionesId
                         where empleado_planilla.Id == id
                         select new
                         {

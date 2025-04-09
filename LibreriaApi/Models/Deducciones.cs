@@ -7,9 +7,9 @@ namespace LibreriaApi.Models
 {
     public class Deducciones
     {
-        public int Id { get; set; }
+        public int DeduccionesId { get; set; }
         public Empleado Empleado { get; set; }
-        
+        public int EmpleadoId { get; set; }
         public string TipoDeduccion { get; set; }
         public double Monto { get; set; }
         public Deducciones() { }

@@ -27,14 +27,14 @@ namespace LibreriaApi.Controllers
         public IHttpActionResult Get()
         {
             var query = from pedido1 in db.Pedidos
-                        join detallepedido in db.Detalles_pedidos on pedido1.Id equals detallepedido.pedido.Id
-                        join libro1 in db.Libros on detallepedido.Libro.Id equals libro1.Id
+                        join detallepedido in db.Detalles_pedidos on pedido1.PedidoId equals detallepedido.pedido.PedidoId
+                        join libro1 in db.Libros on detallepedido.Libro.LibroId equals libro1.LibroId
                         select new
                         {
-                            IdBonificacion = detallepedido.ID,
-                            TipoBonificacion = detallepedido.pedido,
-                            MontonBonificacion = detallepedido.Libro,
-                            IdEmpleado = detallepedido.Cantidad,
+                            IdDetallepedido = detallepedido.Id,
+                            Pedido = detallepedido.pedido,
+                            libro = detallepedido.Libro,
+                            cantidad = detallepedido.Cantidad,
                             detallepedido.PrecioUnitario,
                             detallepedido.Subtotal
                         };
@@ -57,15 +57,15 @@ namespace LibreriaApi.Controllers
         public IHttpActionResult Get(int id)
         {
             var query = from pedido1 in db.Pedidos
-                        join detallepedido in db.Detalles_pedidos on pedido1.Id equals detallepedido.pedido.Id
-                        join libro1 in db.Libros on detallepedido.Libro.Id equals libro1.Id
-                        where detallepedido.ID == id
+                        join detallepedido in db.Detalles_pedidos on pedido1.PedidoId equals detallepedido.pedido.PedidoId
+                        join libro1 in db.Libros on detallepedido.Libro.LibroId equals libro1.LibroId
+                        where detallepedido.Id == id
                         select new
                         {
-                            IdBonificacion = detallepedido.ID,
-                            TipoBonificacion = detallepedido.pedido,
-                            MontonBonificacion = detallepedido.Libro,
-                            IdEmpleado = detallepedido.Cantidad,
+                            IdDetallepedido = detallepedido.Id,
+                            Pedido = detallepedido.pedido,
+                            libro = detallepedido.Libro,
+                            cantidad = detallepedido.Cantidad,
                             detallepedido.PrecioUnitario,
                             detallepedido.Subtotal
                         };
@@ -128,7 +128,7 @@ namespace LibreriaApi.Controllers
                 return NotFound();
             }
             detallepedidomodificado.pedido = pedidoexistente;
-            int id = detallepedidomodificado.ID;
+            int id = detallepedidomodificado.Id;
             db.Entry(detallepedidomodificado).State = EntityState.Modified;
             db.SaveChanges();
             return Ok(detallepedidomodificado);

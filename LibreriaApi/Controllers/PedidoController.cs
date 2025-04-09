@@ -26,14 +26,14 @@ namespace LibreriaApi.Controllers
         public IHttpActionResult Get()
         {
             var query = from proveedor1 in db.Proveedores
-                        join pedido in db.Pedidos on proveedor1.Id equals pedido.Proveedor.Id
+                        join pedido in db.Pedidos on proveedor1.ProveedorId equals pedido.Proveedor.ProveedorId
                         select new
                         {
-                            Idpedido = pedido.Id,
+                            Idpedido = pedido.PedidoId,
                             fechaentrega = pedido.Fechaentrega,
                             fechapedido = pedido.Fechapedido,
                             estado = pedido.Estado,
-                            idproveedor = proveedor1.Id
+                            idproveedor = proveedor1.ProveedorId
                         };
 
             return Ok(query);
@@ -54,15 +54,15 @@ namespace LibreriaApi.Controllers
         public IHttpActionResult Get(int id)
         {
             var query = from proveedor1 in db.Proveedores
-                        join pedido in db.Pedidos on proveedor1.Id equals pedido.Proveedor.Id
-                        where pedido.Id  == id
+                        join pedido in db.Pedidos on proveedor1.ProveedorId equals pedido.Proveedor.ProveedorId
+                        where pedido.PedidoId  == id
                         select new
                         {
-                            Idpedido = pedido.Id,
+                            Idpedido = pedido.PedidoId,
                             fechaentrega = pedido.Fechaentrega,
                             fechapedido = pedido.Fechapedido,
                             estado = pedido.Estado,
-                            idproveedor = proveedor1.Id
+                            idproveedor = proveedor1.ProveedorId
                         };
 
             return Ok(query);
@@ -113,7 +113,7 @@ namespace LibreriaApi.Controllers
                 return NotFound();
             }
             pedidomodificar.Proveedor = proveedorexistente;
-            int id = pedidomodificar.Id;
+            int id = pedidomodificar.PedidoId;
             db.Entry(pedidomodificar).State = EntityState.Modified;
             db.SaveChanges();
             return Ok(pedidomodificar);

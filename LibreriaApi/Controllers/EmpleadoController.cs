@@ -48,10 +48,10 @@ namespace LibreriaApi.Controllers
             var query = from cargo1 in db.Cargo
                         join empleado in db.Empleados on cargo1.CargoId equals empleado.Cargo.CargoId
                         join sucursal1 in db.Sucursales on empleado.Sucursal.SucursalId equals sucursal1.SucursalId
-                        where empleado.Id == id
+                        where empleado.EmpleadoId == id
                         select new
                         {
-                            IdEmpleados = empleado.Id,
+                            IdEmpleados = empleado.EmpleadoId,
                             TipoBonificacion = empleado.Nombre,
                             MontonBonificacion = empleado.Apellidos,
                             IdEmpleado = empleado.Direccion,
@@ -77,22 +77,21 @@ namespace LibreriaApi.Controllers
         [HttpPost]
         [SwaggerOperation("PostEmpleado")]
         [Route("api/PostEmpleado")]
-        public IHttpActionResult Post(Empleado empleado, int idcargo, int idsucursal)
+        public IHttpActionResult Post(Empleado empleado)
         {
-             Cargo cargoexistente = db.Cargo.Find(idcargo);
-            if (cargoexistente == null)
+            if (empleado.Sucursal != null)
             {
-                return NotFound();
+                Sucursal sucursal = db.Sucursales.Find(empleado.Sucursal.SucursalId);
+                empleado.Sucursal = sucursal;
             }
-            empleado.Cargo = cargoexistente;
-            Sucursal sucursalexistente = db.Sucursales.Find(idsucursal);
-            if (sucursalexistente == null)
+            if (empleado.Cargo != null)
             {
-                return NotFound();
+                Cargo cargo = db.Cargo.Find(empleado.Cargo.CargoId);
+                empleado.Cargo = cargo;
             }
-            empleado.Sucursal = sucursalexistente;
             db.Empleados.Add(empleado);
             db.SaveChanges();
+
             return Ok(empleado);
         }
 
@@ -121,7 +120,7 @@ namespace LibreriaApi.Controllers
                 return NotFound();
             }
             empleadomodificar.Sucursal = sucursalexistente;
-            int id = empleadomodificar.Id;
+            int id = empleadomodificar.EmpleadoId;
             db.Entry(empleadomodificar).State = EntityState.Modified;
             db.SaveChanges();
             return Ok(empleadomodificar);

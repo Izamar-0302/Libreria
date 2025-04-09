@@ -28,13 +28,13 @@ namespace LibreriaApi.Controllers
         {
             var query = from empleado1 in db.Empleados
                         join bonificaciones in db.Bonificaciones
-                                on empleado1.Id equals bonificaciones.Empleado.Id
+                                on empleado1.EmpleadoId equals bonificaciones.Empleado.EmpleadoId
                         select new
                         {
-                            IdBonificacion = bonificaciones.Id,
+                            IdBonificacion = bonificaciones.BonificacionesId,
                             TipoBonificacion = bonificaciones.Tipobonificacion,
                             MontonBonificacion = bonificaciones.Monto,
-                            IdEmpleado = empleado1.Id
+                            IdEmpleado = empleado1.EmpleadoId
                         };
 
            return Ok(query);
@@ -56,14 +56,14 @@ namespace LibreriaApi.Controllers
         {
             var query = from empleado1 in db.Empleados
                         join bonificacion in db.Bonificaciones
-                              on empleado1.Id equals bonificacion.Empleado.Id
-                        where bonificacion.Id==id
+                              on empleado1.EmpleadoId equals bonificacion.Empleado.EmpleadoId
+                        where bonificacion.BonificacionesId==id
                         select new
                         {
-                            IdBonificacion = bonificacion.Id,
+                            IdBonificacion = bonificacion.BonificacionesId,
                             TipoBonificacion = bonificacion.Tipobonificacion,
                             MontonBonificacion = bonificacion.Monto,
-                            IdEmpleado = empleado1.Id
+                            IdEmpleado = empleado1.EmpleadoId
                         };
             return Ok(query);
         }
@@ -83,7 +83,7 @@ namespace LibreriaApi.Controllers
         {
             if (bonificacion.Empleado != null)
             {
-                Empleado empleadoexistente = db.Empleados.Find(bonificacion.Empleado.Id);
+                Empleado empleadoexistente = db.Empleados.Find(bonificacion.Empleado.EmpleadoId);
                 bonificacion.Empleado = empleadoexistente;
             }
             db.Bonificaciones.Add(bonificacion);
@@ -108,11 +108,11 @@ namespace LibreriaApi.Controllers
             
             if (bonimodificar.Empleado != null)
             {
-                Empleado empleadoexistente = db.Empleados.Find(bonimodificar.Empleado.Id);
+                Empleado empleadoexistente = db.Empleados.Find(bonimodificar.Empleado.EmpleadoId);
                 bonimodificar.Empleado = empleadoexistente;
             }
             
-            int id = bonimodificar.Id;
+            int id = bonimodificar.BonificacionesId;
             db.Entry(bonimodificar).State = EntityState.Modified;
             db.SaveChanges();
             return Ok(bonimodificar);

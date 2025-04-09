@@ -7,7 +7,7 @@ namespace LibreriaApi.Models
 {
     public class Planilla
     {
-        public int Id { get; set; }
+        public int PlanillaId { get; set; }
 
         public DateTime Fechapago { get; set; }
         public Planilla() { }

@@ -86,7 +86,7 @@ namespace DevExtremeLibreria.Controllers
 
             var httpContent = new StringContent(values, System.Text.Encoding.UTF8, "application/json");
 
-            var url = "https://localhost:44370/api/PostEmpleado?idcargo=2&idsucursal=1 ";
+            var url = "https://localhost:44370/api/PostEmpleado ";
             var handler = new HttpClientHandler();
             handler.ServerCertificateCustomValidationCallback = (message, cert, chain, errors) => true;
             using (var client = new HttpClient(handler))
