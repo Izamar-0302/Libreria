@@ -5,6 +5,7 @@
 
 <h2>Libro</h2>
 
+
 @(Html.DevExtreme().DataGrid<DevExtremeLibreria.Models.Libro>()
     .DataSource(ds => ds.WebApi()
         .Controller("Libro")
@@ -52,6 +53,7 @@
             .ValueExpr("ProveedorId")
             .DisplayExpr("Nombre")
         );
+
     })
     .Editing(e => e
         .AllowAdding(true)
