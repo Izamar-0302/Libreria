@@ -7,6 +7,6 @@ namespace DevExtremeLibreria.Models
 {
     public class Lector: Persona
     {
-        public int LectorId { get; set; }
+        public int Id { get; set; }
     }
 }

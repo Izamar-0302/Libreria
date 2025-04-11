@@ -285,7 +285,7 @@
     <Content Include="fonts\fontawesome-webfont.woff" />
     <Content Include="fonts\fontawesome-webfont.ttf" />
     <Content Include="fonts\fontawesome-webfont.eot" />
-    <Content Include="Content\Manual\Manual_Usuario.pdf" />
+    <Content Include="Content\Manual\Curiosidad.pdf" />
     <None Include="Scripts\jquery-3.6.3.intellisense.js" />
     <Content Include="Scripts\jquery-3.6.3.js" />
     <Content Include="Scripts\jquery-3.6.3.min.js" />
@@ -441,6 +441,7 @@
     <Compile Include="Controllers\SucursalController.cs" />
     <Compile Include="Controllers\surController.cs" />
     <Compile Include="Controllers\UbicacionController.cs" />
+    <Compile Include="Controllers\VentaController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
