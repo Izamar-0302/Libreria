@@ -7,7 +7,7 @@ namespace DevExtremeLibreria.Models
 {
     public class Libro
     {
-        public int Id { get; set; }
+        public int LibroId { get; set; }
         public string Titulo { get; set; }
         public int AutorId {get; set; }
         public int EditorialId { get; set; }

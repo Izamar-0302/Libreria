@@ -12,12 +12,12 @@
         .InsertAction("Post")
         .UpdateAction("Put")
         .DeleteAction("Delete")
-        .Key("Id")
+        .Key("EditorialId")
     )
     .RemoteOperations(true)
     .Columns(columns => {
 
-        columns.AddFor(m => m.Id);
+        columns.AddFor(m => m.EditorialId);
 
         columns.AddFor(m => m.Nombre);
 
@@ -28,6 +28,7 @@
         columns.AddFor(m => m.Catalogo);
     })
     .Editing(e => e
+     .Mode(GridEditMode.Popup)
         .AllowAdding(true)
         .AllowUpdating(true)
         .AllowDeleting(true)

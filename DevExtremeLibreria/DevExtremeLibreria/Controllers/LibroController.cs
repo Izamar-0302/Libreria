@@ -122,7 +122,7 @@ namespace DevExtremeLibreria.Controllers
             handler.ServerCertificateCustomValidationCallback = (message, cert, chain, errors) => true;
             using (var client = new HttpClient(handler))
             {
-                var respuestaAutor = await client.DeleteAsync(apiUrlDelLibro);
+                var respuestalibro = await client.DeleteAsync(apiUrlDelLibro);
             }
             return Request.CreateResponse(HttpStatusCode.OK);
         }

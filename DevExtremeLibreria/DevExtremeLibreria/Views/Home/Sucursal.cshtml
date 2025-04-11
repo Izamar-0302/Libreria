@@ -36,6 +36,7 @@
         columns.AddFor(m => m.Horasalida);
     })
     .Editing(e => e
+     .Mode(GridEditMode.Popup)
         .AllowAdding(true)
         .AllowUpdating(true)
         .AllowDeleting(true)

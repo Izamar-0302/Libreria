@@ -12,7 +12,7 @@
         .InsertAction("Post")
         .UpdateAction("Put")
         .DeleteAction("Delete")
-        .Key("Id")
+        .Key("LectorId")
     )
     .RemoteOperations(true)
     .Paging(p => p.PageSize(10))
@@ -21,7 +21,7 @@
     .SearchPanel(f => f.Visible(true))
     .Columns(columns => {
 
-        columns.AddFor(m => m.Id);
+        columns.AddFor(m => m.LectorId);
 
         columns.AddFor(m => m.Nombre);
 
@@ -34,6 +34,7 @@
         columns.AddFor(m => m.Direccion);
     })
     .Editing(e => e
+     .Mode(GridEditMode.Popup)
         .AllowAdding(true)
         .AllowUpdating(true)
         .AllowDeleting(true)

@@ -13,12 +13,12 @@
         .InsertAction("Post")
         .UpdateAction("Put")
         .DeleteAction("Delete")
-        .Key("Id")
+        .Key("LibroId")
     )
     .RemoteOperations(true)
     .Columns(columns => {
 
-        columns.AddFor(m => m.Id);
+        columns.AddFor(m => m.LibroId);
 
         columns.AddFor(m => m.Titulo);
 
@@ -29,7 +29,7 @@
         );
 
         columns.AddFor(m => m.EditorialId).Lookup(lookup => lookup
-            .DataSource(ds => ds.WebApi().Controller("Editorial").LoadAction("GetEditoriales").Key("Editorialid"))
+            .DataSource(ds => ds.WebApi().Controller("Editorial").LoadAction("GetEditoriales").Key("EditorialId"))
             .ValueExpr("EditorialId")
             .DisplayExpr("Nombre")
         );
@@ -56,6 +56,7 @@
 
     })
     .Editing(e => e
+     .Mode(GridEditMode.Popup)
         .AllowAdding(true)
         .AllowUpdating(true)
         .AllowDeleting(true)
