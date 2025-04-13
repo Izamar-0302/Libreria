@@ -7,7 +7,7 @@ namespace DevExtremeLibreria.Models
 {
     public class MetodoPago
     {
-        public int Id { get; set; }
+        public int MetodopagoId { get; set; }
         public string Metodo { get; set; }
         public DateTime Fechapago { get; set; }
     }

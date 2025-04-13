@@ -13,7 +13,7 @@ namespace LibreriaApi.Models
         public string Correo { get; set; }
 
         public string Telefono { get; set; }
-        public virtual ICollection<Pedido> Pedidoes { get; set; }
+        
         public Proveedor() { }
     }
 }

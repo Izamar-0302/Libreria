@@ -8,6 +8,7 @@ using System.Linq;
 using System.Net;
 using System.Net.Http;
 using System.Net.Http.Formatting;
+using System.Net.Http.Headers;
 using System.Threading.Tasks;
 using System.Web.Http;
 
@@ -50,31 +51,45 @@ namespace DevExtremeLibreria.Controllers
         [HttpPut]
         public async Task<HttpResponseMessage> Put(FormDataCollection form)
         {
-            //Parámetros del form
-            var key = Convert.ToInt32(form.Get("key")); //llave que estoy modificando
-            var values = form.Get("values"); //Los valores que yo modifiqué en formato JSON
+            // Obtener los parámetros del formulario
+            var key = Convert.ToInt32(form.Get("key")); // llave que estoy modificando
+            var values = form.Get("values"); // Los valores modificados en formato JSON
 
-            var apiUrlGetEmpleado = "https://localhost:44370/api/GetEmpleado" + key;
-            var respuestaEmpleado = await GetAsync(apiUrlGetEmpleado = "https://localhost:44370/api/GetEmpleado" + key);
-            Empleado empleado = JsonConvert.DeserializeObject<Empleado>(respuestaEmpleado);
+            // Obtener el autor desde la API
+            var apiUrlGetEmpleado = $"https://localhost:44370/api/GetEmpleado?id={key}";
+            var respuestaEmpleado = await GetAsync(apiUrlGetEmpleado);
+            if (string.IsNullOrEmpty(respuestaEmpleado))
+            {
+                return Request.CreateErrorResponse(HttpStatusCode.NotFound, "El Empleado no fue encontrado.");
+            }
 
-            JsonConvert.PopulateObject(values, empleado);
+            Empleado Empleado = JsonConvert.DeserializeObject<Empleado>(respuestaEmpleado);
 
-            string jsonString = JsonConvert.SerializeObject(empleado);
+            // Asignar los valores del formulario al objeto 
+            JsonConvert.PopulateObject(values, Empleado);
+
+            // Serializar el objeto actualizado
+            string jsonString = JsonConvert.SerializeObject(Empleado);
             var httpContent = new StringContent(jsonString, System.Text.Encoding.UTF8, "application/json");
 
+            // Realizar la solicitud PUT a la API
             var handler = new HttpClientHandler();
             handler.ServerCertificateCustomValidationCallback = (message, cert, chain, errors) => true;
             using (var client = new HttpClient(handler))
             {
-                var url = "https://localhost:44370/api/PutEmpleado/" + key;
+                client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json")); // Solicitar J
+                var url = $"https://localhost:44370/api/PutEmpleado?iD={key}";
                 var response = await client.PutAsync(url, httpContent);
 
-                var result = response.Content.ReadAsStringAsync().Result;
+                if (!response.IsSuccessStatusCode)
+                {
+                    var error = await response.Content.ReadAsStringAsync();
+                    return Request.CreateErrorResponse(response.StatusCode, error);
+                }
+
+                var result = await response.Content.ReadAsStringAsync();
+                return Request.CreateResponse(HttpStatusCode.OK, result);
             }
-
-
-            return Request.CreateResponse(HttpStatusCode.OK);
         }
 
 
@@ -104,12 +119,12 @@ namespace DevExtremeLibreria.Controllers
         {
             var key = Convert.ToInt32(form.Get("key"));
 
-            var apiUrlDelempleado = "https://localhost:44370/api/DeleteEmpleado/" + key;
+            var apiUrlDelempleado = $"https://localhost:44370/api/DeleteEmpleado?id={key}";
             var handler = new HttpClientHandler();
             handler.ServerCertificateCustomValidationCallback = (message, cert, chain, errors) => true;
             using (var client = new HttpClient(handler))
             {
-                var respuestaempleado = await client.DeleteAsync(apiUrlDelempleado);
+                var respuestaEmpleado = await client.DeleteAsync(apiUrlDelempleado);
             }
             return Request.CreateResponse(HttpStatusCode.OK);
         }

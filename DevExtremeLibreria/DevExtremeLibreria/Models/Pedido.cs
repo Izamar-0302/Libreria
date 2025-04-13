@@ -9,6 +9,7 @@ namespace DevExtremeLibreria.Models
     {
         public int Id { get; set; }
         public Proveedor Proveedor { get; set; }
+        public int ProveedorId { get; set; }
         public DateTime Fechapedido { get; set; }
         public DateTime Fechaentrega { get; set; }
         public string Estado { get; set; }

@@ -106,24 +106,31 @@ namespace LibreriaApi.Controllers
         [HttpPut]
         [SwaggerOperation("PutEmpleado")]
         [Route("api/PutEmpleado")]
-        public IHttpActionResult Put(Empleado empleadomodificar, int idcargo, int idsucursal)
+        public IHttpActionResult Put(int iD,Empleado empleadomodificar)
         {
-            Cargo cargoexistente = db.Cargo.Find(idcargo);
-            if (cargoexistente == null)
+            Empleado empleado = db.Empleados.Find(iD);
+             if (empleadomodificar.SucursalId != null)
             {
-                return NotFound();
+                Sucursal sucursal = db.Sucursales.Find(empleadomodificar.Sucursal.SucursalId);
+                empleado.Sucursal = sucursal;
             }
-            empleadomodificar.Cargo = cargoexistente;
-            Sucursal sucursalexistente = db.Sucursales.Find(idsucursal);
-            if (sucursalexistente == null)
+            if (empleado.Cargo != null)
             {
-                return NotFound();
+                Cargo cargo = db.Cargo.Find(empleadomodificar.Cargo.CargoId);
+                empleado.Cargo = cargo;
             }
-            empleadomodificar.Sucursal = sucursalexistente;
-            int id = empleadomodificar.EmpleadoId;
-            db.Entry(empleadomodificar).State = EntityState.Modified;
+
+            //empleado.EmpleadoId= empleadomodificar.EmpleadoId;
+            empleado.Salario = empleadomodificar.Salario;
+            empleado.Apellidos = empleadomodificar.Apellidos;
+            empleado.Nombre = empleadomodificar.Nombre;
+            empleado.Correo = empleadomodificar.Correo;
+            empleado.Direccion = empleadomodificar.Direccion;
+            empleado.Telefono = empleadomodificar.Telefono;
+
+
             db.SaveChanges();
-            return Ok(empleadomodificar);
+            return Ok(empleado);
         }
 
         // DELETE: api/Empleado/5

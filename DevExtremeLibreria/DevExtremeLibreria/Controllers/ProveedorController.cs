@@ -52,31 +52,44 @@ namespace DevExtremeLibreria.Controllers
         [HttpPut]
         public async Task<HttpResponseMessage> Put(FormDataCollection form)
         {
-            //Parámetros del form
-            var key = Convert.ToInt32(form.Get("key")); //llave que estoy modificando
-            var values = form.Get("values"); //Los valores que yo modifiqué en formato JSON
+            // Obtener los parámetros del formulario
+            var key = Convert.ToInt32(form.Get("key")); // llave que estoy modificando
+            var values = form.Get("values"); // Los valores modificados en formato JSON
 
-            var apiUrlGetProveedor = "https://localhost:44370/api/GetProveedor" + key;
-            var respuestaProveedor = await GetAsync(apiUrlGetProveedor = "https://localhost:44370/api/GetProveedor" + key);
-            Proveedor proveedor = JsonConvert.DeserializeObject<Proveedor>(respuestaProveedor);
+            // Obtener el autor desde la API
+            var apiUrlGetProveedor = $"https://localhost:44370/api/GetProveedor?id={key}";
+            var respuestaProveedor = await GetAsync(apiUrlGetProveedor);
+            if (string.IsNullOrEmpty(respuestaProveedor))
+            {
+                return Request.CreateErrorResponse(HttpStatusCode.NotFound, "El Proveedor no fue encontrado.");
+            }
 
-            JsonConvert.PopulateObject(values, proveedor);
+            Proveedor Proveedor = JsonConvert.DeserializeObject<Proveedor>(respuestaProveedor);
 
-            string jsonString = JsonConvert.SerializeObject(proveedor);
+            // Asignar los valores del formulario al objeto autor
+            JsonConvert.PopulateObject(values, Proveedor);
+
+            // Serializar el objeto actualizado
+            string jsonString = JsonConvert.SerializeObject(Proveedor);
             var httpContent = new StringContent(jsonString, System.Text.Encoding.UTF8, "application/json");
 
+            // Realizar la solicitud PUT a la API
             var handler = new HttpClientHandler();
             handler.ServerCertificateCustomValidationCallback = (message, cert, chain, errors) => true;
             using (var client = new HttpClient(handler))
             {
-                var url = "https://localhost:44370/api/PutProveedor/" + key;
+                var url = $"https://localhost:44370/api/PutProveedor?id={key}";
                 var response = await client.PutAsync(url, httpContent);
 
-                var result = response.Content.ReadAsStringAsync().Result;
+                if (!response.IsSuccessStatusCode)
+                {
+                    var error = await response.Content.ReadAsStringAsync();
+                    return Request.CreateErrorResponse(response.StatusCode, error);
+                }
+
+                var result = await response.Content.ReadAsStringAsync();
+                return Request.CreateResponse(HttpStatusCode.OK, result);
             }
-
-
-            return Request.CreateResponse(HttpStatusCode.OK);
         }
 
 
@@ -106,7 +119,7 @@ namespace DevExtremeLibreria.Controllers
         {
             var key = Convert.ToInt32(form.Get("key"));
 
-            var apiUrlDelProveedor = "https://localhost:44370/api/DeleteProveedor" + key;
+            var apiUrlDelProveedor = $"https://localhost:44370/api/DeleteProveedor?id={key}" ;
             var handler = new HttpClientHandler();
             handler.ServerCertificateCustomValidationCallback = (message, cert, chain, errors) => true;
             using (var client = new HttpClient(handler))

@@ -12,7 +12,7 @@
         .InsertAction("Post")
         .UpdateAction("Put")
         .DeleteAction("Delete")
-        .Key("Id")
+        .Key("MetodopagoId")
     )
     .RemoteOperations(true)
     .Paging(p => p.PageSize(10))
@@ -21,7 +21,7 @@
     .SearchPanel(f => f.Visible(true))
     .Columns(columns => {
 
-        columns.AddFor(m => m.Id);
+        columns.AddFor(m => m.MetodopagoId);
 
         columns.AddFor(m => m.Metodo);
 

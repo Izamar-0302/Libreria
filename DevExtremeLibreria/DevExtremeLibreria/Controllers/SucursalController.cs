@@ -51,31 +51,44 @@ namespace DevExtremeLibreria.Controllers
         [HttpPut]
         public async Task<HttpResponseMessage> Put(FormDataCollection form)
         {
-            //Parámetros del form
-            var key = Convert.ToInt32(form.Get("key")); //llave que estoy modificando
-            var values = form.Get("values"); //Los valores que yo modifiqué en formato JSON
+            // Obtener los parámetros del formulario
+            var key = Convert.ToInt32(form.Get("key")); // llave que estoy modificando
+            var values = form.Get("values"); // Los valores modificados en formato JSON
 
-            var apiUrlGetSucursal = "https://localhost:44370/api/GetSucursal/" + key;
-            var respuestaSucursal = await GetAsync(apiUrlGetSucursal = "https://localhost:44370/api/GetSucursal/" + key);
-            Sucursal sucursal = JsonConvert.DeserializeObject<Sucursal>(respuestaSucursal);
+            // Obtener el autor desde la API
+            var apiUrlGetSucursal = $"https://localhost:44370/api/GetSucursal?id={key}";
+            var respuestaSucursal = await GetAsync(apiUrlGetSucursal);
+            if (string.IsNullOrEmpty(respuestaSucursal))
+            {
+                return Request.CreateErrorResponse(HttpStatusCode.NotFound, "La Sucursal no fue encontrada.");
+            }
 
-            JsonConvert.PopulateObject(values, sucursal);
+            Sucursal Sucursal = JsonConvert.DeserializeObject<Sucursal>(respuestaSucursal);
 
-            string jsonString = JsonConvert.SerializeObject(sucursal);
+            // Asignar los valores del formulario al objeto
+            JsonConvert.PopulateObject(values, Sucursal);
+
+            // Serializar el objeto actualizado
+            string jsonString = JsonConvert.SerializeObject(Sucursal);
             var httpContent = new StringContent(jsonString, System.Text.Encoding.UTF8, "application/json");
 
+            // Realizar la solicitud PUT a la API
             var handler = new HttpClientHandler();
             handler.ServerCertificateCustomValidationCallback = (message, cert, chain, errors) => true;
             using (var client = new HttpClient(handler))
             {
-                var url = "https://localhost:44370/api/PutSucursal/" + key;
+                var url = $"https://localhost:44370/api/PutSucursal?id={key}";
                 var response = await client.PutAsync(url, httpContent);
 
-                var result = response.Content.ReadAsStringAsync().Result;
+                if (!response.IsSuccessStatusCode)
+                {
+                    var error = await response.Content.ReadAsStringAsync();
+                    return Request.CreateErrorResponse(response.StatusCode, error);
+                }
+
+                var result = await response.Content.ReadAsStringAsync();
+                return Request.CreateResponse(HttpStatusCode.OK, result);
             }
-
-
-            return Request.CreateResponse(HttpStatusCode.OK);
         }
 
 
@@ -105,7 +118,7 @@ namespace DevExtremeLibreria.Controllers
         {
             var key = Convert.ToInt32(form.Get("key"));
 
-            var apiUrlDelaSucursal = "https://localhost:44370/api/DeleteSucursal/" + key;
+            var apiUrlDelaSucursal = $"https://localhost:44370/api/DeleteSucursal?id={key}";
             var handler = new HttpClientHandler();
             handler.ServerCertificateCustomValidationCallback = (message, cert, chain, errors) => true;
             using (var client = new HttpClient(handler))

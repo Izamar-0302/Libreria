@@ -78,12 +78,12 @@ namespace DevExtremeLibreria.Controllers
         {
             var key = Convert.ToInt32(form.Get("key"));
 
-            var apiUrlDelPeli = "https://localhost:44370/api/DeleteLector/" + key;
+            var apiUrlDellector = $"https://localhost:44370/api/DeleteLector?id={key}" ;
             var handler = new HttpClientHandler();
             handler.ServerCertificateCustomValidationCallback = (message, cert, chain, errors) => true;
             using (var client = new HttpClient(handler))
             {
-                var respuestaPelic = await client.DeleteAsync(apiUrlDelPeli);
+                var respuestaLector = await client.DeleteAsync(apiUrlDellector);
             }
             return Request.CreateResponse(HttpStatusCode.OK);
         }

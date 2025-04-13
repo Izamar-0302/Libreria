@@ -52,33 +52,45 @@ namespace DevExtremeLibreria.Controllers
         [HttpPut]
         public async Task<HttpResponseMessage> Put(FormDataCollection form)
         {
-            //Parámetros del form
-            var key = Convert.ToInt32(form.Get("key")); //llave que estoy modificando
-            var values = form.Get("values"); //Los valores que yo modifiqué en formato JSON
+            // Obtener los parámetros del formulario
+            var key = Convert.ToInt32(form.Get("key")); // llave que estoy modificando
+            var values = form.Get("values"); // Los valores modificados en formato JSON
 
-            var apiUrlGetPlanilla = "https://localhost:44370/api/GetPlanilla" + key;
-            var respuestaPlanilla = await GetAsync(apiUrlGetPlanilla = "https://localhost:44370/api/GetPlanilla" + key);
-            Planilla planilla = JsonConvert.DeserializeObject<Planilla>(respuestaPlanilla);
+            // Obtener el autor desde la API
+            var apiUrlGetPlanilla = $"https://localhost:44370/api/GetPlanilla?id={key}";
+            var respuestaPlanilla = await GetAsync(apiUrlGetPlanilla);
+            if (string.IsNullOrEmpty(respuestaPlanilla))
+            {
+                return Request.CreateErrorResponse(HttpStatusCode.NotFound, "La Planilla no fue encontrado.");
+            }
 
-            JsonConvert.PopulateObject(values, planilla);
+            Planilla Planilla = JsonConvert.DeserializeObject<Planilla>(respuestaPlanilla);
 
-            string jsonString = JsonConvert.SerializeObject(planilla);
+            // Asignar los valores del formulario al objeto autor
+            JsonConvert.PopulateObject(values, Planilla);
+
+            // Serializar el objeto actualizado
+            string jsonString = JsonConvert.SerializeObject(Planilla);
             var httpContent = new StringContent(jsonString, System.Text.Encoding.UTF8, "application/json");
 
+            // Realizar la solicitud PUT a la API
             var handler = new HttpClientHandler();
             handler.ServerCertificateCustomValidationCallback = (message, cert, chain, errors) => true;
             using (var client = new HttpClient(handler))
             {
-                var url = "https://localhost:44370/api/PutPlanilla/" + key;
+                var url = $"https://localhost:44370/api/PutPlanilla?id={key}";
                 var response = await client.PutAsync(url, httpContent);
 
-                var result = response.Content.ReadAsStringAsync().Result;
+                if (!response.IsSuccessStatusCode)
+                {
+                    var error = await response.Content.ReadAsStringAsync();
+                    return Request.CreateErrorResponse(response.StatusCode, error);
+                }
+
+                var result = await response.Content.ReadAsStringAsync();
+                return Request.CreateResponse(HttpStatusCode.OK, result);
             }
-
-
-            return Request.CreateResponse(HttpStatusCode.OK);
         }
-
 
         [HttpPost]
         public async Task<HttpResponseMessage> Post(FormDataCollection form)
@@ -106,12 +118,12 @@ namespace DevExtremeLibreria.Controllers
         {
             var key = Convert.ToInt32(form.Get("key"));
 
-            var apiUrlDelaplanilla = "https://localhost:44370/api/DeletePlanilla" + key;
+            var apiUrlDelaplanilla = $"https://localhost:44370/api/DeletePlanilla?id={key}" ;
             var handler = new HttpClientHandler();
             handler.ServerCertificateCustomValidationCallback = (message, cert, chain, errors) => true;
             using (var client = new HttpClient(handler))
             {
-                var respuestaPelic = await client.DeleteAsync(apiUrlDelaplanilla);
+                var respuestaPlanilla = await client.DeleteAsync(apiUrlDelaplanilla);
             }
             return Request.CreateResponse(HttpStatusCode.OK);
         }

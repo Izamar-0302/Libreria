@@ -7,7 +7,7 @@ namespace DevExtremeLibreria.Models
 {
     public class Empleado:Persona
     {
-        public int Id { get; set; }
+        public int EmpleadoId { get; set; }
         public Cargo Cargo { get; set; }
         public int CargoId { get; set; }
         public Sucursal Sucursal { get; set; }

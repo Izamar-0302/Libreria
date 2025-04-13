@@ -10,6 +10,7 @@
         public Configuration()
         {
             AutomaticMigrationsEnabled = true;
+            AutomaticMigrationDataLossAllowed = true; // Permite la pérdida de datos
         }
 
         protected override void Seed(LibreriaApi.Models.DBContextProyect context)
