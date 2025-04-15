@@ -48,6 +48,7 @@
                             <li><a class="dropdown-item" href="@Url.Action("Libro", "Home")">Libros</a></li>
                             <li><a class="dropdown-item" href="@Url.Action("Autor", "Home")">Autores</a></li>
                             <li><a class="dropdown-item" href="@Url.Action("Editorial", "Home")">Editoriales</a></li>
+                            <li><a class="dropdown-item" href="@Url.Action("Ubicacion", "Home")">Ubicaciones</a></li>
                         </ul>
                     </li>
 
@@ -62,6 +63,20 @@
                             <li><a class="dropdown-item" href="@Url.Action("Planilla", "Home")">Planillas</a></li>
                             <li><a class="dropdown-item" href="@Url.Action("Cargo", "Home")">Cargo</a></li>
                             <li><a class="dropdown-item" href="@Url.Action("Sucursal", "Home")">Sucursal</a></li>
+                            
+                        </ul>
+                    </li>
+
+                    <!-- Menú desplegable para Ventas -->
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown">
+                            <i class="fas fa-users-cog"></i> Ventas
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="@Url.Action("Pedido", "Home")">Pedidos</a></li>
+                            <li><a class="dropdown-item" href="@Url.Action("MetodoPago", "Home")">Metodo de pago</a></li>
+                            <li><a class="dropdown-item" href="@Url.Action("Detalle_pedido", "Home")">Detalles de pedido</a></li>
+
                         </ul>
                     </li>
 

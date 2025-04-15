@@ -132,11 +132,14 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Folder Include="Views\Detallepedido\" />
     <Folder Include="Views\Lector\" />
     <Folder Include="Views\Metodopago\" />
+    <Folder Include="Views\Pedido\" />
     <Folder Include="Views\Planilla\" />
     <Folder Include="Views\Proveedor\" />
     <Folder Include="Views\sur\" />
+    <Folder Include="Views\Turno\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\animate.css" />
@@ -414,6 +417,8 @@
     <Content Include="Views\Home\Ubicacion.cshtml" />
     <Content Include="Views\Home\Editorial.cshtml" />
     <Content Include="Views\Home\Libro.cshtml" />
+    <Content Include="Views\Home\Pedido.cshtml" />
+    <Content Include="Views\Home\Detalle_pedido.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -428,18 +433,22 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Controllers\AutorController.cs" />
+    <Compile Include="Controllers\BonificacionesController.cs" />
     <Compile Include="Controllers\CargoController.cs" />
+    <Compile Include="Controllers\Detalle_pedidoController.cs" />
     <Compile Include="Controllers\EditorialController.cs" />
     <Compile Include="Controllers\EmpleadoController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\LectorController.cs" />
     <Compile Include="Controllers\LibroController.cs" />
     <Compile Include="Controllers\MetodopagoController.cs" />
+    <Compile Include="Controllers\PedidoController.cs" />
     <Compile Include="Controllers\PlanillaController.cs" />
     <Compile Include="Controllers\ProveedorController.cs" />
     <Compile Include="Controllers\SampleDataController.cs" />
     <Compile Include="Controllers\SucursalController.cs" />
     <Compile Include="Controllers\surController.cs" />
+    <Compile Include="Controllers\TurnoController.cs" />
     <Compile Include="Controllers\UbicacionController.cs" />
     <Compile Include="Controllers\VentaController.cs" />
     <Compile Include="Global.asax.cs">

@@ -24,22 +24,9 @@ namespace LibreriaApi.Controllers
         [HttpGet]
         [SwaggerOperation("GetDetalle_pedidos")]
         [Route("api/GetDetalle_pedidos")]
-        public IHttpActionResult Get()
+        public IEnumerable<Detalle_pedido> Get()
         {
-            var query = from pedido1 in db.Pedidos
-                        join detallepedido in db.Detalles_pedidos on pedido1.PedidoId equals detallepedido.pedido.PedidoId
-                        join libro1 in db.Libros on detallepedido.Libro.LibroId equals libro1.LibroId
-                        select new
-                        {
-                            IdDetallepedido = detallepedido.Id,
-                            Pedido = detallepedido.pedido,
-                            libro = detallepedido.Libro,
-                            cantidad = detallepedido.Cantidad,
-                            detallepedido.PrecioUnitario,
-                            detallepedido.Subtotal
-                        };
-
-            return Ok(query);
+            return db.Detalles_pedidos;
         }
 
 
@@ -84,20 +71,20 @@ namespace LibreriaApi.Controllers
         [HttpPost]
         [SwaggerOperation("PostDetalle_pedido")]
         [Route("api/PostDetalle_pedido")]
-        public IHttpActionResult Post(Detalle_pedido detallepedido, int idlibro, int idpedido)
+        public IHttpActionResult Post(Detalle_pedido detallepedido)
         {
-            Libro libroexistente = db.Libros.Find(idlibro);
-            if (libroexistente == null)
+            if (detallepedido.Libro != null)
             {
-                return NotFound();
+                Libro libro = db.Libros.Find(detallepedido.Libro.LibroId);
+                detallepedido.Libro = libro;
             }
-            detallepedido.Libro = libroexistente;
-            Pedido pedidoexistente = db.Pedidos.Find(idpedido);
-            if (pedidoexistente == null)
+            if (detallepedido.pedido != null)
             {
-                return NotFound();
+                Pedido pedido = db.Pedidos.Find(detallepedido.pedido.PedidoId);
+                detallepedido.pedido = pedido;
             }
-            detallepedido.pedido = pedidoexistente;
+
+            
             db.Detalles_pedidos.Add(detallepedido);
             db.SaveChanges();
             return Ok(detallepedido);

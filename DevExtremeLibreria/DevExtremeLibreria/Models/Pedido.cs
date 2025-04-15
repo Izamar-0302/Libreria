@@ -7,7 +7,7 @@ namespace DevExtremeLibreria.Models
 {
     public class Pedido
     {
-        public int Id { get; set; }
+        public int PedidoId { get; set; }
         public Proveedor Proveedor { get; set; }
         public int ProveedorId { get; set; }
         public DateTime Fechapedido { get; set; }

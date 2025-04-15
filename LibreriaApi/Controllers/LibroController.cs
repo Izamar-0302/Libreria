@@ -25,27 +25,9 @@ namespace LibreriaApi.Controllers
         [HttpGet]
         [SwaggerOperation("GetLibros")]
         [Route("api/GetLibros")]
-        public IHttpActionResult Get()
+        public IEnumerable<Libro> Get()
         {
-            var query = from autor1 in db.Autores
-                        join libro in db.Libros on autor1.AutorId equals libro.Autor.AutorId
-                        join editorial1 in db.Editoriales on libro.Editorial.EditorialId equals editorial1.EditorialId
-                        join ubicacion1 in db.Ubicaciones on libro.Ubicacion.UbicacionId equals ubicacion1.UbicacionId
-                        join proveedor1 in db.Proveedores on libro.Proveedor.ProveedorId equals proveedor1.ProveedorId
-                        select new
-                        {
-                            IdLibro = libro.LibroId,
-                            TituloLibro = libro.Titulo,
-                            IdAutor = autor1.AutorId,
-                            Ideditorial = editorial1.EditorialId,
-                            Aniodepublicacion = libro.Aniopublicacion,
-                            cantidad = libro.Cantidad,
-                            precio = libro.Precio,
-                            ubicacion = ubicacion1.UbicacionId,
-                            proveedor = proveedor1.ProveedorId
-                        };
-
-            return Ok(query);
+            return db.Libros;
         }
 
 

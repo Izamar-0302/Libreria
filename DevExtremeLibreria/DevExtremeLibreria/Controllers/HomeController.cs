@@ -59,5 +59,20 @@ namespace DevExtremeLibreria.Controllers {
         {
             return View();
         }
+
+        public ActionResult Pedido()
+        {
+            return View();
+        }
+
+        public ActionResult Bonificaciones()
+        {
+            return View();
+        }
+
+        public ActionResult Detalle_pedido()
+        {
+            return View();
+        }
     }
 }

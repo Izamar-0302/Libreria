@@ -1,0 +1,44 @@
+﻿@{
+    ViewData["Title"] = "Detalle_pedido";
+}
+
+<h2>Detalle_pedido</h2>
+
+@(Html.DevExtreme().DataGrid<DevExtremeLibreria.Models.Detalle_pedido>()
+    .DataSource(ds => ds.WebApi()
+        .Controller("Detalle_pedido")
+        .LoadAction("Get")
+        .InsertAction("Post")
+        .UpdateAction("Put")
+        .DeleteAction("Delete")
+        .Key("Id")
+    )
+    .RemoteOperations(true)
+    .Columns(columns => {
+
+        columns.AddFor(m => m.Id);
+
+        columns.AddFor(m => m.PedidoId).Lookup(lookup => lookup
+            .DataSource(ds => ds.WebApi().Controller("Pedido").LoadAction("Get").Key("PedidoId"))
+            .ValueExpr("PedidoId")
+            .DisplayExpr("Estado")
+        );
+
+        columns.AddFor(m => m.LibroId).Lookup(lookup => lookup
+            .DataSource(ds => ds.WebApi().Controller("Libro").LoadAction("Get").Key("LibroId"))
+            .ValueExpr("LibroId")
+            .DisplayExpr("Titulo")
+        );
+
+        columns.AddFor(m => m.Cantidad);
+
+        columns.AddFor(m => m.PrecioUnitario);
+
+        columns.AddFor(m => m.Subtotal);
+    })
+    .Editing(e => e
+        .AllowAdding(true)
+        .AllowUpdating(true)
+        .AllowDeleting(true)
+    )
+)

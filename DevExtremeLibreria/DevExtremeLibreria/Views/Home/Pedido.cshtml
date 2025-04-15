@@ -1,0 +1,39 @@
+﻿@{
+    ViewData["Title"] = "Pedido";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Pedido</h2>
+
+@(Html.DevExtreme().DataGrid<DevExtremeLibreria.Models.Pedido>()
+    .DataSource(ds => ds.WebApi()
+        .Controller("Pedido")
+        .LoadAction("Get")
+        .InsertAction("Post")
+        .UpdateAction("Put")
+        .DeleteAction("Delete")
+        .Key("PedidoId")
+    )
+    .RemoteOperations(true)
+    .Columns(columns => {
+
+        columns.AddFor(m => m.PedidoId);
+
+        columns.AddFor(m => m.ProveedorId).Lookup(lookup => lookup
+            .DataSource(ds => ds.WebApi().Controller("Proveedor").LoadAction("Get").Key("ProveedorId"))
+            .ValueExpr("ProveedorId")
+            .DisplayExpr("Nombreproveedor")
+        );
+
+        columns.AddFor(m => m.Fechapedido);
+
+        columns.AddFor(m => m.Fechaentrega);
+
+        columns.AddFor(m => m.Estado);
+    })
+    .Editing(e => e
+        .AllowAdding(true)
+        .AllowUpdating(true)
+        .AllowDeleting(true)
+    )
+)

@@ -7,7 +7,7 @@ namespace DevExtremeLibreria.Models
 {
     public class Editorial
     {
-        public int Id { get; set; }
+        public int EditorialId { get; set; }
         public string Nombre { get; set; }
         public string Pais { get; set; }
         public string Fundacion { get; set; }

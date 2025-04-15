@@ -23,20 +23,9 @@ namespace LibreriaApi.Controllers
         [HttpGet]
         [SwaggerOperation("GetPedidos")]
         [Route("api/GetPedidos")]
-        public IHttpActionResult Get()
+        public IEnumerable<Pedido> Get()
         {
-            var query = from proveedor1 in db.Proveedores
-                        join pedido in db.Pedidos on proveedor1.ProveedorId equals pedido.Proveedor.ProveedorId
-                        select new
-                        {
-                            Idpedido = pedido.PedidoId,
-                            fechaentrega = pedido.Fechaentrega,
-                            fechapedido = pedido.Fechapedido,
-                            estado = pedido.Estado,
-                            idproveedor = proveedor1.ProveedorId
-                        };
-
-            return Ok(query);
+            return db.Pedidos;
         }
 
 
@@ -79,15 +68,16 @@ namespace LibreriaApi.Controllers
         [HttpPost]
         [SwaggerOperation("PostPedido")]
         [Route("api/PostPedido")]
-        public IHttpActionResult Post(Pedido pedido,  int idproveedor)
+        public IHttpActionResult Post(Pedido pedido)
         {
             
-            Proveedor proveedorexistente = db.Proveedores.Find(idproveedor);
-            if (proveedorexistente == null)
+           
+            if (pedido.Proveedor != null)
             {
-                return NotFound();
+                Proveedor Proveedor = db.Proveedores.Find(pedido.Proveedor.ProveedorId);
+                pedido.Proveedor = Proveedor;
             }
-            pedido.Proveedor = proveedorexistente;
+           
             db.Pedidos.Add(pedido);
             db.SaveChanges();
             return Ok(pedido);
@@ -104,19 +94,25 @@ namespace LibreriaApi.Controllers
         [HttpPut]
         [SwaggerOperation("PutPedido")]
         [Route("api/PutPedido")]
-        public IHttpActionResult Put(Pedido pedidomodificar, int idproveedor)
+        public IHttpActionResult Put(int id,Pedido pedidomodificar)
         {
-            
-            Proveedor proveedorexistente = db.Proveedores.Find(idproveedor);
-            if (proveedorexistente == null)
+            Pedido Pedido = db.Pedidos.Find(id);
+            if (Pedido == null)
             {
                 return NotFound();
             }
-            pedidomodificar.Proveedor = proveedorexistente;
-            int id = pedidomodificar.PedidoId;
-            db.Entry(pedidomodificar).State = EntityState.Modified;
+            if (pedidomodificar.Proveedor != null)
+            {
+                Proveedor Proveedor = db.Proveedores.Find(pedidomodificar.Proveedor.ProveedorId);
+                Pedido.Proveedor = Proveedor;
+            }
+
+            Pedido.Fechaentrega = pedidomodificar.Fechaentrega;
+            Pedido.Fechapedido = pedidomodificar.Fechapedido;
+            
+            
             db.SaveChanges();
-            return Ok(pedidomodificar);
+            return Ok(Pedido);
         }
 
         // DELETE: api/Pedido/5
