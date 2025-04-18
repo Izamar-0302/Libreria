@@ -8,7 +8,7 @@ namespace DevExtremeLibreria.Models
     public class Detalle_pedido
     {
         public int Id { get; set; }
-        public Pedido pedido { get; set; }
+        public Pedido Pedido { get; set; }
         public int PedidoId { get; set; }
         public Libro Libro { get; set; }
         public int LibroId { get; set; }

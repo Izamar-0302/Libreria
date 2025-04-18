@@ -196,7 +196,6 @@
     <Compile Include="Models\Empleado_planilla.cs" />
     <Compile Include="Models\Lector.cs" />
     <Compile Include="Models\Libro.cs" />
-    <Compile Include="Models\LibroDto.cs" />
     <Compile Include="Models\MetodoPago.cs" />
     <Compile Include="Models\Pedido.cs" />
     <Compile Include="Models\Persona.cs" />

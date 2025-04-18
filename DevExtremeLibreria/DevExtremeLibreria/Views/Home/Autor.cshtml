@@ -22,15 +22,20 @@
     .SearchPanel(f => f.Visible(true))
     .Columns(columns => {
 
-    columns.AddFor(m => m.AutorId);
+        columns.AddFor(m => m.AutorId)
+         .Caption("ID del Autor");
 
-    columns.AddFor(m => m.Nombre);
+        columns.AddFor(m => m.Nombre)
+         .Caption("Nombre");
 
-    columns.AddFor(m => m.Nacionalidad);
+        columns.AddFor(m => m.Nacionalidad)
+         .Caption("Nacionalidad");
 
-    columns.AddFor(m => m.Fechadenacimiento);
+        columns.AddFor(m => m.Fechadenacimiento)
+         .Caption("Fecha de Nacimiento");
 
-    columns.AddFor(m => m.Biografia);
+        columns.AddFor(m => m.Biografia)
+         .Caption("Biografía");
     })
     .Editing(e => e
     .Mode(GridEditMode.Popup)

@@ -4,42 +4,52 @@
 
 <h2>Detalle_pedido</h2>
 
-@(Html.DevExtreme().DataGrid<DevExtremeLibreria.Models.Detalle_pedido>()
+@(Html.DevExtreme().DataGrid<DevExtremeLibreria.Models.Detalle_pedido>
+    ()
     .DataSource(ds => ds.WebApi()
-        .Controller("Detalle_pedido")
-        .LoadAction("Get")
-        .InsertAction("Post")
-        .UpdateAction("Put")
-        .DeleteAction("Delete")
-        .Key("Id")
+    .Controller("Detalle_pedido")
+    .LoadAction("Get")
+    .InsertAction("Post")
+    .UpdateAction("Put")
+    .DeleteAction("Delete")
+    .Key("Id")
     )
     .RemoteOperations(true)
     .Columns(columns => {
 
-        columns.AddFor(m => m.Id);
+    columns.AddFor(m => m.Id)
+    .Caption("ID Detalle Pedido");
 
-        columns.AddFor(m => m.PedidoId).Lookup(lookup => lookup
-            .DataSource(ds => ds.WebApi().Controller("Pedido").LoadAction("GetPedidos").Key("PedidoId"))
-            .ValueExpr("PedidoId")
-            .DisplayExpr("Estado")
-        );
+    columns.AddFor(m => m.PedidoId).Lookup(lookup => lookup
+    .DataSource(ds => ds.WebApi().Controller("Pedido").LoadAction("GetPedidos").Key("PedidoId"))
+    .ValueExpr("PedidoId")
+    .DisplayExpr("Estado")
+    );
 
-        columns.AddFor(m => m.LibroId).Lookup(lookup => lookup
-            .DataSource(ds => ds.WebApi().Controller("Libro").LoadAction("GetLibros").Key("LibroId"))
-            .ValueExpr("LibroId")
-            .DisplayExpr("Titulo")
-        );
+    columns.AddFor(m => m.LibroId).Lookup(lookup => lookup
+    .DataSource(ds => ds.WebApi().Controller("Libro").LoadAction("GetLibros").Key("LibroId"))
+    .ValueExpr("LibroId")
+    .DisplayExpr("Titulo")
+    );
 
-        columns.AddFor(m => m.Cantidad);
+    columns.AddFor(m => m.Cantidad)
+    .Caption("Cantidad");
 
-        columns.AddFor(m => m.PrecioUnitario);
+    columns.AddFor(m => m.PrecioUnitario)
+    .Caption("Precio Unitario");
 
-        columns.AddFor(m => m.Subtotal).AllowEditing(false);
+    columns.AddFor(m => m.Subtotal).AllowEditing(false)
+    .Caption("Subtotal");
     })
     .Editing(e => e
-     .Mode(GridEditMode.Popup)
-        .AllowAdding(true)
-        .AllowUpdating(true)
-        .AllowDeleting(true)
+    .Mode(GridEditMode.Popup)
+    .AllowAdding(true)
+    .AllowUpdating(true)
+    .AllowDeleting(true)
+    .Texts(t => t
+    .ConfirmDeleteMessage("¿Estás seguro de que deseas eliminar este registro?")
+    .SaveRowChanges("Guardar")
+    .CancelRowChanges("Cancelar")
     )
-)
+    )
+    )

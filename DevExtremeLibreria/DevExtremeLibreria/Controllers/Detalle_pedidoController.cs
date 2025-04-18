@@ -57,21 +57,21 @@ namespace DevExtremeLibreria.Controllers
             var key = Convert.ToInt32(form.Get("key")); // llave que estoy modificando
             var values = form.Get("values"); // Los valores modificados en formato JSON
 
-            // Obtener  desde la API
-            var apiUrlGetPedido = $"https://localhost:44370/api/GetDetalle_pedido?id={key}";
-            var respuestaPedido = await GetAsync(apiUrlGetPedido);
-            if (string.IsNullOrEmpty(respuestaPedido))
+            // Obtener el autor desde la API
+            var apiUrlGetDetallepedido = $"https://localhost:44370/api/GetDetalle_pedido?id={key}";
+            var respuestaDetallepedido = await GetAsync(apiUrlGetDetallepedido);
+            if (string.IsNullOrEmpty(respuestaDetallepedido))
             {
-                return Request.CreateErrorResponse(HttpStatusCode.NotFound, "El Pedido no fue encontrado.");
+                return Request.CreateErrorResponse(HttpStatusCode.NotFound, "El autor no fue encontrado.");
             }
 
-            Pedido Pedido = JsonConvert.DeserializeObject<Pedido>(respuestaPedido);
+            Detalle_pedido detalle_Pedido = JsonConvert.DeserializeObject<Detalle_pedido>(respuestaDetallepedido);
 
             // Asignar los valores del formulario al objeto autor
-            JsonConvert.PopulateObject(values, Pedido);
+            JsonConvert.PopulateObject(values, detalle_Pedido);
 
             // Serializar el objeto actualizado
-            string jsonString = JsonConvert.SerializeObject(Pedido);
+            string jsonString = JsonConvert.SerializeObject(detalle_Pedido);
             var httpContent = new StringContent(jsonString, System.Text.Encoding.UTF8, "application/json");
 
             // Realizar la solicitud PUT a la API
@@ -79,7 +79,9 @@ namespace DevExtremeLibreria.Controllers
             handler.ServerCertificateCustomValidationCallback = (message, cert, chain, errors) => true;
             using (var client = new HttpClient(handler))
             {
+
                 var url = $"https://localhost:44370/api/PutDetalle_pedido?id={key}";
+
                 var response = await client.PutAsync(url, httpContent);
 
                 if (!response.IsSuccessStatusCode)
@@ -91,7 +93,6 @@ namespace DevExtremeLibreria.Controllers
                 var result = await response.Content.ReadAsStringAsync();
                 return Request.CreateResponse(HttpStatusCode.OK, result);
             }
-
         }
 
 

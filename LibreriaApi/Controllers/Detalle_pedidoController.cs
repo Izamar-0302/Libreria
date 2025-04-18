@@ -26,7 +26,7 @@ namespace LibreriaApi.Controllers
         [Route("api/GetDetalle_pedidos")]
         public IHttpActionResult Get()
         {
-            var Detallepedido = db.Detalles_pedidos
+        var Detallepedido = db.Detalles_pedidos
        .Include(l => l.Pedido)
        .Include(l => l.Libro)
        
