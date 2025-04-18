@@ -24,9 +24,25 @@ namespace LibreriaApi.Controllers
         [HttpGet]
         [SwaggerOperation("GetDetalle_pedidos")]
         [Route("api/GetDetalle_pedidos")]
-        public IEnumerable<Detalle_pedido> Get()
+        public IHttpActionResult Get()
         {
-            return db.Detalles_pedidos;
+            var Detallepedido = db.Detalles_pedidos
+       .Include(l => l.Pedido)
+       .Include(l => l.Libro)
+       
+       .Select(l => new
+       {
+           l.Id,
+           l.PedidoId,
+           l.LibroId,
+           l.Cantidad,
+           l.PrecioUnitario,
+           l.Subtotal,
+
+       })
+       .ToList();
+
+            return Ok(Detallepedido);
         }
 
 
@@ -43,21 +59,25 @@ namespace LibreriaApi.Controllers
         [Route("api/GetDetalle_pedido")]
         public IHttpActionResult Get(int id)
         {
-            var query = from pedido1 in db.Pedidos
-                        join detallepedido in db.Detalles_pedidos on pedido1.PedidoId equals detallepedido.pedido.PedidoId
-                        join libro1 in db.Libros on detallepedido.Libro.LibroId equals libro1.LibroId
-                        where detallepedido.Id == id
-                        select new
-                        {
-                            IdDetallepedido = detallepedido.Id,
-                            Pedido = detallepedido.pedido,
-                            libro = detallepedido.Libro,
-                            cantidad = detallepedido.Cantidad,
-                            detallepedido.PrecioUnitario,
-                            detallepedido.Subtotal
-                        };
+                var Detallepedido = db.Detalles_pedidos
+                .Include(l => l.Pedido)
+                .Include(l => l.Libro)
 
-            return Ok(query);
+                .Select(l => new
+                {
+                    l.Id,
+                    l.PedidoId,
+                    l.LibroId,
+                    l.Cantidad,
+                    l.PrecioUnitario,
+                    l.Subtotal,
+                })
+                .FirstOrDefault();
+
+            if (Detallepedido == null)
+                return NotFound();
+
+            return Ok(Detallepedido);
         }
 
         // POST: api/Detalle_pedido
@@ -71,23 +91,25 @@ namespace LibreriaApi.Controllers
         [HttpPost]
         [SwaggerOperation("PostDetalle_pedido")]
         [Route("api/PostDetalle_pedido")]
-        public IHttpActionResult Post(Detalle_pedido detallepedido)
+        public IHttpActionResult Post(Detalle_pedido detalle_Pedido)
         {
-            if (detallepedido.Libro != null)
-            {
-                Libro libro = db.Libros.Find(detallepedido.Libro.LibroId);
-                detallepedido.Libro = libro;
-            }
-            if (detallepedido.pedido != null)
-            {
-                Pedido pedido = db.Pedidos.Find(detallepedido.pedido.PedidoId);
-                detallepedido.pedido = pedido;
-            }
+            if (detalle_Pedido == null)
+                return BadRequest("Libro inválido.");
 
-            
-            db.Detalles_pedidos.Add(detallepedido);
+            var pedido = db.Pedidos.Find(detalle_Pedido.PedidoId);
+            var libro = db.Libros.Find(detalle_Pedido.LibroId);
+           
+            if (pedido == null)
+                return BadRequest("Pedido no encontrado.");
+
+            if (libro == null)
+                return BadRequest("libro no encontrada.");
+
+            detalle_Pedido.Subtotal = detalle_Pedido.Cantidad * detalle_Pedido.PrecioUnitario;
+            db.Detalles_pedidos.Add(detalle_Pedido);
             db.SaveChanges();
-            return Ok(detallepedido);
+
+            return Ok(detalle_Pedido);
         }
 
         // PUT: api/Detalle_pedido/5
@@ -101,24 +123,32 @@ namespace LibreriaApi.Controllers
         [HttpPut]
         [SwaggerOperation("PutDetalle_pedido")]
         [Route("api/PutDetalle_pedido")]
-        public IHttpActionResult Put(Detalle_pedido detallepedidomodificado, int idlibro, int idpedido)
+        public IHttpActionResult Put(int id, Detalle_pedido detalleActualizado)
         {
-            Libro libroexistente = db.Libros.Find(idlibro);
-            if (libroexistente == null)
-            {
+            var detallepedido = db.Detalles_pedidos.Find(id);
+            if (detallepedido == null)
                 return NotFound();
-            }
-            detallepedidomodificado.Libro = libroexistente;
-            Pedido pedidoexistente = db.Pedidos.Find(idpedido);
-            if (pedidoexistente == null)
-            {
-                return NotFound();
-            }
-            detallepedidomodificado.pedido = pedidoexistente;
-            int id = detallepedidomodificado.Id;
-            db.Entry(detallepedidomodificado).State = EntityState.Modified;
+
+           
+            var pedidoNuevo = db.Pedidos.Find(detalleActualizado.PedidoId);
+            if (pedidoNuevo == null)
+                return BadRequest("PedidoId proporcionado no existe.");
+
+         
+            var libroNuevo = db.Libros.Find(detalleActualizado.LibroId);
+            if (libroNuevo == null)
+                return BadRequest("LibroId proporcionado no existe.");
+
+         
+            detallepedido.PedidoId = detalleActualizado.PedidoId;
+            detallepedido.LibroId = detalleActualizado.LibroId;
+            detallepedido.Cantidad = detalleActualizado.Cantidad;
+            detallepedido.PrecioUnitario = detalleActualizado.PrecioUnitario;
+            detallepedido.Subtotal = detallepedido.Cantidad * detallepedido.PrecioUnitario;
+
             db.SaveChanges();
-            return Ok(detallepedidomodificado);
+
+            return Ok(detallepedido);
         }
 
         // DELETE: api/Detalle_pedido/5

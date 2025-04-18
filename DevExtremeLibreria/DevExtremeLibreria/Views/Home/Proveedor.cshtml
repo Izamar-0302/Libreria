@@ -21,19 +21,30 @@
     .SearchPanel(f => f.Visible(true))
     .Columns(columns => {
 
-        columns.AddFor(m => m.ProveedorId);
+        columns.AddFor(m => m.ProveedorId)
+        .Caption("Id de Proveedor");
 
-        columns.AddFor(m => m.Nombreproveedor);
+        columns.AddFor(m => m.Nombreproveedor)
+        .Caption("Nombre Proveedor");
 
-        columns.AddFor(m => m.Direccion);
+        columns.AddFor(m => m.Direccion)
+        .Caption("Dirección");
 
-        columns.AddFor(m => m.Correo);
+        columns.AddFor(m => m.Correo)
+        .Caption("Correo");
 
-        columns.AddFor(m => m.Telefono);
+        columns.AddFor(m => m.Telefono)
+        .Caption("Teléfono");
     })
     .Editing(e => e
+     .Mode(GridEditMode.Popup)
         .AllowAdding(true)
         .AllowUpdating(true)
         .AllowDeleting(true)
+        .Texts(t => t
+        .ConfirmDeleteMessage("¿Estás seguro de que deseas eliminar este registro?")
+        .SaveRowChanges("Guardar")
+        .CancelRowChanges("Cancelar")
+    )
     )
 )

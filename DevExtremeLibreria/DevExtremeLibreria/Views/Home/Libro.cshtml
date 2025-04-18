@@ -6,58 +6,73 @@
 <h2>Libro</h2>
 
 
-@(Html.DevExtreme().DataGrid<DevExtremeLibreria.Models.Libro>()
+@(Html.DevExtreme().DataGrid<DevExtremeLibreria.Models.Libro>
+    ()
     .DataSource(ds => ds.WebApi()
-        .Controller("Libro")
-        .LoadAction("Get")
-        .InsertAction("Post")
-        .UpdateAction("Put")
-        .DeleteAction("Delete")
-        .Key("LibroId")
+    .Controller("Libro")
+    .LoadAction("Get")
+    .InsertAction("Post")
+    .UpdateAction("Put")
+    .DeleteAction("Delete")
+    .Key("LibroId")
     )
     .RemoteOperations(true)
     .Columns(columns => {
 
-        columns.AddFor(m => m.LibroId);
+        columns.AddFor(m => m.LibroId)
+        .Caption("Id de Libro");
 
-        columns.AddFor(m => m.Titulo);
+        columns.AddFor(m => m.Titulo)
+        .Caption("Título");
 
         columns.AddFor(m => m.AutorId).Lookup(lookup => lookup
-            .DataSource(ds => ds.WebApi().Controller("Autor").LoadAction("GetAutores").Key("AutorId"))
-            .ValueExpr("AutorId")
-            .DisplayExpr("Nombre")
+        .DataSource(ds => ds.WebApi().Controller("Autor").LoadAction("GetAutores").Key("AutorId"))
+        .ValueExpr("AutorId")
+        .DisplayExpr("Nombre")
         );
 
         columns.AddFor(m => m.EditorialId).Lookup(lookup => lookup
-            .DataSource(ds => ds.WebApi().Controller("Editorial").LoadAction("Get").Key("Editorialid"))
-            .ValueExpr("EditorialId")
-            .DisplayExpr("Nombre")
+        .DataSource(ds => ds.WebApi().Controller("Editorial").LoadAction("Get").Key("Editorialid"))
+        .ValueExpr("EditorialId")
+        .DisplayExpr("Nombre")
         );
 
-        columns.AddFor(m => m.Aniopublicacion);
 
-        columns.AddFor(m => m.Precio);
+        columns.AddFor(m => m.Aniopublicacion)
+        .Caption("Año Publicación");
 
-        columns.AddFor(m => m.Genero);
+        columns.AddFor(m => m.Precio)
+        .Caption("Precio");
 
-        columns.AddFor(m => m.Cantidad);
+        columns.AddFor(m => m.Genero)
+        .Caption("Género");
+
+        columns.AddFor(m => m.Cantidad)
+        .Caption("Cantidad");
 
         columns.AddFor(m => m.UbicacionId).Lookup(lookup => lookup
-            .DataSource(ds => ds.WebApi().Controller("Ubicacion").LoadAction("GetUbicaciones").Key("UbicacionId"))
-            .ValueExpr("UbicacionId")
-            .DisplayExpr("Estante")
+        .DataSource(ds => ds.WebApi().Controller("Ubicacion").LoadAction("GetUbicaciones").Key("UbicacionId"))
+        .ValueExpr("UbicacionId")
+        .DisplayExpr("UbicacionId")
         );
 
         columns.AddFor(m => m.ProveedorId).Lookup(lookup => lookup
-            .DataSource(ds => ds.WebApi().Controller("Proveedor").LoadAction("GetProveedores").Key("ProveedorId"))
-            .ValueExpr("ProveedorId")
-            .DisplayExpr("Nombre")
+        .DataSource(ds => ds.WebApi().Controller("Proveedor").LoadAction("GetProveedores").Key("ProveedorId"))
+        .ValueExpr("ProveedorId")
+        .DisplayExpr("Nombreproveedor")
         );
 
     })
     .Editing(e => e
-        .AllowAdding(true)
-        .AllowUpdating(true)
-        .AllowDeleting(true)
+    .Mode(GridEditMode.Popup)
+    .AllowAdding(true)
+    .AllowUpdating(true)
+    .AllowDeleting(true)
+    .Texts(t => t
+    .ConfirmDeleteMessage("¿Estás seguro de que deseas eliminar este registro?")
+    .SaveRowChanges("Guardar")
+    .CancelRowChanges("Cancelar")
     )
-)
+
+    )
+    )

@@ -5,14 +5,15 @@
 
 <h2>Lector</h2>
 
-@(Html.DevExtreme().DataGrid<DevExtremeLibreria.Models.Lector>()
+@(Html.DevExtreme().DataGrid<DevExtremeLibreria.Models.Lector>
+    ()
     .DataSource(ds => ds.WebApi()
-        .Controller("Lector")
-        .LoadAction("Get")
-        .InsertAction("Post")
-        .UpdateAction("Put")
-        .DeleteAction("Delete")
-        .Key("Id")
+    .Controller("Lector")
+    .LoadAction("Get")
+    .InsertAction("Post")
+    .UpdateAction("Put")
+    .DeleteAction("Delete")
+    .Key("LectorId")
     )
     .RemoteOperations(true)
     .Paging(p => p.PageSize(10))
@@ -21,21 +22,33 @@
     .SearchPanel(f => f.Visible(true))
     .Columns(columns => {
 
-        columns.AddFor(m => m.Id);
+        columns.AddFor(m => m.LectorId)
+         .Caption("ID del Lector");
 
-        columns.AddFor(m => m.Nombre);
+        columns.AddFor(m => m.Nombre)
+         .Caption("Nombre");
 
-        columns.AddFor(m => m.Apellidos);
+        columns.AddFor(m => m.Apellidos)
+         .Caption("Apellido");
 
-        columns.AddFor(m => m.Correo);
+        columns.AddFor(m => m.Correo)
+         .Caption("Correo");
 
-        columns.AddFor(m => m.Telefono);
+        columns.AddFor(m => m.Telefono)
+         .Caption("Teléfono");
 
-        columns.AddFor(m => m.Direccion);
+        columns.AddFor(m => m.Direccion)
+         .Caption("Dirección");
     })
     .Editing(e => e
-        .AllowAdding(true)
-        .AllowUpdating(true)
-        .AllowDeleting(true)
+    .Mode(GridEditMode.Popup)
+    .AllowAdding(true)
+    .AllowUpdating(true)
+    .AllowDeleting(true)
+    .Texts(t => t
+    .ConfirmDeleteMessage("¿Estás seguro de que deseas eliminar este registro?")
+    .SaveRowChanges("Guardar")
+    .CancelRowChanges("Cancelar")
     )
-)
+    )
+    )

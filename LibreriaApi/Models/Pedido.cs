@@ -8,7 +8,7 @@ namespace LibreriaApi.Models
     public class Pedido
     {
         public int PedidoId { get; set; }
-        public Proveedor Proveedor { get; set; }
+        public virtual Proveedor Proveedor { get; set; }
         public int ProveedorId { get; set; }
         public DateTime Fechapedido { get; set; }
         public DateTime Fechaentrega { get; set; }

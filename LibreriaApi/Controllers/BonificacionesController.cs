@@ -26,18 +26,19 @@ namespace LibreriaApi.Controllers
         [Route("api/GetBonificaciones")]
         public IHttpActionResult Get()
         {
-            var query = from empleado1 in db.Empleados
-                        join bonificaciones in db.Bonificaciones
-                                on empleado1.EmpleadoId equals bonificaciones.Empleado.EmpleadoId
-                        select new
-                        {
-                            IdBonificacion = bonificaciones.BonificacionesId,
-                            TipoBonificacion = bonificaciones.Tipobonificacion,
-                            MontonBonificacion = bonificaciones.Monto,
-                            IdEmpleado = empleado1.EmpleadoId
-                        };
+            var bonificaciones = db.Bonificaciones
+                .Include(l => l.Empleado)
+                .Select(l => new
+                {
+                    l.BonificacionesId,
+                    l.EmpleadoId,
+                    l.Tipobonificacion,
+                    l.Monto,
+                })
+                .ToList();
 
-           return Ok(query);
+            return Ok(bonificaciones);
+
         }
 
 
@@ -54,18 +55,21 @@ namespace LibreriaApi.Controllers
         [Route("api/GetBonificacion")]
         public IHttpActionResult Get(int id)
         {
-            var query = from empleado1 in db.Empleados
-                        join bonificacion in db.Bonificaciones
-                              on empleado1.EmpleadoId equals bonificacion.Empleado.EmpleadoId
-                        where bonificacion.BonificacionesId==id
-                        select new
-                        {
-                            IdBonificacion = bonificacion.BonificacionesId,
-                            TipoBonificacion = bonificacion.Tipobonificacion,
-                            MontonBonificacion = bonificacion.Monto,
-                            IdEmpleado = empleado1.EmpleadoId
-                        };
-            return Ok(query);
+            var bonificaciones = db.Bonificaciones
+                           .Include(l => l.Empleado)
+                           .Select(l => new
+                           {
+                               l.BonificacionesId,
+                               l.EmpleadoId,
+                               l.Tipobonificacion,
+                               l.Monto,
+                           })
+                           .FirstOrDefault();
+
+            if (bonificaciones == null)
+                return NotFound();
+
+            return Ok(bonificaciones);
         }
 
         // POST: api/Bonificaciones
@@ -79,15 +83,21 @@ namespace LibreriaApi.Controllers
         [HttpPost]
         [SwaggerOperation("PostBonificaciones")]
         [Route("api/PostBonificaciones")]
-        public IHttpActionResult Post(Bonificaciones bonificacion,int idempleado )
+        public IHttpActionResult Post(Bonificaciones bonificacion)
         {
-            if (bonificacion.Empleado != null)
-            {
-                Empleado empleadoexistente = db.Empleados.Find(bonificacion.Empleado.EmpleadoId);
-                bonificacion.Empleado = empleadoexistente;
-            }
+            if (bonificacion == null)
+                return BadRequest("Bonificaciones son inválidas.");
+
+            var empleado = db.Empleados.Find(bonificacion.EmpleadoId);
+            
+            if (empleado == null)
+                return BadRequest("Empleado no encontrada.");
+
+          
+
             db.Bonificaciones.Add(bonificacion);
             db.SaveChanges();
+
             return Ok(bonificacion);
         }
 
@@ -102,24 +112,28 @@ namespace LibreriaApi.Controllers
         [HttpPut]
         [SwaggerOperation("PutBonificacion")]
         [Route("api/PutBonificacion")]
-        public IHttpActionResult Put(Bonificaciones bonimodificar)
+        public IHttpActionResult Put(int id, Bonificaciones bonificacionmodificar)
         {
-            
-            
-            if (bonimodificar.Empleado != null)
-            {
-                Empleado empleadoexistente = db.Empleados.Find(bonimodificar.Empleado.EmpleadoId);
-                bonimodificar.Empleado = empleadoexistente;
-            }
-            
-            int id = bonimodificar.BonificacionesId;
-            db.Entry(bonimodificar).State = EntityState.Modified;
+            var bonificacion = db.Bonificaciones.Find(id);
+            if (bonificacion == null)
+                return NotFound();
+
+          
+            var empleado = db.Empleados.Find(bonificacionmodificar.EmpleadoId);
+            if (empleado == null)
+                return BadRequest("Empleado no encontrado.");
+
+          
+            bonificacion.EmpleadoId = bonificacionmodificar.EmpleadoId;
+            bonificacion.Tipobonificacion = bonificacionmodificar.Tipobonificacion;
+            bonificacion.Monto = bonificacionmodificar.Monto;
+
             db.SaveChanges();
-            return Ok(bonimodificar);
+            return Ok(bonificacion);
         }
 
         // DELETE: api/Bonificaciones/5
-        
+
         /// <summary>
         /// Eliminar valores
         /// </summary>

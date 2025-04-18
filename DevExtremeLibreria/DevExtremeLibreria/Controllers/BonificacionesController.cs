@@ -50,31 +50,46 @@ namespace pus.Controllers
         [HttpPut]
         public async Task<HttpResponseMessage> Put(FormDataCollection form)
         {
-            //Parámetros del form
-            var key = Convert.ToInt32(form.Get("key")); //llave que estoy modificando
-            var values = form.Get("values"); //Los valores que yo modifiqué en formato JSON
+            // Obtener los parámetros del formulario
+            var key = Convert.ToInt32(form.Get("key")); // llave que estoy modificando
+            var values = form.Get("values"); // Los valores modificados en formato JSON
 
-            var apiUrlGetBoni = $"https://localhost:44370/api/GetBonificacion?id={key}";
-            var respuestaBoni = await GetAsync(apiUrlGetBoni = $"https://localhost:44370/api/GetBonificacion?id={key}");
-            Bonificaciones bonificacion = JsonConvert.DeserializeObject<Bonificaciones>(respuestaBoni);
+            // Obtener el bonificacion desde la API
+            var apiUrlGetBonificaciones = $"https://localhost:44370/api/GetBonificacion?id={key}";
+            var respuestaBonificaciones = await GetAsync(apiUrlGetBonificaciones);
+            if (string.IsNullOrEmpty(respuestaBonificaciones))
+            {
+                return Request.CreateErrorResponse(HttpStatusCode.NotFound, "El autor no fue encontrado.");
+            }
 
-            JsonConvert.PopulateObject(values, bonificacion);
+            Bonificaciones bonificaciones = JsonConvert.DeserializeObject<Bonificaciones>(respuestaBonificaciones);
 
-            string jsonString = JsonConvert.SerializeObject(bonificacion);
+            // Asignar los valores del formulario al objeto autor
+            JsonConvert.PopulateObject(values, bonificaciones);
+
+            // Serializar el objeto actualizado
+            string jsonString = JsonConvert.SerializeObject(bonificaciones);
             var httpContent = new StringContent(jsonString, System.Text.Encoding.UTF8, "application/json");
 
+            // Realizar la solicitud PUT a la API
             var handler = new HttpClientHandler();
             handler.ServerCertificateCustomValidationCallback = (message, cert, chain, errors) => true;
             using (var client = new HttpClient(handler))
             {
-                var url = "https://localhost:44370/api/PutBonificacion?id={key} ";
+
+                var url = $"https://localhost:44370/api/PutBonificacion?id={key}";
+
                 var response = await client.PutAsync(url, httpContent);
 
-                var result = response.Content.ReadAsStringAsync().Result;
+                if (!response.IsSuccessStatusCode)
+                {
+                    var error = await response.Content.ReadAsStringAsync();
+                    return Request.CreateErrorResponse(response.StatusCode, error);
+                }
+
+                var result = await response.Content.ReadAsStringAsync();
+                return Request.CreateResponse(HttpStatusCode.OK, result);
             }
-
-
-            return Request.CreateResponse(HttpStatusCode.OK);
         }
 
 
@@ -104,7 +119,7 @@ namespace pus.Controllers
         {
             var key = Convert.ToInt32(form.Get("key"));
 
-            var apiUrlDelaBoni = "https://localhost:44370/api/DeleteBonificacion/" + key;
+            var apiUrlDelaBoni = "https://localhost:44370/api/DeleteBonificacion?id=" +key;
             var handler = new HttpClientHandler();
             handler.ServerCertificateCustomValidationCallback = (message, cert, chain, errors) => true;
             using (var client = new HttpClient(handler))

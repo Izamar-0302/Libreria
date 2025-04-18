@@ -28,6 +28,8 @@ namespace LibreriaApi.Controllers
             return db.Ubicaciones;
         }
 
+
+
         // GET: api/Ubicacion/5
 
         /// <summary>
@@ -49,12 +51,13 @@ namespace LibreriaApi.Controllers
             }
             return Ok(ubicacion);
         }
+        
 
         // POST: api/Ubicacion
         /// <summary>
         /// Agregar valor
         /// </summary>
-        /// <param name="proveedor"></param>
+        /// <param name="ubicacion"></param>
         /// <returns>JSON Ubicacion</returns>
         /// <response code="200">Devuelve cuando se agrega valor</response>
         /// <respone code= "404">Devueleve cuando no se agrega</respone>

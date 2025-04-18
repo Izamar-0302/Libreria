@@ -25,9 +25,29 @@ namespace LibreriaApi.Controllers
         [HttpGet]
         [SwaggerOperation("GetLibros")]
         [Route("api/GetLibros")]
-        public IEnumerable<Libro> Get()
+        public IHttpActionResult Get()
         {
-            return db.Libros;
+             var libros = db.Libros
+        .Include(l => l.Autor)
+        .Include(l => l.Editorial)
+        .Include(l => l.Ubicacion)
+        .Include(l => l.Proveedor)
+        .Select(l => new
+        {
+            l.LibroId,
+            l.Titulo,
+            l.AutorId,
+            l.EditorialId,
+            l.Aniopublicacion,
+            l.Precio,
+            l.Genero,
+            l.Cantidad,
+            l.UbicacionId,
+            l.ProveedorId
+        })
+        .ToList();
+
+    return Ok(libros);
         }
 
 
@@ -44,26 +64,31 @@ namespace LibreriaApi.Controllers
         [Route("api/GetLibro")]
         public IHttpActionResult Get(int id)
         {
-            var query = from autor1 in db.Autores
-                        join libro in db.Libros on autor1.AutorId equals libro.Autor.AutorId
-                        join editorial1 in db.Editoriales on libro.Editorial.EditorialId equals editorial1.EditorialId
-                        join ubicacion1 in db.Ubicaciones on libro.Ubicacion.UbicacionId equals ubicacion1.UbicacionId
-                        join proveedor1 in db.Proveedores on libro.Proveedor.ProveedorId equals proveedor1.ProveedorId
-                        where libro.LibroId == id
-                        select new
-                        {
-                            IdLibro = libro.LibroId,
-                            TituloLibro = libro.Titulo,
-                            IdAutor = autor1.AutorId,
-                            Ideditorial = editorial1.EditorialId,
-                            Aniodepublicacion = libro.Aniopublicacion,
-                            cantidad = libro.Cantidad,
-                            precio = libro.Precio,
-                            ubicacion = ubicacion1.UbicacionId,
-                            proveedor = proveedor1.ProveedorId
-                        };
+            var libro = db.Libros
+                .Include(l => l.Autor)
+                .Include(l => l.Editorial)
+                .Include(l => l.Ubicacion)
+                .Include(l => l.Proveedor)
+                .Where(l => l.LibroId == id)
+                .Select(l => new
+                {
+                    l.LibroId,
+                    l.Titulo,
+                    l.AutorId,
+                    l.EditorialId,
+                    l.Aniopublicacion,
+                    l.Precio,
+                    l.Genero,
+                    l.Cantidad,
+                    l.UbicacionId,
+                    l.ProveedorId
+                })
+                .FirstOrDefault();
 
-            return Ok(query);
+            if (libro == null)
+                return NotFound();
+
+            return Ok(libro);
         }
 
         // POST: api/Libro
@@ -79,35 +104,26 @@ namespace LibreriaApi.Controllers
         [Route("api/PostLibro")]
         public IHttpActionResult Post(Libro libro)
         {
-            if (libro.Autor != null)
-            {
-                Autor autorexistente = db.Autores.Find(libro.Autor.AutorId);
-                libro.Autor = autorexistente;
+            if (libro == null)
+                return BadRequest("Libro inválido.");
 
-            }
+            var autor = db.Autores.Find(libro.AutorId);
+            var editorial = db.Editoriales.Find(libro.EditorialId);
+            var ubicacion = db.Ubicaciones.Find(libro.UbicacionId);
+            var proveedor = db.Proveedores.Find(libro.ProveedorId);
+            if (autor == null)
+                return BadRequest("Autor no encontrado.");
 
+            if (editorial == null)
+                return BadRequest("Editorial no encontrada.");
+            if (ubicacion == null)
+                return BadRequest("Ubicacion no encontrada.");
 
-            if (libro.Editorial != null)
-            {
-                Editorial editoexistente = db.Editoriales.Find(libro.Editorial.EditorialId);
-                libro.Editorial = editoexistente;
-            }
-
-
-            if (libro.Ubicacion != null)
-            {
-                Ubicacion ubiexistente = db.Ubicaciones.Find(libro.Ubicacion.UbicacionId);
-                libro.Ubicacion = ubiexistente;
-            }
-
-
-            if (libro.Proveedor != null)
-            {
-                Proveedor proveedorexistente = db.Proveedores.Find(libro.Proveedor.ProveedorId);
-                libro.Proveedor = proveedorexistente;
-            }
+            if (proveedor == null)
+                return BadRequest("Proveedor no encontrado.");
             db.Libros.Add(libro);
             db.SaveChanges();
+
             return Ok(libro);
         }
 
@@ -122,41 +138,39 @@ namespace LibreriaApi.Controllers
         [HttpPut]
         [SwaggerOperation("PutLibro")]
         [Route("api/PutLibro")]
-        public IHttpActionResult Put(Libro libromodificar)
+        public IHttpActionResult Put(int id, Libro libroActualizado)
         {
-            
-            if (libromodificar.Autor != null)
-            {
-                Autor autorexistente = db.Autores.Find(libromodificar.Autor.AutorId);
-                libromodificar.Autor = autorexistente;
+            var libro = db.Libros.Find(id);
+            if (libro == null)
+                return NotFound();
 
-            }
-            
-            
-            if (libromodificar.Editorial != null)
-            {
-                Editorial editoexistente = db.Editoriales.Find(libromodificar.Editorial.EditorialId);
-                libromodificar.Editorial = editoexistente;
-            }
-            
-            
-            if (libromodificar.Ubicacion != null)
-            {
-                Ubicacion ubiexistente = db.Ubicaciones.Find(libromodificar.Ubicacion.UbicacionId);
-                libromodificar.Ubicacion = ubiexistente;
-            }
-            
-            
-            if (libromodificar.Proveedor!= null)
-            {
-                Proveedor proveedorexistente = db.Proveedores.Find(libromodificar.Proveedor.ProveedorId);
-                libromodificar.Proveedor = proveedorexistente;
-            }
-            
-            int id = libromodificar.LibroId;
-            db.Entry(libromodificar).State = EntityState.Modified;
+            var autor = db.Autores.Find(libro.AutorId);
+            var editorial = db.Editoriales.Find(libro.EditorialId);
+            var ubicacion = db.Ubicaciones.Find(libro.UbicacionId);
+            var proveedor = db.Proveedores.Find(libro.ProveedorId);
+
+            if (autor == null)
+                return BadRequest("Autor no encontrado.");
+
+            if (editorial == null)
+                return BadRequest("Editorial no encontrada.");
+            if (ubicacion == null)
+                return BadRequest("Ubicacion no encontrada.");
+
+            if (proveedor == null)
+                return BadRequest("Proveedor no encontrado.");
+
+            libro.Titulo = libroActualizado.Titulo;
+            libro.AutorId = libroActualizado.AutorId;
+            libro.EditorialId = libroActualizado.EditorialId;
+            libro.Aniopublicacion = libroActualizado.Aniopublicacion;
+            libro.Precio = libroActualizado.Precio;
+            libro.Genero = libroActualizado.Genero;
+            libro.Cantidad = libroActualizado.Cantidad;
+            libro.UbicacionId = libroActualizado.UbicacionId;
+            libro.ProveedorId = libroActualizado.ProveedorId;
             db.SaveChanges();
-            return Ok(libromodificar);
+            return Ok(libro);
         }
 
         // DELETE: api/Libro/5

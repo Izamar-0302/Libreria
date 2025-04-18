@@ -24,32 +24,45 @@
         columns.AddFor(m => m.EmpleadoId);
 
         columns.AddFor(m => m.CargoId).Lookup(lookup => lookup
-            .DataSource(ds => ds.WebApi().Controller("Cargo").LoadAction("Get").Key("CargoId"))
+            .DataSource(ds => ds.WebApi().Controller("Cargo").LoadAction("GetCargos").Key("CargoId"))
             .ValueExpr("CargoId")
             .DisplayExpr("Titulo")
         );
 
         columns.AddFor(m => m.SucursalId).Lookup(lookup => lookup
-            .DataSource(ds => ds.WebApi().Controller("Sucursal").LoadAction("Get").Key("SucursalId"))
+            .DataSource(ds => ds.WebApi().Controller("Sucursal").LoadAction("GetSucursales").Key("SucursalId"))
             .ValueExpr("SucursalId")
             .DisplayExpr("Nombresucursal")
         );
 
-        columns.AddFor(m => m.Salario);
+        columns.AddFor(m => m.Salario)
+         .Caption("Salario");
 
-        columns.AddFor(m => m.Nombre);
+        columns.AddFor(m => m.Nombre)
+        .Caption("Nombre");
 
-        columns.AddFor(m => m.Apellidos);
+        columns.AddFor(m => m.Apellidos)
+        .Caption("Apellido");
 
-        columns.AddFor(m => m.Correo);
+        columns.AddFor(m => m.Correo)
+        .Caption("Correo");
 
-        columns.AddFor(m => m.Telefono);
+        columns.AddFor(m => m.Telefono)
+        .Caption("Teléfono");
 
-        columns.AddFor(m => m.Direccion);
+        columns.AddFor(m => m.Direccion)
+        .Caption("Dirección");
     })
     .Editing(e => e
+     .Mode(GridEditMode.Popup)
         .AllowAdding(true)
         .AllowUpdating(true)
         .AllowDeleting(true)
+        .Texts(t => t
+        .ConfirmDeleteMessage("¿Estás seguro de que deseas eliminar este registro?")
+        .SaveRowChanges("Guardar")
+        .CancelRowChanges("Cancelar")
+    )
+
     )
 )

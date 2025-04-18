@@ -15,7 +15,7 @@ namespace LibreriaApi.Models
         public int EmpleadoId { get; set; }
         public Pedido Pedido { get; set; }
         public int PedidoId { get; set; }
-        public Libro Libro { get; set; }
+        public virtual Libro Libro { get; set; }
         public int LibroId { get; set; }
         public MetodoPago MetodoPago { get; set; }
         public int MetodopagoId { get; set; }

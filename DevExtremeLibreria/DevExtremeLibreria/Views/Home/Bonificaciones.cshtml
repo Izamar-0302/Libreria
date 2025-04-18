@@ -1,0 +1,49 @@
+﻿@{
+    ViewData["Title"] = "Bonificaciones";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Bonificaciones</h2>
+
+@(Html.DevExtreme().DataGrid<DevExtremeLibreria.Models.Bonificaciones>
+    ()
+
+    .DataSource(ds => ds.WebApi()
+    .Controller("Bonificaciones")
+    .LoadAction("Get")
+    .InsertAction("Post")
+    .UpdateAction("Put")
+    .DeleteAction("Delete")
+    .Key("BonificacionesId")
+    )
+    .RemoteOperations(true)
+    .Columns(columns => {
+
+        columns.AddFor(m => m.BonificacionesId)
+         .Caption("Id de Bonificaciones");
+
+
+        columns.AddFor(m => m.EmpleadoId).Lookup(lookup => lookup
+    .DataSource(ds => ds.WebApi().Controller("Empleado").LoadAction("GetEmpleados").Key("EmpleadoId"))
+    .ValueExpr("EmpleadoId")
+    .DisplayExpr("Nombre")
+    );
+
+        columns.AddFor(m => m.Tipobonificacion)
+         .Caption("Tipo Bonificación");
+
+        columns.AddFor(m => m.Monto)
+         .Caption("Monto");
+    })
+    .Editing(e => e
+    .Mode(GridEditMode.Popup)
+    .AllowAdding(true)
+    .AllowUpdating(true)
+    .AllowDeleting(true)
+    .Texts(t => t
+    .ConfirmDeleteMessage("¿Estás seguro de que deseas eliminar este registro?")
+    .SaveRowChanges("Guardar")
+    .CancelRowChanges("Cancelar")
+    )
+    )
+    )

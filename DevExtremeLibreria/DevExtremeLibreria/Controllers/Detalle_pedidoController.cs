@@ -79,7 +79,7 @@ namespace DevExtremeLibreria.Controllers
             handler.ServerCertificateCustomValidationCallback = (message, cert, chain, errors) => true;
             using (var client = new HttpClient(handler))
             {
-                var url = $"https://localhost:44370/api/PutPedido?id={key}";
+                var url = $"https://localhost:44370/api/PutDetalle_pedido?id={key}";
                 var response = await client.PutAsync(url, httpContent);
 
                 if (!response.IsSuccessStatusCode)
@@ -121,7 +121,7 @@ namespace DevExtremeLibreria.Controllers
         {
             var key = Convert.ToInt32(form.Get("key"));
 
-            var apiUrlDelPedido = $"https://localhost:44370/api/DeletePostDetalle_pedido?id={key}";
+            var apiUrlDelPedido = $"https://localhost:44370/api/DeleteDetalle_pedido?id={key}";
             var handler = new HttpClientHandler();
             handler.ServerCertificateCustomValidationCallback = (message, cert, chain, errors) => true;
             using (var client = new HttpClient(handler))

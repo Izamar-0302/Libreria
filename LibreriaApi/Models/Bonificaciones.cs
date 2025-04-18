@@ -9,10 +9,8 @@ namespace LibreriaApi.Models
 {
     public class Bonificaciones
     {
-        [Key]
-        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int BonificacionesId { get; set; }
-        public Empleado Empleado { get; set; }
+        public virtual Empleado Empleado { get; set; }
         public int EmpleadoId { get; set; }
         public string Tipobonificacion { get; set; }
         public double Monto { get; set; }

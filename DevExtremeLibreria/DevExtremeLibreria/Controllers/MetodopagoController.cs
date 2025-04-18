@@ -119,12 +119,12 @@ namespace DevExtremeLibreria.Controllers
         {
             var key = Convert.ToInt32(form.Get("key"));
 
-            var apiUrlDelmp = "https://localhost:44370/api/DeleteMetodoPago" + key;
+            var apiUrlDelmetodo = "https://localhost:44370/api/DeleteMetodoPago?id=" + key;
             var handler = new HttpClientHandler();
             handler.ServerCertificateCustomValidationCallback = (message, cert, chain, errors) => true;
             using (var client = new HttpClient(handler))
             {
-                var respuestamp = await client.DeleteAsync(apiUrlDelmp);
+                var respuestaMetodopago = await client.DeleteAsync(apiUrlDelmetodo);
             }
             return Request.CreateResponse(HttpStatusCode.OK);
         }

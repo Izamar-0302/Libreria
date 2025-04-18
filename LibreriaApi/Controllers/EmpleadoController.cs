@@ -25,45 +25,63 @@ namespace LibreriaApi.Controllers
         [HttpGet]
         [SwaggerOperation("GetEmpleados")]
         [Route("api/GetEmpleados")]
-        
-        public IEnumerable<Empleado> Get()
+
+        public IHttpActionResult Get()
         {
-            return db.Empleados;
+            var empleados = db.Empleados
+                .Include(l => l.Cargo)
+                .Include(l => l.Sucursal)
+                .Select(l => new
+                {
+                    l.EmpleadoId,
+                    l.Nombre,
+                    l.Apellidos,
+                    l.Correo,
+                    l.Telefono,
+                    l.Direccion,
+                    l.CargoId,
+                    l.SucursalId,
+                    l.Salario
+                })
+                .ToList();
+
+            return Ok(empleados);
+
         }
+            // GET: api/Empleado/5
 
-
-        // GET: api/Empleado/5
-
-        /// <summary>
-        /// Obtener valor
-        /// </summary>
-        /// <returns>JSON Empleado</returns>
-        /// <response code="200">Devuelve si el valor es encontrado</response>
-        /// <response code="404">Devuelve si no es encontrado</response>
-        [HttpGet]
+            /// <summary>
+            /// Obtener valor
+            /// </summary>
+            /// <returns>JSON Empleado</returns>
+            /// <response code="200">Devuelve si el valor es encontrado</response>
+            /// <response code="404">Devuelve si no es encontrado</response>
+            [HttpGet]
         [SwaggerOperation("GetEmpleado")]
         [Route("api/GetEmpleado")]
         public IHttpActionResult Get(int id)
         {
-            var query = from cargo1 in db.Cargo
-                        join empleado in db.Empleados on cargo1.CargoId equals empleado.Cargo.CargoId
-                        join sucursal1 in db.Sucursales on empleado.Sucursal.SucursalId equals sucursal1.SucursalId
-                        where empleado.EmpleadoId == id
-                        select new
-                        {
-                            IdEmpleados = empleado.EmpleadoId,
-                            TipoBonificacion = empleado.Nombre,
-                            MontonBonificacion = empleado.Apellidos,
-                            IdEmpleado = empleado.Direccion,
-                            empleado.Correo,
-                            empleado.Cargo,
-                            empleado.Sucursal,
-                            empleado.Telefono,
-                            empleado.Salario
+            var empleados = db.Empleados
+                .Include(l => l.Cargo)
+                .Include(l => l.Sucursal)
+                .Select(l => new
+                {
+                    l.EmpleadoId,
+                    l.Nombre,
+                    l.Apellidos,
+                    l.Correo,
+                    l.Telefono,
+                    l.Direccion,
+                    l.CargoId,
+                    l.SucursalId,
+                    l.Salario
+                })
+               .FirstOrDefault();
 
-                        };
+            if (empleados == null)
+                return NotFound();
 
-            return Ok(query);
+            return Ok(empleados);
         }
 
         // POST: api/Empleado
@@ -79,16 +97,18 @@ namespace LibreriaApi.Controllers
         [Route("api/PostEmpleado")]
         public IHttpActionResult Post(Empleado empleado)
         {
-            if (empleado.Sucursal != null)
-            {
-                Sucursal sucursal = db.Sucursales.Find(empleado.Sucursal.SucursalId);
-                empleado.Sucursal = sucursal;
-            }
-            if (empleado.Cargo != null)
-            {
-                Cargo cargo = db.Cargo.Find(empleado.Cargo.CargoId);
-                empleado.Cargo = cargo;
-            }
+            if (empleado == null)
+                return BadRequest("Empleado inválido.");
+
+            var sucursal = db.Sucursales.Find(empleado.SucursalId);
+            var cargo = db.Cargo.Find(empleado.CargoId);
+
+            if (sucursal == null)
+                return BadRequest("Sucursal no encontrada.");
+
+            if (cargo == null)
+                return BadRequest("Cargo no encontrado.");
+
             db.Empleados.Add(empleado);
             db.SaveChanges();
 
@@ -106,41 +126,47 @@ namespace LibreriaApi.Controllers
         [HttpPut]
         [SwaggerOperation("PutEmpleado")]
         [Route("api/PutEmpleado")]
-        public IHttpActionResult Put(int iD,Empleado empleadomodificar)
+        public IHttpActionResult Put(int id, Empleado empleadomodificar)
         {
-            Empleado empleado = db.Empleados.Find(iD);
-             if (empleadomodificar.SucursalId != null)
-            {
-                Sucursal sucursal = db.Sucursales.Find(empleadomodificar.Sucursal.SucursalId);
-                empleado.Sucursal = sucursal;
-            }
-            if (empleado.Cargo != null)
-            {
-                Cargo cargo = db.Cargo.Find(empleadomodificar.Cargo.CargoId);
-                empleado.Cargo = cargo;
-            }
+            var empleado = db.Empleados.Find(id);
+            if (empleado == null)
+                return NotFound();
 
-            //empleado.EmpleadoId= empleadomodificar.EmpleadoId;
-            empleado.Salario = empleadomodificar.Salario;
-            empleado.Apellidos = empleadomodificar.Apellidos;
+
+            var sucursal = db.Sucursales.Find(empleadomodificar.SucursalId);
+            var cargo = db.Cargo.Find(empleadomodificar.CargoId);
+
+            if (sucursal == null)
+                return BadRequest("Sucursal no encontrada.");
+            if (cargo == null)
+                return BadRequest("Cargo no encontrado.");
+
+
             empleado.Nombre = empleadomodificar.Nombre;
+            empleado.Apellidos = empleadomodificar.Apellidos;
             empleado.Correo = empleadomodificar.Correo;
-            empleado.Direccion = empleadomodificar.Direccion;
             empleado.Telefono = empleadomodificar.Telefono;
+            empleado.Direccion = empleadomodificar.Direccion;
 
+
+            empleado.SucursalId = empleadomodificar.SucursalId;
+            empleado.CargoId = empleadomodificar.CargoId;
+
+
+            empleado.Salario = empleadomodificar.Salario;
 
             db.SaveChanges();
             return Ok(empleado);
         }
 
-        // DELETE: api/Empleado/5
+            // DELETE: api/Empleado/5
 
-        /// <summary>
-        /// Eliminar valores
-        /// </summary>
-        /// <returns>JSON Empleado</returns>
-        /// <response code="200">Devuelve si los valores son eliminados</response>
-        /// <response code="404">Devuelve si no son eliminados</response>
+            /// <summary>
+            /// Eliminar valores
+            /// </summary>
+            /// <returns>JSON Empleado</returns>
+            /// <response code="200">Devuelve si los valores son eliminados</response>
+            /// <response code="404">Devuelve si no son eliminados</response>
         [HttpDelete]
         [SwaggerOperation("DeleteEmpleado")]
         [Route("api/DeleteEmpleado")]

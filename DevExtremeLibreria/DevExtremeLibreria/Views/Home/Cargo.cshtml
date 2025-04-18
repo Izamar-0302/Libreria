@@ -5,14 +5,15 @@
 
 <h2>Cargo</h2>
 
-@(Html.DevExtreme().DataGrid<DevExtremeLibreria.Models.Cargo>()
+@(Html.DevExtreme().DataGrid<DevExtremeLibreria.Models.Cargo>
+    ()
     .DataSource(ds => ds.WebApi()
-        .Controller("Cargo")
-        .LoadAction("Get")
-        .InsertAction("Post")
-        .UpdateAction("Put")
-        .DeleteAction("Delete")
-        .Key("CargoId")
+    .Controller("Cargo")
+    .LoadAction("Get")
+    .InsertAction("Post")
+    .UpdateAction("Put")
+    .DeleteAction("Delete")
+    .Key("CargoId")
     )
     .RemoteOperations(true)
     .Paging(p => p.PageSize(10))
@@ -21,17 +22,27 @@
     .SearchPanel(f => f.Visible(true))
     .Columns(columns => {
 
-        columns.AddFor(m => m.CargoId);
+        columns.AddFor(m => m.CargoId)
+        .Caption("ID del Cargo");
 
-        columns.AddFor(m => m.Titulo);
+        columns.AddFor(m => m.Titulo)
+        .Caption("Título");
 
-        columns.AddFor(m => m.Descripcion);
+        columns.AddFor(m => m.Descripcion)
+        .Caption("Descripción");
 
-        columns.AddFor(m => m.Departamento);
+        columns.AddFor(m => m.Departamento)
+        .Caption("Departamento");
     })
     .Editing(e => e
-        .AllowAdding(true)
-        .AllowUpdating(true)
-        .AllowDeleting(true)
+    .Mode(GridEditMode.Popup)
+    .AllowAdding(true)
+    .AllowUpdating(true)
+    .AllowDeleting(true)
+    .Texts(t => t
+    .ConfirmDeleteMessage("¿Estás seguro de que deseas eliminar este registro?")
+    .SaveRowChanges("Guardar")
+    .CancelRowChanges("Cancelar")
     )
-)
+   )
+  )

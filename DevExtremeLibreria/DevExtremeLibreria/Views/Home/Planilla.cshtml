@@ -5,14 +5,15 @@
 
 <h2>Planilla</h2>
 
-@(Html.DevExtreme().DataGrid<DevExtremeLibreria.Models.Planilla>()
+@(Html.DevExtreme().DataGrid<DevExtremeLibreria.Models.Planilla>
+    ()
     .DataSource(ds => ds.WebApi()
-        .Controller("Planilla")
-        .LoadAction("Get")
-        .InsertAction("Post")
-        .UpdateAction("Put")
-        .DeleteAction("Delete")
-        .Key("PlanillaId")
+    .Controller("Planilla")
+    .LoadAction("Get")
+    .InsertAction("Post")
+    .UpdateAction("Put")
+    .DeleteAction("Delete")
+    .Key("PlanillaId")
     )
     .RemoteOperations(true)
     .Paging(p => p.PageSize(10))
@@ -21,13 +22,21 @@
     .SearchPanel(f => f.Visible(true))
     .Columns(columns => {
 
-        columns.AddFor(m => m.PlanillaId);
+        columns.AddFor(m => m.PlanillaId)
+             .Caption("ID de Planilla");
 
-        columns.AddFor(m => m.Fechapago);
+        columns.AddFor(m => m.Fechapago)
+             .Caption("Fecha de Pago");
     })
     .Editing(e => e
-        .AllowAdding(true)
-        .AllowUpdating(true)
-        .AllowDeleting(true)
+    .Mode(GridEditMode.Popup)
+    .AllowAdding(true)
+    .AllowUpdating(true)
+    .AllowDeleting(true)
+    .Texts(t => t
+    .ConfirmDeleteMessage("¿Estás seguro de que deseas eliminar este registro?")
+    .SaveRowChanges("Guardar")
+    .CancelRowChanges("Cancelar")
     )
-)
+    )
+    )

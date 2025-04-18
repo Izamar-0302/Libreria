@@ -5,14 +5,15 @@
 
 <h2>Autor</h2>
 
-@(Html.DevExtreme().DataGrid<DevExtremeLibreria.Models.Autor>()
+@(Html.DevExtreme().DataGrid<DevExtremeLibreria.Models.Autor>
+    ()
     .DataSource(ds => ds.WebApi()
-        .Controller("Autor")
-        .LoadAction("Get")
-        .InsertAction("Post")
-        .UpdateAction("Put")
-        .DeleteAction("Delete")
-        .Key("AutorId")
+    .Controller("Autor")
+    .LoadAction("Get")
+    .InsertAction("Post")
+    .UpdateAction("Put")
+    .DeleteAction("Delete")
+    .Key("AutorId")
     )
     .RemoteOperations(true)
     .Paging(p => p.PageSize(10))
@@ -21,19 +22,27 @@
     .SearchPanel(f => f.Visible(true))
     .Columns(columns => {
 
-        columns.AddFor(m => m.AutorId);
+    columns.AddFor(m => m.AutorId);
 
-        columns.AddFor(m => m.Nombre);
+    columns.AddFor(m => m.Nombre);
 
-        columns.AddFor(m => m.Nacionalidad);
+    columns.AddFor(m => m.Nacionalidad);
 
-        columns.AddFor(m => m.Fechadenacimiento);
+    columns.AddFor(m => m.Fechadenacimiento);
 
-        columns.AddFor(m => m.Biografia);
+    columns.AddFor(m => m.Biografia);
     })
     .Editing(e => e
-        .AllowAdding(true)
-        .AllowUpdating(true)
-        .AllowDeleting(true)
+    .Mode(GridEditMode.Popup)
+    .AllowAdding(true)
+    .AllowUpdating(true)
+    .AllowDeleting(true)
+    .Texts(t => t
+    .ConfirmDeleteMessage("¿Estás seguro de que deseas eliminar este registro?")
+    .SaveRowChanges("Guardar")
+    .CancelRowChanges("Cancelar")
     )
-)
+
+  )
+
+  )

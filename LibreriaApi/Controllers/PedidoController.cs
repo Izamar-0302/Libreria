@@ -23,11 +23,24 @@ namespace LibreriaApi.Controllers
         [HttpGet]
         [SwaggerOperation("GetPedidos")]
         [Route("api/GetPedidos")]
-        public IEnumerable<Pedido> Get()
+        public IHttpActionResult Get()
         {
-            return db.Pedidos;
-        }
+            var pedido = db.Pedidos
+                .Include(l => l.Proveedor)
+              
+                .Select(l => new
+                {
+                    l.PedidoId,
+                    l.ProveedorId,
+                    l.Fechapedido,
+                    l.Fechaentrega,
+                    l.Estado,
+                })
+                .ToList();
 
+            return Ok(pedido);
+
+        }
 
         // GET: api/Pedido/5
 

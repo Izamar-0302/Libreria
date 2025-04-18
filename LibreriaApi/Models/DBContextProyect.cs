@@ -39,11 +39,11 @@ namespace LibreriaApi.Models
                 .HasForeignKey(v => v.ProveedorId)
                 .WillCascadeOnDelete(false); // 👈 Aquí se desactiva el cascade
 
-            modelBuilder.Entity<Venta>()
-                .HasRequired(v => v.Libro)
-                .WithMany()
-                .HasForeignKey(v => v.LibroId)
-                .WillCascadeOnDelete(false);
+              modelBuilder.Entity<Venta>()
+               .HasRequired(v => v.Libro)
+               .WithMany()           
+               .HasForeignKey(v => v.LibroId)
+               .WillCascadeOnDelete(false);
 
             modelBuilder.Entity<Venta>()
                 .HasRequired(v => v.Sucursal)

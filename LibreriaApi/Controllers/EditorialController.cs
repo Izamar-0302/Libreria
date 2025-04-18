@@ -89,7 +89,7 @@ namespace LibreriaApi.Controllers
                 }
 
                 editorial.Nombre = editorialmodificado.Nombre;
-                editorial.Pais = editorialmodificado.Nombre;
+                editorial.Pais = editorialmodificado.Pais;
                 editorial.Fundacion = editorialmodificado.Fundacion;
                 editorial.Catalogo = editorialmodificado.Catalogo;
 
