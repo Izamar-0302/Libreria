@@ -1,0 +1,48 @@
+﻿@{
+    ViewData["Title"] = "Empleado_Planilla";
+}
+
+<h2>Empleado_Planilla</h2>
+
+@(Html.DevExtreme().DataGrid<DevExtremeLibreria.Models.Empleado_planilla>()
+    .DataSource(ds => ds.WebApi()
+        .Controller("Empleado_Planilla")
+        .LoadAction("Get")
+        .InsertAction("Post")
+        .UpdateAction("Put")
+        .DeleteAction("Delete")
+        .Key("Id")
+    )
+    .RemoteOperations(true)
+    .Columns(columns => {
+
+        columns.AddFor(m => m.Id);
+
+        columns.AddFor(m => m.EmpleadoId).Lookup(lookup => lookup
+            .DataSource(ds => ds.WebApi().Controller("Empleado").LoadAction("Get").Key("EmpleadoId"))
+            .ValueExpr("EmpleadoId")
+            .DisplayExpr("Nombre")
+        );
+
+        columns.AddFor(m => m.BonificacionesId).Lookup(lookup => lookup
+            .DataSource(ds => ds.WebApi().Controller("Bonificaciones").LoadAction("Get").Key("BonificacionesId"))
+            .ValueExpr("BonificacionesId")
+            .DisplayExpr("Tipobonificacion")
+        );
+
+        columns.AddFor(m => m.Anticipo);
+        
+        columns.AddFor(m => m.DeduccionesId).Lookup(lookup => lookup
+            .DataSource(ds => ds.WebApi().Controller("Deducciones").LoadAction("Get").Key("DeduccionesId"))
+            .ValueExpr("DeduccionesId")
+            .DisplayExpr("TipoDeduccion")
+        );
+
+        columns.AddFor(m => m.Sueldoneto);
+    })
+    .Editing(e => e
+        .AllowAdding(true)
+        .AllowUpdating(true)
+        .AllowDeleting(true)
+    )
+)

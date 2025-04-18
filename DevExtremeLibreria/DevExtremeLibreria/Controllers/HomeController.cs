@@ -92,5 +92,10 @@ namespace DevExtremeLibreria.Controllers {
         {
             return View();
         }
+
+        public ActionResult Empleado_Planilla()
+        {
+            return View();
+        }
     }
 }

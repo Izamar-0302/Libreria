@@ -26,24 +26,23 @@ namespace LibreriaApi.Controllers
         [Route("api/GetEmpleado_planillas")]
         public IHttpActionResult Get()
         {
-            var query = from empleado1 in db.Empleados
-                        join empleado_planilla in db.Empleados_Planillas on empleado1.EmpleadoId equals empleado_planilla.Empleado.EmpleadoId
-                        join bonificaciones1 in db.Bonificaciones on empleado_planilla.Bono.BonificacionesId equals bonificaciones1.BonificacionesId
-                        join deducciones1 in db.Deducciones on empleado_planilla.Deduccion.DeduccionesId equals deducciones1.DeduccionesId
-                        
-                        select new
-                        {
-                            Idempleadoplanilla = empleado_planilla.Id,
-                            Nombremepleado = empleado1.Nombre,
-                            anticipo = empleado_planilla.Anticipo,
-                            bonificacion = bonificaciones1.Monto,
-                            deduccionesmonto = deducciones1.Monto,
-                            sueldobase = empleado1.Salario,
-                            sueldoneto = empleado_planilla.Sueldoneto
+            var empleadoplanilla = db.Empleados_Planillas
+                .Include(l => l.Empleado)
+                .Include(l => l.Bono)
+                .Include(l => l.Deduccion)
+                .Select(l => new
+                {
+                    l.Id,
+                    l.EmpleadoId,
+                    l.BonificacionesId,
+                    l.Anticipo,
+                    l.DeduccionesId,
+                    l.Sueldoneto,
+                   
+                })
+                .ToList();
 
-                        };
-
-            return Ok(query);
+            return Ok(empleadoplanilla);
         }
 
 
@@ -60,24 +59,26 @@ namespace LibreriaApi.Controllers
         [Route("api/GetEmpleado_planilla")]
         public IHttpActionResult Get(int id)
         {
-            var query = from empleado1 in db.Empleados
-                        join empleado_planilla in db.Empleados_Planillas on empleado1.EmpleadoId equals empleado_planilla.Empleado.EmpleadoId
-                        join bonificaciones1 in db.Bonificaciones on empleado_planilla.Bono.BonificacionesId equals bonificaciones1.BonificacionesId
-                        join deducciones1 in db.Deducciones on empleado_planilla.Deduccion.DeduccionesId equals deducciones1.DeduccionesId
-                        where empleado_planilla.Id == id
-                        select new
-                        {
-                            Idempleadoplanilla = empleado_planilla.Id,
-                            Nombremepleado = empleado1.Nombre,
-                            anticipo = empleado_planilla.Anticipo,
-                            bonificacion = bonificaciones1.Monto,
-                            deduccionesmonto = deducciones1.Monto,
-                            sueldobase = empleado1.Salario,
-                            sueldoneto = empleado_planilla.Sueldoneto
+            var empleadoplanilla = db.Empleados_Planillas
+                .Include(l => l.Empleado)
+                .Include(l => l.Bono)
+                .Include(l => l.Deduccion)
+                .Select(l => new
+                {
+                    l.Id,
+                    l.EmpleadoId,
+                    l.BonificacionesId,
+                    l.Anticipo,
+                    l.DeduccionesId,
+                    l.Sueldoneto,
 
-                        };
+                })
+                .FirstOrDefault();
 
-            return Ok(query);
+            if (empleadoplanilla == null)
+                return NotFound();
+
+            return Ok(empleadoplanilla);
         }
 
         // POST: api/Empleado_planilla
@@ -91,29 +92,24 @@ namespace LibreriaApi.Controllers
         [HttpPost]
         [SwaggerOperation("PostEmpleado_planilla")]
         [Route("api/PostEmpleado_planilla")]
-        public IHttpActionResult Post(Empleado_planilla empleado_planilla, int idempleado, int idbonificacion, int iddeduccion)
+        public IHttpActionResult Post(Empleado_planilla empleado_planilla)
         {
-            Empleado empleadoexistente = db.Empleados.Find(idempleado);
-            
-            if (empleadoexistente == null)
-            {
-                return NotFound();
-            }
-            empleado_planilla.Empleado = empleadoexistente;
-            Bonificaciones bonificacionexistente = db.Bonificaciones.Find(idbonificacion);
-            if ( bonificacionexistente == null)
-            {
-                return NotFound();
-            }
-            empleado_planilla.Bono = bonificacionexistente;
-            Deducciones deduccionexistente = db.Deducciones.Find(iddeduccion);
-            if (deduccionexistente == null)
-            {
-                return NotFound();
-            }
-            empleado_planilla.Deduccion = deduccionexistente;
-            
-            empleado_planilla.Sueldoneto = (empleadoexistente.Salario - empleado_planilla.Anticipo + bonificacionexistente.Monto  - deduccionexistente.Monto);
+            if (empleado_planilla == null)
+                return BadRequest("Empleado inválido.");
+
+            var empleado = db.Empleados.Find(empleado_planilla.EmpleadoId);
+            var bonificacion = db.Bonificaciones.Find(empleado_planilla.BonificacionesId);
+            var deduccion = db.Deducciones.Find(empleado_planilla.DeduccionesId);
+            if (bonificacion == null)
+                return BadRequest("Bonificacion no encontrada.");
+
+            if (empleado == null)
+                return BadRequest("Empleado no encontrado.");
+            if (deduccion == null)
+                return BadRequest("Empleado no encontrado.");
+
+
+            empleado_planilla.Sueldoneto = (empleado.Salario - empleado_planilla.Anticipo + bonificacion.Monto  - deduccion.Monto);
             db.Empleados_Planillas.Add(empleado_planilla);
             db.SaveChanges();
             return Ok(empleado_planilla);
@@ -130,31 +126,34 @@ namespace LibreriaApi.Controllers
         [HttpPut]
         [SwaggerOperation("PutEmpleado_planilla")]
         [Route("api/PutEmpleado_planilla")]
-        public IHttpActionResult Put(Empleado_planilla epmodificar, int idempleado, int idbonificacion, int iddeduccion)
+        public IHttpActionResult Put(int id,Empleado_planilla epmodificar)
         {
-            Empleado empleadoexistente = db.Empleados.Find(idempleado);
-            if (empleadoexistente == null)
-            {
-                return NotFound();
-            }
-            epmodificar.Empleado = empleadoexistente;
-            Bonificaciones bonificacionexistente = db.Bonificaciones.Find(idbonificacion);
-            if (bonificacionexistente == null)
-            {
-                return NotFound();
-            }
-            epmodificar.Bono = bonificacionexistente;
-            Deducciones deduccionexistente = db.Deducciones.Find(iddeduccion);
-            if (deduccionexistente == null)
-            {
-                return NotFound();
-            }
-            epmodificar.Deduccion = deduccionexistente;
-            epmodificar.Sueldoneto = (empleadoexistente.Salario - epmodificar.Anticipo + bonificacionexistente.Monto - deduccionexistente.Monto);
-            int id = epmodificar.Id;
-            db.Entry(epmodificar).State = EntityState.Modified;
+            
+            var empleadoplanilla = db.Empleados_Planillas.Find(id);
+            if (empleadoplanilla == null)
+                return BadRequest("Empleado inválido.");
+
+            var empleado = db.Empleados.Find(epmodificar.EmpleadoId);
+            var bonificacion = db.Bonificaciones.Find(epmodificar.BonificacionesId);
+            var deduccion = db.Deducciones.Find(epmodificar.DeduccionesId);
+            if (bonificacion == null)
+                return BadRequest("Bonificacion no encontrada.");
+
+            if (empleado == null)
+                return BadRequest("Empleado no encontrado.");
+            if (deduccion == null)
+                return BadRequest("Empleado no encontrado.");
+
+            empleadoplanilla.EmpleadoId = epmodificar.EmpleadoId;
+            empleadoplanilla.BonificacionesId = epmodificar.BonificacionesId;
+            empleadoplanilla.Anticipo = epmodificar.Anticipo;
+            empleadoplanilla.DeduccionesId = epmodificar.DeduccionesId;
+
+            empleadoplanilla.Sueldoneto = (empleado.Salario - empleadoplanilla.Anticipo + bonificacion.Monto - deduccion.Monto);
+            
             db.SaveChanges();
-            return Ok(epmodificar);
+            return Ok(empleadoplanilla);
+            
         }
 
         // DELETE: api/Empleado_planilla/5

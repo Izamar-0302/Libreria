@@ -197,7 +197,7 @@ namespace LibreriaApi.Controllers
             venta.Impuesto = ventamodificar.Impuesto;
             
             venta.Montototal = ((libro.Precio * venta.Cantidadventa) - venta.Descuento + venta.Impuesto);
-            db.Ventas.Add(venta);
+            
             db.SaveChanges();
             return Ok(venta);
         }

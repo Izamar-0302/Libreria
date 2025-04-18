@@ -15,18 +15,18 @@ using System.Web.Http;
 
 namespace DevExtremeLibreria.Controllers
 {
-    public class BonificacionesController : ApiController
+    public class Empleado_PlanillaController : ApiController
     {
-        // GET: Bonificaciones
+        // GET: Empleado_Planilla
         private static readonly HttpClient client = new HttpClient();
         [HttpGet]
         public async Task<HttpResponseMessage> Get(DataSourceLoadOptions loadOptions)
         {
-            var apiUrl = "https://localhost:44370/api/GetBonificaciones";
+            var apiUrl = "https://localhost:44370/api/GetEmpleado_planillas";
             var respuestaJson = await GetAsync(apiUrl);
             //System.Diagnostics.Debug.WriteLine(respuestaJson); imprimir info
-            List<Bonificaciones> listaBonificacion = JsonConvert.DeserializeObject<List<Bonificaciones>>(respuestaJson);
-            return Request.CreateResponse(DataSourceLoader.Load(listaBonificacion, loadOptions));
+            List<Empleado_planilla> listaEmpleado_planillas = JsonConvert.DeserializeObject<List<Empleado_planilla>>(respuestaJson);
+            return Request.CreateResponse(DataSourceLoader.Load(listaEmpleado_planillas, loadOptions));
         }
 
         public static async Task<string> GetAsync(string uri)
@@ -58,20 +58,20 @@ namespace DevExtremeLibreria.Controllers
             var values = form.Get("values"); // Los valores modificados en formato JSON
 
             // Obtener el autor desde la API
-            var apiUrlGetBonificacion = $"https://localhost:44370/api/GetBonificacion?id={key}";
-            var respuestaBonificacion = await GetAsync(apiUrlGetBonificacion);
-            if (string.IsNullOrEmpty(respuestaBonificacion))
+            var apiUrlGetEmpleado_planilla = $"https://localhost:44370/api/GetEmpleado_planilla?id={key}";
+            var respuestaEmpleado_planilla = await GetAsync(apiUrlGetEmpleado_planilla);
+            if (string.IsNullOrEmpty(respuestaEmpleado_planilla))
             {
-                return Request.CreateErrorResponse(HttpStatusCode.NotFound, "La Bonificacion no fue encontrada.");
+                return Request.CreateErrorResponse(HttpStatusCode.NotFound, "Planilla no fue encontrada.");
             }
 
-            Bonificaciones Bonificacion = JsonConvert.DeserializeObject<Bonificaciones>(respuestaBonificacion);
+            Empleado_planilla Empleado_planilla = JsonConvert.DeserializeObject<Empleado_planilla>(respuestaEmpleado_planilla);
 
             // Asignar los valores del formulario al objeto 
-            JsonConvert.PopulateObject(values, Bonificacion);
+            JsonConvert.PopulateObject(values, Empleado_planilla);
 
             // Serializar el objeto actualizado
-            string jsonString = JsonConvert.SerializeObject(Bonificacion);
+            string jsonString = JsonConvert.SerializeObject(Empleado_planilla);
             var httpContent = new StringContent(jsonString, System.Text.Encoding.UTF8, "application/json");
 
             // Realizar la solicitud PUT a la API
@@ -80,7 +80,7 @@ namespace DevExtremeLibreria.Controllers
             using (var client = new HttpClient(handler))
             {
                 client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json")); // Solicitar J
-                var url = $"https://localhost:44370/api/PutBonificacion?id={key}";
+                var url = $"https://localhost:44370/api/PutEmpleado_planilla?id={key}";
                 var response = await client.PutAsync(url, httpContent);
 
                 if (!response.IsSuccessStatusCode)
@@ -103,7 +103,7 @@ namespace DevExtremeLibreria.Controllers
 
             var httpContent = new StringContent(values, System.Text.Encoding.UTF8, "application/json");
 
-            var url = "https://localhost:44370/api/PostBonificaciones";
+            var url = "https://localhost:44370/api/PostEmpleado_planilla";
             var handler = new HttpClientHandler();
             handler.ServerCertificateCustomValidationCallback = (message, cert, chain, errors) => true;
             using (var client = new HttpClient(handler))
@@ -121,12 +121,12 @@ namespace DevExtremeLibreria.Controllers
         {
             var key = Convert.ToInt32(form.Get("key"));
 
-            var apiUrlDelempleado = $"https://localhost:44370/api/DeleteBonificacion?id={key}";
+            var apiUrlDelEmpleado_planilla = $"https://localhost:44370/api/DeleteEmpleado_planilla?id={key}";
             var handler = new HttpClientHandler();
             handler.ServerCertificateCustomValidationCallback = (message, cert, chain, errors) => true;
             using (var client = new HttpClient(handler))
             {
-                var respuestaEmpleado = await client.DeleteAsync(apiUrlDelempleado);
+                var respuestaEmpleado = await client.DeleteAsync(apiUrlDelEmpleado_planilla);
             }
             return Request.CreateResponse(HttpStatusCode.OK);
         }

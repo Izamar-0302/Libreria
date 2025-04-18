@@ -11,12 +11,12 @@ namespace LibreriaApi.Models
     {
         [Key]
         public int Id { get; set; }
-        public Empleado Empleado { get; set; }
+        public virtual Empleado Empleado { get; set; }
         public int EmpleadoId { get; set; }
-        public Bonificaciones Bono { get; set; }
+        public virtual Bonificaciones Bono { get; set; }
         public int BonificacionesId { get; set; }
         public double Anticipo { get; set; }
-        public Deducciones Deduccion { get; set; }
+        public virtual Deducciones Deduccion { get; set; }
         public int DeduccionesId { get; set; }
         public double Sueldoneto { get; set; }
         public Empleado_planilla() { }

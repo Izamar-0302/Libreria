@@ -132,9 +132,11 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Folder Include="Views\Bonificaciones\" />
     <Folder Include="Views\Deducciones\" />
     <Folder Include="Views\Detallepedido\" />
     <Folder Include="Views\Detalle_Venta\" />
+    <Folder Include="Views\Empleado_Planilla\" />
     <Folder Include="Views\Lector\" />
     <Folder Include="Views\Metodopago\" />
     <Folder Include="Views\Pedido\" />
@@ -421,11 +423,12 @@
     <Content Include="Views\Home\Libro.cshtml" />
     <Content Include="Views\Home\Pedido.cshtml" />
     <Content Include="Views\Home\Detalle_pedido.cshtml" />
-    <Content Include="Views\Home\Bonificaciones.cshtml" />
     <Content Include="Views\Home\Turno.cshtml" />
     <Content Include="Views\Home\Deducciones.cshtml" />
     <Content Include="Views\Home\Detalle_Venta.cshtml" />
     <Content Include="Views\Home\Venta.cshtml" />
+    <Content Include="Views\Home\Empleado_Planilla.cshtml" />
+    <Content Include="Views\Home\Bonificaciones.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -447,6 +450,7 @@
     <Compile Include="Controllers\Detalle_VentaController.cs" />
     <Compile Include="Controllers\EditorialController.cs" />
     <Compile Include="Controllers\EmpleadoController.cs" />
+    <Compile Include="Controllers\Empleado_PlanillaController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\LectorController.cs" />
     <Compile Include="Controllers\LibroController.cs" />
