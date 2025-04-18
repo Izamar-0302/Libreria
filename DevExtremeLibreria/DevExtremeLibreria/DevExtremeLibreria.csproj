@@ -420,6 +420,7 @@
     <Content Include="Views\Home\Pedido.cshtml" />
     <Content Include="Views\Home\Detalle_pedido.cshtml" />
     <Content Include="Views\Home\Bonificaciones.cshtml" />
+    <Content Include="Views\Home\Turno.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

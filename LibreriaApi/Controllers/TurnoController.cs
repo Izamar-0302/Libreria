@@ -26,18 +26,20 @@ namespace LibreriaApi.Controllers
         [Route("api/GetTurnos")]
         public IHttpActionResult Get()
         {
-            var query = from empleado1 in db.Empleados
-                        join turno in db.Turnos on empleado1.EmpleadoId equals turno.Empleado.EmpleadoId
-                        select new
-                        {
-                            Idturnoo = turno.TurnoId,
-                            idEmpleado = empleado1.EmpleadoId,
-                            horaInicio = turno.Horainicio,
-                            horaFinal = turno.Horafinal,
-                            
-                        };
+            var turno = db.Turnos
+                .Include(l => l.Empleado)
 
-            return Ok(query);
+                .Select(l => new
+                {
+                    l.TurnoId,
+                    l.Horainicio,
+                    l.Horafinal,
+                    l.EmpleadoId,
+
+                })
+               .ToList();
+
+            return Ok(turno);
         }
 
 
@@ -54,19 +56,23 @@ namespace LibreriaApi.Controllers
         [Route("api/GetTurno")]
         public IHttpActionResult Get(int id)
         {
-            var query = from empleado1 in db.Empleados
-                        join turno in db.Turnos on empleado1.EmpleadoId equals turno.Empleado.EmpleadoId
-                        where turno.TurnoId == id
-                        select new
-                        {
-                            Idturnoo = turno.TurnoId,
-                            idEmpleado = empleado1.EmpleadoId,
-                            horaInicio = turno.Horainicio,
-                            horaFinal = turno.Horafinal,
+            var turno  = db.Turnos
+                .Include(l => l.Empleado)
+                
+                .Select(l => new
+                {
+                    l.TurnoId,
+                    l.Horainicio,
+                    l.Horafinal,
+                    l.EmpleadoId,
+                    
+                })
+               .FirstOrDefault();
 
-                        };
+            if (turno == null)
+                return NotFound();
 
-            return Ok(query);
+            return Ok(turno);
         }
 
         // POST: api/Turno
@@ -80,15 +86,19 @@ namespace LibreriaApi.Controllers
         [HttpPost]
         [SwaggerOperation("PostTurno")]
         [Route("api/PostTurno")]
-        public IHttpActionResult Post(Turno turno, int idempleado)
+        public IHttpActionResult Post(Turno turno)
         {
 
-            Empleado empleadoexistente = db.Empleados.Find(idempleado);
-            if (empleadoexistente == null)
-            {
-                return NotFound();
-            }
-            turno.Empleado = empleadoexistente;
+
+            if (turno == null)
+                return BadRequest("Turno inválido.");
+
+            var empleado = db.Empleados.Find(turno.EmpleadoId);
+            
+
+            if (empleado == null)
+                return BadRequest("Empleado no encontrado.");
+            
             db.Turnos.Add(turno);
             db.SaveChanges();
             return Ok(turno);
@@ -105,20 +115,31 @@ namespace LibreriaApi.Controllers
         [HttpPut]
         [SwaggerOperation("PutTurno")]
         [Route("api/PutTurno")]
-        public IHttpActionResult Put(Turno turnomodificar, int idempleado)
+        public IHttpActionResult Put(int id,Turno turnomodificar)
         {
 
-            Empleado empleadoexistente = db.Empleados.Find(idempleado);
-            if (empleadoexistente == null)
-            {
+            var turno = db.Turnos.Find(id);
+            if (turno == null)
                 return NotFound();
-            }
-            turnomodificar.Empleado = empleadoexistente;
+
+
+            var empleado = db.Empleados.Find(turnomodificar.EmpleadoId);
+
+
+            if (empleado == null)
+                return BadRequest("Empleado no encontrado.");
+
+
+
+            turno.Horainicio = turnomodificar.Horainicio;
+            turno.Horafinal = turnomodificar.Horafinal;
             
-            int id = turnomodificar.TurnoId;
-            db.Entry(turnomodificar).State = EntityState.Modified;
+
+            turno.EmpleadoId = turno.EmpleadoId;
+
+
             db.SaveChanges();
-            return Ok(turnomodificar);
+            return Ok(turno);
         }
 
         // DELETE: api/Turno/5

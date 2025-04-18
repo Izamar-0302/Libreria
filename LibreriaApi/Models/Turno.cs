@@ -8,7 +8,7 @@ namespace LibreriaApi.Models
     public class Turno
     {
         public int TurnoId { get; set; }
-        public Empleado Empleado { get; set; }
+        public virtual Empleado Empleado { get; set; }
         public int EmpleadoId { get; set; }
         public string Horainicio { get; set; }
         public string Horafinal { get; set; }

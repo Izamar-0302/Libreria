@@ -74,5 +74,9 @@ namespace DevExtremeLibreria.Controllers {
         {
             return View();
         }
+        public ActionResult Turno()
+        {
+            return View();
+        }
     }
 }

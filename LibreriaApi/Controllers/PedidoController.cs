@@ -55,19 +55,22 @@ namespace LibreriaApi.Controllers
         [Route("api/GetPedido")]
         public IHttpActionResult Get(int id)
         {
-            var query = from proveedor1 in db.Proveedores
-                        join pedido in db.Pedidos on proveedor1.ProveedorId equals pedido.Proveedor.ProveedorId
-                        where pedido.PedidoId  == id
-                        select new
-                        {
-                            Idpedido = pedido.PedidoId,
-                            fechaentrega = pedido.Fechaentrega,
-                            fechapedido = pedido.Fechapedido,
-                            estado = pedido.Estado,
-                            idproveedor = proveedor1.ProveedorId
-                        };
+            var pedido = db.Pedidos
+                .Include(l => l.Proveedor)
 
-            return Ok(query);
+                .Select(l => new
+                {
+                    l.PedidoId,
+                    l.ProveedorId,
+                    l.Fechapedido,
+                    l.Fechaentrega,
+                    l.Estado,
+                })
+                .FirstOrDefault();
+
+            if (pedido == null)
+                return NotFound();
+            return Ok(pedido);
         }
 
         // POST: api/Pedido
@@ -109,21 +112,27 @@ namespace LibreriaApi.Controllers
         [Route("api/PutPedido")]
         public IHttpActionResult Put(int id,Pedido pedidomodificar)
         {
-            Pedido Pedido = db.Pedidos.Find(id);
+            var Pedido = db.Pedidos.Find(id);
             if (Pedido == null)
-            {
                 return NotFound();
-            }
-            if (pedidomodificar.Proveedor != null)
-            {
-                Proveedor Proveedor = db.Proveedores.Find(pedidomodificar.Proveedor.ProveedorId);
-                Pedido.Proveedor = Proveedor;
-            }
 
+
+            var proveedor = db.Proveedores.Find(pedidomodificar.ProveedorId);
+           
+
+            if (proveedor == null)
+                return BadRequest("Proveedor no encontrado.");
+
+
+
+            Pedido.Estado = pedidomodificar.Estado;
             Pedido.Fechaentrega = pedidomodificar.Fechaentrega;
             Pedido.Fechapedido = pedidomodificar.Fechapedido;
+
+
+            Pedido.ProveedorId= pedidomodificar.ProveedorId;
             
-            
+
             db.SaveChanges();
             return Ok(Pedido);
         }

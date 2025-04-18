@@ -1,0 +1,36 @@
+﻿@{
+    ViewData["Title"] = "Turno";
+}
+
+<h2>Turno</h2>
+
+@(Html.DevExtreme().DataGrid<DevExtremeLibreria.Models.Turno>()
+    .DataSource(ds => ds.WebApi()
+        .Controller("Turno")
+        .LoadAction("Get")
+        .InsertAction("Post")
+        .UpdateAction("Put")
+        .DeleteAction("Delete")
+        .Key("TurnoId")
+    )
+    .RemoteOperations(true)
+    .Columns(columns => {
+
+        columns.AddFor(m => m.TurnoId);
+
+        columns.AddFor(m => m.EmpleadoId).Lookup(lookup => lookup
+            .DataSource(ds => ds.WebApi().Controller("Empleado").LoadAction("Get").Key("EmpleadoId"))
+            .ValueExpr("EmpleadoId")
+            .DisplayExpr("Nombre")
+        );
+
+        columns.AddFor(m => m.Horainicio);
+
+        columns.AddFor(m => m.Horafinal);
+    })
+    .Editing(e => e
+        .AllowAdding(true)
+        .AllowUpdating(true)
+        .AllowDeleting(true)
+    )
+)
