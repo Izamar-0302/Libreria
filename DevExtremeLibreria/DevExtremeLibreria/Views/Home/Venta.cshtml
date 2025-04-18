@@ -1,0 +1,74 @@
+﻿@{
+    ViewData["Title"] = "Venta";
+}
+
+<h2>Venta</h2>
+
+@(Html.DevExtreme().DataGrid<DevExtremeLibreria.Models.Venta>()
+    .DataSource(ds => ds.WebApi()
+        .Controller("Venta")
+        .LoadAction("Get")
+        .InsertAction("Post")
+        .UpdateAction("Put")
+        .DeleteAction("Delete")
+        .Key("VentaId")
+    )
+    .RemoteOperations(true)
+    .Columns(columns => {
+
+        columns.AddFor(m => m.VentaId);
+
+        columns.AddFor(m => m.Fechadeventa);
+
+        columns.AddFor(m => m.LectorId).Lookup(lookup => lookup
+            .DataSource(ds => ds.WebApi().Controller("Lector").LoadAction("Get").Key("LectorId"))
+            .ValueExpr("LectorId")
+            .DisplayExpr("Nombre")
+        );
+
+        columns.AddFor(m => m.EmpleadoId).Lookup(lookup => lookup
+            .DataSource(ds => ds.WebApi().Controller("Empleado").LoadAction("Get").Key("EmpleadoId"))
+            .ValueExpr("EmpleadoId")
+            .DisplayExpr("Nombre")
+        );
+
+        columns.AddFor(m => m.PedidoId).Lookup(lookup => lookup
+            .DataSource(ds => ds.WebApi().Controller("Pedido").LoadAction("Get").Key("PedidoId"))
+            .ValueExpr("PedidoId")
+            .DisplayExpr("Estado")
+        );
+
+        columns.AddFor(m => m.LibroId).Lookup(lookup => lookup
+            .DataSource(ds => ds.WebApi().Controller("Libro").LoadAction("Get").Key("LibroId"))
+            .ValueExpr("LibroId")
+            .DisplayExpr("Titulo")
+        );
+
+        columns.AddFor(m => m.MetodopagoId).Lookup(lookup => lookup
+            .DataSource(ds => ds.WebApi().Controller("Metodopago").LoadAction("Get").Key("MetodopagoId"))
+            .ValueExpr("MetodopagoId")
+            .DisplayExpr("Metodo")
+        );
+
+        columns.AddFor(m => m.SucursalId).Lookup(lookup => lookup
+            .DataSource(ds => ds.WebApi().Controller("Sucursal").LoadAction("Get").Key("SucursalId"))
+            .ValueExpr("SucursalId")
+            .DisplayExpr("Nombresucursal")
+        );
+
+        columns.AddFor(m => m.Descripcion);
+
+        columns.AddFor(m => m.Cantidadventa);
+
+        columns.AddFor(m => m.Montototal);
+
+        columns.AddFor(m => m.Descuento);
+
+        columns.AddFor(m => m.Impuesto);
+    })
+    .Editing(e => e
+        .AllowAdding(true)
+        .AllowUpdating(true)
+        .AllowDeleting(true)
+    )
+)

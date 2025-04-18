@@ -26,18 +26,19 @@ namespace LibreriaApi.Controllers
         [Route("api/GetDeducciones")]
         public IHttpActionResult Get()
         {
-            var query = from empleado1 in db.Empleados
-                        join deducciones in db.Deducciones
-                                on empleado1.EmpleadoId equals deducciones.Empleado.EmpleadoId
-                        select new
-                        {
-                            Iddeducciones = deducciones.DeduccionesId,
-                            Tipodeducciones = deducciones.TipoDeduccion,
-                            Montondeducciones = deducciones.Monto,
-                            IdEmpleado = empleado1.EmpleadoId
-                        };
+            var deduccion = db.Deducciones
+                .Include(l => l.Empleado)
 
-            return Ok(query);
+                .Select(l => new
+                {
+                    l.DeduccionesId,
+                    l.EmpleadoId,
+                    l.TipoDeduccion,
+                    l.Monto,
+
+                })
+               .ToList();
+               return Ok(deduccion);
         }
 
 
@@ -54,18 +55,23 @@ namespace LibreriaApi.Controllers
         [Route("api/GetDeduccion")]
         public IHttpActionResult Get(int id)
         {
-            var query = from empleado1 in db.Empleados
-                        join deducciones in db.Deducciones
-                              on empleado1.EmpleadoId equals deducciones.Empleado.EmpleadoId
-                        where deducciones.DeduccionesId == id
-                        select new
-                        {
-                            Iddeducciones = deducciones.DeduccionesId,
-                            Tipodeducciones = deducciones.TipoDeduccion,
-                            Montondeducciones = deducciones.Monto,
-                            IdEmpleado = empleado1.EmpleadoId
-                        };
-            return Ok(query);
+            var deduccion = db.Deducciones
+                .Include(l => l.Empleado)
+
+                .Select(l => new
+                {
+                    l.DeduccionesId,
+                    l.EmpleadoId,
+                    l.TipoDeduccion,
+                    l.Monto,
+
+                })
+               .FirstOrDefault();
+
+            if (deduccion == null)
+                return NotFound();
+
+            return Ok(deduccion);
         }
 
         // POST: api/Deducciones
@@ -79,14 +85,17 @@ namespace LibreriaApi.Controllers
         [HttpPost]
         [SwaggerOperation("PostDeducciones")]
         [Route("api/PostDeducciones")]
-        public IHttpActionResult Post(Deducciones deducciones, int idempleado)
+        public IHttpActionResult Post(Deducciones deducciones)
         {
-            Empleado empleadoexistente = db.Empleados.Find(idempleado);
-            if (empleadoexistente == null)
-            {
-                return NotFound();
-            }
-            deducciones.Empleado = empleadoexistente;
+            if (deducciones == null)
+                return BadRequest("Deduccion inválida.");
+
+            var empleado = db.Empleados.Find(deducciones.EmpleadoId);
+
+
+            if (empleado == null)
+                return BadRequest("Empleado no encontrado.");
+
             db.Deducciones.Add(deducciones);
             db.SaveChanges();
             return Ok(deducciones);
@@ -103,19 +112,31 @@ namespace LibreriaApi.Controllers
         [HttpPut]
         [SwaggerOperation("PutDeducciones")]
         [Route("api/PutDeducciones")]
-        public IHttpActionResult Put(Deducciones dedumodificar, int idempleado)
+        public IHttpActionResult Put(int id,Deducciones dedumodificar)
         {
 
-            Empleado empleadoexistente = db.Empleados.Find(idempleado);
-            if (empleadoexistente == null)
-            {
+            var deduccion = db.Deducciones.Find(id);
+            if (deduccion == null)
                 return NotFound();
-            }
-            dedumodificar.Empleado = empleadoexistente;
-            int id = dedumodificar.DeduccionesId;
-            db.Entry(dedumodificar).State = EntityState.Modified;
+
+
+            var empleado = db.Empleados.Find(dedumodificar.EmpleadoId);
+
+
+            if (empleado == null)
+                return BadRequest("Empleado no encontrado.");
+
+
+
+            deduccion.TipoDeduccion = dedumodificar.TipoDeduccion;
+            deduccion.Monto = dedumodificar.Monto;
+
+
+            deduccion.EmpleadoId = dedumodificar.EmpleadoId;
+
+
             db.SaveChanges();
-            return Ok(dedumodificar);
+            return Ok(deduccion);
         }
 
         // DELETE: api/Deducciones/5

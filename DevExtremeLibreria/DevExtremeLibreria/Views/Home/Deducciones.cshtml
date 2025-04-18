@@ -1,0 +1,36 @@
+﻿@{
+    ViewData["Title"] = "Deducciones";
+}
+
+<h2>Deducciones</h2>
+
+@(Html.DevExtreme().DataGrid<DevExtremeLibreria.Models.Deducciones>()
+    .DataSource(ds => ds.WebApi()
+        .Controller("Deducciones")
+        .LoadAction("Get")
+        .InsertAction("Post")
+        .UpdateAction("Put")
+        .DeleteAction("Delete")
+        .Key("DeduccionesId")
+    )
+    .RemoteOperations(true)
+    .Columns(columns => {
+
+        columns.AddFor(m => m.DeduccionesId);
+
+        columns.AddFor(m => m.EmpleadoId).Lookup(lookup => lookup
+            .DataSource(ds => ds.WebApi().Controller("Empleado").LoadAction("Get").Key("EmpleadoId"))
+            .ValueExpr("EmpleadoId")
+            .DisplayExpr("Nombre")
+        );
+
+        columns.AddFor(m => m.TipoDeduccion);
+
+        columns.AddFor(m => m.Monto);
+    })
+    .Editing(e => e
+        .AllowAdding(true)
+        .AllowUpdating(true)
+        .AllowDeleting(true)
+    )
+)

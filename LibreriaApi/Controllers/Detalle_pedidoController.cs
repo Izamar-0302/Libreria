@@ -94,7 +94,7 @@ namespace LibreriaApi.Controllers
         public IHttpActionResult Post(Detalle_pedido detalle_Pedido)
         {
             if (detalle_Pedido == null)
-                return BadRequest("Libro inválido.");
+                return BadRequest("Detalle inválido.");
 
             var pedido = db.Pedidos.Find(detalle_Pedido.PedidoId);
             var libro = db.Libros.Find(detalle_Pedido.LibroId);

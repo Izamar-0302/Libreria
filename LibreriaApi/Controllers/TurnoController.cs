@@ -135,7 +135,7 @@ namespace LibreriaApi.Controllers
             turno.Horafinal = turnomodificar.Horafinal;
             
 
-            turno.EmpleadoId = turno.EmpleadoId;
+            turno.EmpleadoId = turnomodificar.EmpleadoId;
 
 
             db.SaveChanges();

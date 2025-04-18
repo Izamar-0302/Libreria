@@ -1,30 +1,33 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Net;
-using System.Net.Http;
 using System.Net.Http.Formatting;
 using System.Net.Http.Headers;
+using System.Net.Http;
+using System.Net;
 using System.Threading.Tasks;
-using System.Web.Http;
+using System.Web;
+
 using DevExtreme.AspNet.Data;
 using DevExtreme.AspNet.Mvc;
 using DevExtremeLibreria.Models;
 using Newtonsoft.Json;
+using System.Web.Http;
 
 namespace DevExtremeLibreria.Controllers
 {
-    public class VentaController : ApiController
+    public class DeduccionesController : ApiController
     {
+        // GET: Deducciones
         private static readonly HttpClient client = new HttpClient();
         [HttpGet]
         public async Task<HttpResponseMessage> Get(DataSourceLoadOptions loadOptions)
         {
-            var apiUrl = "https://localhost:44370/api/GetVentas";
+            var apiUrl = "https://localhost:44370/api/GetDeducciones";
             var respuestaJson = await GetAsync(apiUrl);
             //System.Diagnostics.Debug.WriteLine(respuestaJson); imprimir info
-            List<Venta> listaVenta = JsonConvert.DeserializeObject<List<Venta>>(respuestaJson);
-            return Request.CreateResponse(DataSourceLoader.Load(listaVenta, loadOptions));
+            List<Deducciones> listaDeduccion = JsonConvert.DeserializeObject<List<Deducciones>>(respuestaJson);
+            return Request.CreateResponse(DataSourceLoader.Load(listaDeduccion, loadOptions));
         }
 
         public static async Task<string> GetAsync(string uri)
@@ -55,21 +58,21 @@ namespace DevExtremeLibreria.Controllers
             var key = Convert.ToInt32(form.Get("key")); // llave que estoy modificando
             var values = form.Get("values"); // Los valores modificados en formato JSON
 
-            // Obtener desde la API
-            var apiUrlGetVenta = $"https://localhost:44370/api/GetVenta?id={key}";
-            var respuestaVenta = await GetAsync(apiUrlGetVenta);
-            if (string.IsNullOrEmpty(respuestaVenta))
+            // Obtener el autor desde la API
+            var apiUrlGetDeduccion = $"https://localhost:44370/api/GetDeduccion?id={key}";
+            var respuestaDeduccion = await GetAsync(apiUrlGetDeduccion);
+            if (string.IsNullOrEmpty(respuestaDeduccion))
             {
-                return Request.CreateErrorResponse(HttpStatusCode.NotFound, "La Venta no fue encontrada.");
+                return Request.CreateErrorResponse(HttpStatusCode.NotFound, "Deduccion no fue encontrada.");
             }
 
-            Venta Venta = JsonConvert.DeserializeObject<Venta>(respuestaVenta);
+            Deducciones Deduccion = JsonConvert.DeserializeObject<Deducciones>(respuestaDeduccion);
 
             // Asignar los valores del formulario al objeto 
-            JsonConvert.PopulateObject(values, Venta);
+            JsonConvert.PopulateObject(values, Deduccion);
 
             // Serializar el objeto actualizado
-            string jsonString = JsonConvert.SerializeObject(Venta);
+            string jsonString = JsonConvert.SerializeObject(Deduccion);
             var httpContent = new StringContent(jsonString, System.Text.Encoding.UTF8, "application/json");
 
             // Realizar la solicitud PUT a la API
@@ -78,7 +81,7 @@ namespace DevExtremeLibreria.Controllers
             using (var client = new HttpClient(handler))
             {
                 client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json")); // Solicitar J
-                var url = $"https://localhost:44370/api/PutVenta?id={key}";
+                var url = $"https://localhost:44370/api/PutDeducciones?id={key}";
                 var response = await client.PutAsync(url, httpContent);
 
                 if (!response.IsSuccessStatusCode)
@@ -101,7 +104,7 @@ namespace DevExtremeLibreria.Controllers
 
             var httpContent = new StringContent(values, System.Text.Encoding.UTF8, "application/json");
 
-            var url = "https://localhost:44370/api/PostVenta";
+            var url = "https://localhost:44370/api/PostDeducciones";
             var handler = new HttpClientHandler();
             handler.ServerCertificateCustomValidationCallback = (message, cert, chain, errors) => true;
             using (var client = new HttpClient(handler))
@@ -119,12 +122,12 @@ namespace DevExtremeLibreria.Controllers
         {
             var key = Convert.ToInt32(form.Get("key"));
 
-            var apiUrlDelVenta = $"https://localhost:44370/api/DeleteVenta?id={key}";
+            var apiUrlDelDeduccion = $"https://localhost:44370/api/DeleteDeducciones?id={key}";
             var handler = new HttpClientHandler();
             handler.ServerCertificateCustomValidationCallback = (message, cert, chain, errors) => true;
             using (var client = new HttpClient(handler))
             {
-                var respuestaEmpleado = await client.DeleteAsync(apiUrlDelVenta);
+                var respuestaEmpleado = await client.DeleteAsync(apiUrlDelDeduccion);
             }
             return Request.CreateResponse(HttpStatusCode.OK);
         }

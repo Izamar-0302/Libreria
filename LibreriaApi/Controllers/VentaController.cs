@@ -26,32 +26,33 @@ namespace LibreriaApi.Controllers
         [Route("api/GetVentas")]
         public IHttpActionResult Get()
         {
-            var query = from lector1 in db.Lectores
-                        join venta in db.Ventas on lector1.LectorId equals venta.Lector.LectorId
-                        join empleado1 in db.Empleados on venta.Empleado.EmpleadoId equals empleado1.EmpleadoId
-                        join pedido1 in db.Pedidos on venta.Pedido.PedidoId equals pedido1.PedidoId
-                        join libro1 in db.Libros on venta.Libro.LibroId equals libro1.LibroId
-                        join metodopago1 in db.MetodosPagos on venta.MetodoPago.MetodopagoId equals metodopago1.MetodopagoId
-                        join sucursal1 in db.Sucursales on venta.Sucursal.SucursalId equals sucursal1.SucursalId
+            var Venta = db.Ventas
+                .Include(l => l.Lector)
+                .Include(l => l.Empleado)
+                .Include(l => l.Pedido)
+                .Include(l => l.Libro)
+                .Include(l => l.Sucursal)
+                .Select(l => new
+                {
+                    l.VentaId,
+                    l.Fechadeventa,
+                    l.LectorId,
+                    l.EmpleadoId,
+                    l.PedidoId,
+                    l.LibroId,
+                    l.MetodopagoId,
+                    l.SucursalId,
+                    l.Descripcion,
+                    l.Cantidadventa,
+                    l.Descuento,
+                    l.Impuesto,
+                    l.Montototal,
+                    
 
-                        select new
-                        {
-                            Idventa = venta.VentaId,
-                            fechadeventa = venta.Fechadeventa,
-                            IdLector = lector1.LectorId,
-                            IdEmpleado = empleado1.EmpleadoId,
-                            IdPedido = pedido1.PedidoId,
-                            IdLibro = libro1.LibroId,
-                            IdMetododepago = metodopago1.MetodopagoId,
-                            IdSucursal = sucursal1.SucursalId,
-                            descripcion = venta.Descripcion,
-                            Cantidad = venta.Cantidadventa,
-                            montontotal = venta.Montototal,
-                            descuento = venta.Descuento,
-                            impuesto = venta.Impuesto
-                        };
+                })
+                .ToList();
 
-            return Ok(query);
+            return Ok(Venta);
         }
 
 
@@ -68,32 +69,36 @@ namespace LibreriaApi.Controllers
         [Route("api/GetVenta")]
         public IHttpActionResult Get(int id)
         {
-            var query = from lector1 in db.Lectores
-                        join venta in db.Ventas on lector1.LectorId equals venta.Lector.LectorId
-                        join empleado1 in db.Empleados on venta.Empleado.EmpleadoId equals empleado1.EmpleadoId
-                        join pedido1 in db.Pedidos on venta.Pedido.PedidoId equals pedido1.PedidoId
-                        join libro1 in db.Libros on venta.Libro.LibroId equals libro1.LibroId
-                        join metodopago1 in db.MetodosPagos on venta.MetodoPago.MetodopagoId equals metodopago1.MetodopagoId
-                        join sucursal1 in db.Sucursales on venta.Sucursal.SucursalId equals sucursal1.SucursalId
-                        where venta.VentaId == id
-                        select new
-                        {
-                            Idventa = venta.VentaId,
-                            fechadeventa = venta.Fechadeventa,
-                            IdLector = lector1.LectorId,
-                            IdEmpleado = empleado1.EmpleadoId,
-                            IdPedido = pedido1.PedidoId,
-                            IdLibro = libro1.LibroId,
-                            IdMetododepago = metodopago1.MetodopagoId,
-                            IdSucursal = sucursal1.SucursalId,
-                            descripcion = venta.Descripcion,
-                            Cantidad = venta.Cantidadventa,
-                            montontotal = venta.Montototal,
-                            descuento = venta.Descuento,
-                            impuesto = venta.Impuesto
-                        };
+            var Venta = db.Ventas
+                .Include(l => l.Lector)
+                .Include(l => l.Empleado)
+                .Include(l => l.Pedido)
+                .Include(l => l.Libro)
+                .Include(l => l.Sucursal)
+                .Select(l => new
+                {
+                    l.VentaId,
+                    l.Fechadeventa,
+                    l.LectorId,
+                    l.EmpleadoId,
+                    l.PedidoId,
+                    l.LibroId,
+                    l.MetodopagoId,
+                    l.SucursalId,
+                    l.Descripcion,
+                    l.Cantidadventa,
+                    l.Descuento,
+                    l.Impuesto,
+                    l.Montototal,
 
-            return Ok(query);
+
+                })
+                .FirstOrDefault();
+
+            if (Venta == null)
+                return NotFound();
+
+            return Ok(Venta);
         }
 
         // POST: api/Venta
@@ -107,42 +112,34 @@ namespace LibreriaApi.Controllers
         [HttpPost]
         [SwaggerOperation("PostVenta")]
         [Route("api/PostVenta")]
-        public IHttpActionResult Post(Venta venta, int idlector, int idempleado, int idpedido, int idlibro, int idmetododepago)
+        public IHttpActionResult Post(Venta venta)
         {
-            Lector lectorexistente = db.Lectores.Find(idlector);
-            if (lectorexistente == null)
-            {
-                return NotFound();
-            }
-            venta.Lector = lectorexistente;
-            Empleado empleadoexistente = db.Empleados.Find(idempleado);
-            if (empleadoexistente == null)
-            {
-                return NotFound();
-            }
-            venta.Empleado = empleadoexistente;
-            venta.Sucursal = empleadoexistente.Sucursal;
-            Pedido pedidoexistente = db.Pedidos.Find(idpedido);
-            if (pedidoexistente == null)
-            {
-                return NotFound();
-            }
-            venta.Pedido = pedidoexistente;
-            Libro libroexistente = db.Libros.Find(idlibro);
-            if (libroexistente == null)
-            {
-                return NotFound();
-            }
-            venta.Libro = libroexistente;
+            if (venta == null)
+                return BadRequest("Detalle inválido.");
+
+            var lector = db.Lectores.Find(venta.LectorId);
+            var empleado = db.Empleados.Find(venta.EmpleadoId);
+            var pedido = db.Pedidos.Find(venta.PedidoId);
+            var libro = db.Libros.Find(venta.LibroId);
+            var metodo = db.MetodosPagos.Find(venta.MetodopagoId);
+            var sucursal = db.Sucursales.Find(venta.SucursalId);
+
+            if (empleado == null)
+                return BadRequest("Pedido no encontrado.");
+
+            if (libro == null)
+                return BadRequest("libro no encontrada.");
+            if (lector == null)
+                return BadRequest("libro no encontrada.");
+            if (pedido == null)
+                return BadRequest("libro no encontrada.");
+            if (metodo == null)
+                return BadRequest("libro no encontrada.");
+            if (sucursal == null)
+                return BadRequest("libro no encontrada.");
+
             
-            MetodoPago mdpexistente = db.MetodosPagos.Find(idmetododepago);
-            if (mdpexistente == null)
-            {
-                return NotFound();
-            }
-            venta.MetodoPago = mdpexistente;
-            
-            venta.Montototal = ((libroexistente.Precio * venta.Cantidadventa) - venta.Descuento + venta.Impuesto);
+            venta.Montototal = ((libro.Precio * venta.Cantidadventa) - venta.Descuento + venta.Impuesto);
             db.Ventas.Add(venta);
             db.SaveChanges();
             return Ok(venta);
@@ -159,46 +156,52 @@ namespace LibreriaApi.Controllers
         [HttpPut]
         [SwaggerOperation("PutVenta")]
         [Route("api/PutVenta")]
-        public IHttpActionResult Put(Venta ventamodificar, int idlector, int idempleado, int idpedido, int idlibro, int idmetododepago)
+        public IHttpActionResult Put(int id, Venta ventamodificar)
         {
-            Lector lectorexistente = db.Lectores.Find(idlector);
-            if (lectorexistente == null)
-            {
+            var venta = db.Ventas.Find(id);
+            if (venta == null)
                 return NotFound();
-            }
-            ventamodificar.Lector = lectorexistente;
-            Empleado empleadoexistente = db.Empleados.Find(idempleado);
-            if (empleadoexistente == null)
-            {
-                return NotFound();
-            }
-            ventamodificar.Empleado = empleadoexistente;
-            ventamodificar.Sucursal = empleadoexistente.Sucursal;
-            Pedido pedidoexistente = db.Pedidos.Find(idpedido);
-            if (pedidoexistente == null)
-            {
-                return NotFound();
-            }
-            ventamodificar.Pedido = pedidoexistente;
-            Libro libroexistente = db.Libros.Find(idlibro);
-            if (libroexistente == null)
-            {
-                return NotFound();
-            }
-            ventamodificar.Libro = libroexistente;
-            MetodoPago mdpexistente = db.MetodosPagos.Find(idmetododepago);
-            if (mdpexistente == null)
-            {
-                return NotFound();
-            }
-            ventamodificar.MetodoPago = mdpexistente;
+
+            var lector = db.Lectores.Find(ventamodificar.LectorId);
+            var empleado = db.Empleados.Find(ventamodificar.EmpleadoId);
+            var pedido = db.Pedidos.Find(ventamodificar.PedidoId);
+            var libro = db.Libros.Find(ventamodificar.LibroId);
+            var metodo = db.MetodosPagos.Find(ventamodificar.MetodopagoId);
+            var sucursal = db.Sucursales.Find(ventamodificar.SucursalId);
+
+            if (empleado == null)
+                return BadRequest("Pedido no encontrado.");
+
+            if (libro == null)
+                return BadRequest("libro no encontrado.");
+            if (lector == null)
+                return BadRequest("lector no encontrado.");
+            if (pedido == null)
+                return BadRequest("Pedido no encontrado.");
+            if (metodo == null)
+                return BadRequest("Metodo no encontrado.");
+            if (sucursal == null)
+                return BadRequest("Sucursal no encontrada.");
+
+            venta.VentaId = venta.VentaId;
+            venta.LibroId = ventamodificar.LibroId;
+            venta.LectorId = ventamodificar.LectorId;
+            venta.Fechadeventa = ventamodificar.Fechadeventa;
+            venta.EmpleadoId = ventamodificar.EmpleadoId;
+            venta.PedidoId = ventamodificar.PedidoId;
+            venta.MetodopagoId = ventamodificar.MetodopagoId;
+            venta.SucursalId = ventamodificar.SucursalId;
+            venta.Descripcion = ventamodificar.Descripcion;
+            venta.Cantidadventa = ventamodificar.Cantidadventa;
+            venta.Descuento = ventamodificar.Descuento;
+            venta.Impuesto = ventamodificar.Impuesto;
             
-            ventamodificar.Montototal = ((libroexistente.Precio * ventamodificar.Cantidadventa) - ventamodificar.Descuento + ventamodificar.Impuesto);
-            int id = ventamodificar.VentaId;
-            db.Entry(ventamodificar).State = EntityState.Modified;
+            venta.Montototal = ((libro.Precio * venta.Cantidadventa) - venta.Descuento + venta.Impuesto);
+            db.Ventas.Add(venta);
             db.SaveChanges();
-            return Ok(ventamodificar);
+            return Ok(venta);
         }
+           
 
         // DELETE: api/Venta/5
 

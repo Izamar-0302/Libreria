@@ -26,20 +26,22 @@ namespace LibreriaApi.Controllers
         [Route("api/GetDetalle_Ventas")]
         public IHttpActionResult Get()
         {
-            var query = from venta1 in db.Ventas
-                        join detalleVenta in db.Detalles_ventas on venta1.VentaId equals detalleVenta.Venta.VentaId
-                        join libro1 in db.Libros on detalleVenta.Libro.LibroId equals libro1.LibroId
-                        select new
-                        {
-                            IddetalleVenta = detalleVenta.Id,
-                            IdVenta = venta1.VentaId,
-                            preciounitario = detalleVenta.Preciounitario,
-                            cantidad = detalleVenta.Cantidad,
-                            subtotal = detalleVenta.Subtotal,
-                            Idlibro = libro1.LibroId
-                        };
+            var Detalleventa = db.Detalles_ventas
+                .Include(l => l.Venta)
+                .Include(l => l.Libro)
+                .Select(l => new
+                {
+                    l.Id,
+                    l.VentaId,
+                    l.LibroId,
+                    l.Cantidad,
+                    l.Preciounitario,
+                    l.Subtotal,
+                    
+                })
+                .ToList();
 
-            return Ok(query);
+            return Ok(Detalleventa);
         }
 
 
@@ -56,21 +58,25 @@ namespace LibreriaApi.Controllers
         [Route("api/GetDetalle_Venta")]
         public IHttpActionResult Get(int id)
         {
-            var query = from venta1 in db.Ventas
-                        join detalleVenta in db.Detalles_ventas on venta1.VentaId equals detalleVenta.Venta.VentaId
-                        join libro1 in db.Libros on detalleVenta.Libro.LibroId equals libro1.LibroId
-                        where detalleVenta.Id== id
-                        select new
-                        {
-                            IddetalleVenta = detalleVenta.Id,
-                            IdVenta = venta1.VentaId,
-                            preciounitario = detalleVenta.Preciounitario,
-                            cantidad = detalleVenta.Cantidad,
-                            subtotal = detalleVenta.Subtotal,
-                            Idlibro = libro1.LibroId
-                        };
+            var Detalleventa = db.Detalles_ventas
+                .Include(l => l.Venta)
+                .Include(l => l.Libro)
+                .Select(l => new
+                {
+                    l.Id,
+                    l.VentaId,
+                    l.LibroId,
+                    l.Cantidad,
+                    l.Preciounitario,
+                    l.Subtotal,
 
-            return Ok(query);
+                })
+                .FirstOrDefault();
+
+            if (Detalleventa == null)
+                return NotFound();
+
+            return Ok(Detalleventa);
         }
 
         // POST: api/Detalle_Venta
@@ -84,22 +90,24 @@ namespace LibreriaApi.Controllers
         [HttpPost]
         [SwaggerOperation("PostDetalle_Venta")]
         [Route("api/PostDetalle_Venta")]
-        public IHttpActionResult Post(Detalle_Venta detalleventa, int idventa, int idlibro)
+        public IHttpActionResult Post(Detalle_Venta detalleventa)
         {
-            Libro libroexistente = db.Libros.Find(idlibro);
-            if (libroexistente == null)
-            {
-                return NotFound();
-            }
-            detalleventa.Libro = libroexistente;
-            Venta ventaexistente = db.Ventas.Find(idventa);
-            if (ventaexistente == null)
-            {
-                return NotFound();
-            }
-            detalleventa.Venta = ventaexistente;
+            if (detalleventa == null)
+                return BadRequest("Detalle inválido.");
+
+            var venta = db.Ventas.Find(detalleventa.VentaId);
+            var libro = db.Libros.Find(detalleventa.LibroId);
+
+            if (venta == null)
+                return BadRequest("Pedido no encontrado.");
+
+            if (libro == null)
+                return BadRequest("libro no encontrada.");
+
+            detalleventa.Subtotal = detalleventa.Cantidad * detalleventa.Preciounitario;
             db.Detalles_ventas.Add(detalleventa);
             db.SaveChanges();
+
             return Ok(detalleventa);
         }
 
@@ -114,24 +122,32 @@ namespace LibreriaApi.Controllers
         [HttpPut]
         [SwaggerOperation("PutDetalle_Venta")]
         [Route("api/PutDetalle_Venta")]
-        public IHttpActionResult Put(Detalle_Venta detalleventamodificar, int idventa, int idlibro)
+        public IHttpActionResult Put(int id,Detalle_Venta detalleventamodificar)
         {
-            Libro libroexistente = db.Libros.Find(idlibro);
-            if (libroexistente == null)
-            {
+            var detalleventa = db.Detalles_ventas.Find(id);
+            if (detalleventa == null)
                 return NotFound();
-            }
-            detalleventamodificar.Libro = libroexistente;
-            Venta ventaexistente = db.Ventas.Find(idventa);
-            if (ventaexistente == null)
-            {
-                return NotFound();
-            }
-            detalleventamodificar.Venta = ventaexistente;
-            int id = detalleventamodificar.Id;
-            db.Entry(detalleventamodificar).State = EntityState.Modified;
+
+
+            var ventaNuevo = db.Ventas.Find(detalleventamodificar.VentaId);
+            if (ventaNuevo == null)
+                return BadRequest("VentaId proporcionado no existe.");
+
+
+            var libroNuevo = db.Libros.Find(detalleventamodificar.LibroId);
+            if (libroNuevo == null)
+                return BadRequest("LibroId proporcionado no existe.");
+
+
+            detalleventa.VentaId = detalleventamodificar.VentaId;
+            detalleventa.LibroId = detalleventamodificar.LibroId;
+            detalleventa.Cantidad = detalleventamodificar.Cantidad;
+            detalleventa.Preciounitario = detalleventamodificar.Preciounitario;
+            detalleventa.Subtotal = detalleventa.Cantidad * detalleventa.Preciounitario;
+
             db.SaveChanges();
-            return Ok(detalleventamodificar);
+
+            return Ok(detalleventa);
         }
 
         // DELETE: api/Detalle_Venta/5

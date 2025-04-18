@@ -78,5 +78,19 @@ namespace DevExtremeLibreria.Controllers {
         {
             return View();
         }
+
+        public ActionResult Deducciones()
+        {
+            return View();
+        }
+
+        public ActionResult Detalle_Venta()
+        {
+            return View();
+        }
+        public ActionResult Venta()
+        {
+            return View();
+        }
     }
 }

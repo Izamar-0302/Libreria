@@ -132,7 +132,9 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Folder Include="Views\Deducciones\" />
     <Folder Include="Views\Detallepedido\" />
+    <Folder Include="Views\Detalle_Venta\" />
     <Folder Include="Views\Lector\" />
     <Folder Include="Views\Metodopago\" />
     <Folder Include="Views\Pedido\" />
@@ -421,6 +423,9 @@
     <Content Include="Views\Home\Detalle_pedido.cshtml" />
     <Content Include="Views\Home\Bonificaciones.cshtml" />
     <Content Include="Views\Home\Turno.cshtml" />
+    <Content Include="Views\Home\Deducciones.cshtml" />
+    <Content Include="Views\Home\Detalle_Venta.cshtml" />
+    <Content Include="Views\Home\Venta.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -437,7 +442,9 @@
     <Compile Include="Controllers\AutorController.cs" />
     <Compile Include="Controllers\BonificacionesController.cs" />
     <Compile Include="Controllers\CargoController.cs" />
+    <Compile Include="Controllers\DeduccionesController.cs" />
     <Compile Include="Controllers\Detalle_pedidoController.cs" />
+    <Compile Include="Controllers\Detalle_VentaController.cs" />
     <Compile Include="Controllers\EditorialController.cs" />
     <Compile Include="Controllers\EmpleadoController.cs" />
     <Compile Include="Controllers\HomeController.cs" />

@@ -9,17 +9,17 @@ namespace LibreriaApi.Models
     {
         public int VentaId { get; set; }
         public DateTime Fechadeventa { get; set; }
-        public Lector Lector { get; set; }
+        public virtual Lector Lector { get; set; }
         public int LectorId { get; set; }
-        public Empleado Empleado { get; set; }
+        public virtual Empleado Empleado { get; set; }
         public int EmpleadoId { get; set; }
-        public Pedido Pedido { get; set; }
+        public virtual Pedido Pedido { get; set; }
         public int PedidoId { get; set; }
         public virtual Libro Libro { get; set; }
         public int LibroId { get; set; }
-        public MetodoPago MetodoPago { get; set; }
+        public virtual MetodoPago MetodoPago { get; set; }
         public int MetodopagoId { get; set; }
-        public Sucursal Sucursal { get; set; }
+        public virtual Sucursal Sucursal { get; set; }
         public int SucursalId { get; set; }
         public string Descripcion { get; set; }
 
