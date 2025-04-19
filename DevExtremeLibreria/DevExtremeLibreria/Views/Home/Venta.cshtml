@@ -14,6 +14,15 @@
         .Key("VentaId")
     )
     .RemoteOperations(true)
+    .Paging(p => p.PageSize(10))
+.FilterRow(f => f.Visible(true))
+.HeaderFilter(f => f.Visible(true))
+.SearchPanel(f => f.Visible(true))
+.ShowBorders(true)                        // Muestra bordes entre celdas
+.RowAlternationEnabled(true)
+.ColumnAutoWidth(true)
+
+.ColumnChooser(cc => cc.Enabled(true))
     .Columns(columns => {
 
         columns.AddFor(m => m.VentaId);
@@ -50,7 +59,9 @@
             .DisplayExpr("Metodo")
         );
 
-        columns.AddFor(m => m.SucursalId).Lookup(lookup => lookup
+        columns.AddFor(m => m.SucursalId)
+        .AllowEditing(false)
+        .Lookup(lookup => lookup
             .DataSource(ds => ds.WebApi().Controller("Sucursal").LoadAction("Get").Key("SucursalId"))
             .ValueExpr("SucursalId")
             .DisplayExpr("Nombresucursal")
@@ -60,15 +71,22 @@
 
         columns.AddFor(m => m.Cantidadventa);
 
-        columns.AddFor(m => m.Montototal);
+        columns.AddFor(m => m.Montototal).AllowEditing(false);
 
         columns.AddFor(m => m.Descuento);
 
         columns.AddFor(m => m.Impuesto);
     })
     .Editing(e => e
+    .Mode(GridEditMode.Popup)
         .AllowAdding(true)
         .AllowUpdating(true)
         .AllowDeleting(true)
-    )
+        .Texts(t => t
+.ConfirmDeleteMessage("¿Estás seguro de que deseas eliminar este registro?")
+.SaveRowChanges("Guardar")
+.CancelRowChanges("Cancelar")
 )
+)
+)
+

@@ -14,7 +14,7 @@ namespace DevExtremeLibreria.Models
         public Empleado Empleado { get; set; }
         public int EmpleadoId { get; set; }
         public Pedido Pedido { get; set; }
-        public int PedidoId { get; set; }
+        public int? PedidoId { get; set; }
         public Libro Libro { get; set; }
         public int LibroId { get; set; }
         public MetodoPago MetodoPago { get; set; }

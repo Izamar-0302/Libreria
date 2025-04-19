@@ -16,6 +16,10 @@
     .Key("EditorialId")
     )
     .RemoteOperations(true)
+    .Paging(p => p.PageSize(10))
+.FilterRow(f => f.Visible(true))
+.HeaderFilter(f => f.Visible(true))
+.SearchPanel(f => f.Visible(true))
     .Columns(columns => {
 
         columns.AddFor(m => m.EditorialId)

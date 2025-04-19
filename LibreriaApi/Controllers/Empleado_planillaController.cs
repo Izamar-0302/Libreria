@@ -100,17 +100,26 @@ namespace LibreriaApi.Controllers
                 return BadRequest("Empleado inválido.");
 
             var empleado = db.Empleados.Find(empleado_planilla.EmpleadoId);
-            var bonificacion = db.Bonificaciones.Find(empleado_planilla.BonificacionesId);
-            var deduccion = db.Deducciones.Find(empleado_planilla.DeduccionesId);
-            if (bonificacion == null)
-                return BadRequest("Bonificacion no encontrada.");
 
             if (empleado == null)
                 return BadRequest("Empleado no encontrado.");
+
+            // Buscar la bonificación del mismo empleado
+            var bonificacion = db.Bonificaciones
+                                 .FirstOrDefault(b => b.EmpleadoId == empleado_planilla.EmpleadoId);
+
+            // Buscar la deducción del mismo empleado
+            var deduccion = db.Deducciones
+                              .FirstOrDefault(d => d.EmpleadoId == empleado_planilla.EmpleadoId);
+
+            if (bonificacion == null)
+                return BadRequest("Bonificación no encontrada para el empleado.");
+
             if (deduccion == null)
-                return BadRequest("Empleado no encontrado.");
+                return BadRequest("Deducción no encontrada para el empleado.");
 
-
+            empleado_planilla.BonificacionesId = bonificacion.BonificacionesId;
+            empleado_planilla.DeduccionesId = deduccion.DeduccionesId;
             empleado_planilla.Sueldoneto = (empleado.Salario - empleado_planilla.Anticipo + bonificacion.Monto  - deduccion.Monto);
             db.Empleados_Planillas.Add(empleado_planilla);
             db.SaveChanges();

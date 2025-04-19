@@ -35,6 +35,7 @@ namespace LibreriaApi.Controllers
                     l.Fechapedido,
                     l.Fechaentrega,
                     l.Estado,
+                    
                 })
                 .ToList();
 
@@ -66,6 +67,10 @@ namespace LibreriaApi.Controllers
                     l.Fechapedido,
                     l.Fechaentrega,
                     l.Estado,
+                    Proveedor = new Proveedor
+                    {
+                        Nombreproveedor = l.Proveedor.Nombreproveedor
+                    }
                 })
                 .FirstOrDefault();
 

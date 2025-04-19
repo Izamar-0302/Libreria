@@ -55,7 +55,6 @@ namespace DevExtremeLibreria.Controllers
             var key = Convert.ToInt32(form.Get("key")); // llave que estoy modificando
             var values = form.Get("values"); // Los valores modificados en formato JSON
 
-<<<<<<< Updated upstream
             // Obtener el autor desde la API
             var apiUrlGetSucursal = $"https://localhost:44370/api/GetSucursal?id={key}";
             var respuestaSucursal = await GetAsync(apiUrlGetSucursal);
@@ -63,11 +62,8 @@ namespace DevExtremeLibreria.Controllers
             {
                 return Request.CreateErrorResponse(HttpStatusCode.NotFound, "La Sucursal no fue encontrada.");
             }
-=======
-            var apiUrlGetSucursal = "https://localhost:44370/api/GetSucursal/" + key;
-            var respuestaSucursal = await GetAsync(apiUrlGetSucursal = "https://localhost:44370/api/GetSucursal/" + key);
-            Sucursal sucursal = JsonConvert.DeserializeObject<Sucursal>(respuestaSucursal);
->>>>>>> Stashed changes
+
+
 
             Sucursal Sucursal = JsonConvert.DeserializeObject<Sucursal>(respuestaSucursal);
 
@@ -83,11 +79,9 @@ namespace DevExtremeLibreria.Controllers
             handler.ServerCertificateCustomValidationCallback = (message, cert, chain, errors) => true;
             using (var client = new HttpClient(handler))
             {
-<<<<<<< Updated upstream
+
                 var url = $"https://localhost:44370/api/PutSucursal?id={key}";
-=======
-                var url = "https://localhost:44370/api/PutSucursal/" + key;
->>>>>>> Stashed changes
+
                 var response = await client.PutAsync(url, httpContent);
 
                 if (!response.IsSuccessStatusCode)

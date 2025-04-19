@@ -14,6 +14,10 @@
         .Key("DeduccionesId")
     )
     .RemoteOperations(true)
+    .Paging(p => p.PageSize(10))
+.FilterRow(f => f.Visible(true))
+.HeaderFilter(f => f.Visible(true))
+.SearchPanel(f => f.Visible(true))
     .Columns(columns => {
 
         columns.AddFor(m => m.DeduccionesId);
@@ -28,9 +32,16 @@
 
         columns.AddFor(m => m.Monto);
     })
-    .Editing(e => e
+        .Editing(e => e
+    .Mode(GridEditMode.Popup)
         .AllowAdding(true)
         .AllowUpdating(true)
         .AllowDeleting(true)
-    )
+        .Texts(t => t
+.ConfirmDeleteMessage("¿Estás seguro de que deseas eliminar este registro?")
+.SaveRowChanges("Guardar")
+.CancelRowChanges("Cancelar")
 )
+)
+)
+

@@ -24,21 +24,17 @@
         columns.AddFor(m => m.EmpleadoId);
 
         columns.AddFor(m => m.CargoId).Lookup(lookup => lookup
-<<<<<<< Updated upstream
-            .DataSource(ds => ds.WebApi().Controller("Cargo").LoadAction("GetCargos").Key("CargoId"))
-=======
+
             .DataSource(ds => ds.WebApi().Controller("Cargo").LoadAction("Get").Key("CargoId"))
->>>>>>> Stashed changes
+
             .ValueExpr("CargoId")
             .DisplayExpr("Titulo")
         );
 
         columns.AddFor(m => m.SucursalId).Lookup(lookup => lookup
-<<<<<<< Updated upstream
-            .DataSource(ds => ds.WebApi().Controller("Sucursal").LoadAction("GetSucursales").Key("SucursalId"))
-=======
+
             .DataSource(ds => ds.WebApi().Controller("Sucursal").LoadAction("Get").Key("SucursalId"))
->>>>>>> Stashed changes
+
             .ValueExpr("SucursalId")
             .DisplayExpr("Nombresucursal")
         );

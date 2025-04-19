@@ -77,12 +77,10 @@ namespace DevExtremeLibreria.Controllers
             handler.ServerCertificateCustomValidationCallback = (message, cert, chain, errors) => true;
             using (var client = new HttpClient(handler))
             {
-<<<<<<< Updated upstream
+
                 client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json")); // Solicitar J
                 var url = $"https://localhost:44370/api/PutEmpleado?id={key}";
-=======
-                var url = "https://localhost:44370/api/PutEmpleado/" + key;
->>>>>>> Stashed changes
+
                 var response = await client.PutAsync(url, httpContent);
 
                 if (!response.IsSuccessStatusCode)
@@ -105,11 +103,8 @@ namespace DevExtremeLibreria.Controllers
 
             var httpContent = new StringContent(values, System.Text.Encoding.UTF8, "application/json");
 
-<<<<<<< Updated upstream
             var url = "https://localhost:44370/api/PostEmpleado";
-=======
-            var url = "https://localhost:44370/api/PostEmpleado?idcargo=2&idsucursal=1 ";
->>>>>>> Stashed changes
+
             var handler = new HttpClientHandler();
             handler.ServerCertificateCustomValidationCallback = (message, cert, chain, errors) => true;
             using (var client = new HttpClient(handler))

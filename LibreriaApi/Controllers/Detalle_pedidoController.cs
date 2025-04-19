@@ -72,6 +72,7 @@ namespace LibreriaApi.Controllers
                     l.Cantidad,
                     l.PrecioUnitario,
                     l.Subtotal,
+                    
                 })
                 .FirstOrDefault();
 
@@ -106,7 +107,7 @@ namespace LibreriaApi.Controllers
 
             if (libro == null)
                 return BadRequest("libro no encontrada.");
-
+            detalle_Pedido.PrecioUnitario = libro.Precio;
             detalle_Pedido.Subtotal = detalle_Pedido.Cantidad * detalle_Pedido.PrecioUnitario;
             db.Detalles_pedidos.Add(detalle_Pedido);
             db.SaveChanges();
@@ -147,7 +148,7 @@ namespace LibreriaApi.Controllers
             detallepedido.PedidoId = detalleActualizado.PedidoId;
             detallepedido.LibroId = detalleActualizado.LibroId;
             detallepedido.Cantidad = detalleActualizado.Cantidad;
-            detallepedido.PrecioUnitario = detalleActualizado.PrecioUnitario;
+            detallepedido.PrecioUnitario = libroNuevo.Precio;
             detallepedido.Subtotal = detallepedido.Cantidad * detallepedido.PrecioUnitario;
 
             db.SaveChanges();

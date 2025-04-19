@@ -14,6 +14,10 @@
         .Key("Id")
     )
     .RemoteOperations(true)
+    .Paging(p => p.PageSize(10))
+.FilterRow(f => f.Visible(true))
+.HeaderFilter(f => f.Visible(true))
+.SearchPanel(f => f.Visible(true))
     .Columns(columns => {
 
         columns.AddFor(m => m.Id);
@@ -24,15 +28,19 @@
             .DisplayExpr("Nombre")
         );
 
-        columns.AddFor(m => m.BonificacionesId).Lookup(lookup => lookup
+        columns.AddFor(m => m.BonificacionesId)
+        .AllowEditing(false)
+        .Lookup(lookup => lookup
             .DataSource(ds => ds.WebApi().Controller("Bonificaciones").LoadAction("Get").Key("BonificacionesId"))
             .ValueExpr("BonificacionesId")
             .DisplayExpr("Tipobonificacion")
         );
 
         columns.AddFor(m => m.Anticipo);
-        
-        columns.AddFor(m => m.DeduccionesId).Lookup(lookup => lookup
+
+        columns.AddFor(m => m.DeduccionesId)
+        .AllowEditing(false)
+        .Lookup(lookup => lookup
             .DataSource(ds => ds.WebApi().Controller("Deducciones").LoadAction("Get").Key("DeduccionesId"))
             .ValueExpr("DeduccionesId")
             .DisplayExpr("TipoDeduccion")
@@ -40,9 +48,16 @@
 
         columns.AddFor(m => m.Sueldoneto);
     })
-    .Editing(e => e
+        .Editing(e => e
+    .Mode(GridEditMode.Popup)
         .AllowAdding(true)
         .AllowUpdating(true)
         .AllowDeleting(true)
-    )
+        .Texts(t => t
+.ConfirmDeleteMessage("¿Estás seguro de que deseas eliminar este registro?")
+.SaveRowChanges("Guardar")
+.CancelRowChanges("Cancelar")
 )
+)
+)
+

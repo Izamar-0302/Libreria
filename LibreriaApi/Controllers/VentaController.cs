@@ -124,24 +124,26 @@ namespace LibreriaApi.Controllers
             var pedido = db.Pedidos.Find(venta.PedidoId);
             var libro = db.Libros.Find(venta.LibroId);
             var metodo = db.MetodosPagos.Find(venta.MetodopagoId);
-            var sucursal = db.Sucursales.Find(venta.SucursalId);
+
 
             if (empleado == null)
-                return BadRequest("Pedido no encontrado.");
+                return BadRequest("Empleado no encontrado.");
 
             if (libro == null)
                 return BadRequest("libro no encontrada.");
             if (lector == null)
-                return BadRequest("libro no encontrada.");
+                return BadRequest("lector no encontrada.");
             if (pedido == null)
-                return BadRequest("libro no encontrada.");
+            {
+                venta.PedidoId = null;
+               
+             }
             if (metodo == null)
                 return BadRequest("libro no encontrada.");
-            if (sucursal == null)
-                return BadRequest("libro no encontrada.");
 
-            
-            venta.Montototal = ((libro.Precio * venta.Cantidadventa) - venta.Descuento + venta.Impuesto);
+
+            venta.SucursalId = empleado.SucursalId;
+            venta.Montototal = ((libro.Precio * venta.Cantidadventa) - (libro.Precio*venta.Descuento) + (libro.Precio*venta.Impuesto));
             db.Ventas.Add(venta);
             db.SaveChanges();
             return Ok(venta);
@@ -171,7 +173,7 @@ namespace LibreriaApi.Controllers
             var pedido = db.Pedidos.Find(ventamodificar.PedidoId);
             var libro = db.Libros.Find(ventamodificar.LibroId);
             var metodo = db.MetodosPagos.Find(ventamodificar.MetodopagoId);
-            var sucursal = db.Sucursales.Find(ventamodificar.SucursalId);
+           
 
             if (empleado == null)
                 return BadRequest("Pedido no encontrado.");
@@ -181,11 +183,10 @@ namespace LibreriaApi.Controllers
             if (lector == null)
                 return BadRequest("lector no encontrado.");
             if (pedido == null)
-                return BadRequest("Pedido no encontrado.");
+                { venta.PedidoId = null; }
             if (metodo == null)
                 return BadRequest("Metodo no encontrado.");
-            if (sucursal == null)
-                return BadRequest("Sucursal no encontrada.");
+            
 
             venta.VentaId = venta.VentaId;
             venta.LibroId = ventamodificar.LibroId;
@@ -194,13 +195,13 @@ namespace LibreriaApi.Controllers
             venta.EmpleadoId = ventamodificar.EmpleadoId;
             venta.PedidoId = ventamodificar.PedidoId;
             venta.MetodopagoId = ventamodificar.MetodopagoId;
-            venta.SucursalId = ventamodificar.SucursalId;
+            venta.SucursalId = empleado.SucursalId;
             venta.Descripcion = ventamodificar.Descripcion;
             venta.Cantidadventa = ventamodificar.Cantidadventa;
             venta.Descuento = ventamodificar.Descuento;
             venta.Impuesto = ventamodificar.Impuesto;
             
-            venta.Montototal = ((libro.Precio * venta.Cantidadventa) - venta.Descuento + venta.Impuesto);
+            venta.Montototal = ((libro.Precio * venta.Cantidadventa) - (libro.Precio * venta.Descuento) + (libro.Precio * venta.Impuesto));
             
             db.SaveChanges();
             return Ok(venta);
