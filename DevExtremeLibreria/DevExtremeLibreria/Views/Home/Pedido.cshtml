@@ -19,6 +19,9 @@
 .FilterRow(f => f.Visible(true))
 .HeaderFilter(f => f.Visible(true))
 .SearchPanel(f => f.Visible(true))
+.ShowBorders(true)                        // Muestra bordes entre celdas
+.RowAlternationEnabled(true)
+.ColumnAutoWidth(true)
     .Columns(columns => {
 
         columns.AddFor(m => m.PedidoId);
