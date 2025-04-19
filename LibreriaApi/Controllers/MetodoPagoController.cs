@@ -82,7 +82,10 @@ namespace LibreriaApi.Controllers
         [Route("api/PutMetodoPago")]
         public IHttpActionResult Put(int id,MetodoPago metodoPagomodificado)
         {
+
             id = metodoPagomodificado.MetodopagoId;
+
+
             MetodoPago mp = db.MetodosPagos.Find(id);
             if (mp == null)
             {

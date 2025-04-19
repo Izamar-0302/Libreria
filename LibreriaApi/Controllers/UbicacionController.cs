@@ -37,7 +37,7 @@ namespace LibreriaApi.Controllers
         /// </summary>
         /// <param name="id"></param>
         /// <returns>JSON Ubicacion</returns>
-        /// <response code="200">Devueleve si encuentra valor</response>
+        /// <response code="200">Devuelve si encuentra valor</response>
         /// <response code="404">Devuelve si no encuentra valor</response>
         [HttpGet]
         [SwaggerOperation("GetUbicacion")]

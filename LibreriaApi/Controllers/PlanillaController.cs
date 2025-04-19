@@ -83,13 +83,15 @@ namespace LibreriaApi.Controllers
         [Route("api/PutPlanilla")]
         public IHttpActionResult Put(int id,Planilla planillamodificado)
         {
-            
+
             Planilla mp = db.Planillas.Find(id);
             if (mp == null)
             {
                 return NotFound();
             }
+
             id = mp.PlanillaId;
+
             mp.Fechapago = planillamodificado.Fechapago;
             
 

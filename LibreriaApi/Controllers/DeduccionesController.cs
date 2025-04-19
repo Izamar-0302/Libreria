@@ -45,12 +45,13 @@ namespace LibreriaApi.Controllers
         // GET: api/Deducciones/5
 
         /// <summary>
-        /// Obtener valor
+        /// Obtener un valor
         /// </summary>
+        /// <param name="id"></param>
         /// <returns>JSON Deducciones</returns>
         /// <response code="200">Devuelve si el valor es encontrado</response>
         /// <response code="404">Devuelve si no es encontrado</response>
-         [HttpGet]
+        [HttpGet]
         [SwaggerOperation("GetDeduccion")]
         [Route("api/GetDeduccion")]
         public IHttpActionResult Get(int id)
@@ -77,8 +78,9 @@ namespace LibreriaApi.Controllers
         // POST: api/Deducciones
 
         /// <summary>
-        /// Agregar valor
+        /// Agregar
         /// </summary>
+        /// <param name="deducciones"></param>
         /// <returns>JSON Deducciones</returns>
         /// <response code="200">Devuelve si los valores son agregados</response>
         /// <response code="404">Devuelve si no son agregados</response>
@@ -104,8 +106,10 @@ namespace LibreriaApi.Controllers
         // PUT: api/Deducciones/5
 
         /// <summary>
-        /// modificar valores
+        /// Modificar
         /// </summary>
+        /// <param name="id"></param>
+        /// <param name="dedumodificar"></param>
         /// <returns>JSON Deducciones</returns>
         /// <response code="200">Devuelve si los valores son moficados</response>
         /// <response code="404">Devuelve si no son modificados</response>
@@ -142,8 +146,9 @@ namespace LibreriaApi.Controllers
         // DELETE: api/Deducciones/5
 
         /// <summary>
-        /// Eliminar valores
+        /// Eliminar
         /// </summary>
+        /// <param name="id"></param>
         /// <returns>JSON Deducciones</returns>
         /// <response code="200">Devuelve si los valores son eliminados</response>
         /// <response code="404">Devuelve si no son eliminados</response>

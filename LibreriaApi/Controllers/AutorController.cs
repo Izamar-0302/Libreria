@@ -68,10 +68,10 @@ namespace LibreriaApi.Controllers
             return Ok(autor);
         }
 
-        /// PUT: api/Autor/5
         /// <summary>
-        /// Modificar valor
+        /// Modificar
         /// </summary>
+        /// <param name="id"></param>
         /// <param name="autormodificado"></param>
         /// <returns>JSON Autor</returns>
         /// <response code="200">Devuelve si se ha agregado el valor</response>

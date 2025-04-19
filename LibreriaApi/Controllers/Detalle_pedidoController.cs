@@ -49,8 +49,9 @@ namespace LibreriaApi.Controllers
         // GET: api/Detalle_pedido/5
 
         /// <summary>
-        /// Obtener valor
+        /// Obtener un valor
         /// </summary>
+        /// <param name="id"></param>
         /// <returns>JSON Detalle_pedido</returns>
         /// <response code="200">Devuelve si el valor es encontrado</response>
         /// <response code="404">Devuelve si no es encontrado</response>
@@ -83,8 +84,9 @@ namespace LibreriaApi.Controllers
         // POST: api/Detalle_pedido
 
         /// <summary>
-        /// Agregar valor
+        /// 
         /// </summary>
+        /// <param name="detalle_Pedido"></param>
         /// <returns>JSON Detalle_pedido</returns>
         /// <response code="200">Devuelve si los valores son agregados</response>
         /// <response code="404">Devuelve si no son agregados</response>
@@ -115,8 +117,10 @@ namespace LibreriaApi.Controllers
         // PUT: api/Detalle_pedido/5
 
         /// <summary>
-        /// modificar valores
+        /// Modificar 
         /// </summary>
+        /// <param name="id"></param>
+        /// <param name="detalleActualizado"></param>
         /// <returns>JSON Detalle_pedido</returns>
         /// <response code="200">Devuelve si los valores son moficados</response>
         /// <response code="404">Devuelve si no son modificados</response>
@@ -154,8 +158,9 @@ namespace LibreriaApi.Controllers
         // DELETE: api/Detalle_pedido/5
 
         /// <summary>
-        /// Eliminar valores
+        /// Eliminar
         /// </summary>
+        /// <param name="id"></param>
         /// <returns>JSON Detalle_pedido</returns>
         /// <response code="200">Devuelve si los valores son eliminados</response>
         /// <response code="404">Devuelve si no son eliminados</response>

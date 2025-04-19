@@ -16,7 +16,7 @@ namespace LibreriaApi.Controllers
         private DBContextProyect db = new DBContextProyect();
         // GET: api/Venta
         /// <summary>
-        /// Obtener valores
+        /// Obtener todos los valores
         /// </summary>
         /// <returns>JSON Venta</returns>
         /// <response code="200">Devuelve si los valores son encontrados</response>
@@ -59,8 +59,9 @@ namespace LibreriaApi.Controllers
         // GET: api/Venta/5
 
         /// <summary>
-        /// Obtener valor
+        /// Obtener un valor
         /// </summary>
+        /// <param name="id"></param>
         /// <returns>JSON Venta</returns>
         /// <response code="200">Devuelve si el valor es encontrado</response>
         /// <response code="404">Devuelve si no es encontrado</response>
@@ -104,8 +105,9 @@ namespace LibreriaApi.Controllers
         // POST: api/Venta
 
         /// <summary>
-        /// Agregar valor
+        /// Agregar
         /// </summary>
+        /// <param name="venta"></param>
         /// <returns>JSON Venta</returns>
         /// <response code="200">Devuelve si los valores son agregados</response>
         /// <response code="404">Devuelve si no son agregados</response>
@@ -148,8 +150,10 @@ namespace LibreriaApi.Controllers
         // PUT: api/Venta/5
 
         /// <summary>
-        /// modificar valores
+        /// Modificar
         /// </summary>
+        /// <param name="id"></param>
+        /// <param name="ventamodificar"></param>
         /// <returns>JSON Venta</returns>
         /// <response code="200">Devuelve si los valores son moficados</response>
         /// <response code="404">Devuelve si no son modificados</response>
@@ -201,13 +205,14 @@ namespace LibreriaApi.Controllers
             db.SaveChanges();
             return Ok(venta);
         }
-           
+
 
         // DELETE: api/Venta/5
 
         /// <summary>
-        /// Eliminar valores
+        /// Eliminar
         /// </summary>
+        /// <param name="id"></param>
         /// <returns>JSON Venta</returns>
         /// <response code="200">Devuelve si los valores son eliminados</response>
         /// <response code="404">Devuelve si no son eliminados</response>

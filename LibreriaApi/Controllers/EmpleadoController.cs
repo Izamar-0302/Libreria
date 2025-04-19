@@ -26,6 +26,7 @@ namespace LibreriaApi.Controllers
         [SwaggerOperation("GetEmpleados")]
         [Route("api/GetEmpleados")]
 
+
         public IHttpActionResult Get()
         {
             var empleados = db.Empleados
@@ -47,16 +48,20 @@ namespace LibreriaApi.Controllers
 
             return Ok(empleados);
 
-        }
-            // GET: api/Empleado/5
 
-            /// <summary>
-            /// Obtener valor
-            /// </summary>
-            /// <returns>JSON Empleado</returns>
-            /// <response code="200">Devuelve si el valor es encontrado</response>
-            /// <response code="404">Devuelve si no es encontrado</response>
-            [HttpGet]
+        
+        
+        }
+        // GET: api/Empleado/5
+
+        /// <summary>
+        /// Obtener un valor
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns>JSON Empleado</returns>
+        /// <response code="200">Devuelve si el valor es encontrado</response>
+        /// <response code="404">Devuelve si no es encontrado</response>
+        [HttpGet]
         [SwaggerOperation("GetEmpleado")]
         [Route("api/GetEmpleado")]
         public IHttpActionResult Get(int id)
@@ -87,9 +92,9 @@ namespace LibreriaApi.Controllers
         // POST: api/Empleado
 
         /// <summary>
-        /// Agregar valor
+        /// Agregar
         /// </summary>
-        /// <returns>JSON Empleado</returns>
+        /// <param name="empleado"></param>
         /// <response code="200">Devuelve si los valores son agregados</response>
         /// <response code="404">Devuelve si no son agregados</response>
         [HttpPost]
@@ -118,8 +123,10 @@ namespace LibreriaApi.Controllers
         // PUT: api/Empleado/5
 
         /// <summary>
-        /// modificar valores
+        /// Modificar
         /// </summary>
+        /// <param name="id"></param>
+        /// <param name="empleadomodificar"></param>
         /// <returns>JSON Empleado</returns>
         /// <response code="200">Devuelve si los valores son moficados</response>
         /// <response code="404">Devuelve si no son modificados</response>
@@ -159,14 +166,15 @@ namespace LibreriaApi.Controllers
             return Ok(empleado);
         }
 
-            // DELETE: api/Empleado/5
+        // DELETE: api/Empleado/5
 
-            /// <summary>
-            /// Eliminar valores
-            /// </summary>
-            /// <returns>JSON Empleado</returns>
-            /// <response code="200">Devuelve si los valores son eliminados</response>
-            /// <response code="404">Devuelve si no son eliminados</response>
+        /// <summary>
+        /// Eliminar
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns>JSON Empleado</returns>
+        /// <response code="200">Devuelve si los valores son eliminados</response>
+        /// <response code="404">Devuelve si no son eliminados</response>
         [HttpDelete]
         [SwaggerOperation("DeleteEmpleado")]
         [Route("api/DeleteEmpleado")]

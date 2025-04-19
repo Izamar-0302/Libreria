@@ -54,8 +54,9 @@ namespace LibreriaApi.Controllers
         // GET: api/Libro/5
 
         /// <summary>
-        /// Obtener valor
+        /// Obtener un valor
         /// </summary>
+        /// <param name="id"></param>
         /// <returns>JSON Libro</returns>
         /// <response code="200">Devuelve si el valor es encontrado</response>
         /// <response code="404">Devuelve si no es encontrado</response>
@@ -94,8 +95,9 @@ namespace LibreriaApi.Controllers
         // POST: api/Libro
 
         /// <summary>
-        /// Agregar valor
+        /// Agregar
         /// </summary>
+        /// <param name="libro"></param>
         /// <returns>JSON Libro</returns>
         /// <response code="200">Devuelve si los valores son agregados</response>
         /// <response code="404">Devuelve si no son agregados</response>
@@ -130,8 +132,10 @@ namespace LibreriaApi.Controllers
         // PUT: api/Libro/5
 
         /// <summary>
-        /// modificar valores
+        /// Modificar
         /// </summary>
+        /// <param name="id"></param>
+        /// <param name="libroActualizado"></param>
         /// <returns>JSON Libro</returns>
         /// <response code="200">Devuelve si los valores son moficados</response>
         /// <response code="404">Devuelve si no son modificados</response>
@@ -176,8 +180,9 @@ namespace LibreriaApi.Controllers
         // DELETE: api/Libro/5
 
         /// <summary>
-        /// Eliminar valores
+        /// Eliminar
         /// </summary>
+        /// <param name="id"></param>
         /// <returns>JSON Libro</returns>
         /// <response code="200">Devuelve si los valores son eliminados</response>
         /// <response code="404">Devuelve si no son eliminados</response>

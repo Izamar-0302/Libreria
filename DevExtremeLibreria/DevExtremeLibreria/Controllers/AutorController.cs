@@ -76,9 +76,13 @@ namespace DevExtremeLibreria.Controllers
             handler.ServerCertificateCustomValidationCallback = (message, cert, chain, errors) => true;
             using (var client = new HttpClient(handler))
             {
+<<<<<<< Updated upstream
 
                 var url = $"https://localhost:44370/api/PutAutor/{key}";
 
+=======
+                var url = "https://localhost:44370/api/PutAutores/" + key;
+>>>>>>> Stashed changes
                 var response = await client.PutAsync(url, httpContent);
 
                 if (!response.IsSuccessStatusCode)

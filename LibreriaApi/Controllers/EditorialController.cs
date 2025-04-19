@@ -68,16 +68,17 @@ namespace LibreriaApi.Controllers
                 return Ok(editorial);
             }
 
-            // PUT: api/Editorial/5
-            /// <summary>
-            /// Modificar valor
-            /// </summary>
-            /// <param name="editorialmodificado"></param>
-            /// <returns>JSON Editorial</returns>
-            /// <responde code="200">Devuelve cuando se ha modificado el valor</responde>
-            /// <response code="404">Devuelve si no se ha modificado</response>
+        // PUT: api/Editorial/5
 
-            [HttpPut]
+        /// <summary>
+        /// Modificar
+        /// </summary>
+        /// <param name="id"></param>
+        /// <param name="editorialmodificado"></param>
+        /// <returns>JSON Editorial</returns>
+        /// <responde code="200">Devuelve cuando se ha modificado el valor</responde>
+        /// <response code="404">Devuelve si no se ha modificado</response>
+        [HttpPut]
             [SwaggerOperation("PutEditorial")]
             [Route("api/PutEditorial/{id}")]
             public IHttpActionResult Put(int id, Editorial editorialmodificado)
@@ -97,15 +98,15 @@ namespace LibreriaApi.Controllers
 
                 return Ok(editorial);
             }
-            // DELETE: api/Editorial/5
-            /// <summary>
-            /// Eliminar valor
-            /// </summary>
-            /// <param name="id"></param>
-            /// <returns>JSON Editorial</returns>
-            /// <response code="200">Devuelve al eliminar valor</response>
-            /// <response code="404">Devuelve al no eliminarlo</response>
-            [HttpDelete]
+        // DELETE: api/Editorial/5
+        /// <summary>
+        /// Eliminar
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns>JSON Editorial</returns>
+        /// <response code="200">Devuelve al eliminar valor</response>
+        /// <response code="404">Devuelve al no eliminarlo</response>
+        [HttpDelete]
             [SwaggerOperation("DeleteEditorial")]
             [Route("api/DeleteEditorial/{id}")]
             public IHttpActionResult Delete(int id)

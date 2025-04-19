@@ -82,13 +82,16 @@ namespace LibreriaApi.Controllers
         [Route("api/PutProveedor")]
         public IHttpActionResult Put(int id, Proveedor proveedormodificado)
         {
-            
+
+
             Proveedor mp = db.Proveedores.Find(id);
             if (mp == null)
             {
                 return NotFound();
             }
+
             mp.ProveedorId = id;
+
             mp.Nombreproveedor = proveedormodificado.Nombreproveedor;
             mp.Direccion = proveedormodificado.Direccion;
             mp.Correo = proveedormodificado.Correo;

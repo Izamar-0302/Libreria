@@ -45,12 +45,13 @@ namespace LibreriaApi.Controllers
         // GET: api/Bonificaciones/5
 
         /// <summary>
-        /// Obtener valor
+        /// Obtener un valor
         /// </summary>
+        /// <param name="id"></param>
         /// <returns>JSON Bonificaciones</returns>
         /// <response code="200">Devuelve si el valor es encontrado</response>
         /// <response code="404">Devuelve si no es encontrado</response>
-        ///  [HttpGet]
+        [HttpGet]
         [SwaggerOperation("GetBonificacion")]
         [Route("api/GetBonificacion")]
         public IHttpActionResult Get(int id)
@@ -73,10 +74,11 @@ namespace LibreriaApi.Controllers
         }
 
         // POST: api/Bonificaciones
-        
+
         /// <summary>
-        /// Agregar valor
+        /// Agregar
         /// </summary>
+        /// <param name="bonificacion"></param>
         /// <returns>JSON Bonificaciones</returns>
         /// <response code="200">Devuelve si los valores son agregados</response>
         /// <response code="404">Devuelve si no son agregados</response>
@@ -102,10 +104,12 @@ namespace LibreriaApi.Controllers
         }
 
         // PUT: api/Bonificaciones/5
-       
+
         /// <summary>
-        /// modificar valores
+        /// Modificar
         /// </summary>
+        /// <param name="id"></param>
+        /// <param name="bonificacionmodificar"></param>
         /// <returns>JSON Bonificaciones</returns>
         /// <response code="200">Devuelve si los valores son moficados</response>
         /// <response code="404">Devuelve si no son modificados</response>
@@ -135,8 +139,9 @@ namespace LibreriaApi.Controllers
         // DELETE: api/Bonificaciones/5
 
         /// <summary>
-        /// Eliminar valores
+        /// Eliminar
         /// </summary>
+        /// <param name="id"></param>
         /// <returns>JSON Bonificaciones</returns>
         /// <response code="200">Devuelve si los valores son eliminados</response>
         /// <response code="404">Devuelve si no son eliminados</response>
