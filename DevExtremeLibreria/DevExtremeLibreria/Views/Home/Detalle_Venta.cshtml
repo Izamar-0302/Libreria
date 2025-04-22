@@ -2,7 +2,14 @@
     ViewData["Title"] = "Detalle_Venta";
 }
 
-<h2>Detalle_Venta</h2>
+<div class="d-flex justify-content-center align-items-center mb-4">
+    <div class="text-center">
+        <h1 class="display-4">
+            <i class="fas fa-file-alt"></i> Detalle Venta
+        </h1>
+        <hr class="w-50 mx-auto" />
+    </div>
+</div>
 
 @(Html.DevExtreme().DataGrid<DevExtremeLibreria.Models.Detalle_Venta>()
     .DataSource(ds => ds.WebApi()
@@ -14,45 +21,75 @@
         .Key("Id")
     )
     .RemoteOperations(true)
-    .Paging(p => p.PageSize(10))
-.FilterRow(f => f.Visible(true))
-.HeaderFilter(f => f.Visible(true))
-.SearchPanel(f => f.Visible(true))
-.ShowBorders(true)                        // Muestra bordes entre celdas
-.RowAlternationEnabled(true)
-.ColumnAutoWidth(true)
+.ShowBorders(true)
+    .RowAlternationEnabled(true)
+    .HoverStateEnabled(true)
+    .HeaderFilter(headerFilter => headerFilter.Visible(true))
+    .FilterRow(filterRow => filterRow.Visible(true))
+    .SearchPanel(searchPanel => searchPanel.Visible(true))
+    .Paging(paging => paging.PageSize(10))
+    .Pager(pager =>
+    {
+        pager.ShowPageSizeSelector(true);
+        pager.AllowedPageSizes(new[] { 5, 10, 20 });
+        pager.ShowInfo(true);
+    })
     .Columns(columns => {
 
         columns.AddFor(m => m.Id);
 
-        columns.AddFor(m => m.VentaId).Lookup(lookup => lookup
+
+        columns.AddFor(m => m.VentaId).Caption("Id de Venta").Lookup(lookup => lookup
             .DataSource(ds => ds.WebApi().Controller("Venta").LoadAction("Get").Key("VentaId"))
             .ValueExpr("VentaId")
             .DisplayExpr("Descripcion")
         );
 
-        columns.AddFor(m => m.LibroId).Lookup(lookup => lookup
+        columns.AddFor(m => m.LibroId).Caption("Id de Libro").Lookup(lookup => lookup
             .DataSource(ds => ds.WebApi().Controller("Libro").LoadAction("Get").Key("LibroId"))
             .ValueExpr("LibroId")
             .DisplayExpr("Titulo")
         );
 
-        columns.AddFor(m => m.Cantidad);
+        columns.AddFor(m => m.Cantidad)
+        .Caption("cantidad");
 
-        columns.AddFor(m => m.Preciounitario);
+        columns.AddFor(m => m.Preciounitario)
+        .Caption("Precio Unitario");
 
-        columns.AddFor(m => m.Subtotal);
+        columns.AddFor(m => m.Subtotal).AllowEditing(false)
+        .Caption("Subtotal");
     })
-        .Editing(e => e
+.Editing(e => e
     .Mode(GridEditMode.Popup)
-        .AllowAdding(true)
-        .AllowUpdating(true)
-        .AllowDeleting(true)
-        .Texts(t => t
-.ConfirmDeleteMessage("¿Estás seguro de que deseas eliminar este registro?")
-.SaveRowChanges("Guardar")
-.CancelRowChanges("Cancelar")
-)
-)
-)
+    .AllowAdding(true)
+    .AllowUpdating(true)
+    .AllowDeleting(true)
+     .Popup(p => p
+        .Title("Detalle de Venta")
+        .ShowTitle(true)
+        .Width(700)
+        .Height(500)
+    )
+     .Form(f => f
+            .ColCount(2)
+            .Items(items =>
+            {
+                items.AddSimpleFor(m => m.VentaId);
+                items.AddSimpleFor(m => m.LibroId);
+                items.AddSimpleFor(m => m.Cantidad);
+                items.AddSimpleFor(m => m.Preciounitario);
+                items.AddSimpleFor(m => m.Subtotal);
 
+            })
+        )
+  .Texts(t => t
+        .ConfirmDeleteMessage("¿Estás seguro de que deseas eliminar este registro?")
+        .SaveRowChanges("Guardar")
+        .CancelRowChanges("Cancelar")
+        .AddRow("Agregar")
+        .EditRow("Editar")
+        .DeleteRow("Eliminar")
+        )
+      )
+    )

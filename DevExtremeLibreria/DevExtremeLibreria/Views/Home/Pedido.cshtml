@@ -3,7 +3,14 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>Pedido</h2>
+<div class="d-flex justify-content-center align-items-center mb-4">
+    <div class="text-center">
+        <h1 class="display-4">
+            <i class="fas fa-clipboard-list text-primary"></i> Pedido
+        </h1>
+        <hr class="w-50 mx-auto" />
+    </div>
+</div>
 
 @(Html.DevExtreme().DataGrid<DevExtremeLibreria.Models.Pedido>()
     .DataSource(ds => ds.WebApi()
@@ -15,13 +22,19 @@
         .Key("PedidoId")
     )
     .RemoteOperations(true)
-    .Paging(p => p.PageSize(10))
-.FilterRow(f => f.Visible(true))
-.HeaderFilter(f => f.Visible(true))
-.SearchPanel(f => f.Visible(true))
-.ShowBorders(true)                        // Muestra bordes entre celdas
-.RowAlternationEnabled(true)
-.ColumnAutoWidth(true)
+ .ShowBorders(true)
+    .RowAlternationEnabled(true)
+    .HoverStateEnabled(true)
+    .HeaderFilter(headerFilter => headerFilter.Visible(true))
+    .FilterRow(filterRow => filterRow.Visible(true))
+    .SearchPanel(searchPanel => searchPanel.Visible(true))
+    .Paging(paging => paging.PageSize(10))
+    .Pager(pager =>
+    {
+        pager.ShowPageSizeSelector(true);
+        pager.AllowedPageSizes(new[] { 5, 10, 20 });
+        pager.ShowInfo(true);
+    })
     .Columns(columns => {
 
         columns.AddFor(m => m.PedidoId);
@@ -32,22 +45,42 @@
             .DisplayExpr("Nombreproveedor")
         );
 
-        columns.AddFor(m => m.Fechapedido);
+        columns.AddFor(m => m.Fechapedido)
+        .Caption("Fecha de pedido");
 
-        columns.AddFor(m => m.Fechaentrega);
+        columns.AddFor(m => m.Fechaentrega)
+        .Caption("Fecha de Entrega");
 
-        columns.AddFor(m => m.Estado);
+        columns.AddFor(m => m.Estado)
+        .Caption("Estado");
     })
-        .Editing(e => e
+.Editing(e => e
     .Mode(GridEditMode.Popup)
-        .AllowAdding(true)
-        .AllowUpdating(true)
-        .AllowDeleting(true)
-        .Texts(t => t
-.ConfirmDeleteMessage("¿Estás seguro de que deseas eliminar este registro?")
-.SaveRowChanges("Guardar")
-.CancelRowChanges("Cancelar")
-)
-)
-)
-
+    .AllowAdding(true)
+    .AllowUpdating(true)
+    .AllowDeleting(true)
+     .Popup(p => p
+        .Title("Gestión de Pedidos")
+        .ShowTitle(true)
+        .Width(700)
+        .Height(500)
+    )
+     .Form(f => f
+            .ColCount(2)
+            .Items(items =>
+            {
+                items.AddSimpleFor(m => m.Fechapedido);
+                items.AddSimpleFor(m => m.Fechaentrega);
+                items.AddSimpleFor(m => m.Estado);
+            })
+        )
+  .Texts(t => t
+        .ConfirmDeleteMessage("¿Estás seguro de que deseas eliminar este registro?")
+        .SaveRowChanges("Guardar")
+        .CancelRowChanges("Cancelar")
+        .AddRow("Agregar")
+        .EditRow("Editar")
+        .DeleteRow("Eliminar")
+        )
+      )
+    )

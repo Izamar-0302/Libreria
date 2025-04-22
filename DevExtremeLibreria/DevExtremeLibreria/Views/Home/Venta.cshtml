@@ -1,9 +1,14 @@
 ﻿@{
     ViewData["Title"] = "Venta";
 }
-
-<h2>Venta</h2>
-
+<div class="d-flex justify-content-center align-items-center mb-4">
+    <div class="text-center">
+        <h1 class="display-4">
+            <i class="fas fa-cash-register me-2"></i> Venta
+        </h1>
+        <hr class="w-50 mx-auto" />
+    </div>
+</div>
 @(Html.DevExtreme().DataGrid<DevExtremeLibreria.Models.Venta>()
     .DataSource(ds => ds.WebApi()
         .Controller("Venta")
@@ -14,81 +19,115 @@
         .Key("VentaId")
     )
     .RemoteOperations(true)
-    .Paging(p => p.PageSize(10))
-.FilterRow(f => f.Visible(true))
-.HeaderFilter(f => f.Visible(true))
-.SearchPanel(f => f.Visible(true))
-.ShowBorders(true)                        // Muestra bordes entre celdas
-.RowAlternationEnabled(true)
-.ColumnAutoWidth(true)
-.ShowBorders(true)                        // Muestra bordes entre celdas
-.RowAlternationEnabled(true)
-.ColumnAutoWidth(true)
-.ColumnChooser(cc => cc.Enabled(true))
+    .ShowBorders(true)
+    .RowAlternationEnabled(true)
+    .HoverStateEnabled(true)
+    .HeaderFilter(headerFilter => headerFilter.Visible(true))
+    .FilterRow(filterRow => filterRow.Visible(true))
+    .SearchPanel(searchPanel => searchPanel.Visible(true))
+    .Paging(paging => paging.PageSize(10))
+    .Pager(pager =>
+    {
+        pager.ShowPageSizeSelector(true);
+        pager.AllowedPageSizes(new[] { 5, 10, 20 });
+        pager.ShowInfo(true);
+    })
     .Columns(columns => {
 
-        columns.AddFor(m => m.VentaId);
+        columns.AddFor(m => m.VentaId)
+         .Caption("ID de Venta");
 
-        columns.AddFor(m => m.Fechadeventa);
+        columns.AddFor(m => m.Fechadeventa)
+        .Caption("Fecha de Venta");
 
-        columns.AddFor(m => m.LectorId).Lookup(lookup => lookup
+        columns.AddFor(m => m.LectorId).Caption("Id del Lector").Lookup(lookup => lookup
             .DataSource(ds => ds.WebApi().Controller("Lector").LoadAction("Get").Key("LectorId"))
             .ValueExpr("LectorId")
             .DisplayExpr("Nombre")
         );
 
-        columns.AddFor(m => m.EmpleadoId).Lookup(lookup => lookup
+        columns.AddFor(m => m.EmpleadoId).Caption("Id del Empleado").Lookup(lookup => lookup
             .DataSource(ds => ds.WebApi().Controller("Empleado").LoadAction("Get").Key("EmpleadoId"))
             .ValueExpr("EmpleadoId")
             .DisplayExpr("Nombre")
         );
 
-        columns.AddFor(m => m.PedidoId).Lookup(lookup => lookup
+        columns.AddFor(m => m.PedidoId).Caption("Id del Pedido").Lookup(lookup => lookup
             .DataSource(ds => ds.WebApi().Controller("Pedido").LoadAction("Get").Key("PedidoId"))
             .ValueExpr("PedidoId")
             .DisplayExpr("Estado")
         );
 
-        columns.AddFor(m => m.LibroId).Lookup(lookup => lookup
+        columns.AddFor(m => m.LibroId).Caption("Id del Libro").Lookup(lookup => lookup
             .DataSource(ds => ds.WebApi().Controller("Libro").LoadAction("Get").Key("LibroId"))
             .ValueExpr("LibroId")
             .DisplayExpr("Titulo")
         );
 
-        columns.AddFor(m => m.MetodopagoId).Lookup(lookup => lookup
+        columns.AddFor(m => m.MetodopagoId).Caption("Metodo de Pago").Lookup(lookup => lookup
             .DataSource(ds => ds.WebApi().Controller("Metodopago").LoadAction("Get").Key("MetodopagoId"))
             .ValueExpr("MetodopagoId")
             .DisplayExpr("Metodo")
         );
 
-        columns.AddFor(m => m.SucursalId)
-        .AllowEditing(false)
-        .Lookup(lookup => lookup
+        columns.AddFor(m => m.SucursalId).Caption("Id de Sucursal").Lookup(lookup => lookup
             .DataSource(ds => ds.WebApi().Controller("Sucursal").LoadAction("Get").Key("SucursalId"))
             .ValueExpr("SucursalId")
             .DisplayExpr("Nombresucursal")
         );
 
-        columns.AddFor(m => m.Descripcion);
+        columns.AddFor(m => m.Descripcion)
+         .Caption("Descripción");
 
-        columns.AddFor(m => m.Cantidadventa);
+        columns.AddFor(m => m.Cantidadventa)
+         .Caption("Cantidad Venta");
 
-        columns.AddFor(m => m.Montototal).AllowEditing(false);
+        columns.AddFor(m => m.Descuento)
+         .Caption("Descuento");
 
-        columns.AddFor(m => m.Descuento);
+        columns.AddFor(m => m.Impuesto)
+         .Caption("Impuesto");
 
-        columns.AddFor(m => m.Impuesto);
+        columns.AddFor(m => m.Montototal).AllowEditing(false)
+        .Caption("Monto Total");
+
     })
-    .Editing(e => e
+.Editing(e => e
     .Mode(GridEditMode.Popup)
-        .AllowAdding(true)
-        .AllowUpdating(true)
-        .AllowDeleting(true)
-        .Texts(t => t
-.ConfirmDeleteMessage("¿Estás seguro de que deseas eliminar este registro?")
-.SaveRowChanges("Guardar")
-.CancelRowChanges("Cancelar")
-)
-)
-)
-
+    .AllowAdding(true)
+    .AllowUpdating(true)
+    .AllowDeleting(true)
+     .Popup(p => p
+        .Title("Gestión de Ventas")
+        .ShowTitle(true)
+        .Width(700)
+        .Height(500)
+    )
+     .Form(f => f
+            .ColCount(2)
+            .Items(items =>
+            {
+                items.AddSimpleFor(m => m.Fechadeventa);
+                items.AddSimpleFor(m => m.LectorId);
+                items.AddSimpleFor(m => m.EmpleadoId);
+                items.AddSimpleFor(m => m.PedidoId);
+                items.AddSimpleFor(m => m.LibroId);
+                items.AddSimpleFor(m => m.MetodopagoId);
+                items.AddSimpleFor(m => m.SucursalId);
+                items.AddSimpleFor(m => m.Descripcion);
+                items.AddSimpleFor(m => m.Cantidadventa);
+                items.AddSimpleFor(m => m.Descuento);
+                items.AddSimpleFor(m => m.Impuesto);
+                items.AddSimpleFor(m => m.Montototal);
+            })
+        )
+  .Texts(t => t
+        .ConfirmDeleteMessage("¿Estás seguro de que deseas eliminar este registro?")
+        .SaveRowChanges("Guardar")
+        .CancelRowChanges("Cancelar")
+        .AddRow("Agregar")
+        .EditRow("Editar")
+        .DeleteRow("Eliminar")
+        )
+      )
+    )

@@ -22,7 +22,7 @@ namespace DevExtremeLibreria {
             //styleBundle.Include("~/Content/dx-diagram.css");
 
             // Predefined themes: https://js.devexpress.com/DevExtreme/Guide/Themes_and_Styles/Predefined_Themes/
-            styleBundle.Include("~/Content/dx.material.custom-scheme.css");
+            styleBundle.Include("~/Content/dx.material.lime.ligth.css");
 
             // Uncomment to use the Gantt control
             //scriptBundle.Include("~/Scripts/dx-gantt.js");

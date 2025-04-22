@@ -2,7 +2,14 @@
     ViewData["Title"] = "Turno";
 }
 
-<h2>Turno</h2>
+<div class="d-flex justify-content-center align-items-center mb-4">
+    <div class="text-center">
+        <h1 class="display-4">
+            <i class="fas fa-business-time"></i> Turno
+        </h1>
+        <hr class="w-50 mx-auto" />
+    </div>
+</div>
 
 @(Html.DevExtreme().DataGrid<DevExtremeLibreria.Models.Turno>()
     .DataSource(ds => ds.WebApi()
@@ -14,16 +21,17 @@
         .Key("TurnoId")
     )
     .RemoteOperations(true)
-    .Paging(p => p.PageSize(10))
-.FilterRow(f => f.Visible(true))
-.HeaderFilter(f => f.Visible(true))
-.SearchPanel(f => f.Visible(true))
-.ShowBorders(true)                        // Muestra bordes entre celdas
+ .Paging(p => p.PageSize(10))
+    .FilterRow(f => f.Visible(true))
+    .HeaderFilter(f => f.Visible(true))
+    .SearchPanel(f => f.Visible(true))
+    .ShowBorders(true)
 .RowAlternationEnabled(true)
 .ColumnAutoWidth(true)
-    .Columns(columns => {
+ .Columns(columns => {
 
-        columns.AddFor(m => m.TurnoId);
+        columns.AddFor(m => m.TurnoId)
+           .Caption("Id de Turno");
 
         columns.AddFor(m => m.EmpleadoId).Lookup(lookup => lookup
             .DataSource(ds => ds.WebApi().Controller("Empleado").LoadAction("Get").Key("EmpleadoId"))
@@ -31,20 +39,39 @@
             .DisplayExpr("Nombre")
         );
 
-        columns.AddFor(m => m.Horainicio);
+        columns.AddFor(m => m.Horainicio)
+        .Caption("Hora Inicio");
 
-        columns.AddFor(m => m.Horafinal);
+        columns.AddFor(m => m.Horafinal)
+        .Caption("Hora Final");
     })
-       .Editing(e => e
+ .Editing(e => e
     .Mode(GridEditMode.Popup)
-        .AllowAdding(true)
-        .AllowUpdating(true)
-        .AllowDeleting(true)
-        .Texts(t => t
-.ConfirmDeleteMessage("¿Estás seguro de que deseas eliminar este registro?")
-.SaveRowChanges("Guardar")
-.CancelRowChanges("Cancelar")
-)
-)
-)
-
+    .AllowAdding(true)
+    .AllowUpdating(true)
+    .AllowDeleting(true)
+     .Popup(p => p
+        .Title("Turno")
+        .ShowTitle(true)
+        .Width(700)
+        .Height(500)
+    )
+     .Form(f => f
+            .ColCount(2)
+            .Items(items =>
+            {
+                items.AddSimpleFor(m => m.EmpleadoId);
+                items.AddSimpleFor(m => m.Horainicio);
+                items.AddSimpleFor(m => m.Horafinal);
+            })
+        )
+  .Texts(t => t
+        .ConfirmDeleteMessage("¿Estás seguro de que deseas eliminar este registro?")
+        .SaveRowChanges("Guardar")
+        .CancelRowChanges("Cancelar")
+        .AddRow("Agregar")
+        .EditRow("Editar")
+        .DeleteRow("Eliminar")
+        )
+      )
+    )

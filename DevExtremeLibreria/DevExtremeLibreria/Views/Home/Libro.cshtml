@@ -3,7 +3,14 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>Libro</h2>
+<div class="d-flex justify-content-center align-items-center mb-4">
+    <div class="text-center">
+        <h1 class="display-4">
+            <i class="fas fa-book"></i> Libro
+        </h1>
+        <hr class="w-50 mx-auto" />
+    </div>
+</div>
 
 
 @(Html.DevExtreme().DataGrid<DevExtremeLibreria.Models.Libro>
@@ -32,13 +39,13 @@
         columns.AddFor(m => m.Titulo)
         .Caption("Título");
 
-        columns.AddFor(m => m.AutorId).Lookup(lookup => lookup
+        columns.AddFor(m => m.AutorId).Caption("Id de Autor").Lookup(lookup => lookup
         .DataSource(ds => ds.WebApi().Controller("Autor").LoadAction("GetAutores").Key("AutorId"))
         .ValueExpr("AutorId")
         .DisplayExpr("Nombre")
         );
 
-        columns.AddFor(m => m.EditorialId).Lookup(lookup => lookup
+        columns.AddFor(m => m.EditorialId).Caption("Id de Editorial").Lookup(lookup => lookup
         .DataSource(ds => ds.WebApi().Controller("Editorial").LoadAction("Get").Key("Editorialid"))
         .ValueExpr("EditorialId")
         .DisplayExpr("Nombre")
@@ -70,16 +77,39 @@
         );
 
     })
-    .Editing(e => e
+   .Editing(e => e
     .Mode(GridEditMode.Popup)
     .AllowAdding(true)
     .AllowUpdating(true)
     .AllowDeleting(true)
-    .Texts(t => t
-    .ConfirmDeleteMessage("¿Estás seguro de que deseas eliminar este registro?")
-    .SaveRowChanges("Guardar")
-    .CancelRowChanges("Cancelar")
+     .Popup(p => p
+        .Title("Gestión de Libros")
+        .ShowTitle(true)
+        .Width(700)
+        .Height(500)
     )
-
-    )
+     .Form(f => f
+            .ColCount(2)
+            .Items(items =>
+            {
+                items.AddSimpleFor(m => m.Titulo);
+                items.AddSimpleFor(m => m.AutorId);
+                items.AddSimpleFor(m => m.EditorialId);
+                items.AddSimpleFor(m => m.Aniopublicacion);
+                items.AddSimpleFor(m => m.Precio);
+                items.AddSimpleFor(m => m.Genero);
+                items.AddSimpleFor(m => m.Cantidad);
+                items.AddSimpleFor(m => m.UbicacionId);
+                items.AddSimpleFor(m => m.ProveedorId);
+            })
+        )
+  .Texts(t => t
+        .ConfirmDeleteMessage("¿Estás seguro de que deseas eliminar este registro?")
+        .SaveRowChanges("Guardar")
+        .CancelRowChanges("Cancelar")
+        .AddRow("Agregar")
+        .EditRow("Editar")
+        .DeleteRow("Eliminar")
+        )
+      )
     )

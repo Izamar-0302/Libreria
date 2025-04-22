@@ -3,7 +3,14 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>Ubicacion</h2>
+<div class="d-flex justify-content-center align-items-center mb-4">
+    <div class="text-center">
+        <h1 class="display-4">
+            <i class="fas fa-map-marker-alt"></i> Ubicacion
+        </h1>
+        <hr class="w-50 mx-auto" />
+    </div>
+</div>
 
 @(Html.DevExtreme().DataGrid<DevExtremeLibreria.Models.Ubicacion>()
     .DataSource(ds => ds.WebApi()
@@ -19,7 +26,7 @@
     .FilterRow(f => f.Visible(true))
     .HeaderFilter(f => f.Visible(true))
     .SearchPanel(f => f.Visible(true))
-    .ShowBorders(true)                        // Muestra bordes entre celdas
+    .ShowBorders(true)
 .RowAlternationEnabled(true)
 .ColumnAutoWidth(true)
     .Columns(columns => {
@@ -33,15 +40,33 @@
         columns.AddFor(m => m.Numerodepasillo)
         .Caption("Número de Pasillo");
     })
-    .Editing(e => e
-     .Mode(GridEditMode.Popup)
-        .AllowAdding(true)
-        .AllowUpdating(true)
-        .AllowDeleting(true)
-    .Texts(t => t
-    .ConfirmDeleteMessage("¿Estás seguro de que deseas eliminar este registro?")
-    .SaveRowChanges("Guardar")
-    .CancelRowChanges("Cancelar")
+ .Editing(e => e
+    .Mode(GridEditMode.Popup)
+    .AllowAdding(true)
+    .AllowUpdating(true)
+    .AllowDeleting(true)
+     .Popup(p => p
+        .Title("Gestion de Ubicacion")
+        .ShowTitle(true)
+        .Width(700)
+        .Height(500)
     )
+     .Form(f => f
+            .ColCount(2)
+            .Items(items =>
+            {
+                items.AddSimpleFor(m => m.Numerodeestante);
+                items.AddSimpleFor(m => m.Numerodepasillo);
+
+            })
+        )
+  .Texts(t => t
+        .ConfirmDeleteMessage("¿Estás seguro de que deseas eliminar este registro?")
+        .SaveRowChanges("Guardar")
+        .CancelRowChanges("Cancelar")
+        .AddRow("Agregar")
+        .EditRow("Editar")
+        .DeleteRow("Eliminar")
+        )
+      )
     )
-)

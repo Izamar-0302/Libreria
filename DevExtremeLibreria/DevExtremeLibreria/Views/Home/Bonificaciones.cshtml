@@ -2,7 +2,14 @@
     ViewData["Title"] = "Bonificaciones";
 }
 
-<h2>Bonificaciones</h2>
+<div class="d-flex justify-content-center align-items-center mb-4">
+    <div class="text-center">
+        <h1 class="display-4">
+            <i class="fas fa-tags"></i> Bonificaciones
+        </h1>
+        <hr class="w-50 mx-auto" />
+    </div>
+</div>
 
 @(Html.DevExtreme().DataGrid<DevExtremeLibreria.Models.Bonificaciones>()
     .DataSource(ds => ds.WebApi()
@@ -23,7 +30,8 @@
 .ColumnAutoWidth(true)
     .Columns(columns => {
 
-        columns.AddFor(m => m.BonificacionesId);
+        columns.AddFor(m => m.BonificacionesId)
+          .Caption("Id de bonificaciones");
 
         columns.AddFor(m => m.EmpleadoId).Lookup(lookup => lookup
             .DataSource(ds => ds.WebApi().Controller("Empleado").LoadAction("Get").Key("EmpleadoId"))
@@ -31,20 +39,40 @@
             .DisplayExpr("Nombre")
         );
 
-        columns.AddFor(m => m.Tipobonificacion);
+        columns.AddFor(m => m.Tipobonificacion)
+        .Caption("Tipo de Bonificación");
 
-        columns.AddFor(m => m.Monto);
+        columns.AddFor(m => m.Monto)
+          .Caption("Monto");
     })
     .Editing(e => e
-    .Mode(GridEditMode.Popup)
-        .AllowAdding(true)
-        .AllowUpdating(true)
-        .AllowDeleting(true)
-        .Texts(t => t
-.ConfirmDeleteMessage("¿Estás seguro de que deseas eliminar este registro?")
-.SaveRowChanges("Guardar")
-.CancelRowChanges("Cancelar")
-)
-)
-)
+.Mode(GridEditMode.Popup)
+    .AllowAdding(true)
+    .AllowUpdating(true)
+    .AllowDeleting(true)
+     .Popup(p => p
+        .Title("Bnificaciones")
+        .ShowTitle(true)
+        .Width(700)
+        .Height(500)
+    )
+     .Form(f => f
+            .ColCount(2)
+            .Items(items =>
+            {
+                items.AddSimpleFor(m => m.EmpleadoId);
+                items.AddSimpleFor(m => m.Tipobonificacion);
+                items.AddSimpleFor(m => m.Monto);
 
+            })
+        )
+  .Texts(t => t
+        .ConfirmDeleteMessage("¿Estás seguro de que deseas eliminar este registro?")
+        .SaveRowChanges("Guardar")
+        .CancelRowChanges("Cancelar")
+        .AddRow("Agregar")
+        .EditRow("Editar")
+        .DeleteRow("Eliminar")
+        )
+      )
+    )

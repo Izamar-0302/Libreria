@@ -3,7 +3,14 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>Empleado</h2>
+<div class="d-flex justify-content-center align-items-center mb-4">
+    <div class="text-center">
+        <h1 class="display-4">
+            <i class="fas fa-user-tie"></i> Empleado
+        </h1>
+        <hr class="w-50 mx-auto" />
+    </div>
+</div>
 
 @(Html.DevExtreme().DataGrid<DevExtremeLibreria.Models.Empleado>()
     .DataSource(ds => ds.WebApi()
@@ -15,18 +22,25 @@
         .Key("EmpleadoId")
     )
     .RemoteOperations(true)
-    .Paging(p => p.PageSize(10))
-    .FilterRow(f => f.Visible(true))
-    .HeaderFilter(f => f.Visible(true))
-    .SearchPanel(f => f.Visible(true))
-    .ShowBorders(true)                        // Muestra bordes entre celdas
-.RowAlternationEnabled(true)
-.ColumnAutoWidth(true)
+  .ShowBorders(true)
+    .RowAlternationEnabled(true)
+    .HoverStateEnabled(true)
+    .HeaderFilter(headerFilter => headerFilter.Visible(true))
+    .FilterRow(filterRow => filterRow.Visible(true))
+    .SearchPanel(searchPanel => searchPanel.Visible(true))
+    .Paging(paging => paging.PageSize(10))
+    .Pager(pager =>
+    {
+        pager.ShowPageSizeSelector(true);
+        pager.AllowedPageSizes(new[] { 5, 10, 20 });
+        pager.ShowInfo(true);
+    })
     .Columns(columns => {
 
-        columns.AddFor(m => m.EmpleadoId);
+        columns.AddFor(m => m.EmpleadoId)
+        .Caption(" Id de Empleado");
 
-        columns.AddFor(m => m.CargoId).Lookup(lookup => lookup
+        columns.AddFor(m => m.CargoId).Caption(" Id del Cargo").Lookup(lookup => lookup
 
             .DataSource(ds => ds.WebApi().Controller("Cargo").LoadAction("Get").Key("CargoId"))
 
@@ -34,7 +48,7 @@
             .DisplayExpr("Titulo")
         );
 
-        columns.AddFor(m => m.SucursalId).Lookup(lookup => lookup
+        columns.AddFor(m => m.SucursalId).Caption("Id de Sucursal").Lookup(lookup => lookup
 
             .DataSource(ds => ds.WebApi().Controller("Sucursal").LoadAction("Get").Key("SucursalId"))
 
@@ -60,16 +74,39 @@
         columns.AddFor(m => m.Direccion)
         .Caption("Dirección");
     })
-    .Editing(e => e
-     .Mode(GridEditMode.Popup)
-        .AllowAdding(true)
-        .AllowUpdating(true)
-        .AllowDeleting(true)
-        .Texts(t => t
+ .Editing(e => e
+    .Mode(GridEditMode.Popup)
+    .AllowAdding(true)
+    .AllowUpdating(true)
+    .AllowDeleting(true)
+     .Popup(p => p
+        .Title("Gestión de Empleados")
+        .ShowTitle(true)
+        .Width(700)
+        .Height(500)
+    )
+     .Form(f => f
+            .ColCount(2)
+            .Items(items =>
+            {
+                items.AddSimpleFor(m => m.CargoId);
+                items.AddSimpleFor(m => m.SucursalId);
+                items.AddSimpleFor(m => m.Salario);
+                items.AddSimpleFor(m => m.Nombre);
+                items.AddSimpleFor(m => m.Apellidos);
+                items.AddSimpleFor(m => m.Correo);
+                items.AddSimpleFor(m => m.Telefono);
+                items.AddSimpleFor(m => m.Direccion);
+                
+            })
+        )
+  .Texts(t => t
         .ConfirmDeleteMessage("¿Estás seguro de que deseas eliminar este registro?")
         .SaveRowChanges("Guardar")
         .CancelRowChanges("Cancelar")
+        .AddRow("Agregar")
+        .EditRow("Editar")
+        .DeleteRow("Eliminar")
+        )
+      )
     )
-
-    )
-)
