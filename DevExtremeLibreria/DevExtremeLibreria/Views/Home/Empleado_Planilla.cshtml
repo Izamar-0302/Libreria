@@ -46,7 +46,7 @@
 
         columns.AddFor(m => m.BonificacionesId)
         .Caption("Id de Bonificaciones")
-        .AllowEditing(false)
+        
         .Lookup(lookup => lookup
             .DataSource(ds => ds.WebApi().Controller("Bonificaciones").LoadAction("Get").Key("BonificacionesId"))
             .ValueExpr("BonificacionesId")
@@ -58,7 +58,7 @@
 
         columns.AddFor(m => m.DeduccionesId)
         .Caption("Id Deducciones")
-        .AllowEditing(false)
+        
         .Lookup(lookup => lookup
             .DataSource(ds => ds.WebApi().Controller("Deducciones").LoadAction("Get").Key("DeduccionesId"))
             .ValueExpr("DeduccionesId")
@@ -74,7 +74,7 @@
     .AllowUpdating(true)
     .AllowDeleting(true)
      .Popup(p => p
-        .Title("Gestión de Lectores")
+        .Title("Gestión de Planilla de empleados")
         .ShowTitle(true)
         .Width(700)
         .Height(500)

@@ -88,8 +88,9 @@
         columns.AddFor(m => m.Impuesto)
          .Caption("Impuesto");
 
-        columns.AddFor(m => m.Montototal).AllowEditing(false)
+        columns.AddFor(m => m.Montototal)
         .Caption("Monto Total");
+        
 
     })
 .Editing(e => e
