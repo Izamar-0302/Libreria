@@ -228,5 +228,70 @@ namespace LibreriaApi.Controllers
             return Ok(venta);
 
         }
+
+        [Route("api/Venta/buscandofechas")]
+        public IHttpActionResult buscandofechas(DateTime fechaInicio, DateTime fechaFin)
+        {
+            var que = from lector1 in db.Lectores
+                      join venta in db.Ventas on lector1.LectorId equals venta.LectorId
+                      join empleado1 in db.Empleados on venta.EmpleadoId equals empleado1.EmpleadoId
+                      join pedido1 in db.Pedidos on venta.PedidoId equals pedido1.PedidoId
+                      join libro1 in db.Libros on venta.LibroId equals libro1.LibroId
+                      join metodo1 in db.MetodosPagos on venta.MetodopagoId equals metodo1.MetodopagoId
+                      join sucursal1 in db.Sucursales on venta.SucursalId equals sucursal1.SucursalId
+                      where venta.Fechadeventa >= fechaInicio && venta.Fechadeventa <= fechaFin
+                      select new
+                      {
+                         Idventa = venta.VentaId,
+                         fecha = venta.Fechadeventa,
+                         Idcliente= lector1.LectorId,
+                          Idempleado =empleado1.EmpleadoId,
+                          Idpedido = pedido1.PedidoId,
+                          Idlibro = libro1.LibroId,
+                          Idmetodo = metodo1.MetodopagoId,
+                          Idsucursal =sucursal1.SucursalId,
+                          descripcion = venta.Descripcion,
+                          cantidad = venta.Cantidadventa,
+                          monton = venta.Montototal,
+                          descuento = venta.Descuento,
+                          impuesto = venta.Impuesto
+
+
+                      };
+            return Ok(que);
+        }
+
+        [Route("api/Venta/ventaporempleado")]
+        public IHttpActionResult ventaporempleado(int id,DateTime fechaInicio, DateTime fechaFin)
+        {
+            var que = from lector1 in db.Lectores
+                      join venta in db.Ventas on lector1.LectorId equals venta.LectorId
+                      join empleado1 in db.Empleados on venta.EmpleadoId equals empleado1.EmpleadoId
+                      join pedido1 in db.Pedidos on venta.PedidoId equals pedido1.PedidoId
+                      join libro1 in db.Libros on venta.LibroId equals libro1.LibroId
+                      join metodo1 in db.MetodosPagos on venta.MetodopagoId equals metodo1.MetodopagoId
+                      join sucursal1 in db.Sucursales on venta.SucursalId equals sucursal1.SucursalId
+                      where venta.EmpleadoId == id
+                      select new
+                      {
+                          Idventa = venta.VentaId,
+                          fecha = venta.Fechadeventa,
+                          Idcliente = lector1.LectorId,
+                          Idempleado = empleado1.EmpleadoId,
+                          Idpedido = pedido1.PedidoId,
+                          Idlibro = libro1.LibroId,
+                          Idmetodo = metodo1.MetodopagoId,
+                          Idsucursal = sucursal1.SucursalId,
+                          descripcion = venta.Descripcion,
+                          cantidad = venta.Cantidadventa,
+                          monton = venta.Montototal,
+                          descuento = venta.Descuento,
+                          impuesto = venta.Impuesto
+
+
+                      };
+            return Ok(que);
+        }
+
     }
 }

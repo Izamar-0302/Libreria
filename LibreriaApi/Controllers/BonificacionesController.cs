@@ -156,5 +156,22 @@ namespace LibreriaApi.Controllers
             return Ok(bonificacion);
 
         }
+        [Route("api/Bonificaciones/Ordenadopormonton")]
+        public IHttpActionResult Ordenadopormonton()
+        {
+            var que = from empleado1 in db.Empleados
+                      join bonificaciones in db.Bonificaciones on empleado1.EmpleadoId equals bonificaciones.EmpleadoId
+                      orderby bonificaciones.Monto descending
+                      select new
+                      {
+                          IdBonificaciones = bonificaciones.BonificacionesId,
+                          tipobonificacion = bonificaciones.Tipobonificacion,
+                          Idempleado = empleado1.EmpleadoId,
+                          monton = bonificaciones.Monto,
+                          
+                      };
+            return Ok(que);
+        }
+       
     }
 }

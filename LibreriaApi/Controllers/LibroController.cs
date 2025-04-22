@@ -197,5 +197,81 @@ namespace LibreriaApi.Controllers
             return Ok(libro);
 
         }
+
+
+        [Route("api/Libro/Ordenadoporsaldototal")]
+        public IHttpActionResult Ordenadoporsaldototal()
+        {
+            var que = from empleado1 in db.Empleados
+                      join empleadoplanilla in db.Empleados_Planillas on empleado1.EmpleadoId equals empleadoplanilla.EmpleadoId
+                      join bonificacion1 in db.Bonificaciones on empleadoplanilla.BonificacionesId equals bonificacion1.BonificacionesId
+                      join deducciones1 in db.Deducciones on empleadoplanilla.BonificacionesId equals deducciones1.DeduccionesId
+                      orderby empleadoplanilla.Id descending
+                      select new
+                      {
+                          Idempleadoplanilla = empleadoplanilla.Id,
+                          Idempleado = empleado1.EmpleadoId,
+                          Idlibro = bonificacion1.BonificacionesId,
+                          cantidad = empleadoplanilla.Anticipo,
+                          precio = deducciones1.DeduccionesId,
+                          subtotal = empleadoplanilla.Sueldoneto
+
+                      };
+            return Ok(que);
+        }
+
+        [Route("api/Libro/Ordenadoportitulo")]
+        public IHttpActionResult Ordenadoportitulo(int id)
+        {
+            var que = from autor1 in db.Autores
+                      join libro in db.Libros on autor1.AutorId equals libro.AutorId
+                      join editorial1 in db.Editoriales on libro.EditorialId equals editorial1.EditorialId
+                      join ubicacion1 in db.Ubicaciones on libro.UbicacionId equals ubicacion1.UbicacionId
+                      join proveedor1 in db.Proveedores on libro.ProveedorId equals proveedor1.ProveedorId
+                      orderby libro.Titulo descending
+                      where  autor1.AutorId == id
+                      select new
+                      {
+                          idlibro =libro.LibroId,
+                          titulo = libro.Titulo,
+                          autor = autor1.AutorId,
+                          editorial = editorial1.EditorialId,
+                          aniopublicacion = libro.Aniopublicacion,
+                          precio = libro.Precio,
+                          genero = libro.Genero,
+                          cantidad = libro.Cantidad,
+                          ubicacion = ubicacion1.UbicacionId,
+                          proveedor = proveedor1.ProveedorId
+
+                      };
+            return Ok(que);
+        }
+
+        [Route("api/Libro/Ordenadoporgenero")]
+        public IHttpActionResult Ordenadoporgenero()
+        {
+            var que = from autor1 in db.Autores
+                      join libro in db.Libros on autor1.AutorId equals libro.AutorId
+                      join editorial1 in db.Editoriales on libro.EditorialId equals editorial1.EditorialId
+                      join ubicacion1 in db.Ubicaciones on libro.UbicacionId equals ubicacion1.UbicacionId
+                      join proveedor1 in db.Proveedores on libro.ProveedorId equals proveedor1.ProveedorId
+                      orderby libro.Genero descending
+                     
+                      select new
+                      {
+                          idlibro = libro.LibroId,
+                          titulo = libro.Titulo,
+                          autor = autor1.AutorId,
+                          editorial = editorial1.EditorialId,
+                          aniopublicacion = libro.Aniopublicacion,
+                          precio = libro.Precio,
+                          genero = libro.Genero,
+                          cantidad = libro.Cantidad,
+                          ubicacion = ubicacion1.UbicacionId,
+                          proveedor = proveedor1.ProveedorId
+
+                      };
+            return Ok(que);
+        }
     }
 }

@@ -189,5 +189,26 @@ namespace LibreriaApi.Controllers
             return Ok(empleado_planilla);
 
         }
+
+        [Route("api/Empleado_planilla/Ordenadoporsaldototal")]
+        public IHttpActionResult Ordenadoporsaldototal()
+        {
+            var que = from empleado1 in db.Empleados
+                      join empleadoplanilla in db.Empleados_Planillas on empleado1.EmpleadoId equals empleadoplanilla.EmpleadoId
+                      join bonificacion1 in db.Bonificaciones on empleadoplanilla.BonificacionesId equals bonificacion1.BonificacionesId
+                      join deducciones1 in db.Deducciones on empleadoplanilla.BonificacionesId equals deducciones1.DeduccionesId
+                      orderby empleadoplanilla.Sueldoneto descending
+                      select new
+                      {
+                          Idempleadoplanilla = empleadoplanilla.Id,
+                          Idempleado = empleado1.EmpleadoId,
+                          Idlibro = bonificacion1.BonificacionesId,
+                          cantidad = empleadoplanilla.Anticipo,
+                          precio = deducciones1.DeduccionesId,
+                          subtotal = empleadoplanilla.Sueldoneto
+
+                      };
+            return Ok(que);
+        }
     }
 }

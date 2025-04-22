@@ -166,5 +166,43 @@ namespace LibreriaApi.Controllers
             return Ok(pedido);
 
         }
+
+        [Route("api/Empleado/Ordenadoporentrega")]
+        public IHttpActionResult Ordenadoporentrega()
+        {
+            var que = from proveedor1 in db.Proveedores
+                      join pedido in db.Pedidos on proveedor1.ProveedorId equals pedido.ProveedorId
+                      orderby pedido.Fechaentrega descending
+                      select new
+                      {
+                          pedido.PedidoId,
+                          proveedor1.ProveedorId,
+                          pedido.Fechapedido,
+                          pedido.Fechaentrega,
+                          pedido.Estado
+
+
+                      };
+            return Ok(que);
+        }
+
+        [Route("api/Pedido/Ordenadoporestado")]
+        public IHttpActionResult Ordenadoporestado()
+        {
+            var que = from proveedor1 in db.Proveedores
+                      join pedido in db.Pedidos on proveedor1.ProveedorId equals pedido.ProveedorId
+                      orderby pedido.Estado ascending
+                      select new
+                      {
+                          pedido.PedidoId,
+                          proveedor1.ProveedorId,
+                          pedido.Fechapedido,
+                          pedido.Fechaentrega,
+                          pedido.Estado
+
+
+                      };
+            return Ok(que);
+        }
     }
 }

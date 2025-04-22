@@ -163,5 +163,21 @@ namespace LibreriaApi.Controllers
             return Ok(deducciones);
 
         }
+        [Route("api/Deducciones/Ordenadopormonton")]
+        public IHttpActionResult Ordenadopormonton()
+        {
+            var que = from empleado1 in db.Empleados
+                      join deducciones in db.Deducciones on empleado1.EmpleadoId equals deducciones.EmpleadoId
+                      orderby deducciones.Monto descending
+                      select new
+                      {
+                          Iddeducciones = deducciones.DeduccionesId,
+                          tipodeducciones = deducciones.TipoDeduccion,
+                          Idempleado = empleado1.EmpleadoId,
+                          monton = deducciones.Monto,
+
+                      };
+            return Ok(que);
+        }
     }
 }

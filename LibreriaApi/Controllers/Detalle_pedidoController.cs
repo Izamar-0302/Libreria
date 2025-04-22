@@ -176,5 +176,25 @@ namespace LibreriaApi.Controllers
             return Ok(detallepedido);
 
         }
+
+        [Route("api/Detalle_pedido/Ordenadoporsaldototal")]
+        public IHttpActionResult Ordenadoporsaldototal()
+        {
+            var que = from pedido1 in db.Pedidos
+                      join detallepedido in db.Detalles_pedidos on pedido1.PedidoId equals detallepedido.PedidoId
+                      join libro1 in db.Libros on detallepedido.LibroId equals libro1.LibroId
+                      orderby detallepedido.Subtotal descending
+                      select new
+                      {
+                          Iddetallepedido = detallepedido.Id,
+                          Idpedido = pedido1.PedidoId,
+                          Idlibro = libro1.LibroId,
+                          cantidad = detallepedido.Cantidad,
+                          precio = detallepedido.PrecioUnitario,
+                          subtotal = detallepedido.Subtotal
+
+                      };
+            return Ok(que);
+        }
     }
 }

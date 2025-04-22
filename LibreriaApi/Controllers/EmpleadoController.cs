@@ -186,5 +186,24 @@ namespace LibreriaApi.Controllers
             return Ok(empleado);
 
         }
+
+        [Route("api/Empleado/Ordenadoporsucursalysalario")]
+        public IHttpActionResult Ordenadoporsucursalysalario()
+        {
+            var que = from cargo1 in db.Cargo
+                      join empleado in db.Empleados on cargo1.CargoId equals empleado.CargoId
+                      join sucursal1 in db.Sucursales on empleado.SucursalId equals sucursal1.SucursalId
+                      orderby sucursal1.Nombresucursal, empleado.Salario
+                      select new
+                      {
+                          Iddempleado =  empleado.EmpleadoId,
+                          Idcargo = cargo1.CargoId,
+                          Idsucursal = sucursal1.SucursalId,
+                          salario = empleado.Salario
+                          
+
+                      };
+            return Ok(que);
+        }
     }
 }
