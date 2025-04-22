@@ -176,7 +176,7 @@ namespace LibreriaApi.Controllers
             return Ok(detallepedido);
 
         }
-
+        [HttpGet]
         [Route("api/Detalle_pedido/Ordenadoporsaldototal")]
         public IHttpActionResult Ordenadoporsaldototal()
         {

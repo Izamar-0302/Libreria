@@ -186,7 +186,7 @@ namespace LibreriaApi.Controllers
             return Ok(empleado);
 
         }
-
+        [HttpGet]
         [Route("api/Empleado/Ordenadoporsucursalysalario")]
         public IHttpActionResult Ordenadoporsucursalysalario()
         {

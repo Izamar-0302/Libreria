@@ -228,7 +228,7 @@ namespace LibreriaApi.Controllers
             return Ok(venta);
 
         }
-
+        [HttpGet]
         [Route("api/Venta/buscandofechas")]
         public IHttpActionResult buscandofechas(DateTime fechaInicio, DateTime fechaFin)
         {
@@ -260,7 +260,7 @@ namespace LibreriaApi.Controllers
                       };
             return Ok(que);
         }
-
+        [HttpGet]
         [Route("api/Venta/ventaporempleado")]
         public IHttpActionResult ventaporempleado(int id,DateTime fechaInicio, DateTime fechaFin)
         {

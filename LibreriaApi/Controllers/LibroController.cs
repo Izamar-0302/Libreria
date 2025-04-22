@@ -219,7 +219,7 @@ namespace LibreriaApi.Controllers
                       };
             return Ok(que);
         }
-
+        [HttpGet]
         [Route("api/Libro/Ordenadoportitulo")]
         public IHttpActionResult Ordenadoportitulo(int id)
         {
@@ -246,7 +246,7 @@ namespace LibreriaApi.Controllers
                       };
             return Ok(que);
         }
-
+        [HttpGet]
         [Route("api/Libro/Ordenadoporgenero")]
         public IHttpActionResult Ordenadoporgenero()
         {

@@ -163,6 +163,7 @@ namespace LibreriaApi.Controllers
             return Ok(deducciones);
 
         }
+        [HttpGet]
         [Route("api/Deducciones/Ordenadopormonton")]
         public IHttpActionResult Ordenadopormonton()
         {

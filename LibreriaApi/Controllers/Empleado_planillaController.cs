@@ -189,7 +189,7 @@ namespace LibreriaApi.Controllers
             return Ok(empleado_planilla);
 
         }
-
+        [HttpGet]
         [Route("api/Empleado_planilla/Ordenadoporsaldototal")]
         public IHttpActionResult Ordenadoporsaldototal()
         {
@@ -202,9 +202,9 @@ namespace LibreriaApi.Controllers
                       {
                           Idempleadoplanilla = empleadoplanilla.Id,
                           Idempleado = empleado1.EmpleadoId,
-                          Idlibro = bonificacion1.BonificacionesId,
+                          Idbonificacion = bonificacion1.BonificacionesId,
                           cantidad = empleadoplanilla.Anticipo,
-                          precio = deducciones1.DeduccionesId,
+                          iddeduccion = deducciones1.DeduccionesId,
                           subtotal = empleadoplanilla.Sueldoneto
 
                       };

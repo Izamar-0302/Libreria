@@ -185,7 +185,7 @@ namespace LibreriaApi.Controllers
                       };
             return Ok(que);
         }
-
+        [HttpGet]
         [Route("api/Pedido/Ordenadoporestado")]
         public IHttpActionResult Ordenadoporestado()
         {
@@ -194,11 +194,11 @@ namespace LibreriaApi.Controllers
                       orderby pedido.Estado ascending
                       select new
                       {
-                          pedido.PedidoId,
-                          proveedor1.ProveedorId,
-                          pedido.Fechapedido,
-                          pedido.Fechaentrega,
-                          pedido.Estado
+                          idpedido = pedido.PedidoId,
+                          idproveedor = proveedor1.ProveedorId,
+                          fechapedido = pedido.Fechapedido,
+                          fechaentrega = pedido.Fechaentrega,
+                          estado = pedido.Estado
 
 
                       };

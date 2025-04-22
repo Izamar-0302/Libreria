@@ -156,6 +156,7 @@ namespace LibreriaApi.Controllers
             return Ok(bonificacion);
 
         }
+        [HttpGet]
         [Route("api/Bonificaciones/Ordenadopormonton")]
         public IHttpActionResult Ordenadopormonton()
         {
